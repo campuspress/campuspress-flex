@@ -29,8 +29,11 @@
         opacity: 0.85;
     }
 
-    p & {
-        margin: 0 0.5em;
+    p &:not(:first-child) {
+        margin-left: $spacer/6;
+    }
+    p &:not(:last-child) {
+        margin-right: $spacer/6;
     }
 
     /*

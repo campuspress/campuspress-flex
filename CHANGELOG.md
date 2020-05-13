@@ -1,4 +1,2 @@
-= 1.0 =
-* Released: May 12, 2020
-
-Initial release
+= 0.9 =
+* Initial release
