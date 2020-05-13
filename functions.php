@@ -41,7 +41,7 @@ foreach ( $cpschool_includes as $file ) {
 // Handles updating theme from GitHub.
 if ( class_exists( 'Puc_v4_Factory' ) ) {
 	$cpschool_update_checker = Puc_v4_Factory::buildUpdateChecker(
-		'https://github.com/maniu/update-tests',
+		'https://github.com/campuspress/campuspress-flex',
 		__FILE__,
 		'campuspress-flex'
 	);
