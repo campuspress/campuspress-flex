@@ -15,7 +15,7 @@ http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
 ## Changelog
 See [changelog](CHANGELOG.md)
 
-### Installing Dependencies
+## Using Dependencies
 - Make sure you have installed Node.js and Browser-Sync (optional) on your computer globally
 - Then open your terminal and browse to the location of your CampusPress Flex copy
 - Run: `$ npm install`
@@ -39,10 +39,10 @@ Or, to run with Browser-Sync:
 ```
 - then run: `$ gulp watch-bs`
 
-### Child Themes
+## Child Themes
 Theme is still in active development and some child theme breaking changes can happen. 
 
-### Licenses & Credits
+## Licenses & Credits
 - Underscores: http://underscores.me/ | GNU GPL 
 - UnderStrap: http://understrap.com | GNU GPL
 - WP Bootstrap Navwalker by Edward McIntyre: https://github.com/twittem/wp-bootstrap-navwalker | GNU GPL
