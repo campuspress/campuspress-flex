@@ -8,6 +8,7 @@
 			</div>
 			<div class="modal-body">
 				<?php
+				$mobile_menu_location = false;
 				if ( has_nav_menu( 'mobile' ) ) {
 					$mobile_menu_location = 'mobile';
 				} elseif ( has_nav_menu( 'desktop' ) ) {
