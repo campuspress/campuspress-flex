@@ -4,19 +4,15 @@ var plumber = require('gulp-plumber');
 var sass = require('gulp-sass');
 var babel = require('gulp-babel');
 var postcss = require('gulp-postcss');
-var watch = require('gulp-watch');
 var touch = require('gulp-touch-fd');
 var rename = require('gulp-rename');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var imagemin = require('gulp-imagemin');
-var ignore = require('gulp-ignore');
-var rimraf = require('gulp-rimraf');
 var sourcemaps = require('gulp-sourcemaps');
 var browserSync = require('browser-sync').create();
 var del = require('del');
 var cleanCSS = require('gulp-clean-css');
-var gulpSequence = require('gulp-sequence');
 var replace = require('gulp-replace');
 var autoprefixer = require('autoprefixer');
 
@@ -87,28 +83,6 @@ gulp.task(
 	})
 );
 
-// Run:
-// gulp cssnano
-// Minifies CSS files
-gulp.task('cssnano', function () {
-	return gulp
-		.src(paths.css + '/theme.css')
-		.pipe(sourcemaps.init({ loadMaps: true }))
-		.pipe(
-			plumber({
-				errorHandler: function (err) {
-					console.log(err);
-					this.emit('end');
-				}
-			})
-		)
-		.pipe(rename({ suffix: '.min' }))
-		.pipe(cssnano({ discardComments: { removeAll: true } }))
-		.pipe(sourcemaps.write('./'))
-		.pipe(gulp.dest(paths.css))
-		.pipe(touch());
-});
-
 gulp.task('minifycss', function () {
 	return gulp
 		.src([
@@ -135,11 +109,11 @@ gulp.task('minifycss', function () {
 		.pipe(touch());
 });
 
+/**
+ * Delete minified CSS files and their maps
+ */
 gulp.task('cleancss', function () {
-	return gulp
-		.src(`${paths.css}/*.min.css`, { read: false }) // Much faster
-		.pipe(ignore('theme.css'))
-		.pipe(rimraf());
+	return del(paths.css + '/*.min.css*');
 });
 
 gulp.task('styles', function (callback) {
@@ -172,11 +146,7 @@ gulp.task('scripts', function () {
 	];
 	gulp
 		.src(scripts, { allowEmpty: true })
-		.pipe(babel(
-			{
-			presets: ['@babel/preset-env']
-			}
-		))
+		.pipe(babel({ presets: ['@babel/preset-env'] }))
 		.pipe(concat('theme.min.js'))
 		.pipe(uglify())
 		.pipe(gulp.dest(paths.js));
@@ -200,41 +170,41 @@ gulp.task('watch-bs', gulp.parallel('browser-sync', 'watch'));
 
 // Run:
 // gulp copy-assets.
-// Copy all needed dependency assets files from bower_component assets to themes /js, /scss and /fonts folder. Run this task after bower install or bower update
+// Copy all needed dependency assets files from node_modules to theme's /js, /scss and /fonts folder. Run this task after npm update
 
 ////////////////// All Bootstrap SASS  Assets /////////////////////////
 gulp.task('copy-assets', function (done) {
 	////////////////// All Bootstrap 4 Assets /////////////////////////
 	// Copy all JS files
 	var stream = gulp
-		.src(`${paths.node}bootstrap/dist/js/**/*.js`)
+		.src(`${paths.node}/bootstrap/dist/js/**/*.js`)
 		.pipe(gulp.dest(`${paths.dev}/js/bootstrap4`));
 
 	// Copy all Bootstrap SCSS files
 	gulp
-		.src(`${paths.node}bootstrap/scss/**/*.scss`)
+		.src(`${paths.node}/bootstrap/scss/**/*.scss`)
 		.pipe(gulp.dest(`${paths.dev}/sass/bootstrap4`));
 
 	////////////////// End Bootstrap 4 Assets /////////////////////////
 
 	// _s JS files into /src/js
 	gulp
-		.src(`${paths.node}undescores-for-npm/js/skip-link-focus-fix.js`)
+		.src(`${paths.node}/undescores-for-npm/js/skip-link-focus-fix.js`)
 		.pipe(gulp.dest(`${paths.dev}/js`));
 
 	// css-vars-ponyfill JS files into /js
 	gulp
-		.src(`${paths.node}css-vars-ponyfill/dist/css-vars-ponyfill.min.js`)
+		.src(`${paths.node}/css-vars-ponyfill/dist/css-vars-ponyfill.min.js`)
 		.pipe(gulp.dest(paths.js));
 
 	// AOS SCSS files into /src/sass
 	gulp
-		.src(`${paths.node}aos/dist/aos.css`)
+		.src(`${paths.node}/aos/dist/aos.css`)
 		.pipe(gulp.dest(`${paths.css}`));
 
 	// AOS JS files into /src/js
 	gulp
-		.src(`${paths.node}aos/dist/aos.js`)
+		.src(`${paths.node}/aos/dist/aos.js`)
 		.pipe(gulp.dest(`${paths.js}`));
 
 	done();
@@ -268,8 +238,6 @@ gulp.task(
 			.src(
 				[
 					'**/*',
-					`!${paths.bower}`,
-					`!${paths.bower}/**`,
 					`!${paths.node}`,
 					`!${paths.node}/**`,
 					`!${paths.dev}`,
@@ -280,17 +248,12 @@ gulp.task(
 					`!${paths.distprod}/**`,
 					`!${paths.sass}`,
 					`!${paths.sass}/**`,
+					`!${paths.composer}`,
+					`!${paths.composer}/**`,
 					'!readme.txt',
-					'!readme.md',
-					'!package.json',
-					'!package-lock.json',
-					'!gulpfile.js',
-					'!gulpconfig.json',
+					'!README.md',
+					'!*.+(json|js|lock|xml)',
 					'!CHANGELOG.md',
-					'!.travis.yml',
-					'!jshintignore',
-					'!codesniffer.ruleset.xml',
-					'*'
 				],
 				{ buffer: true }
 			)
@@ -332,15 +295,14 @@ gulp.task(
 		return gulp
 			.src([
 				'**/*',
-				`!${paths.bower}`,
-				`!${paths.bower}/**`,
 				`!${paths.node}`,
 				`!${paths.node}/**`,
+				`!${paths.composer}`,
+				`!${paths.composer}/**`,
 				`!${paths.dist}`,
 				`!${paths.dist}/**`,
 				`!${paths.distprod}`,
 				`!${paths.distprod}/**`,
-				'*'
 			])
 			.pipe(gulp.dest(paths.distprod))
 			.pipe(touch());

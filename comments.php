@@ -49,7 +49,7 @@ if ( post_password_required() ) {
 							'cpschool'
 						)
 					),
-					number_format_i18n( $comments_number ),
+					number_format_i18n( $comments_number ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					'<span>' . get_the_title() . '</span>'
 				);
 			}
@@ -57,7 +57,7 @@ if ( post_password_required() ) {
 
 		</h2><!-- .comments-title -->
 
-		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through. ?>
+		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through. ?>
 
 			<nav class="comment-navigation" id="comment-nav-above">
 
@@ -92,7 +92,7 @@ if ( post_password_required() ) {
 
 		</ol><!-- .comment-list -->
 
-		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through. ?>
+		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through. ?>
 
 			<nav class="comment-navigation" id="comment-nav-below">
 
@@ -112,18 +112,9 @@ if ( post_password_required() ) {
 
 			</nav><!-- #comment-nav-below -->
 
-		<?php endif; // check for comment navigation. ?>
+		<?php endif; // Check for comment navigation. ?>
 
-	<?php endif; // endif have_comments(). ?>
-
-	<?php
-	// If comments are closed and there are comments, let's leave a little note, shall we?
-	if ( ! comments_open() && '0' != get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) :
-		?>
-
-		<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'cpschool' ); ?></p>
-
-	<?php endif; ?>
+	<?php endif; // End of if have_comments(). ?>
 
 	<?php comment_form(); // Render comments form. ?>
 
