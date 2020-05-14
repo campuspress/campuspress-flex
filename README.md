@@ -1,13 +1,14 @@
 # CampusPress Flex Theme
 
-Website: [https://campuspress.com/](https://campuspress.com/)
+Website: [https://campuspress.com/wordpress-theme-for-schools/](https://campuspress.com/wordpress-theme-for-schools/)
 
 ## About
 
 New, flexible theme from CampusPress for accessible, fast, and an easy-to-navigate site. Perfect for your new school, district, department or simple site.
 
 ## License
-CampusPress Flex WordPress Theme, Copyright 2019 WordPress.org
+CampusPress Flex WordPress Theme, Copyright 2020 CampusPress.
+
 CampusPress Flex is distributed under the terms of the GNU GPL.
 
 http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
