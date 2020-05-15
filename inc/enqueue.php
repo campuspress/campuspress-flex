@@ -29,7 +29,7 @@ if ( ! function_exists( 'cpschool_scripts' ) ) {
 			wp_enqueue_style( 'aos', get_template_directory_uri() . '/css/aos.css', array(), $css_version );
 
 			$js_version = $theme_version . '.' . filemtime( get_template_directory() . '/js/aos.js' );
-			wp_enqueue_script( 'aos', get_template_directory_uri() . '/js/aos.js' );
+			wp_enqueue_script( 'aos', get_template_directory_uri() . '/js/aos.js', array(), $js_version, true );
 		}
 
 		$js_version = $theme_version . '.' . filemtime( get_template_directory() . '/js/theme.min.js' );
@@ -55,7 +55,6 @@ if ( ! function_exists( 'cpschool_print_scripts' ) ) {
 	 * Print scripts in header
 	 */
 	function cpschool_print_scripts() {
-		//echo '<script src="https://cdn.jsdelivr.net/npm/css-vars-ponyfill@2"></script>';
 		echo '<script>window.MSInputMethodContext && document.documentMode && document.write(\'<script src="' . get_template_directory_uri() . '/js/css-vars-ponyfill.min.js' . '"><\x2fscript>\');</script>' . "\n";
 	}
 } // endif function_exists( 'cpschool_print_scripts' ).
