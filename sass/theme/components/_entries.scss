@@ -100,19 +100,18 @@ body.blog.hide-hero-page-title {//CUSTOMIZER-ONLY
     }
 }
 
-.entry-title {
-    a {
-        text-decoration: none;
-        &, &:hover {
-           color: var(--color-bg-contrast); 
-        }
-        &:hover {
-            text-decoration: underline;
-        }
+.entry-title a, 
+%entry-title-a {
+    text-decoration: none;
+    &, &:hover {
+        color: var(--color-bg-contrast); 
     }
-    .entry-type-idicator  {
-        margin-right: $spacer/4;
+    &:hover {
+        text-decoration: underline;
     }
+}
+.entry-type-idicator  {
+    margin-right: $spacer/4;
 }
 
 .entry-content {
