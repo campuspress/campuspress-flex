@@ -8,15 +8,6 @@
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
-if ( ! function_exists( 'cpschool_site_info' ) ) {
-	/**
-	 * Add site info hook to WP hook library.
-	 */
-	function cpschool_site_info() {
-		do_action( 'cpschool_site_info' );
-	}
-}
-
 if ( ! function_exists( 'cpschool_add_site_info' ) ) {
 	add_action( 'cpschool_site_info', 'cpschool_add_site_info' );
 

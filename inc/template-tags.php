@@ -686,3 +686,44 @@ if ( ! function_exists( 'cpschool_get_post_type_icon_class' ) ) {
 		return false;
 	}
 }
+
+if ( ! function_exists( 'cpschool_site_info' ) ) {
+	/**
+	 * Add site info hook to WP hook library.
+	 */
+	function cpschool_site_info() {
+		do_action( 'cpschool_site_info' );
+	}
+}
+
+if ( ! function_exists( 'cpschool_get_content_theme_mod' ) ) {
+	/**
+	 * Gets correct value of theme mod for shared content customizer settings.
+	 *
+	 * @param string $option_name
+	 * @param string $post_type
+	 * @param boolen $single
+	 * @return value for given option name or null if it does not exists.
+	 */
+	function cpschool_get_content_theme_mod( $option_name, $post_type, $single ) {
+		if ( $single ) {
+			$option_prefix_map = array(
+				'post' => 'posts',
+				'page' => 'pages',
+			);
+			if ( isset( $option_prefix_map[ $post_type ] ) ) {
+				$option_prefix = $option_prefix_map[ $post_type ];
+			} else {
+				$option_prefix = $post_type;
+			}
+		} else {
+			$option_prefix = 'entries_lists';
+		}
+
+		$option_name = $option_prefix . '_' . $option_name;
+
+		$option_value = get_theme_mod( $option_name, null );
+
+		return $option_value;
+	}
+}
