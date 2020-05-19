@@ -14,12 +14,12 @@ $editor: false;
 @import "theme/elements/buttons";
 @import "theme/elements/forms"; 
 
-@import "theme/components/blocks";
 @import "theme/components/sidebars";
 @import "theme/components/modals";
 @import "theme/components/alerts";
 @import "theme/components/entries"; 
 @import "theme/components/comments";
+@import "theme/components/blocks";
 
 @import "theme/color-palletes";
 @import "theme/general";

@@ -1,15 +1,3 @@
-@mixin underline-hover($color: currentColor, $reverse: 0) {
-    text-decoration: none;
-    background-image: linear-gradient($color, $color);
-    background-position: 0% 100%;
-    background-repeat: no-repeat;
-    background-size: 0% 2px;
-    transition: background-size .3s;
-    &:hover, &:focus {
-        background-size: 100% 2px;
-    }
-}
-
 @mixin bg-solid-layer($bg-color) {
     position: absolute;
     background-color: $bg-color;
@@ -37,12 +25,6 @@
     }
     @else {
         box-shadow:0 0 calc(#{30px*$adjust}) calc(#{-30px*$adjust} + var(--shadows) * #{$adjust} ) rgba(0,0,0,.5);
-    }
-}
-
-@mixin front-only() {
-    @if($editor == false) {
-        @content;
     }
 }
 
