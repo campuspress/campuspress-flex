@@ -30,12 +30,14 @@ $cpschool_includes = array(
 );
 
 $cpschool_includes = apply_filters( 'cpschool_includes', $cpschool_includes );
+if ( $cpschool_includes ) {
 foreach ( $cpschool_includes as $file ) {
 	$filepath = locate_template( 'inc' . $file );
 	if ( ! $filepath ) {
 		trigger_error( sprintf( 'Error locating /inc%s for inclusion', $file ), E_USER_ERROR );
 	}
 	require_once $filepath;
+}
 }
 
 // Handles updating theme from GitHub.

@@ -127,26 +127,6 @@ if ( ! function_exists( 'cpschool_mobile_web_app_meta' ) ) {
 	}
 }
 
-if ( ! function_exists( 'cpschool_register_mega_menu_post_type' ) ) {
-	//add_action( 'init', 'cpschool_register_mega_menu_post_type' );
-
-	/**
-	 * Add Mega Menu Menu items
-	 */
-	function cpschool_register_mega_menu_post_type() {
-		register_post_type(
-			'cpschool_mega_menu',
-			array(
-				'show_ui'           => true,
-				'label'             => __( 'Mega Menu', 'cpschool' ),
-				'show_in_rest'      => true,
-				'menu_icon'         => 'dashicons-archive',
-				'show_in_nav_menus' => true,
-			)
-		);
-	}
-}
-
 if ( ! function_exists( 'cpschool_adjacent_post_link_change' ) ) {
 	add_filter( 'previous_post_link', 'cpschool_adjacent_post_link_change' );
 	add_filter( 'next_post_link', 'cpschool_adjacent_post_link_change' );
