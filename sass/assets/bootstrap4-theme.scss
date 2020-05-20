@@ -6,10 +6,11 @@
  */
 
 @import "../../src/sass/bootstrap4/functions";
-@import "../../src/sass/bootstrap4/variables";
 
-//this allows us to overwrite !default to null
-@import "../variables/theme";
+// Loading variables before and after is needed to properly set "null" values
+@import "../variables/bootstrap";
+@import "../../src/sass/bootstrap4/variables";
+@import "../variables/bootstrap";
 
 @import "../../src/sass/bootstrap4/mixins";
 //@import "../../src/sass/bootstrap4/root";
