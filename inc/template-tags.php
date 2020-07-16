@@ -616,8 +616,8 @@ if ( ! function_exists( 'cpschool_is_breadcrumb_enabled' ) ) {
 	}
 }
 
-if ( ! function_exists( 'cpschool_breadcrumb' ) ) {
-	function cpschool_show_breadcrumb( $context ) {
+if ( ! function_exists( 'cpschool_show_breadcrumb' ) ) {
+	function cpschool_show_breadcrumb( $context = false ) {
 		if ( function_exists( 'breadcrumb_trail' ) ) {
 			$args = array(
 				'container'       => 'nav',
