@@ -141,16 +141,6 @@ if ( ! function_exists( 'cpschool_adjacent_post_link_change' ) ) {
 	}
 }
 
-if ( ! function_exists( 'cpschool_block_editor_settings' ) ) {
-	add_filter( 'block_editor_settings', 'cpschool_block_editor_settings', 10, 2 );
-
-	function cpschool_block_editor_settings( $editor_settings, $post ) {
-		$editor_settings['styles'][] = array( 'css' => 'body { font-family: "Inter var"; }' );
-
-		return $editor_settings;
-	}
-}
-
 if ( ! function_exists( 'cpschool_show_reusable_blocks_admin' ) ) {
 	add_filter( 'register_post_type_args', 'cpschool_show_reusable_blocks_admin', 10, 2 );
 
