@@ -123,7 +123,7 @@ if ( ! function_exists( 'cpschool_entry_footer' ) ) {
 			sprintf(
 				/* translators: %s: Name of current post */
 				esc_html__( 'Edit %s', 'cpschool' ),
-				the_title( '<span class="screen-reader-text">"', '"</span>', false )
+				the_title( '<span class="sr-only">"', '"</span>', false )
 			),
 			'<span class="edit-link">',
 			'</span>'
@@ -227,7 +227,7 @@ if ( ! function_exists( 'cpschool_get_post_meta' ) ) {
 				if ( in_array( 'author', $post_meta, true ) ) {
 					?>
 					<li class="post-author list-inline-item<?php echo in_array( 'author-avatar', $post_meta, true ) ? ' post-author-has-avatar' : ''; ?>">
-						<span class="screen-reader-text"><?php _e( 'Author', 'cpschool' ); ?></span>
+						<span class="sr-only"><?php _e( 'Author', 'cpschool' ); ?></span>
 						<?php if ( in_array( 'author-avatar', $post_meta, true ) ) { ?>
 							<?php echo get_avatar( $post, 48 ); ?>
 						<?php } else { ?>
@@ -252,7 +252,7 @@ if ( ! function_exists( 'cpschool_get_post_meta' ) ) {
 				if ( in_array( 'post-date', $post_meta, true ) ) {
 					?>
 					<li class="post-date list-inline-item">
-						<span class="screen-reader-text"><?php _e( 'Publication date', 'cpschool' ); ?></span>
+						<span class="sr-only"><?php _e( 'Publication date', 'cpschool' ); ?></span>
 						<span class="meta-icon" aria-hidden="true">
 							<i class="cps-icon cps-icon-calendar"></i>
 						</span>
@@ -278,7 +278,7 @@ if ( ! function_exists( 'cpschool_get_post_meta' ) ) {
 				if ( in_array( 'post-modified', $post_meta, true ) && ! in_array( 'post-date', $post_meta, true ) ) {
 					?>
 					<li class="post-modified list-inline-item">
-						<span class="screen-reader-text"><?php _e( 'Last modification date', 'cpschool' ); ?></span>
+						<span class="sr-only"><?php _e( 'Last modification date', 'cpschool' ); ?></span>
 							<span class="meta-icon" aria-hidden="true">
 								<i class="cps-icon cps-icon-calendar"></i>
 							</span>
@@ -294,7 +294,7 @@ if ( ! function_exists( 'cpschool_get_post_meta' ) ) {
 				if ( in_array( 'tax-category', $post_meta, true ) && has_category() ) {
 					?>
 					<li class="post-categories list-inline-item">
-						<span class="screen-reader-text"><?php _e( 'Categories:', 'cpschool' ); ?></span>
+						<span class="sr-only"><?php _e( 'Categories:', 'cpschool' ); ?></span>
 						<span class="meta-icon" aria-hidden="true">
 							<i class="cps-icon cps-icon-category"></i>
 						</span>
@@ -309,7 +309,7 @@ if ( ! function_exists( 'cpschool_get_post_meta' ) ) {
 				if ( in_array( 'tax-post_tag', $post_meta, true ) && has_tag() ) {
 					?>
 					<li class="post-tags list-inline-item">
-						<span class="screen-reader-text"><?php _e( 'Tags:', 'cpschool' ); ?></span>
+						<span class="sr-only"><?php _e( 'Tags:', 'cpschool' ); ?></span>
 						<span class="meta-icon" aria-hidden="true">
 							<i class="cps-icon cps-icon-tag"></i>
 						</span>

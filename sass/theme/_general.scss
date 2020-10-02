@@ -67,7 +67,9 @@ body.singular:not(.has-sidebar) #content.container, .container-content {
     font-family: dashicons !important;
 }
 
-.screen-reader-text { @extend .sr-only; }
+.screen-reader-text { 
+    @extend .sr-only; 
+}
 
 a.skip-link {
   position: fixed;

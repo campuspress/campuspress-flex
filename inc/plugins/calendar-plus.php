@@ -35,7 +35,7 @@ if ( ! function_exists( 'cpschool_cplus_post_meta_list' ) ) {
 			if ( in_array( 'event-date', $post_meta, true ) && ! empty( calendarp_event_human_read_dates( 'date' ) ) ) {
 				?>
 				<li class="post-date list-inline-item">
-					<span class="screen-reader-text"><?php _e( 'Event date', 'cpschool' ); ?></span>
+					<span class="sr-only"><?php _e( 'Event date', 'cpschool' ); ?></span>
 					<span class="meta-icon" aria-hidden="true">
 						<i class="cps-icon cps-icon-calendar"></i>
 					</span>
@@ -50,7 +50,7 @@ if ( ! function_exists( 'cpschool_cplus_post_meta_list' ) ) {
 			if ( in_array( 'event-recurrence', $post_meta, true ) && ! empty( calendarp_event_human_read_dates( 'recurrence' ) ) ) {
 				?>
 				<li class="event-date list-inline-item">
-					<span class="screen-reader-text"><?php _e( 'Event recurrence', 'cpschool' ); ?></span>
+					<span class="sr-only"><?php _e( 'Event recurrence', 'cpschool' ); ?></span>
 					<span class="meta-icon" aria-hidden="true">
 						<i class="cps-icon cps-icon-calendar"></i>
 					</span>
@@ -65,7 +65,7 @@ if ( ! function_exists( 'cpschool_cplus_post_meta_list' ) ) {
 			if ( in_array( 'event-time', $post_meta, true ) && ! empty( calendarp_event_human_read_dates( 'time' ) ) ) {
 				?>
 				<li class="event-time list-inline-item">
-					<span class="screen-reader-text"><?php _e( 'Event time', 'cpschool' ); ?></span>
+					<span class="sr-only"><?php _e( 'Event time', 'cpschool' ); ?></span>
 					<span class="meta-icon" aria-hidden="true">
 						<i class="cps-icon cps-icon-clock"></i>
 					</span>
@@ -82,7 +82,7 @@ if ( ! function_exists( 'cpschool_cplus_post_meta_list' ) ) {
 				if ( $categories ) {
 					?>
 					<li class="event-categories list-inline-item">
-						<span class="screen-reader-text"><?php _e( 'Event categories', 'cpschool' ); ?></span>
+						<span class="sr-only"><?php _e( 'Event categories', 'cpschool' ); ?></span>
 						<span class="meta-icon" aria-hidden="true">
 							<i class="cps-icon cps-icon-category"></i>
 						</span>

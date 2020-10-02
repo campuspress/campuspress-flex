@@ -61,7 +61,7 @@ if ( post_password_required() ) {
 
 			<nav class="comment-navigation" id="comment-nav-above">
 
-				<h1 class="screen-reader-text"><?php esc_html_e( 'Comment navigation', 'cpschool' ); ?></h1>
+				<h1 class="sr-only"><?php esc_html_e( 'Comment navigation', 'cpschool' ); ?></h1>
 
 				<?php if ( get_previous_comments_link() ) { ?>
 					<div class="nav-previous">
@@ -96,7 +96,7 @@ if ( post_password_required() ) {
 
 			<nav class="comment-navigation" id="comment-nav-below">
 
-				<h1 class="screen-reader-text"><?php esc_html_e( 'Comment navigation', 'cpschool' ); ?></h1>
+				<h1 class="sr-only"><?php esc_html_e( 'Comment navigation', 'cpschool' ); ?></h1>
 
 				<?php if ( get_previous_comments_link() ) { ?>
 					<div class="nav-previous">
