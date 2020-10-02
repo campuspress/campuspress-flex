@@ -53,13 +53,6 @@ h1, h2, h3, h4, h5, h6, .h {
             margin-left: auto;
         }
     }
-    body.h-style-separator .text-left &,
-    body.h-style-separator &[style*="text-align: left"],
-    body.h-style-separator &.has-text-align-left {
-        &::before, &::after {
-            margin-left: auto;
-        }
-    }
 }
 .h-style-disable,
 .h-style-disable-top {
