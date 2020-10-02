@@ -12,7 +12,9 @@ if ( in_array( $hero_style, array( false, 'disabled', 'full-title-under-img' ) )
 				cpschool_show_breadcrumb( 'page-breadcrumb' );
 			}
 			?>
-			<h1 class="page-title entry-title"><?php echo $title; ?></h1>
+			<?php if( $title ) { ?>
+				<h1 class="page-title entry-title"><?php echo $title; ?></h1>
+			<?php } ?>
 
 			<?php
 			$subtitle = cpschool_get_page_subtitle();

@@ -13,7 +13,9 @@ if ( $hero_style || ( is_customize_preview() && ( ! is_singular() || ! get_post_
 			?>
 
 			<?php if ( in_array( $hero_style, array( 'full-title-over-img', 'img-under-title' ) ) || is_customize_preview() ) { ?>
-				<h1 class="page-title entry-title"><?php echo $title; ?></h1>
+				<?php if( $title ) { ?>
+					<h1 class="page-title entry-title"><?php echo $title; ?></h1>
+				<?php } ?>
 
 				<?php
 				$subtitle = cpschool_get_page_subtitle();
