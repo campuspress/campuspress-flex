@@ -193,15 +193,14 @@ if ( ! function_exists( 'cpschool_all_excerpts_get_more_link' ) ) {
 	 */
 	function cpschool_all_excerpts_get_more_link( $post_excerpt ) {
 		if ( ! is_admin() || wp_doing_ajax() ) {
-			$post_excerpt = $post_excerpt . '...';
+			if ( ! is_singular() ) {
+				$post_excerpt = $post_excerpt . '...';
 
-			$hide = get_theme_mod( 'entries_lists_hide_continue_reading' );
-			if ( ! $hide || is_customize_preview() ) {
-				$classes      = cpschool_class( 'read-more-link', 'btn btn-secondary cpschool-read-more-link', true );
-				$post_excerpt = $post_excerpt . '<div><a class="' . implode( ' ', $classes ) . '" href="' . esc_url( get_permalink( get_the_ID() ) ) . '">' . __(
-					'Continue Reading',
-					'cpschool'
-				) . '</a></div>';
+				$hide = get_theme_mod( 'entries_lists_hide_continue_reading' );
+				if ( ! $hide || is_customize_preview() ) {
+					$classes      = cpschool_class( 'read-more-link', 'btn btn-secondary cpschool-read-more-link', true );
+					$post_excerpt = $post_excerpt . '<div><a class="' . esc_attr( implode( ' ', $classes ) ) . '" href="' . esc_url( get_permalink( get_the_ID() ) ) . '">' . sprintf( __( 'Continue Reading %s', 'cpschool' ), '<span class="sr-only">' . get_the_title( get_the_ID() ) . '</span>' ) . '</a></div>';
+				}
 			}
 		}
 		return $post_excerpt;
