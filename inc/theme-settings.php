@@ -181,7 +181,7 @@ if ( ! function_exists( 'cpschool_set_theme_mods_defaults' ) ) {
 		$theme_slug = get_option( 'stylesheet' );
 
 		add_filter(
-			"option_theme_mods_{$theme_slug}",
+			'option_theme_mods_' . $theme_slug,
 			function( $value ) {
 				$fields = Kirki::$fields;
 				foreach ( $fields as $field ) {
