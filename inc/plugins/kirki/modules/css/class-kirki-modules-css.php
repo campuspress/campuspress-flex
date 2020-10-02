@@ -5,7 +5,7 @@
  * @package     Kirki
  * @category    Modules
  * @author      Ari Stathopoulos (@aristath)
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @copyright   Copyright (c) 2020, David Vongries
  * @license     https://opensource.org/licenses/MIT
  * @since       3.0.0
  */
@@ -92,8 +92,7 @@ class Kirki_Modules_CSS {
 		}
 
 		// Admin styles, adds compatibility with the new WordPress editor (Gutenberg).
-		//EDUBLOGS Disabled as we don't want to load the regular stylesheet for editor
-		//add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_styles' ), 100 );
+		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_styles' ), 100 );
 
 		add_action( 'wp', array( $this, 'print_styles_action' ) );
 

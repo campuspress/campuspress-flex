@@ -4,7 +4,7 @@
  *
  * @package     Kirki
  * @subpackage  Controls
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @copyright   Copyright (c) 2020, David Vongries
  * @license     https://opensource.org/licenses/MIT
  * @since       2.2.7
  */
@@ -52,8 +52,7 @@ class Kirki_Field_Color extends Kirki_Field {
 			_doing_it_wrong( 'Kirki::add_field', esc_html__( 'Do not use "alpha" as an argument in color controls. Use "choices[alpha]" instead.', 'kirki' ), '3.0.10' );
 			$this->choices['alpha'] = true;
 		}
-		//EB tweaked
-		if ( ! isset( $this->choices['alpha'] ) || ( true !== $this->choices['alpha'] && false !== $this->choices['alpha'] ) ) {
+		if ( ! isset( $this->choices['alpha'] ) || true !== $this->choices['alpha'] ) {
 			$this->choices['alpha'] = true;
 			if ( property_exists( $this, 'default' ) && ! empty( $this->default ) && false === strpos( 'rgba', $this->default ) ) {
 				$this->choices['alpha'] = false;

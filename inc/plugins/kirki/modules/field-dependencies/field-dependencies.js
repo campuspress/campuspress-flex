@@ -4,7 +4,6 @@ var kirkiDependencies = {
 
 	init: function() {
 		var self = this;
-		var valuesStrage = [];
 
 		wp.customize.control.each( function( control ) {
 			self.showKirkiControl( control );
@@ -52,8 +51,6 @@ var kirkiDependencies = {
 						setActiveState();
 						setting.bind( setActiveState );
 						control.active.validate = isDisplayed;
-
-						
 					};
 					wp.customize.control( slave, setupControl );
 				} );

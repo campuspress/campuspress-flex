@@ -2,6 +2,15 @@
 .customize-control-kirki-background {
   position: relative;
 }
+.customize-control-kirki-background .iris-picker-inner {
+  display: grid;
+  grid-template-columns: 1fr 20px 20px;
+  grid-gap: 7px;
+}
+.customize-control-kirki-background .iris-picker-inner > * {
+  width: 100% !important;
+  margin-left: 0 !important;
+}
 .customize-control-kirki-background .background-attachment h4,
 .customize-control-kirki-background .background-color h4,
 .customize-control-kirki-background .background-position h4,
@@ -66,15 +75,14 @@
   border-radius: 50%;
 }
 .customize-control-kirki-color-palette .colors-wrapper.box-shadow .color-palette-color {
-  box-shadow: inset 3px 3px 13px 2px rgba(0, 0, 0, 0.22);
+  box-shadow: inset 3px 3px 13px 2px rgba(0, 0, 0, 0.2);
 }
 .customize-control-kirki-color-palette .colors-wrapper input:checked + label .color-palette-color {
   border: 0;
-  width: 150%;
-  height: 150%;
+  border: 4px solid #3498DB;
   position: relative;
-  left: -25%;
-  top: -25%;
+  left: -3px;
+  top: -3px;
   z-index: 1;
 }
 .customize-control-kirki-color-palette .colors-wrapper.with-margin label {
@@ -83,39 +91,27 @@
 .customize-control-kirki-color-palette .colors-wrapper input {
   display: none;
 }
-.customize-control-kirki-color-palette .colors-wrapper input:checked + label .color-palette-color {
-  box-shadow: 1px 1px 10px 1px #333333;
-  border: 1px solid rgba(0, 0, 0, 0.3);
-}
-
 .customize-control-kirki-color input[data-type=hue] + .iris-strip-horiz .iris-slider {
   background-image: -webkit-linear-gradient(left, red, #ff7f00, yellow, #80ff00, lime, #00ff80, aqua, #007fff, blue, #7f00ff, fuchsia, #ff0080, red) !important;
   widows: 100% !important;
 }
-.customize-control-kirki-color .iris-picker .iris-square-handle {
-  z-index: 8;
+.customize-control-kirki-color .kirki-input-container[data-has-alpha=false] .iris-picker.iris-border {
+  /*CP-DISABLED width: 100% !important;*/
 }
-.customize-control-kirki-color .iris-picker.iris-border {
-  width: 100% !important;
-}
-.customize-control-kirki-color .iris-picker-inner {
-  display: grid;
-  grid-template-columns: 1fr 20px;
-  grid-gap: 7px;
-}
-.customize-control-kirki-color .iris-picker-inner > * {
-  width: 100% !important;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
+.customize-control-kirki-color .kirki-input-container[data-has-alpha=false] .iris-picker .iris-square {
+  margin-right: 7px !important;
 }
 .customize-control-kirki-color .kirki-input-container[data-has-alpha=true] .iris-picker-inner {
+  display: grid;
   grid-template-columns: 1fr 20px 20px;
+  grid-gap: 7px;
+}
+.customize-control-kirki-color .kirki-input-container[data-has-alpha=true] .iris-picker-inner > * {
+  width: 100% !important;
+  margin-left: 0 !important;
 }
 .customize-control-kirki-color .iris-only-strip {
   width: 100% !important;
-}
-.customize-control-kirki-color .iris-only-strip .iris-picker-inner {
-  grid-template-columns: 1fr;
 }
 
 .customize-control-kirki-dashicons {
@@ -138,13 +134,13 @@
   font-size: 25px;
   width: 25px;
   height: 25px;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
 }
 .customize-control-kirki-dashicons .icons-wrapper input {
   display: none;
 }
 .customize-control-kirki-dashicons .icons-wrapper input:checked + label .dashicons {
-  border: 1px solid #3498DB;
+  border: 2px solid #3498DB;
   color: #000;
 }
 
@@ -153,41 +149,38 @@
   width: 255px;
   background: #fff;
   border: 1px solid #dedede;
+  padding: 4px;
 }
 .wp-customizer div.ui-datepicker .ui-datepicker-header {
   padding: 10px;
-  background: #e5e5e5;
-  border-bottom: 1px solid #fff;
+  font-weight: 700;
 }
 .wp-customizer div.ui-datepicker .ui-datepicker-header .ui-datepicker-next,
 .wp-customizer div.ui-datepicker .ui-datepicker-header .ui-datepicker-prev {
+  padding: 10px;
   display: block;
   position: absolute;
   width: 1em;
   overflow: hidden;
+  cursor: pointer;
 }
 .wp-customizer div.ui-datepicker .ui-datepicker-header .ui-datepicker-next:after, .wp-customizer div.ui-datepicker .ui-datepicker-header .ui-datepicker-next:before,
 .wp-customizer div.ui-datepicker .ui-datepicker-header .ui-datepicker-prev:after,
 .wp-customizer div.ui-datepicker .ui-datepicker-header .ui-datepicker-prev:before {
   font-family: dashicons;
 }
-.wp-customizer div.ui-datepicker .ui-datepicker-header .ui-datepicker-next:after:hover, .wp-customizer div.ui-datepicker .ui-datepicker-header .ui-datepicker-next:before:hover,
-.wp-customizer div.ui-datepicker .ui-datepicker-header .ui-datepicker-prev:after:hover,
-.wp-customizer div.ui-datepicker .ui-datepicker-header .ui-datepicker-prev:before:hover {
-  cursor: pointer;
-}
 .wp-customizer div.ui-datepicker .ui-datepicker-header .ui-datepicker-next .ui-icon,
 .wp-customizer div.ui-datepicker .ui-datepicker-header .ui-datepicker-prev .ui-icon {
   display: none;
 }
 .wp-customizer div.ui-datepicker .ui-datepicker-header .ui-datepicker-prev {
-  left: 10px;
+  left: 0;
 }
 .wp-customizer div.ui-datepicker .ui-datepicker-header .ui-datepicker-prev:before {
   content: "";
 }
 .wp-customizer div.ui-datepicker .ui-datepicker-header .ui-datepicker-next {
-  right: 10px;
+  right: 0;
 }
 .wp-customizer div.ui-datepicker .ui-datepicker-header .ui-datepicker-next:after {
   content: "";
@@ -200,21 +193,19 @@
   width: 100%;
 }
 .wp-customizer div.ui-datepicker .ui-datepicker-calendar thead {
-  background: #e5e5e5;
+  background: #f3f5f7;
   padding: 5px;
-}
-.wp-customizer div.ui-datepicker .ui-datepicker-calendar tr td {
-  text-align: center;
 }
 .wp-customizer div.ui-datepicker .ui-datepicker-calendar tr td a {
   display: block;
   padding: 5px;
   color: #333;
   text-decoration: none;
+  text-align: center;
 }
 .wp-customizer div.ui-datepicker .ui-datepicker-calendar tr td a.ui-state-active, .wp-customizer div.ui-datepicker .ui-datepicker-calendar tr td a:hover {
   color: #fff;
-  background-color: #0073aa;
+  background-color: #3498DB;
 }
 .wp-customizer div.ui-datepicker .ui-datepicker-calendar tr td.ui-state-disabled a, .wp-customizer div.ui-datepicker .ui-datepicker-calendar tr td.ui-state-disabled .ui-state-default a {
   color: #999;
@@ -256,6 +247,18 @@
   box-shadow: none;
 }
 
+.customize-control-kirki-multicolor .wp-picker-holder {
+  margin-bottom: 7px;
+}
+.customize-control-kirki-multicolor .iris-picker-inner {
+  display: grid;
+  grid-template-columns: 1fr 20px 20px;
+  grid-gap: 7px;
+}
+.customize-control-kirki-multicolor .iris-picker-inner > * {
+  width: 100% !important;
+  margin-left: 0 !important;
+}
 .customize-control-kirki-multicolor .multicolor-single-color-wrapper {
   display: flex;
   justify-content: space-between;
@@ -298,7 +301,7 @@
   display: none;
 }
 .customize-control-kirki-palette input[type=radio]:checked + label {
-  border: 3px solid rgba(0, 0, 0, 0.4);
+  border: 2px solid #3498DB;
 }
 .customize-control-kirki-palette label {
   background: none;
@@ -674,9 +677,11 @@
 .customize-control-kirki-switch .switch-on {
   color: #fff;
   opacity: 0;
+  padding-right: 0;
 }
 .customize-control-kirki-switch .switch-off {
   color: #777;
+  padding-left: 0;
 }
 .customize-control-kirki-switch .switch {
   border: none;
@@ -736,7 +741,7 @@
   flex-wrap: wrap;
 }
 .customize-control-kirki-toggle label .customize-control-title {
-  width: calc(100% - 55px);
+  width: calc(100% - 40px);
 }
 .customize-control-kirki-toggle label .description {
   order: 99;

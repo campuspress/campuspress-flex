@@ -5,7 +5,7 @@
  * @package     Kirki
  * @category    Modules
  * @author      Ari Stathopoulos (@aristath)
- * @copyright   Copyright (c) 2019, Ari Stathopoulos (@aristath)
+ * @copyright   Copyright (c) 2020, David Vongries
  * @license     https://opensource.org/licenses/MIT
  * @since       3.0.0
  */
@@ -47,7 +47,6 @@ class Kirki_Modules_Webfonts {
 	 */
 	protected function __construct() {
 
-		include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-fonts-helper.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 		include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-fonts.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 		include_once wp_normalize_path( dirname( __FILE__ ) . '/class-kirki-fonts-google.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 

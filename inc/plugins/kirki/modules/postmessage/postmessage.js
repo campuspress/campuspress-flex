@@ -348,7 +348,7 @@ jQuery( document ).ready( function() {
 						output.function = 'css';
 					}
 					if ( 'css' === output.function ) {
-						if( newVal ) {//CP
+						if( newVal ) {//CP-LINE
 							styles += kirkiPostMessage.css.fromOutput( output, newVal, field.type );
 						//CP-START
 						} else {

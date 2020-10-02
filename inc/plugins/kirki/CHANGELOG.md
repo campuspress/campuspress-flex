@@ -1,3 +1,51 @@
+## 3.1.5 - August 10, 2020
+
+* Tested up to WordPress 5.5.
+* Tweak: Updated Google fonts.
+* Fixed: Added wp-i18n dependency to alpha color picker script.
+* Fixed: Color picker styles.
+* Fixed: Color picker styles in background control.
+* Fixed: Color picker styles in multicolor control.
+
+## 3.1.4 - July 11, 2020
+
+* Tweak: Updated Google-Fonts lists.
+* Tweak: Tooltip styling.
+* Fixed: Error in the WordPress customizer with WordPress 5.5.
+
+## 3.1.3 - May 19, 2020
+
+* Tweak: Updated Google-Fonts lists.
+* Tweak: Slightly tweaked some of the default control styles.
+
+## 3.1.2 - 2020-04-20
+
+### Fixed
+* Added back `font-display:swap` to Google Fonts.
+
+### Changed
+* Updated Google-Fonts lists.
+
+## 3.1.1 - 2020-04-05
+
+### Changed
+* Updated Google-Fonts lists.
+
+### Fixed
+* False-positive error in Envato theme-check.
+
+## 3.1.0 - 2020-03-01
+
+### Changed
+* Completely refactored the google-fonts downloader. Fonts now get stored in `wp-content/fonts/{font-family}/{file}`.
+* Updated Google-Fonts lists.
+
+### Removed
+* Removed the `branding` module.
+* Removed the `styling` module.
+* Removed the `telemetry` module.
+* Removed the `Kirki_Fonts_Helper` class.
+
 ## 3.0.45 - 2019-09-01
 
 ### Fixed

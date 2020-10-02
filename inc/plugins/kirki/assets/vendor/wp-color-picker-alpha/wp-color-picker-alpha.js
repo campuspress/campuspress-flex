@@ -17,7 +17,8 @@
 		_wrap = '<div class="wp-picker-container" />',
 		_button = '<input type="button" class="button button-small" />',
 		_wrappingLabel = '<label></label>',
-		_wrappingLabelText = '<span class="screen-reader-text"></span>';
+		_wrappingLabelText = '<span class="screen-reader-text"></span>',
+		__ = wp.i18n.__;
 
 	/**
 	 * Overwrite Color
@@ -88,7 +89,7 @@
 				// Insert the default label text.
 				self.wrappingLabelText = $( _wrappingLabelText )
 					.insertBefore( el )
-					.text( wpColorPickerL10n.defaultLabel );
+					.text( __( 'Color value' ) );
 			}
 
 			/*
@@ -109,7 +110,7 @@
 			if ( el.data( 'label' ) ) {
 				self.toggler.find( '.wp-color-result-text' ).text( el.data( 'label' ) );
 			} else {
-				self.toggler.find( '.wp-color-result-text' ).text( wpColorPickerL10n.pick );
+				self.toggler.find( '.wp-color-result-text' ).text( __( 'Select Color' ) );
 			}
 			// Set up the Iris container and insert it after the wrapping label.
 			self.pickerContainer = $( _after ).insertAfter( self.wrappingLabel );
@@ -120,13 +121,13 @@
 			if ( self.options.defaultColor ) {
 				self.button
 					.addClass( 'wp-picker-default' )
-					.val( wpColorPickerL10n.defaultString )
-					.attr( 'aria-label', wpColorPickerL10n.defaultAriaLabel );
+					.val( __( 'Default' ) )
+					.attr( 'aria-label', __( 'Select default color' ) );
 			} else {
 				self.button
 					.addClass( 'wp-picker-clear' )
-					.val( wpColorPickerL10n.clear )
-					.attr( 'aria-label', wpColorPickerL10n.clearAriaLabel );
+					.val( __( 'Clear' ) )
+					.attr( 'aria-label', __( 'Clear color' ) );
 			}
 
 			// Wrap the wrapping label in its wrapper and append the Clear/Default button.
@@ -144,23 +145,23 @@
 			/*
 			 * CSS for support < 4.9
 			 */
-			self.toggler.css({
-				'height': '24px',
-				'margin': '0 6px 6px 0',
-				'padding': '0 0 0 30px',
-				'font-size': '11px'
-			});
+			// self.toggler.css({
+			// 	'height': '24px',
+			// 	'margin': '0 6px 6px 0',
+			// 	'padding': '0 0 0 30px',
+			// 	'font-size': '11px'
+			// });
 
-			self.toggler.find( '.wp-color-result-text' ).css({
-				'background': '#f7f7f7',
-				'border-radius': '0 2px 2px 0',
-				'border-left': '1px solid #ccc',
-				'color': '#555',
-				'display': 'block',
-				'line-height': '22px',
-				'padding': '0 6px',
-				'text-align': 'center'
-			});
+			// self.toggler.find( '.wp-color-result-text' ).css({
+			// 	'background': '#f7f7f7',
+			// 	'border-radius': '0 2px 2px 0',
+			// 	'border-left': '1px solid #ccc',
+			// 	'color': '#555',
+			// 	'display': 'block',
+			// 	'line-height': '22px',
+			// 	'padding': '0 6px',
+			// 	'text-align': 'center'
+			// });
 
 			el.iris( {
 				target: self.pickerContainer,
@@ -192,7 +193,7 @@
 						}
 						self.toggler.find( 'span.color-alpha' ).css( {
 							'width': '30px',
-							'height': '24px',
+							'min-height': '100%',
 							'position': 'absolute',
 							'top': 0,
 							'left': 0,
