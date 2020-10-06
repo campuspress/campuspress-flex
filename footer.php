@@ -13,7 +13,7 @@ defined( 'ABSPATH' ) || exit;
 
 
 
-<div class="wrapper has-background has-footer-main-bg-color-background-color" id="wrapper-footer">
+<footer class="wrapper has-background has-footer-main-bg-color-background-color" id="wrapper-footer">
 	<div id="footer-content" data-aos="fade" data-aos-duration="1000" data-aos-anchor-placement="top">
 		<?php get_template_part( 'template-parts/sidebar-templates/sidebar', 'footerfull' ); ?>
 
@@ -28,11 +28,11 @@ defined( 'ABSPATH' ) || exit;
 		<div class="container" id="footer-site-info">
 			<div class="row">
 				<div class="col-md-12">
-					<footer class="site-footer" id="colophon">
+					<div class="site-footer" id="colophon">
 						<div class="site-info">
 							<?php cpschool_site_info(); ?>
 						</div><!-- .site-info -->
-					</footer><!-- #colophon -->
+					</div><!-- #colophon -->
 				</div><!--col end -->
 			</div><!-- row end -->
 		</div><!-- container end -->
@@ -46,7 +46,7 @@ defined( 'ABSPATH' ) || exit;
 		}
 		?>
 	</div>
-</div><!-- wrapper end -->
+</footer><!-- wrapper end -->
 
 </div><!-- #page we need this extra closing tag here -->
 
