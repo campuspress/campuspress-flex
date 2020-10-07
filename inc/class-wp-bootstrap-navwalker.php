@@ -32,9 +32,15 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 	class CPSchool_WP_Bootstrap_Navwalker extends Walker_Nav_Menu {
 
 		var $navbar;
+		private $aria_label;
 
-		function __construct( $navbar = false ) {
+		function __construct( $navbar = false, $aria_label = false ) {
 			$this->navbar = $navbar;
+			if ( empty( $aria_label ) ) {
+				$this->aria_label = '';
+			} else {
+				$this->aria_label = ' aria-label="' . esc_attr( $aria_label ) . '"';
+			}
 		}
 
 		/**
@@ -95,7 +101,7 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 				$labelledby = 'aria-labelledby="' . esc_attr( end( $matches[2] ) ) . '"';
 				$id         = ' id="' . esc_attr( end( $matches[2] ) ) . '-dropdown"';
 			}
-			$output .= "{$n}{$indent}<ul$id $class_names $labelledby role=\"menu\">{$n}";
+			$output .= "{$n}{$indent}<ul$id $class_names $labelledby role=\"menu\"$this->aria_label>{$n}";
 		}
 
 		/**
