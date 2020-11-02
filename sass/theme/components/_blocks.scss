@@ -213,7 +213,7 @@
 			max-width: initial;
 		}
 	}
-	&:not(.is-grid) {
+	&:not(.is-grid) > {
 		li {
 			margin-bottom: 3rem;
 		}
