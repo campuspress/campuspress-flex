@@ -30,7 +30,9 @@ if( ! class_exists('CPDirectory') ) :
             require_once( $this->dir . '/cp-directory-files/helpers.php' );
 
             add_action( 'init', array($this, 'register_block') );
-            add_filter( 'the_content', array($this, 'single_content'), 20 );
+            if( apply_filters( 'cp_dir_filter_single_content', true ) ) {
+                add_filter( 'the_content', array($this, 'single_content'), 20 );
+            }
         }
 
         /**
@@ -196,7 +198,7 @@ if( ! class_exists('CPDirectory') ) :
 
                 ob_start();
 
-                include( $this->dir . '/cp-directory-files/blocks/cp-dir/template-parts/entry.php' );
+                include( $this->dir . '/cp-directory-files/blocks/cp-dir/template-parts/directory-single-extra-data.php' );
 
                 return ob_get_clean();
             }

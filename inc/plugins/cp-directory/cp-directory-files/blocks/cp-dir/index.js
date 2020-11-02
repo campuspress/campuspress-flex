@@ -288,21 +288,6 @@
 				)
 			] )
 		} ),
-
-		/**
-		 * The save function defines the way in which the different attributes should be combined
-		 * into the final markup, which is then serialized by Gutenberg into `post_content`.
-		 * @see https://wordpress.org/gutenberg/handbook/designers-developers/developers/block-api/block-edit-save/#save
-		 *
-		 * @return {Element}       Element to render.
-		 */
-		save: function() {
-			return el(
-				'p',
-				{},
-				__( 'Hello from the saved content!', 'cp-school' )
-			);
-		}
 	} );
 } )(
 	window.wp

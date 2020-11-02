@@ -36,3 +36,14 @@ jQuery('.cp-dir-control-select select').change(function(){
         });
     }
 });
+
+jQuery(document).ready(function(){
+    jQuery.each( cpDirectories, function( key, value ) {
+        cpDirectories[key].on('updated', function(dir){
+            var srInfoCount = jQuery('#' + key).find('.cp-dir-sr-info-count');
+            if(srInfoCount.length) {
+                srInfoCount.text(dir.visibleItems.length);
+            }
+        });
+    });
+});
