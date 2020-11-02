@@ -139,7 +139,7 @@ class Breadcrumb_Trail {
 			'list_tag'        => 'ul',
 			'list_class'      => 'trail-items', //CP-TWEAKED-LINE-ADDED
 			'item_tag'        => 'li',
-			'item_class'      => 'li', //CP-TWEAKED-LINE-ADDED
+			'item_class'      => 'trail-item', //CP-TWEAKED-LINE-ADDED
 			'show_on_front'   => true,
 			'network'         => false,
 			'show_title'      => true,
