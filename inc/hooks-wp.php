@@ -182,7 +182,7 @@ if ( ! function_exists( 'cpschool_custom_excerpt_more' ) ) {
 }
 
 if ( ! function_exists( 'cpschool_all_excerpts_get_more_link' ) ) {
-	add_filter( 'wp_trim_excerpt', 'cpschool_all_excerpts_get_more_link' );
+	add_filter( 'get_the_excerpt', 'cpschool_all_excerpts_get_more_link', 20, 2 );
 
 	/**
 	 * Adds a custom read more link to all excerpts, manually or automatically generated
@@ -191,7 +191,7 @@ if ( ! function_exists( 'cpschool_all_excerpts_get_more_link' ) ) {
 	 *
 	 * @return string
 	 */
-	function cpschool_all_excerpts_get_more_link( $post_excerpt ) {
+	function cpschool_all_excerpts_get_more_link( $post_excerpt, $post ) {
 		if ( ! is_admin() || wp_doing_ajax() ) {
 			if ( ! is_singular() ) {
 				$post_excerpt = $post_excerpt . '...';
@@ -199,7 +199,7 @@ if ( ! function_exists( 'cpschool_all_excerpts_get_more_link' ) ) {
 				$hide = get_theme_mod( 'entries_lists_hide_continue_reading' );
 				if ( ! $hide || is_customize_preview() ) {
 					$classes      = cpschool_class( 'read-more-link', 'btn btn-secondary cpschool-read-more-link', true );
-					$post_excerpt = $post_excerpt . '<div><a class="' . esc_attr( implode( ' ', $classes ) ) . '" href="' . esc_url( get_permalink( get_the_ID() ) ) . '">' . sprintf( __( 'Continue Reading %s', 'cpschool' ), '<span class="sr-only">' . get_the_title( get_the_ID() ) . '</span>' ) . '</a></div>';
+					$post_excerpt = $post_excerpt . '<div><a class="' . esc_attr( implode( ' ', $classes ) ) . '" href="' . esc_url( get_permalink( $post->ID ) ) . '">' . sprintf( __( 'Continue Reading %s', 'cpschool' ), '<span class="sr-only">' . get_the_title( $post->ID ) . '</span>' ) . '</a></div>';
 				}
 			}
 		}
