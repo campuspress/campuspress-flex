@@ -32,15 +32,13 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 	class CPSchool_WP_Bootstrap_Navwalker extends Walker_Nav_Menu {
 
 		var $navbar;
-		private $aria_label;
+		var $hover;
+		var $aria_label;
 
 		function __construct( $navbar = false, $aria_label = false ) {
-			$this->navbar = $navbar;
-			if ( empty( $aria_label ) ) {
-				$this->aria_label = '';
-			} else {
-				$this->aria_label = ' aria-label="' . esc_attr( $aria_label ) . '"';
-			}
+			$this->navbar     = $navbar;
+			$this->hover      = get_theme_mod( 'nav_hover_dropdowns' );
+			$this->aria_label = $aria_label;
 		}
 
 		/**
@@ -101,7 +99,12 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 				$labelledby = 'aria-labelledby="' . esc_attr( end( $matches[2] ) ) . '"';
 				$id         = ' id="' . esc_attr( end( $matches[2] ) ) . '-dropdown"';
 			}
-			$output .= "{$n}{$indent}<ul$id $class_names $labelledby role=\"menu\"$this->aria_label>{$n}";
+			if ( $this->aria_label ) {
+				$aria_label = ' aria-label="' . esc_attr( $this->aria_label ) . '"';
+			} else {
+				$aria_label = '';
+			}
+			$output .= "{$n}{$indent}<ul$id $class_names $labelledby role=\"menu\"$aria_label>{$n}";
 		}
 
 		/**
@@ -176,11 +179,7 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 
 			// Add .dropdown or .active classes where they are needed.
 			if ( isset( $args->has_children ) && $args->has_children ) {
-				if ( $this->navbar ) {
-					$classes[] = 'dropdown';
-				} else {
-					//$classes[] = 'collapse';
-				}
+				$classes[] = 'dropdown';
 			}
 			if ( in_array( 'current-menu-item', $classes, true ) || in_array( 'current-menu-ancestor', $classes, true ) ) {
 				$classes[] = 'active';
@@ -237,6 +236,8 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 				$atts['rel'] = $item->xfn;
 			}
 
+			$atts['href'] = ! empty( $item->url ) ? $item->url : '#';
+
 			// If item has_children add atts to <a>.
 			if ( isset( $args->has_children ) && $args->has_children && 0 === $depth && $args->depth !== 1 ) {
 				$atts['aria-haspopup'] = 'true';
@@ -245,14 +246,19 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 				$atts['id']            = 'menu-item-dropdown-' . $args->menu_id . '-' . $item->ID;
 
 				if ( $this->navbar ) {
-					$atts['data-toggle'] = 'dropdown';
-					$atts['href']        = '#';
+					if ( ! $this->hover ) {
+						$atts['data-toggle'] = 'dropdown';
+						$atts['href']        = '#';
+					}
 				} else {
-					$atts['data-toggle'] = 'collapse';
-					$atts['href']        = '#' . $atts['id'] . '-dropdown';
+					if ( ! $this->hover ) {
+						$atts['data-toggle'] = 'collapse';
+						$atts['href']        = '#' . $atts['id'] . '-dropdown';
+					} else {
+						$atts['data-target'] = '#' . $atts['id'] . '-dropdown';
+					}
 				}
 			} else {
-				$atts['href'] = ! empty( $item->url ) ? $item->url : '#';
 				// Items in dropdowns use .dropdown-item instead of .nav-link.
 				if ( $depth > 0 ) {
 					$atts['class'][] = 'dropdown-item';
@@ -387,15 +393,13 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 					if ( ! $translate_set ) {
 						$translate_set = true
 						?>
-
-					<div id="google_translate_element"></div>
-					<script type="text/javascript">
-					function googleTranslateElementInit() {
-					new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false}, 'google_translate_element');
-					}
-					</script>
-					<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
+						<div id="google_translate_element"></div>
+						<script type="text/javascript">
+						function googleTranslateElementInit() {
+						new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false}, 'google_translate_element');
+						}
+						</script>
+						<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 						<?php
 					}
 					$dropdown_content = ob_get_clean();

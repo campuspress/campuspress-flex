@@ -2118,6 +2118,33 @@ if ( ! function_exists( 'cpschool_theme_customizer' ) ) {
 					),
 				) );
 
+			// Section - Navigations
+			Kirki::add_section( 'navigations', array(
+				'title'       => esc_html__( 'Navigations', 'cpschool' ),
+				'description' => esc_html__( 'Settings related to navigations.', 'cpschool' ),
+				'panel' => 'elements'
+			) );
+
+				// SETTING - Boxed Design
+				Kirki::add_field( 'cpschool', array(
+					'type'        => 'toggle',
+					'settings'    => 'nav_hover_dropdowns',
+					'label'       => __( 'Dropdowns on hover', 'cpschool' ),
+					'description' => __( 'Enable to make dropdowns openable on hover. This setting is not recommended as it leads to inconsistent experience across devices.', 'cpschool' ),
+					'section'     => 'navigations',
+					'transport'   => 'postMessage',
+					'default' => false,
+					'js_vars'   => array(
+						array(
+							'element'  => 'body',
+							'function' => 'toggleClass',
+							'class' => 'navbar-hover-enabled',
+							'context' => 'body',
+							'value' => true
+						),
+					)
+				) );
+
 		// Section - Footer
 		Kirki::add_section( 'footer_main_area', array(
 			'priority'    => 70,
