@@ -125,31 +125,31 @@ var cpSchoolThemeHelpers = (function ($) {
 
     methods.enableHoverMenu = function () {
         // Handles dropdown in navbar.
-        $('.navbar-nav').on('touchend mouseover focusin', '.dropdown', function (e) {
+        $('.navbar-nav').on('touchend mouseenter focusin', '.dropdown', function (e) {
             var dropdown = this;
-
-            //Timeout will make fast mouse swipes through menu items not trigger it
-            setTimeout(function () {
-                if (e.type !== 'mouseover' || $(dropdown).is(':hover')) {
-                    var dropdownChild = $(dropdown).children('.dropdown-toggle[aria-expanded="false"]');
+            var dropdownChild = $(dropdown).children('.dropdown-toggle[aria-expanded="false"]');
             if (dropdownChild.length) {
                 // Makes first touch open submenu and second open the link.
-                if( e.type == 'touchend' ) {
+                if (e.type == 'touchend') {
                     e.preventDefault();
-                            $('.navbar').off('mouseover focusin', '.dropdown');
+                    $('.navbar-nav').off('mouseenter focusin', '.dropdown');
                 }
-                dropdownChild.dropdown('show');
-                dropdownChild.off( "click" );
-                        if( e.type === 'mouseover' ) {
+
+                //Timeout will make fast mouse swipes through menu items not trigger it
+                setTimeout(function () {
+                    if (e.type !== 'mouseover' || $(dropdown).is(':hover')) {
+                        dropdownChild.dropdown('show');
+                        dropdownChild.off("click");
+                        if (e.type === 'mouseenter' || e.type === 'mouseover') {
                             dropdownChild.trigger('blur');
                         }
+                    }
+                }, e.type === 'mouseenter' ? 150 : 0);
             }
-                }
-            }, e.type === 'mouseover' ? 100 : 0);
         });
         $('.navbar-nav').on('mouseleave focusout', '.dropdown', function (e) {
             var dropdown = this;
-            
+
             // Timeout will give time to move into the dropdown menu.
             setTimeout(function () {
                 if (!$(dropdown).is(':hover')) {
@@ -163,26 +163,26 @@ var cpSchoolThemeHelpers = (function ($) {
                 }
             }, e.type === 'mouseleave' ? 300 : 0);
         });
-        
-        // Handles sidebar menu based on "collapse".
-        $('.nav:not(.navbar-nav)').on('touchend mouseover focusin', '.dropdown', function (e) {
-            var dropdown = this;
 
-            //Timeout will make fast mouse swipes through menu items not trigger it
-            setTimeout(function () {
-                if (e.type !== 'mouseover' || $(dropdown).is(':hover')) {
-                    var dropdownChild = $(dropdown).children('.dropdown-toggle[aria-expanded="false"]');
+        // Handles sidebar menu based on "collapse".
+        $('.nav:not(.navbar-nav)').on('touchend mouseenter focusin', '.dropdown', function (e) {
+            var dropdown = this;
+            var dropdownChild = $(dropdown).children('.dropdown-toggle[aria-expanded="false"]');
             if (dropdownChild.length) {
                 // Makes first touch open submenu and second open the link.
-                if( e.type == 'touchend' ) {
+                if (e.type == 'touchend') {
                     e.preventDefault();
-                    $('.nav:not(.navbar)').off('mouseenter focusin', '.dropdown-toggle');
+                    $('.nav:not(.navbar-nav)').off('mouseenter focusin', '.dropdown-toggle');
                 }
-                $(dropdownChild.data('target')).collapse('show');
-                dropdownChild.attr('aria-expanded', 'true');
+
+                //Timeout will make fast mouse swipes through menu items not trigger it
+                setTimeout(function () {
+                    if (e.type !== 'mouseover' || $(dropdown).is(':hover')) {
+                        $(dropdownChild.data('target')).collapse('show');
+                        dropdownChild.attr('aria-expanded', 'true');
+                    }
+                }, e.type === 'mouseenter' ? 150 : 0);
             }
-                }
-            }, e.type === 'mouseover' ? 150 : 0);
         });
         $('.nav:not(.navbar-nav)').on('mouseleave focusout', '.dropdown', function (e) {
             if (!$(this).is(':hover')) {
