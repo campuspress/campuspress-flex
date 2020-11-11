@@ -1,5 +1,7 @@
 <?php
 if ( has_nav_menu( 'secondary-left' ) || has_nav_menu( 'secondary-right' ) || apply_filters( 'navbar-secondary-force-show', false ) ) {
+	$nav_hover = get_theme_mod( 'nav_hover_dropdowns' );
+
 	?>
 	<nav id="navbar-secondary" <?php cpschool_class( 'navbar-secondary', 'navbar navbar-expand-md nav-styling-underline has-background has-header-secondary-bg-color-background-color' ); ?> aria-label="<?php esc_html_e( 'secondary', 'cpschool' ); ?>">
 		<div <?php cpschool_class( 'navbar-secondary-container', 'navbar-container' ); ?>>
@@ -15,7 +17,7 @@ if ( has_nav_menu( 'secondary-left' ) || has_nav_menu( 'secondary-right' ) || ap
 						'fallback_cb'    => '',
 						'menu_id'        => 'menu-secondary-left',
 						'depth'          => 2,
-						'walker'         => new CPSchool_WP_Bootstrap_Navwalker( true ),
+						'walker'         => new CPSchool_WP_Bootstrap_Navwalker( true, $nav_hover ),
 					)
 				);
 				?>
@@ -31,7 +33,7 @@ if ( has_nav_menu( 'secondary-left' ) || has_nav_menu( 'secondary-right' ) || ap
 						'fallback_cb'    => '',
 						'menu_id'        => 'menu-secondary-right',
 						'depth'          => 2,
-						'walker'         => new CPSchool_WP_Bootstrap_Navwalker( true ),
+						'walker'         => new CPSchool_WP_Bootstrap_Navwalker( true, $nav_hover ),
 					)
 				);
 				?>

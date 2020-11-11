@@ -17,6 +17,8 @@
 					$mobile_menu_location = 'desktop-extended';
 				}
 
+				$nav_hover = get_theme_mod( 'nav_hover_dropdowns' );
+
 				if ( has_nav_menu( 'desktop-extended' ) ) {
 					$expanded_nav_classes = '';
 
@@ -33,7 +35,7 @@
 									'menu_id'        => 'menu-main-desktop-extended',
 									'menu_class'     => 'nav flex-column',
 									'theme_location' => 'desktop-extended',
-									'walker'         => new CPSchool_WP_Bootstrap_Navwalker( false ),
+									'walker'         => new CPSchool_WP_Bootstrap_Navwalker( false, $nav_hover ),
 								)
 							);
 						}
@@ -52,7 +54,7 @@
 									'menu_id'        => 'menu-main-mobile',
 									'menu_class'     => 'nav flex-column',
 									'theme_location' => $mobile_menu_location,
-									'walker'         => new CPSchool_WP_Bootstrap_Navwalker( false ),
+									'walker'         => new CPSchool_WP_Bootstrap_Navwalker( false, $nav_hover ),
 								)
 							);
 						}

@@ -7147,21 +7147,31 @@ var cpSchoolThemeHelpers = function ($) {
 
   methods.enableHoverMenu = function () {
     // Handles dropdown in navbar.
-    $('.navbar').on('touchend mouseenter focusin', '.dropdown', function (e) {
-      var dropdownChild = $(this).children('.dropdown-toggle[aria-expanded="false"]');
+    $('.navbar-nav').on('touchend mouseover focusin', '.dropdown', function (e) {
+      var dropdown = this; //Timeout will make fast mouse swipes through menu items not trigger it
 
-      if (dropdownChild.length) {
-        // Makes first touch open submenu and second open the link.
-        if (e.type == 'touchend') {
-          e.preventDefault();
-          $('.navbar').off('mouseenter focusin', '.dropdown');
+      setTimeout(function () {
+        if (e.type !== 'mouseover' || $(dropdown).is(':hover')) {
+          var dropdownChild = $(dropdown).children('.dropdown-toggle[aria-expanded="false"]');
+
+          if (dropdownChild.length) {
+            // Makes first touch open submenu and second open the link.
+            if (e.type == 'touchend') {
+              e.preventDefault();
+              $('.navbar').off('mouseover focusin', '.dropdown');
+            }
+
+            dropdownChild.dropdown('show');
+            dropdownChild.off("click");
+
+            if (e.type === 'mouseover') {
+              dropdownChild.trigger('blur');
+            }
+          }
         }
-
-        dropdownChild.dropdown('show');
-        dropdownChild.off("click");
-      }
+      }, e.type === 'mouseover' ? 100 : 0);
     });
-    $('.navbar').on('mouseleave focusout', '.dropdown', function (e) {
+    $('.navbar-nav').on('mouseleave focusout', '.dropdown', function (e) {
       var dropdown = this; // Timeout will give time to move into the dropdown menu.
 
       setTimeout(function () {
@@ -7178,21 +7188,27 @@ var cpSchoolThemeHelpers = function ($) {
       }, e.type === 'mouseleave' ? 300 : 0);
     }); // Handles sidebar menu based on "collapse".
 
-    $('.nav:not(.navbar)').on('touchend mouseenter focusin', '.dropdown', function (e) {
-      var dropdownChild = $(this).children('.dropdown-toggle[aria-expanded="false"]');
+    $('.nav:not(.navbar-nav)').on('touchend mouseover focusin', '.dropdown', function (e) {
+      var dropdown = this; //Timeout will make fast mouse swipes through menu items not trigger it
 
-      if (dropdownChild.length) {
-        // Makes first touch open submenu and second open the link.
-        if (e.type == 'touchend') {
-          e.preventDefault();
-          $('.nav:not(.navbar)').off('mouseenter focusin', '.dropdown-toggle');
+      setTimeout(function () {
+        if (e.type !== 'mouseover' || $(dropdown).is(':hover')) {
+          var dropdownChild = $(dropdown).children('.dropdown-toggle[aria-expanded="false"]');
+
+          if (dropdownChild.length) {
+            // Makes first touch open submenu and second open the link.
+            if (e.type == 'touchend') {
+              e.preventDefault();
+              $('.nav:not(.navbar)').off('mouseenter focusin', '.dropdown-toggle');
+            }
+
+            $(dropdownChild.data('target')).collapse('show');
+            dropdownChild.attr('aria-expanded', 'true');
+          }
         }
-
-        $(dropdownChild.data('target')).collapse('show');
-        dropdownChild.attr('aria-expanded', 'true');
-      }
+      }, e.type === 'mouseover' ? 150 : 0);
     });
-    $('.nav:not(.navbar)').on('mouseleave focusout', '.dropdown', function (e) {
+    $('.nav:not(.navbar-nav)').on('mouseleave focusout', '.dropdown', function (e) {
       if (!$(this).is(':hover')) {
         if (e.type !== 'focusout' || !this.contains(e.relatedTarget)) {
           var dropdownChild = $(this).children('.dropdown-toggle[aria-expanded="true"]');

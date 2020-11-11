@@ -81,7 +81,7 @@ defined( 'ABSPATH' ) || exit;
 							'fallback_cb'     => '',
 							'menu_id'         => 'menu-main-desktop',
 							'depth'           => 2,
-							'walker'          => new CPSchool_WP_Bootstrap_Navwalker( true ),
+							'walker'          => new CPSchool_WP_Bootstrap_Navwalker( true, get_theme_mod( 'nav_hover_dropdowns' ) ),
 						)
 					);
 					?>

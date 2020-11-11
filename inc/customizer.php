@@ -2132,7 +2132,7 @@ if ( ! function_exists( 'cpschool_theme_customizer' ) ) {
 					'label'       => __( 'Dropdowns on hover', 'cpschool' ),
 					'description' => __( 'Enable to make dropdowns openable on hover. This setting is not recommended as it leads to inconsistent experience across devices.', 'cpschool' ),
 					'section'     => 'navigations',
-					'transport'   => 'postMessage',
+					'transport'   => 'refresh',
 					'default' => false,
 					'js_vars'   => array(
 						array(

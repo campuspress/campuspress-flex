@@ -33,12 +33,10 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 
 		var $navbar;
 		var $hover;
-		var $aria_label;
 
-		function __construct( $navbar = false, $aria_label = false ) {
-			$this->navbar     = $navbar;
-			$this->hover      = get_theme_mod( 'nav_hover_dropdowns' );
-			$this->aria_label = $aria_label;
+		function __construct( $navbar = false, $hover = false ) {
+			$this->navbar = $navbar;
+			$this->hover = $hover;
 		}
 
 		/**
