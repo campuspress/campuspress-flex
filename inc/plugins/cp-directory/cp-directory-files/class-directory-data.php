@@ -212,6 +212,10 @@ class CPDirectoryData {
 			'post_type'   => $this->atts['source'],
 			'fields'      => 'ids',
 		);
+		
+		if ( isset( $this->atts['sort_by'] ) && $this->atts['sort_by'] ) {
+			$args['orderby'] = $this->atts['sort_by'];
+		}
 
 		if ( $this->atts['categories'] ) {
 			$taxonomies = get_object_taxonomies( $this->atts['source'] );

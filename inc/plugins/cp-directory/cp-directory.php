@@ -157,11 +157,10 @@ if( ! class_exists('CPDirectory') ) :
                         'type' => 'object',
                         'default' => array(),
                     ),
-                    /*
                     'sort_by' => array(
                         'type' => 'string',
                         'default' => '',
-                    ),*/
+                    ),
                 ),
                 'editor_script' => 'cp-dir-block-editor',
                 'editor_style'  => 'cp-dir-block-editor',

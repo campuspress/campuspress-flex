@@ -14,7 +14,7 @@ if ( ! function_exists( 'cpschool_cp_directory_setup' ) ) {
 			array(
 				'label'     => __( 'Directory', 'cpschool' ),
 				'public'    => true,
-				'supports'  => array( 'thumbnail', 'title', 'editor' ),
+				'supports'  => array( 'thumbnail', 'title', 'editor', 'page-attributes' ),
 				'menu_icon' => 'dashicons-index-card',
 			)
 		);

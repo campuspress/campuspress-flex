@@ -69,6 +69,10 @@
 				type: 'object',
 				default: {}
 			},
+			sort_by: {
+				type: 'string',
+				default: ''
+			},
 		},
 
 		/**
@@ -212,7 +216,7 @@
 						}, 
 						[
 							el( 'h3', {},
-								__( 'Choose filters to display:', 'cp-school' )
+								__('Choose filters to display:', 'cp-dir')
 							),
 							settingsFilters,
 						] 
@@ -227,7 +231,7 @@
 						}, 
 						[
 							el( 'h3', {},
-								__( 'Choose fields to display:', 'cp-school' )
+								__('Choose fields to display:', 'cp-dir')
 							),
 							settingsFields,
 						] 
@@ -241,7 +245,7 @@
 				),
 			);
 
-			/*
+
 			settings.push(
 				el( SelectControl, {
 					value: props.attributes.sort_by,
@@ -249,10 +253,13 @@
 					onChange: function( value ){
 						props.setAttributes( { sort_by: value } );
 					},
-					className: 'hidden',
-					options: []
+					options: [
+						{ value: '', label: __('Title', 'cp-dir') },
+						{ value: 'date', label: __('Date', 'cp-dir') },
+						{ value: 'menu_order', label: __('Order', 'cp-dir') },
+					]
 				} )
-			);*/
+			);
 
 			/**
 			 * Returns terms in a tree form.
