@@ -1,4 +1,4 @@
-<div id="modal-search" class="modal fade modal-slide-in-top modal-close-inline modal-site-width modal-padding-lg" tabindex="-1" role="dialog" aria-label="<?php echo esc_attr( 'slide-in menu', 'cpschool' ); ?>" aria-hidden="true">
+<div id="modal-search" class="modal fade modal-slide-in-top modal-close-inline modal-site-width modal-padding-lg" tabindex="-1" role="dialog" aria-label="<?php echo esc_attr( 'search', 'cpschool' ); ?>" aria-hidden="true">
 	<div class="modal-dialog site-width-max" role="document">
 		<div class="modal-content has-background has-header-main-bg-color-background-color">
 			<div class="modal-header pb-0">
