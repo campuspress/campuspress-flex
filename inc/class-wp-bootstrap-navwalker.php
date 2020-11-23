@@ -133,8 +133,9 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 
 			// Initialize some holder variables to store specially handled item
 			// wrappers and icons.
-			$linkmod_classes = array();
-			$icon_classes    = array();
+			$linkmod_classes        = array();
+			$icon_classes           = array();
+			$collapse_button_target = false;
 
 			/**
 			 * Get an updated $classes array without linkmod or icon classes.
@@ -244,20 +245,29 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 			if ( isset( $args->has_children ) && $args->has_children && 0 === $depth && $args->depth !== 1 ) {
 				$atts['aria-haspopup'] = 'true';
 				$atts['aria-expanded'] = 'false';
-				$atts['class'][]       = 'dropdown-toggle nav-link';
+				$atts['class'][]       = 'nav-link';
 				$atts['id']            = 'menu-item-dropdown-' . $args->menu_id . '-' . $item->ID;
 
 				if ( $this->navbar ) {
+					$atts['class'][]     = 'dropdown-toggle';
 					if ( ! $this->hover ) {
 						$atts['data-toggle'] = 'dropdown';
 						$atts['href']        = '#';
 					}
 				} else {
+					$data_target = '#' . $atts['id'] . '-dropdown';
 					if ( ! $this->hover ) {
+						$atts['class'][]     = 'dropdown-toggle';
 						$atts['data-toggle'] = 'collapse';
-						$atts['href']        = '#' . $atts['id'] . '-dropdown';
+						$atts['href']        = $data_target;
 					} else {
-						$atts['data-target'] = '#' . $atts['id'] . '-dropdown';
+						$data_target = '#' . $atts['id'] . '-dropdown';
+						if ( apply_filters( 'cpschool_nav_collapse_as_button', false ) ) {
+							$collapse_button_target = $data_target;
+						} else {
+							$atts['class'][]     = 'dropdown-toggle';
+							$atts['data-target'] = $data_target;
+						}
 					}
 				}
 			} else {
@@ -407,6 +417,10 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 					$dropdown_content = ob_get_clean();
 					$item_output     .= '<ul id="' . esc_attr( $atts['id'] ) . '-dropdown" class="dropdown-menu" aria-labelledby="' . esc_attr( $atts['id'] ) . '" role="menu"><li>' . $dropdown_content . '</li></ul>';
 				}
+			}
+
+			if ( $collapse_button_target ) {
+				$item_output .= '<button data-toggle="collapse" data-target="' . $collapse_button_target . '"><span class="sr-only">' . esc_html__( 'Open submenu', 'cpschool' ) . '</span>' . apply_filters( 'cpschool_nav_collapse_button_content', '' ) . '</button>';
 			}
 
 			$item_output .= isset( $args->after ) ? $args->after : '';
