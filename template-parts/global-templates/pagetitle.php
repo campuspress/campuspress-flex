@@ -1,4 +1,6 @@
 <?php
+do_action('cpschool_pagetitle_start');
+
 $hero_style = cpschool_get_hero_style();
 
 if ( in_array( $hero_style, array( false, 'disabled', 'full-title-under-img' ) ) || is_customize_preview() ) {
@@ -48,3 +50,5 @@ if ( in_array( $hero_style, array( false, 'disabled', 'full-title-under-img' ) )
 		<?php
 	}
 }
+
+do_action('cpschool_pagetitle_end');

@@ -70,6 +70,8 @@ defined( 'ABSPATH' ) || exit;
 					</div>
 				<?php } ?><!-- end custom logo -->
 
+				<?php do_action( 'cpschool_navbar_main_after_brand_holder' ); ?>
+
 				<div class="navbar-navs-container">
 					<?php
 					wp_nav_menu(
@@ -119,7 +121,6 @@ defined( 'ABSPATH' ) || exit;
 				</div>
 
 				<?php do_action( 'cpschool_navbar_main_container_end' ); ?>
-				
 			</div><!-- #navbar-container -->
 		</nav>
 	</div><!-- #wrapper-navbar end -->

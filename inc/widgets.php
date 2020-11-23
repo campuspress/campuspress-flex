@@ -61,26 +61,28 @@ if ( ! function_exists( 'cpschool_widget_classes' ) ) {
 			$sidebar_id   = $params[0]['id'];
 			$widget_count = count( $sidebars_widgets_count[ $sidebar_id ] );
 
+			$screen = apply_filters( 'cpschool_widgets_dynamic_size_screen', 'md' );
+
 			$widget_classes = 'widget-count-' . $widget_count;
 			if ( 0 === $widget_count % 4 || $widget_count > 6 ) {
 				// Four widgets per row if there are exactly four or more than six.
-				$widget_classes .= ' col-md-3';
+				$widget_classes .= ' col-' . $screen . '-3';
 			} elseif ( 6 === $widget_count ) {
 				// If two widgets are published.
-				$widget_classes .= ' col-md-2';
+				$widget_classes .= ' col-' . $screen . '-2';
 			} elseif ( $widget_count >= 3 ) {
 				// Three widgets per row if there's three or more widgets.
-				$widget_classes .= ' col-md-4';
+				$widget_classes .= ' col-' . $screen . '-4';
 			} elseif ( 2 === $widget_count ) {
 				// If two widgets are published.
-				$widget_classes .= ' col-md-6';
+				$widget_classes .= ' col-' . $screen . '-6';
 			} elseif ( 1 === $widget_count ) {
 				// If just on widget is active.
-				$widget_classes .= ' col-md-12';
+				$widget_classes .= ' col-' . $screen . '-12';
 			}
 
 			// Replace the placeholder class 'dynamic-classes' with the classes stored in $widget_classes.
-			$params[0]['before_widget'] = str_replace( 'dynamic-classes', $widget_classes, $params[0]['before_widget'] );
+			$params[0]['before_widget'] = str_replace( 'dynamic-classes', esc_attr( $widget_classes ), $params[0]['before_widget'] );
 		}
 
 		return $params;
