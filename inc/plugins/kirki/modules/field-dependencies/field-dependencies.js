@@ -23,12 +23,12 @@ var kirkiDependencies = {
 							//CP-START
 							// This will trigger js_vars when options are shown.
 							if( control.setting.transport == 'postMessage' && !control.active.get() && isDisplayed() ) {
-								if(control.id in valuesStrage) {
-									var current = valuesStrage[control.id];
-								}
-								else {
+								//if(control.id in valuesStrage) {
+									//var current = valuesStrage[control.id];
+								//}
+								//else {
 									var current = wp.customize( control.id ).get();
-								}
+								//}
 								wp.customize( control.id ).set( false );
 								wp.customize( control.id ).set( current );
 							}
