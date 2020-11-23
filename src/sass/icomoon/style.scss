@@ -3,9 +3,9 @@
 @font-face {
   font-family: '#{$icomoon-font-family}';
   src:
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?wx7e9x') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?wx7e9x') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?wx7e9x##{$icomoon-font-family}') format('svg');
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?e5vpbt') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?e5vpbt') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?e5vpbt##{$icomoon-font-family}') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -14,7 +14,7 @@
 .cps-icon {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: '#{$icomoon-font-family}' !important;
-  speak: none;
+  speak: never;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
@@ -121,29 +121,14 @@
     content: $cps-icon-envelope-o; 
   }
 }
-.cps-icon-heart {
-  &:before {
-    content: $cps-icon-heart; 
-  }
-}
 .cps-icon-star1 {
   &:before {
     content: $cps-icon-star1; 
   }
 }
-.cps-icon-star-o {
-  &:before {
-    content: $cps-icon-star-o; 
-  }
-}
 .cps-icon-user1 {
   &:before {
     content: $cps-icon-user1; 
-  }
-}
-.cps-icon-home1 {
-  &:before {
-    content: $cps-icon-home1; 
   }
 }
 .cps-icon-clock-o {
@@ -204,6 +189,11 @@
 .cps-icon-comment1 {
   &:before {
     content: $cps-icon-comment1; 
+  }
+}
+.cps-icon-twitter-square {
+  &:before {
+    content: $cps-icon-twitter-square; 
   }
 }
 .cps-icon-key {
@@ -291,6 +281,11 @@
     content: $cps-icon-microphone; 
   }
 }
+.cps-icon-youtube-square {
+  &:before {
+    content: $cps-icon-youtube-square; 
+  }
+}
 .cps-icon-sun-o {
   &:before {
     content: $cps-icon-sun-o; 
@@ -309,11 +304,6 @@
 .cps-icon-space-shuttle {
   &:before {
     content: $cps-icon-space-shuttle; 
-  }
-}
-.cps-icon-wordpress1 {
-  &:before {
-    content: $cps-icon-wordpress1; 
   }
 }
 .cps-icon-bank {
@@ -456,11 +446,6 @@
     content: $cps-icon-grav; 
   }
 }
-.cps-icon-search1 {
-  &:before {
-    content: $cps-icon-search1; 
-  }
-}
 .cps-icon-envelope {
   &:before {
     content: $cps-icon-envelope; 
@@ -494,11 +479,6 @@
 .cps-icon-support {
   &:before {
     content: $cps-icon-support; 
-  }
-}
-.cps-icon-heart2 {
-  &:before {
-    content: $cps-icon-heart2; 
   }
 }
 .cps-icon-home4 {
@@ -1116,6 +1096,11 @@
     content: $cps-icon-facebook; 
   }
 }
+.cps-icon-facebook2 {
+  &:before {
+    content: $cps-icon-facebook2; 
+  }
+}
 .cps-icon-instagram {
   &:before {
     content: $cps-icon-instagram; 
@@ -1131,9 +1116,14 @@
     content: $cps-icon-youtube; 
   }
 }
-.cps-icon-wordpress {
+.cps-icon-flickr {
   &:before {
-    content: $cps-icon-wordpress; 
+    content: $cps-icon-flickr; 
+  }
+}
+.cps-icon-flickr3 {
+  &:before {
+    content: $cps-icon-flickr3; 
   }
 }
 .cps-icon-tumblr {
