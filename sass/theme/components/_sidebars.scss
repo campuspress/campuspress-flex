@@ -1,3 +1,10 @@
+#left-sidebar {
+    margin-bottom: $spacer;
+    @include media-breakpoint-up(md) {
+        margin-bottom: 0;
+    }
+}
+
 body.sidebars-check-sticky {
     #right-sidebar, #left-sidebar {
         .sidebar-widget-area-content {
