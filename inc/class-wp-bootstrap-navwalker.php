@@ -242,10 +242,7 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 			}
 
 			// If item has_children add atts to <a>.
-			if ( isset( $args->has_children ) && $args->has_children && 0 === $depth && $args->depth !== 1 ) {
-				$atts['aria-haspopup'] = 'true';
-				$atts['aria-expanded'] = 'false';
-				$atts['class'][]       = 'nav-link';
+			if ( isset( $args->has_children ) && $args->has_children && $args->depth !== 1) {
 				$atts['id']            = 'menu-item-dropdown-' . $args->menu_id . '-' . $item->ID;
 
 				if ( $this->navbar ) {
@@ -255,34 +252,44 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 						$atts['href']        = '#';
 					}
 				} else {
+					$collpse_as_button = apply_filters( 'cpschool_nav_collapse_as_button', false );
 					$data_target = '#' . $atts['id'] . '-dropdown';
 					if ( ! $this->hover ) {
-						$atts['class'][]     = 'dropdown-toggle';
-						$atts['data-toggle'] = 'collapse';
-						$atts['href']        = $data_target;
+						if ( ! $collpse_as_button ) {
+							$atts['class'][]     = 'dropdown-toggle';
+							$atts['data-toggle'] = 'collapse';
+							$atts['href']        = $data_target;
+						}
 					} else {
-						$data_target = '#' . $atts['id'] . '-dropdown';
-						if ( apply_filters( 'cpschool_nav_collapse_as_button', false ) ) {
-							$collapse_button_target = $data_target;
-						} else {
+						if ( ! $collpse_as_button ) {
 							$atts['class'][]     = 'dropdown-toggle';
 							$atts['data-target'] = $data_target;
+
 						}
 					}
-				}
-			} else {
-				// Items in dropdowns use .dropdown-item instead of .nav-link.
-				if ( $depth > 0 ) {
-					$atts['class'][] = 'dropdown-item';
-				} else {
-					$atts['class'][] = 'nav-link';
+
+					if ( $collpse_as_button ) {
+						$collapse_button_target = $data_target;
+					}
 				}
 
+				if( $this->navbar || !$collpse_as_button ) {
+					$atts['aria-haspopup'] = 'true';
+					$atts['aria-expanded'] = 'false';
+				}
+			} else {
 				// Handle custom actions that are opening modals
 				if ( substr( $custom_action, 0, 6 ) == 'modal-' ) {
 					$atts['data-toggle'] = 'modal';
 					$atts['data-target'] = '#' . $custom_action;
 				}
+			}
+
+			// Items in dropdowns use .dropdown-item instead of .nav-link.
+			if ( $depth > 0 ) {
+				$atts['class'][] = 'dropdown-item';
+			} else {
+				$atts['class'][] = 'nav-link';
 			}
 
 			// Support for custom stylings
@@ -420,7 +427,7 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 			}
 
 			if ( $collapse_button_target ) {
-				$item_output .= '<button data-toggle="collapse" data-target="' . $collapse_button_target . '"><span class="sr-only">' . esc_html__( 'Open submenu', 'cpschool' ) . '</span>' . apply_filters( 'cpschool_nav_collapse_button_content', '' ) . '</button>';
+				$item_output .= '<button data-toggle="collapse" data-target="' . $collapse_button_target . '"><span class="sr-only">' . esc_html__( 'Toggle submenu', 'cpschool' ) . '</span>' . apply_filters( 'cpschool_nav_collapse_button_content', '', $item, $args, $depth ) . '</button>';
 			}
 
 			$item_output .= isset( $args->after ) ? $args->after : '';
