@@ -8,7 +8,7 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<form <?php cpschool_class( 'navbar-main-btn-search', 'search-form d-flex' ); ?> method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+				<form <?php cpschool_class( 'modal-search-form', 'search-form d-flex' ); ?> method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
 					<label class="sr-only" for="search-form-header"><?php _e( 'Search', 'mabts' ); ?></label>
 					<input id="search-form-header" class="form-control form-control-lg" type="search" placeholder="<?php _e( 'Search...', 'mabts' ); ?>" value="<?php echo get_search_query(); ?>" name="s">
 					<button class="btn btn-secondary btn-lg" type="submit" aria-controls="search-form-header">
