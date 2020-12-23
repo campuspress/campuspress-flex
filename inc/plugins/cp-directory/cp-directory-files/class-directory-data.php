@@ -184,6 +184,7 @@ class CPDirectoryData {
 
 		$fields_js = array( array( 'data' => array( 'entry-id' ) ) );
 		$fields    = $this->get_fields();
+		//var_dump($fields);
 		foreach ( $fields as $field ) {
 			if ( $field['type'] == 'taxonomy' ) {
 				$fields_js[] = array(
@@ -195,8 +196,21 @@ class CPDirectoryData {
 					'name' => $field['field_name'],
 					'attr' => 'data-value',
 				);
+			} elseif ( $field['value_type'] == 'email' ) {
+				$fields_js[] = array(
+					'name' => $field['field_name'],
+					'attr' => 'data-value',
+				);
 			} else {
-				$fields_js[] = $field['field_name'];
+				if( !$field['hidden'] ) {
+					$fields_js[] = $field['field_name'];
+				}
+				else {
+					$fields_js[] = array(
+						'name' => $field['field_name'],
+						'attr' => 'data-value',
+					);
+				}
 			}
 		}
 

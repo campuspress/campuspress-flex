@@ -10,12 +10,15 @@ if ( ! empty( $atts['className'] ) ) {
 	$class_name .= ' ' . $atts['className'];
 }
 
-$dir_id             = $data->get_directory_id();
+$dir_id = $data->get_directory_id();
+
+$entries = $data->get_entries();
+
+$filters            = $data->get_filters();
+$taxonomies_filters = $data->get_taxonomy_filters();
 ?>
 <div class="<?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $dir_id ); ?>" aria-label="<?php esc_attr_e( 'Directory', 'cp-dir' ); ?>">
 	<?php
-	$filters            = $data->get_filters();
-	$taxonomies_filters = $data->get_taxonomy_filters();
 	if ( $filters || $taxonomies_filters ) {
 		?>
 		<form class="cp-dir-controls" aria-controls="<?php echo esc_attr( $dir_id ); ?>-content">
@@ -29,11 +32,8 @@ $dir_id             = $data->get_directory_id();
 	}
 	?>
 	<div class="cp-dir-content" id="<?php echo esc_attr( $dir_id ); ?>-content" aria-label="<?php esc_attr_e( 'Directory Entries', 'cp-dir' ); ?>">
-		<?php
-		$entries = $data->get_entries();
-		?>
 		<div class="cp-dir-sr-info screen-reader-text" aria-live="polite">
-			<?php printf(__( '%s results found', 'cp-dir' ), '<span class="cp-dir-sr-info-count">'. count( $entries ) . '</span>'); ?>
+			<?php printf( __( '%s results found', 'cp-dir' ), '<span class="cp-dir-sr-info-count">' . count( $entries ) . '</span>' ); ?>
 		</div>
 		<?php
 		if ( $entries ) {
@@ -47,7 +47,7 @@ $dir_id             = $data->get_directory_id();
 			ob_start();
 			?>
 			<script>
-			cpDirectories['<?php esc_attr_e( $dir_id ); ?>'] = new List( '<?php esc_attr_e( $dir_id ); ?>', {
+			cpDirectories['<?php echo esc_attr( $dir_id ); ?>'] = new List( '<?php echo esc_attr( $dir_id ); ?>', {
 					valueNames: <?php echo $field_js; ?>,
 					listClass: 'cp-dir-content-list',
 					searchClass: 'cp-dir-field-search',

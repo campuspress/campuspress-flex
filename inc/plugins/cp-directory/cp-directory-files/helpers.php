@@ -252,6 +252,8 @@ function cp_dir_get_field_value( $entry_id, $field_details ) {
 	if ( $value_raw_content ) {
 		switch ( $field_details['value_type'] ) :
 			case 'email':
+				$email_data = explode( '@', $value_raw_content );
+				$value_raw_attr = $email_data[0];
 				$value_raw_content = '<a href="mailto:' . esc_attr( $value_raw_content ) . '">' . esc_html( $value_raw_content ) . '</a>';
 				break;
 		endswitch;

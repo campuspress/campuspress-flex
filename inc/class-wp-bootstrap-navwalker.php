@@ -253,17 +253,17 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 					}
 				} else {
 					$collpse_as_button = apply_filters( 'cpschool_nav_collapse_as_button', false );
-					$data_target = '#' . $atts['id'] . '-dropdown';
+					$data_target = $atts['id'] . '-dropdown';
 					if ( ! $this->hover ) {
 						if ( ! $collpse_as_button ) {
 							$atts['class'][]     = 'dropdown-toggle';
 							$atts['data-toggle'] = 'collapse';
-							$atts['href']        = $data_target;
+							$atts['href']        = '#' . $data_target;
 						}
 					} else {
 						if ( ! $collpse_as_button ) {
 							$atts['class'][]     = 'dropdown-toggle';
-							$atts['data-target'] = $data_target;
+							$atts['data-target'] = '#' . $data_target;
 
 						}
 					}
@@ -427,7 +427,7 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 			}
 
 			if ( $collapse_button_target ) {
-				$item_output .= '<button data-toggle="collapse" data-target="' . $collapse_button_target . '"><span class="sr-only">' . esc_html__( 'Toggle submenu', 'cpschool' ) . '</span>' . apply_filters( 'cpschool_nav_collapse_button_content', '', $item, $args, $depth ) . '</button>';
+				$item_output .= '<button data-toggle="collapse" data-target="#' . esc_attr( $collapse_button_target ) . '"><span class="sr-only" aria-expanded="false" aria-controls="' . esc_attr( $collapse_button_target ) . '">' . esc_html__( 'Toggle submenu', 'cpschool' ) . '</span>' . apply_filters( 'cpschool_nav_collapse_button_content', '', $item, $args, $depth ) . '</button>';
 			}
 
 			$item_output .= isset( $args->after ) ? $args->after : '';

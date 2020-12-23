@@ -10,7 +10,7 @@ if( $fields ) {
         $value = cp_dir_get_field_value( get_the_ID(), $field );
         if( $value['content'] ) {
         ?>
-            <div class="cp-dir-item-field <?php esc_attr_e( $field['field_name'] ); ?>">
+            <div class="cp-dir-item-field <?php echo esc_attr( $field['field_name'] ); ?>">
                 <strong><?php echo $field['label']; ?>:</strong> <?php echo $value['content']; ?>
             </div>
         <?php
