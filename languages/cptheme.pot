@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: campuspress-flex\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/theme/_s\n"
-"POT-Creation-Date: 2020-10-07 14:02+0200\n"
+"POT-Creation-Date: 2021-02-03 11:44+0100\n"
 "POT-Revision-Date: Mon Jul 04 2016 09:13:18 GMT+0200 (CEST)\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 2.4.1\n"
+"X-Generator: Poedit 2.4.2\n"
 "X-Poedit-KeywordsList: _:1;gettext:1;dgettext:2;ngettext:1,2;dngettext:2,3;"
 "__:1;_e:1;_c:1;_n:1,2;_n_noop:1,2;_nc:1,2;__ngettext:1,2;__ngettext_noop:1,2;"
 "_x:1,2c;_ex:1,2c;_nx:1,2,4c;_nx_noop:1,2,3c;_n_js:1,2;_nx_js:1,2,3c;"
@@ -77,24 +77,28 @@ msgstr ""
 msgid "main"
 msgstr ""
 
-#: header.php:95 searchform.php:13 searchform.php:20
-#: template-parts/global-templates/modal-search.php:15
+#: header.php:97 searchform.php:13 searchform.php:20
+#: template-parts/global-templates/modal-search.php:12
 msgid "Search"
 msgstr ""
 
-#: header.php:96
+#: header.php:98
 msgid "Toggle search interface"
 msgstr ""
 
-#: header.php:113
+#: header.php:115
 msgid "Menu"
 msgstr ""
 
-#: header.php:114
+#: header.php:116
 msgid "Toggle extended navigation"
 msgstr ""
 
-#: inc/class-wp-bootstrap-navwalker.php:485
+#: inc/class-wp-bootstrap-navwalker.php:430
+msgid "Toggle submenu"
+msgstr ""
+
+#: inc/class-wp-bootstrap-navwalker.php:512
 msgid "Add a menu"
 msgstr ""
 
@@ -128,7 +132,7 @@ msgstr ""
 msgid "Colors"
 msgstr ""
 
-#: inc/customizer.php:112 inc/customizer.php:2153
+#: inc/customizer.php:112 inc/customizer.php:2180
 msgid "Background Image"
 msgstr ""
 
@@ -767,33 +771,51 @@ msgid ""
 "\"General\" > \"Colors\" > \"Content Boxes Background\". "
 msgstr ""
 
-#: inc/customizer.php:2124 inc/setup.php:134
-msgid "Footer"
+#: inc/customizer.php:2123
+msgid "Navigations"
 msgstr ""
 
-#: inc/customizer.php:2125
-msgid "Settings for footer."
+#: inc/customizer.php:2124
+msgid "Settings related to navigations."
 msgstr ""
 
 #: inc/customizer.php:2132
+msgid "Dropdowns on hover"
+msgstr ""
+
+#: inc/customizer.php:2133
+msgid ""
+"Enable to make dropdowns openable on hover. This setting is not recommended "
+"as it leads to inconsistent experience across devices."
+msgstr ""
+
+#: inc/customizer.php:2151 inc/setup.php:134
+msgid "Footer"
+msgstr ""
+
+#: inc/customizer.php:2152
+msgid "Settings for footer."
+msgstr ""
+
+#: inc/customizer.php:2159
 msgid "Background/Overlay Color"
 msgstr ""
 
-#: inc/customizer.php:2166
+#: inc/customizer.php:2193
 msgid "Include Reusable Block"
 msgstr ""
 
-#: inc/customizer.php:2167
+#: inc/customizer.php:2194
 msgid ""
 "Choose \"Reusable Block\" that will be displayed in footer after widgets. "
 "You can create new ones in WordPress Admin > \"Reusable Blocks\"."
 msgstr ""
 
-#: inc/customizer.php:2177
+#: inc/customizer.php:2204
 msgid "Custom Footer Text"
 msgstr ""
 
-#: inc/customizer.php:2199
+#: inc/customizer.php:2226
 msgid "Disable"
 msgstr ""
 
@@ -807,11 +829,11 @@ msgid ""
 "won't be visible even when enabled."
 msgstr ""
 
-#: inc/customizer/helpers.php:103 inc/widgets.php:112
+#: inc/customizer/helpers.php:103 inc/widgets.php:114
 msgid "Left Sidebar"
 msgstr ""
 
-#: inc/customizer/helpers.php:104 inc/widgets.php:100
+#: inc/customizer/helpers.php:104 inc/widgets.php:102
 msgid "Right Sidebar"
 msgstr ""
 
@@ -1171,21 +1193,21 @@ msgctxt "breadcrumbs aria label"
 msgid "Breadcrumb"
 msgstr ""
 
-#: inc/widgets.php:102
+#: inc/widgets.php:104
 msgid ""
 "Right sidebar widget area. Used by default with single posts and pages that "
 "are listing posts."
 msgstr ""
 
-#: inc/widgets.php:114
+#: inc/widgets.php:116
 msgid "Left sidebar widget area. Used by default with pages."
 msgstr ""
 
-#: inc/widgets.php:124
+#: inc/widgets.php:126
 msgid "Footer Full"
 msgstr ""
 
-#: inc/widgets.php:126
+#: inc/widgets.php:128
 msgid "Full sized footer widget with dynamic grid"
 msgstr ""
 
@@ -1206,15 +1228,31 @@ msgstr ""
 msgid "page title and basic information"
 msgstr ""
 
-#: template-parts/global-templates/modal-slide-in-menu.php:28
+#: template-parts/global-templates/modal-search.php:7
+msgid "close search"
+msgstr ""
+
+#: template-parts/global-templates/modal-search.php:13
+msgid "Search..."
+msgstr ""
+
+#: template-parts/global-templates/modal-search.php:16
+msgid "Search Site"
+msgstr ""
+
+#: template-parts/global-templates/modal-slide-in-menu.php:7
+msgid "close menu"
+msgstr ""
+
+#: template-parts/global-templates/modal-slide-in-menu.php:31
 msgid "Expanded"
 msgstr ""
 
-#: template-parts/global-templates/modal-slide-in-menu.php:47
+#: template-parts/global-templates/modal-slide-in-menu.php:50
 msgid "Mobile"
 msgstr ""
 
-#: template-parts/global-templates/navbar-secondary.php:4
+#: template-parts/global-templates/navbar-secondary.php:6
 msgid "secondary"
 msgstr ""
 
