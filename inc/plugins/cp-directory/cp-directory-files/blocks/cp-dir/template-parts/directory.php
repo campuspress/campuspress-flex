@@ -105,7 +105,7 @@ $taxonomies_filters = $data->get_taxonomy_filters();
 			?>
 				<ul class="pagination d-none"></ul>
 				<button class="btn btn-primary d-block mx-auto" id="cp-dir-load-more" data-action="load-entries"
-				        data-page="<?php echo absint( $data->paged ); ?>" aria-controls="directory-items-wrapper">
+				        data-page="<?php echo absint( $data->paged ); ?>" aria-controls="<?php echo esc_attr( $dir_id ); ?>-content">
 					<?php
 						echo apply_filters( 'cp-dir-load-more-label', __( 'Show more', 'cp-dir' ) );
 					?>
