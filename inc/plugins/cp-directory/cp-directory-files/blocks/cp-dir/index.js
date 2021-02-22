@@ -18,7 +18,7 @@
 	var InspectorControls = wp.blockEditor.InspectorControls;
 	var serverSideRender = wp.serverSideRender;
 	var withSelect = window.wp.data.withSelect;
-	var { ToggleControl, CheckboxControl, SelectControl, TreeSelect, PanelBody, Text } = wp.components;
+	var { ToggleControl, CheckboxControl, SelectControl, TextControl, TreeSelect, PanelBody, Text } = wp.components;
 	var { groupBy, cloneDeep } = lodash;
 
 	/**
@@ -69,6 +69,10 @@
 				type: 'object',
 				default: {}
 			},
+			posts_per_page: {
+				type: 'integer',
+				default: -1
+			},
 			sort_by: {
 				type: 'string',
 				default: ''
@@ -105,11 +109,11 @@
 
 			CPDir.forEach((postTypeDetails) => {
 				sourceOptions.push({value:postTypeDetails.name, label:postTypeDetails.label});
-				
+
 				// Sets up Categories to choose.
 				postTypeDetails.taxonomies.forEach((taxDetails) => {
 					categoriesOptions[taxDetails.name] = buildTermsTree( props.categories[taxDetails.name] );
-					
+
 					if( categoriesOptions[taxDetails.name].length > 1 ) {
 						if( !( taxDetails.name in taxAddedMap ) ) {
 							taxAddedMap[taxDetails.name] = [ postTypeDetails.name ];
@@ -156,7 +160,7 @@
 								else {
 									filters_updated[postTypeDetails.name].push(filter_key);
 								}
-								
+
 								props.setAttributes( { filters: filters_updated } );
 							},
 						} )
@@ -185,7 +189,7 @@
 									else {
 										fields_updated[postTypeDetails.name].push(field_key);
 									}
-									
+
 									props.setAttributes( { fields: fields_updated } );
 								},
 							} )
@@ -208,18 +212,30 @@
 			}
 
 			settings.push( settingsCategories );
-			
+
+			settings.push(
+				el(TextControl, {
+					value: props.attributes.posts_per_page,
+					label: __('Number of entries to display', 'cp-dir'),
+					type: 'number',
+					className: 'cp-dir-input',
+					onChange: function (value) {
+						props.setAttributes({posts_per_page: parseInt(value) });
+					},
+				}),
+			);
+
 			if( settingsFilters.length ) {
 				settings.push(
 					el( 'div', {
 							class: "cp-dir-checkbox-list"
-						}, 
+						},
 						[
 							el( 'h3', {},
 								__('Choose filters to display:', 'cp-dir')
 							),
 							settingsFilters,
-						] 
+						]
 					),
 				);
 			}
@@ -228,13 +244,13 @@
 				settings.push(
 					el( 'div', {
 							class: "cp-dir-checkbox-list"
-						}, 
+						},
 						[
 							el( 'h3', {},
 								__('Choose fields to display:', 'cp-dir')
 							),
 							settingsFields,
-						] 
+						]
 					),
 				);
 			}

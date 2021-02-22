@@ -226,7 +226,7 @@ class CPDirectoryData {
 			'post_type'   => $this->atts['source'],
 			'fields'      => 'ids',
 		);
-		
+
 		if ( isset( $this->atts['sort_by'] ) && $this->atts['sort_by'] ) {
 			$args['orderby'] = $this->atts['sort_by'];
 		}
@@ -247,6 +247,11 @@ class CPDirectoryData {
 				}
 			}
 		}
+
+		/**
+		 * Allows to filter the entries args
+		 */
+		$args = apply_filters( 'cp_dir_get_entries_args', $args, $this->atts );
 
 		$entries = get_posts( $args );
 

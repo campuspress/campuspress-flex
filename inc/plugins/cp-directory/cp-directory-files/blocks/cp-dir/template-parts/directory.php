@@ -25,7 +25,7 @@ $taxonomies_filters = $data->get_taxonomy_filters();
 			<div class="cp-dir-sr-info screen-reader-text">
 				<?php _e( 'Directory instantly refresh upon filtering.', 'cp-dir' ); ?>
 			</div>
-			
+
 			<?php include( apply_filters( 'cp_dir_path_directory_filters', $this->dir . '/cp-directory-files/blocks/cp-dir/template-parts/directory-filters.php', $data ) ); ?>
 		</form>
 		<?php
@@ -47,15 +47,71 @@ $taxonomies_filters = $data->get_taxonomy_filters();
 			ob_start();
 			?>
 			<script>
-			cpDirectories['<?php echo esc_attr( $dir_id ); ?>'] = new List( '<?php echo esc_attr( $dir_id ); ?>', {
+				cpDirectories['<?php echo esc_attr( $dir_id ); ?>'] = new List('<?php echo esc_attr( $dir_id ); ?>', {
 					valueNames: <?php echo $field_js; ?>,
 					listClass: 'cp-dir-content-list',
 					searchClass: 'cp-dir-field-search',
-			} );
+					<?php
+					if( 0 < $atts['posts_per_page'] ) :
+					?>
+					pagination: true,
+					page: <?php echo absint( $atts['posts_per_page'] ); ?>,
+					<?php
+					endif;
+					?>
+
+				});
+
+				let list = cpDirectories['<?php echo esc_attr( $dir_id ); ?>'];
+
+				cp_dir_update_button = (list) => {
+					// If all the elements are visible already, hide load more button.
+					if (list.matchingItems.length === list.visibleItems.length) {
+						jQuery('#cp-dir-load-more').removeClass('d-block').addClass('d-none');
+					} else {
+						jQuery('#cp-dir-load-more').removeClass('d-none').addClass('d-block');
+					}
+					return;
+				}
+
+				cp_dir_load_more = (list) => {
+					let show_items = 0;
+
+					// Return early if there is no list
+					if ('undefined' === typeof (list)) {
+						return;
+					}
+
+					show_items = parseInt(list.visibleItems.length) + list.page;
+					list.show(1, show_items);
+				}
+
+				// Handle Show more button click.
+				jQuery('#cp-dir-load-more').on('click', () => {
+					cp_dir_load_more(list);
+				});
+
+				// Handle Update event to show/hide show more button
+				list.on('updated', () => {
+					cp_dir_update_button(list);
+				});
+
 			</script>
 			<?php
 			$inline_script = str_replace( array( '<script>', '</script>' ), '', ob_get_clean() );
 			wp_add_inline_script( 'cp-dir-block', $inline_script );
+
+			if( 0 < $atts['posts_per_page'] ) :
+			?>
+				<ul class="pagination d-none"></ul>
+				<button class="btn btn-primary d-block mx-auto" id="cp-dir-load-more" data-action="load-entries"
+				        data-page="<?php echo absint( $data->paged ); ?>" aria-controls="directory-items-wrapper">
+					<?php
+						echo apply_filters( 'cp-dir-load-more-label', __( 'Show more', 'cp-dir' ) );
+					?>
+				</button>
+			<?php
+			endif;
 		}
 		?>
 	</div>

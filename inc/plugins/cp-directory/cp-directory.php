@@ -11,16 +11,16 @@ if( ! class_exists('CPDirectory') ) :
         /** @var object stores instance so only single one is possible  */
         private static $instance;
 
-        /** 
+        /**
          * @var string path to the framework directory.
          */
         var $dir;
 
-        /** 
+        /**
          * @var string url to the framework directory.
          */
         var $dir_uri;
-        
+
         private function __construct() {
             // This will need filtering so it can be included in all kinds of places.
             $this->dir = get_template_directory() . '/inc/plugins/cp-directory';
@@ -44,7 +44,7 @@ if( ! class_exists('CPDirectory') ) :
             if( !isset( self::$instance ) ) {
                 self::$instance = new CPDirectory();
             }
-    
+
             // Returns the instance
             return self::$instance;
         }
@@ -157,6 +157,10 @@ if( ! class_exists('CPDirectory') ) :
                         'type' => 'object',
                         'default' => array(),
                     ),
+                    'posts_per_page' => array(
+                        'type' => 'integer',
+                        'default' => -1,
+                    ),
                     'sort_by' => array(
                         'type' => 'string',
                         'default' => '',
@@ -180,7 +184,7 @@ if( ! class_exists('CPDirectory') ) :
             ob_start();
 
             include( $this->dir . '/cp-directory-files/blocks/cp-dir/template-parts/directory.php' );
-            
+
             return ob_get_clean();
         }
 
@@ -201,7 +205,7 @@ if( ! class_exists('CPDirectory') ) :
 
                 return ob_get_clean();
             }
-            
+
             return $content;
         }
     }
