@@ -47,6 +47,7 @@ $taxonomies_filters = $data->get_taxonomy_filters();
 			ob_start();
 			?>
 			<script>
+				let posts_per_page = <?php echo absint( $atts['posts_per_page'] ); ?>;
 				cpDirectories['<?php echo esc_attr( $dir_id ); ?>'] = new List('<?php echo esc_attr( $dir_id ); ?>', {
 					valueNames: <?php echo $field_js; ?>,
 					listClass: 'cp-dir-content-list',
@@ -55,7 +56,7 @@ $taxonomies_filters = $data->get_taxonomy_filters();
 					if( 0 < $atts['posts_per_page'] ) :
 					?>
 					pagination: true,
-					page: <?php echo absint( $atts['posts_per_page'] ); ?>,
+					page: posts_per_page,
 					<?php
 					endif;
 					?>
@@ -82,7 +83,7 @@ $taxonomies_filters = $data->get_taxonomy_filters();
 						return;
 					}
 
-					show_items = parseInt(list.visibleItems.length) + list.page;
+					show_items = parseInt(list.visibleItems.length) + posts_per_page;
 					list.show(1, show_items);
 				}
 
@@ -107,7 +108,7 @@ $taxonomies_filters = $data->get_taxonomy_filters();
 				<button class="btn btn-primary d-block mx-auto" id="cp-dir-load-more" data-action="load-entries"
 				        data-page="<?php echo absint( $data->paged ); ?>" aria-controls="<?php echo esc_attr( $dir_id ); ?>-content">
 					<?php
-						echo apply_filters( 'cp-dir-load-more-label', __( 'Show more', 'cp-dir' ) );
+					echo apply_filters( 'cp-dir-load-more-label', __( 'More Staff', 'cp-dir' ) );
 					?>
 				</button>
 			<?php
