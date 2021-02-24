@@ -33,6 +33,7 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 
 		var $navbar;
 		var $hover;
+		var $aria_label;
 
 		function __construct( $navbar = false, $hover = false ) {
 			$this->navbar = $navbar;
