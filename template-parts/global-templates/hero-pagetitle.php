@@ -27,14 +27,14 @@ if ( $hero_style || ( is_customize_preview() && ( ! is_singular() || ! get_post_
 				if ( $subtitle || $meta ) {
 					?>
 					<div class="page-meta entry-meta">
-						<?php if ( $subtitle ) { ?>
-							<p>
-								<?php echo $subtitle; ?>
-							</p>
-						<?php } ?>
-						<?php if ( $meta ) { ?>
-							<?php echo $meta; ?>
-						<?php } ?>
+						<?php 
+						if ( $subtitle ) {
+							echo $subtitle;
+						}
+						if ( $meta ) {
+							echo $meta;
+						} 
+						?>
 					</div>
 					<?php
 				}
@@ -53,7 +53,7 @@ if ( $hero_style || ( is_customize_preview() && ( ! is_singular() || ! get_post_
 		if ( $hero_style == 'img-under-title' && ! is_customize_preview() ) {
 			$thumbnail_size = 'large';
 		}
-		if ( has_post_thumbnail( $thumbnail_post_id ) ) {
+		if ( is_singular() && has_post_thumbnail( $thumbnail_post_id ) ) {
 			?>
 			<div class="hero-image-holder hero-featured-image-holder" data-aos="fade" data-aos-duration="1000">
 				<?php echo get_the_post_thumbnail( $thumbnail_post_id, $thumbnail_size ); ?>
