@@ -80,3 +80,17 @@ if ( ! function_exists( 'cpschool_get_menu_icons_colors' ) ) {
 		return $colors;
 	}
 }
+
+
+add_filter('kirki_styles_array', 'cpschool_get_menu_icons_colors');
+function cpschool_get_menu_icons_colors( $css ) {
+	// Changes opacity from % based to 0-1 based for better IE11 compatibility.
+	$opacity_change = array( '--hero-main-img-opacity', '--hero-main-img-opacity' );
+	foreach ( $opacity_change as $name ) {
+		if( isset( $css['global'][':root'][$name] ) ) {
+			$css['global'][':root'][$name] = str_replace( '%', '', $css['global'][':root'][$name] / 10 );
+		}
+	}
+
+	return $css;
+}
