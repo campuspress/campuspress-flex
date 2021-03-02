@@ -14,7 +14,7 @@ defined( 'ABSPATH' ) || exit;
 
 
 <footer class="wrapper has-background has-footer-main-bg-color-background-color" id="wrapper-footer">
-	<div id="footer-content" data-aos="fade" data-aos-duration="1000" data-aos-anchor-placement="top">
+	<div id="footer-content">
 		<?php get_template_part( 'template-parts/sidebar-templates/sidebar', 'footerfull' ); ?>
 
 		<?php
