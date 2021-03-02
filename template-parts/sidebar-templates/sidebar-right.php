@@ -13,7 +13,7 @@ if ( ! is_active_sidebar( 'sidebar-right' ) ) {
 }
 ?>
 
-<aside <?php cpschool_class( 'sidebar-widget-area', 'col-md-3 widget-area sidebar-widget-area' ); ?> id="right-sidebar">
+<aside <?php cpschool_class( 'sidebar-widget-area', 'col-md-4 col-xl-3 widget-area sidebar-widget-area' ); ?> id="right-sidebar">
 	<div class="sidebar-widget-area-content">
 		<?php dynamic_sidebar( 'sidebar-right' ); ?>
 	</div>
