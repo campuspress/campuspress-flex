@@ -206,3 +206,25 @@ if ( ! function_exists( 'cpschool_all_excerpts_get_more_link' ) ) {
 		return $post_excerpt;
 	}
 }
+
+if ( ! function_exists( 'cpschool_get_the_archive_title_prefix' ) ) {
+	add_filter( 'get_the_archive_title_prefix', 'cpschool_get_the_archive_title_prefix' );
+
+	/**
+	 * Removes "Archives:" for post type archives titles.
+	 *
+	 * @param string $prefix Prefix for archive title.
+	 *
+	 * @return string
+	 */
+	function cpschool_get_the_archive_title_prefix( $prefix ) {
+		if ( $prefix && is_post_type_archive() ) {
+			$archives_prefix = _x( 'Archives:', 'post type archive title prefix' );
+			if ( $prefix == $archives_prefix ) {
+				$prefix = '';
+			}
+		}
+
+		return $prefix;
+	}
+}
