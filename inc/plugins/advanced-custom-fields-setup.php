@@ -36,7 +36,7 @@ if ( ! function_exists( 'cpschool_acf_register_settings' ) ) {
 	// Registers all custom ACF settings.
 	add_action( 'after_setup_theme', 'cpschool_acf_register_settings' );
 	function cpschool_acf_register_settings() {
-
+		
 		if ( function_exists( 'acf_add_local_field_group' ) ) :
 
 			acf_add_local_field_group(

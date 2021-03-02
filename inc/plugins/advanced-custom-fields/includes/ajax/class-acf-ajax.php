@@ -62,8 +62,6 @@ class ACF_Ajax {
 	}
 	
 	/**
-	 * set
-	 *
 	 * Sets request data for the given key.
 	 *
 	 * @date	31/7/18
@@ -73,7 +71,7 @@ class ACF_Ajax {
 	 * @param	mixed $value The data value.
 	 * @return	ACF_Ajax
 	 */
-	function set( $key = '', $value ) {
+	function set( $key = '', $value = null ) {
 		$this->request[$key] = $value;
 		return $this;
 	}
@@ -128,16 +126,35 @@ class ACF_Ajax {
 	 */
 	function request() {
 		
-		// Verify ajax request
-		if( !acf_verify_ajax() ) {
-			wp_send_json_error();
-		}
-		
 		// Store data for has() and get() functions.
 		$this->request = wp_unslash($_REQUEST);
 		
+		// Verify request and handle error.
+		$error = $this->verify_request( $this->request );
+		if( is_wp_error( $error ) ) {
+			$this->send( $error );
+		}
+		
 		// Send response.
 		$this->send( $this->get_response( $this->request ) );
+	}
+	
+	/**
+	 * Verifies the request.
+	 *
+	 * @date	9/3/20
+	 * @since	5.8.8
+	 *
+	 * @param	array $request The request args.
+	 * @return	(bool|WP_Error) True on success, WP_Error on fail.
+	 */
+	function verify_request( $request ) {
+		
+		// Verify nonce.
+		if( !acf_verify_ajax() ) {
+			return new WP_Error( 'acf_invalid_nonce', __( 'Invalid nonce.', 'acf' ), array( 'status' => 404 ) );
+		}
+		return true;
 	}
 	
 	/**
@@ -170,12 +187,38 @@ class ACF_Ajax {
 		
 		// Return error.
 		if( is_wp_error($response) ) {
-			wp_send_json_error(array( 'error' => $response->get_error_message() ));
+			$this->send_error( $response );
 		
 		// Return success.
 		} else {
-			wp_send_json_success($response);
+			wp_send_json( $response );
 		}
+	}
+	
+	/**
+	 * Sends a JSON response for the given WP_Error object.
+	 *
+	 * @date	8/3/20
+	 * @since	5.8.8
+	 *
+	 * @param	WP_Error error The error object.
+	 * @return	void
+	 */
+	function send_error( $error ) {
+		
+		// Get error status
+		$error_data = $error->get_error_data();
+		if( is_array($error_data) && isset($error_data['status']) ) {
+			$status_code = $error_data['status'];
+		} else {
+			$status_code = 500;
+		}
+		
+		wp_send_json(array(
+			'code'		=> $error->get_error_code(),
+			'message'	=> $error->get_error_message(),
+			'data'		=> $error->get_error_data()
+		), $status_code);
 	}
 }
 
