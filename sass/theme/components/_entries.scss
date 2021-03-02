@@ -123,6 +123,46 @@ body.blog.hide-hero-page-title {//CUSTOMIZER-ONLY
 	> *:last-child {
 		margin-bottom: 0;
     }
+
+    h2:not(:first-child), .h2:not(:first-child) {
+        margin-top: $spacer / 2 * 2;
+    }
+
+    h2:not(:last-child), .h2:not(:last-child) {
+        margin-bottom: $spacer / 3 * 2;
+    }
+
+    h3:not(:first-child), .h3:not(:first-child) {
+        margin-top: $spacer / 2 * 1.75;
+    }
+
+    h3:not(:last-child), .h3:not(:last-child) {
+        margin-bottom: $spacer / 3 * 1.75;
+    }
+
+    h4:not(:first-child), .h4:not(:first-child) {
+        margin-top: $spacer / 2 * 1.5;
+    }
+
+    h4:not(:last-child), .h4:not(:last-child) {
+        margin-bottom: $spacer / 3 * 1.5;
+    }
+
+    h5:not(:first-child), .h5:not(:first-child) {
+        margin-top: $spacer / 2;
+    }
+
+    h5:not(:last-child), .h5:not(:last-child) {
+        margin-bottom: $spacer / 3;
+    }
+
+    h6:not(:first-child), .h6:not(:first-child) {
+        margin-top: $spacer / 2 * 0.75;
+    }
+
+    h6:not(:last-child), .h6:not(:last-child) {
+        margin-bottom: $spacer / 3 * 0.75;
+    }
     
     // Makes it possible to use spacer block to set top margin.
     > .wp-block-spacer:first-child + * {
@@ -193,4 +233,9 @@ body.blog.hide-hero-page-title {//CUSTOMIZER-ONLY
         color: var(--color-boxes-accent-hl-contrast);
         background-color: var(--color-boxes-accent-hl);
     }
+}
+
+.cpschool-read-more-link-holder {
+    display: block;
+    margin-top: $spacer/3;
 }

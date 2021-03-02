@@ -189,11 +189,11 @@
 
 .wp-block-latest-posts {
 	> li > a:first-of-type {
-		@extend .h2;
+		@extend .h3;
 		@extend .h;
 		@extend %entry-title-a;
 		margin-bottom: $spacer/2;
-		display: inline-block;
+		display: block;
 	}
 	&.is-grid {
 		margin-left: 0;
@@ -255,9 +255,6 @@
 	.wp-block-latest-posts__post-excerpt {
 		margin-top: $spacer/3;
 		margin-bottom: 0;
-		.cpschool-read-more-link {
-			margin-top: $spacer/3;
-		}
 	}
 }
 

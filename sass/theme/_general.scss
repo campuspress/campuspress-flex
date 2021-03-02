@@ -5,10 +5,12 @@
 #{$el-body} {
     color: var(--color-bg-contrast);
     background-color: var(--color-bg);
-    @include adjusted-size($font-size-base * 1, '--body-font-size');
-    
     font-display: optional;
     font-family: system-ui, sans-serif;
+    @include adjusted-size($font-size-base * 0.9, '--body-font-size');
+    @include media-breakpoint-up(md) {
+        @include adjusted-size($font-size-base, '--body-font-size');
+    }
     &.site-boxed {
         background-color: var(--color-bg-secondary);
         .site {
@@ -24,7 +26,6 @@
 .wrapper {
     padding-top: $spacer;
     padding-bottom: $spacer;
-    
     @include media-breakpoint-up(xl) {
         padding-top: $spacer*2;
         padding-bottom: $spacer*2;

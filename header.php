@@ -27,9 +27,14 @@ defined( 'ABSPATH' ) || exit;
 
 	<?php get_template_part( 'template-parts/global-templates/bar', 'alert' ); ?>
 
-	<?php get_template_part( 'template-parts/global-templates/navbar', 'secondary' ); ?>
+	<?php 
+	if( get_theme_mod( 'header_secondary_under_primary' ) == false ) {
+		get_template_part( 'template-parts/global-templates/navbar', 'secondary' );
+	}
+	?>
 
-	<div id="wrapper-navbar-main-top" <?php cpschool_class( 'navbar-main-wrapper-top' ); ?>></div><?php // This is used to detect stickness of navigation ?>
+	<div id="wrapper-navbar-main-top" <?php cpschool_class( 'navbar-main-wrapper-top' ); ?>></div>
+	<?php // This is used to detect stickness of navigation ?>
 	<div id="wrapper-navbar-main" <?php cpschool_class( 'navbar-main-wrapper', 'wrapper-navbar' ); ?> itemscope itemtype="http://schema.org/WebSite">
 		<nav id="navbar-main" <?php cpschool_class( 'navbar-main', 'navbar navbar-expand-md nav-styling-underline has-background has-header-main-bg-color-background-color' ); ?> aria-label="<?php esc_html_e( 'main', 'cpschool' ); ?>">
 			<div <?php cpschool_class( 'navbar-main-container', 'navbar-container' ); ?>>
@@ -44,7 +49,11 @@ defined( 'ABSPATH' ) || exit;
 					<?php endif; ?>
 							<?php do_action( 'cpschool_navbar_main_logo_text_before' ); ?>
 
-							<a <?php cpschool_class( 'navbar-brand', 'navbar-brand logo-font' ); ?>  rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url">
+							<?php
+							$header_main_logo_url = cpschool_get_home_url();
+							?>
+
+							<a <?php cpschool_class( 'navbar-brand', 'navbar-brand logo-font' ); ?>  rel="home" href="<?php echo esc_url( $header_main_logo_url ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url">
 								<span class="navbar-brand-text"><?php bloginfo( 'name' ); ?></span>
 
 								<?php if ( ( get_theme_mod( 'header_main_logo_position' ) == 'dropbox' && get_theme_mod( 'header_main_show_tagline' ) ) || is_customize_preview() ) { ?>
@@ -53,7 +62,7 @@ defined( 'ABSPATH' ) || exit;
 							</a>
 
 							<?php if ( ( get_theme_mod( 'header_main_logo_position' ) != 'dropbox' && get_theme_mod( 'header_main_show_tagline' ) ) || is_customize_preview() ) { ?>
-								<a rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" <?php cpschool_class( 'navbar-brand-subtext', 'navbar-brand-subtext' ); ?>>
+								<a rel="home" href="<?php echo esc_url( $header_main_logo_url ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" <?php cpschool_class( 'navbar-brand-subtext', 'navbar-brand-subtext' ); ?>>
 									<?php bloginfo( 'description' ); ?>
 								</a>
 							<?php } ?>
@@ -124,6 +133,12 @@ defined( 'ABSPATH' ) || exit;
 			</div><!-- #navbar-container -->
 		</nav>
 	</div><!-- #wrapper-navbar end -->
+
+	<?php 
+	if( get_theme_mod( 'header_secondary_under_primary' ) == true ) {
+		get_template_part( 'template-parts/global-templates/navbar', 'secondary' );
+	}
+	?>
 
 	<?php
 	$hero_style = get_theme_mod( 'hero_main_style' );

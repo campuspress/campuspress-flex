@@ -4,7 +4,7 @@
 .btn {
     text-transform: uppercase;
     text-decoration: none;
-    transition: opacity 0.5s ease, background-color 0.5s ease;
+    transition: opacity 0.5s ease, background-color 0.5s ease, box-shadow 0.5s ease;
     font-weight: 600;
     font-variation-settings: 'wght' 600;
     border-style: solid;
@@ -14,7 +14,11 @@
     text-align: center;
     vertical-align: middle;
     user-select: none;
-    @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size, $btn-line-height, $btn-border-radius);
+    outline: none;
+    @include button-size($btn-padding-y*0.9, $btn-padding-x*0.9, $btn-font-size*0.9, $btn-line-height*0.9, $btn-border-radius);
+    @include media-breakpoint-up(lg) {
+        @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size, $btn-line-height, $btn-border-radius);
+    }
     body:not(.shadows-disabled) &:not(:focus) {
         @include adjusted-shadow(0.7);
     }
@@ -47,6 +51,9 @@
     }
     */
 }
+button.btn {
+    outline: none;
+}
 
 body.btn-style-outline .btn,
 .is-style-outline .btn,
@@ -64,11 +71,17 @@ body.btn-style-outline .btn,
 }
 
 .btn-lg {
-    @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-line-height-lg, $btn-border-radius-lg);
+    @include button-size($btn-padding-y-lg*0.9, $btn-padding-x-lg*0.9, $btn-font-size-lg*0.9, $btn-line-height-lg*0.9, $btn-border-radius-lg);
+    @include media-breakpoint-up(lg) {
+        @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-line-height-lg, $btn-border-radius-lg);
+    }
 }
 
 .btn-sm {
-    @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-line-height-sm, $btn-border-radius-sm);
+    @include button-size($btn-padding-y-sm*0.9, $btn-padding-x-sm*0.9, $btn-font-size-sm*0.9, $btn-line-height-sm*0.9, $btn-border-radius-sm);
+    @include media-breakpoint-up(lg) {
+        @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-line-height-sm, $btn-border-radius-sm);
+    }
 }
 
 .btn-block {

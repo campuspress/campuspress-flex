@@ -1,11 +1,36 @@
 <?php
-if ( has_nav_menu( 'secondary-left' ) || has_nav_menu( 'secondary-right' ) || apply_filters( 'navbar-secondary-force-show', false ) ) {
+if ( has_nav_menu( 'secondary-left' ) || has_nav_menu( 'secondary-right' ) || apply_filters( 'navbar-secondary-force-show', false ) || get_theme_mod( 'secondary_logo' ) ) {
 	$nav_hover = get_theme_mod( 'nav_hover_dropdowns' );
+	$secondary_logo = get_theme_mod( 'secondary_logo' );
 
+	$secondary_logo_url = get_theme_mod( 'secondary_logo_url' );
 	?>
+
 	<nav id="navbar-secondary" <?php cpschool_class( 'navbar-secondary', 'navbar navbar-expand-md nav-styling-underline has-background has-header-secondary-bg-color-background-color' ); ?> aria-label="<?php esc_html_e( 'secondary', 'cpschool' ); ?>">
 		<div <?php cpschool_class( 'navbar-secondary-container', 'navbar-container' ); ?>>
 			<?php do_action( 'cpschool_navbar_secondary_container_start' ); ?>
+			
+			<?php
+			if( $secondary_logo ) {
+				echo '<div class="navbar-brand-holder">';
+
+				if( $secondary_logo_url ) { 
+					?>
+					<a href="<?php echo esc_url( $secondary_logo_url ); ?>" class="navbar-brand secondary-logo-link">
+					<?php 
+				}
+				
+				echo wp_get_attachment_image( $secondary_logo, 'full' );
+				
+				if( $secondary_logo_url ) {
+					?>
+					</a>
+					<?php 
+				}
+
+				echo '</div>';
+			}
+			?>
 
 			<?php if ( has_nav_menu( 'secondary-left' ) ) { ?>
 				<div id="navbar-nav-secondary-left" class="navbar-nav-container">

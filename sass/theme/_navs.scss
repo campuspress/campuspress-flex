@@ -167,7 +167,7 @@
 
 .navbar {
     z-index: 3;
-    padding: $spacer/4 $spacer * 0.5;
+    padding: $spacer / 4 $grid-gutter-width / 2;
     transition: padding 0.2s ease-in-out;
     
     .nav-item {
@@ -212,10 +212,6 @@
             display: flex;
             align-items: center;
         }
-
-        @include media-breakpoint-up(xl) {
-            margin: $spacer * 0.5 0;
-        }
     }
 
     .navbar-button-nav-right {
@@ -240,33 +236,26 @@
     }
 
     .navbar-brand-holder {
-        @include adjusted-size($font-size-base, '--body-font-size', '--header-main-logo-font-size');
-        @include adjusted-size($font-size-base, '--body-font-size', '--header-main-logo-font-size', line-height);
         display: flex;
         flex-wrap: wrap;
         align-items: center;
         margin-right: $navbar-padding-x/2;
         @include media-breakpoint-up(md) {
-            flex-grow: 100;
-            flex-basis: 0;
+            //flex-grow: 100;
+            //flex-basis: 0;
             .navbar-brand {
                 margin-right: $navbar-padding-x/2;
             }
         }
     }
     .navbar-brand {
-        text-align: center;
         opacity: 1;
         text-decoration: none;
+        white-space: initial;
         img {
             transition: width 0.2s ease-in-out;
-            width: calc( var(--header-main-logo-image-width) * 3/4 );
             max-width: max-content;
             display: inline-block;
-
-            @include media-breakpoint-up(xl) {
-                width: var(--header-main-logo-image-width);
-            }
         }
     }
     .navbar-brand-text {
@@ -337,23 +326,17 @@
     }
 
     @include media-breakpoint-up(md) {
+        padding: calc( #{$spacer} / 4 * var(--header-main-height) / 100 ) 0;
         .navbar-navs-container {
             display: flex;
             align-items: center;
         }
-        .navbar-sticks & {
-            .navbar-brand {
-                img {
-                    width: calc( var(--header-main-logo-image-width) * 3/4 );
-                }
-            }
-        }
     }
 
     @include media-breakpoint-up(xl) {
-        padding: $spacer * 0.5 $spacer;
+        padding: calc( #{$spacer} / 2 * var(--header-main-padding-v) / 100 ) $spacer;
         .navbar-sticks & {
-            padding: $spacer/4 $spacer * 0.5;
+            padding: calc( #{$spacer} / 4 * var(--header-main-padding-v) / 100 ) $spacer * 0.5;
         }
     }
 }
@@ -380,12 +363,14 @@
             .menu-item-text {
                 //background-size: 100% 2px;
                 border-bottom-color: currentColor;
+                border-bottom-color: var(--color-accent);
             }
         }
     } 
     .navbar-brand-text:hover {
         //background-size: 100% 2px;
         border-bottom-color: currentColor;
+        border-bottom-color: var(--color-accent);
     }
 }
 
@@ -419,6 +404,11 @@
         &, &:hover, .navbar-brand-text {
             color: var(--header-main-dropbox-logo-text-color);
         }
+        &:hover, &:active {
+            &, & .navbar-brand-text {
+                text-decoration: underline;
+            }
+        }
         img, .navbar-brand-text {
             position: relative;
         }
@@ -444,7 +434,7 @@
 
         @include media-breakpoint-up(md) {
             margin-right: 0;
-            width: calc( var(--header-main-dropbox-max-width) * 3/4 );
+            width: var(--header-main-dropbox-max-width);
             position: absolute;
             
             padding: $spacer/3;
@@ -463,15 +453,12 @@
                 }*/
             }
         }
-        @include media-breakpoint-up(xl) {
-            width: var(--header-main-dropbox-max-width);
-        }
     }
     &.navbar-sticks .navbar-brand {
         width: calc( var(--header-main-dropbox-max-width) * 3/4 );
     }
     .navbar-brand-text:hover {
-        background-size: 0;
+        border-bottom-color: transparent;
     }
     .navbar-brand-subtext {
         margin: 0;
@@ -585,9 +572,6 @@
         top: 0;        
     }
     body.admin-bar.navbar-main-sticky-top & {
-        @include media-breakpoint-up(sm) {
-            top: $wp-admin-bar-height-sm;
-        }
         @include media-breakpoint-up(md) {
             top: $wp-admin-bar-height;
         }
@@ -595,10 +579,19 @@
 }
 
 #navbar-main {
+    @include adjusted-size($font-size-base * 0.9, '--body-font-size', '--header-main-font-size');
     background: none;
     position: relative;
-    @include adjusted-size($font-size-base, '--body-font-size', '--header-main-font-size');
-
+    @include media-breakpoint-up(md) {
+        @include adjusted-size($font-size-base, '--body-font-size', '--header-main-font-size');
+        margin-bottom: var(--header-main-gap-height);
+    }
+    .navbar-secondary-under-main & {
+        @include media-breakpoint-up(md) {
+            margin-bottom: 0;
+        }
+    }
+    
     &::before {
         z-index: -1;
         background-color: var(--header-main-bg-color);
@@ -620,12 +613,37 @@
         }
     }
 
-    .dropdown-megamenu-menu {
-        padding-top: calc( var(--header-main-gap-height) + #{$spacer * 0.5} );
+    .navbar-brand {
+        img {
+            width: calc( var(--header-main-logo-image-width) * 3/4 );
+
+            @include media-breakpoint-up(xl) {
+                width: var(--header-main-logo-image-width);
+            }
+        }
     }
 
-    @include media-breakpoint-up(md) {
-        margin-bottom: var(--header-main-gap-height);
+    .navbar-brand-holder {
+        @include adjusted-size($font-size-base * 0.9, '--body-font-size', '--header-main-logo-font-size');
+        @include adjusted-size($font-size-base * 0.9, '--body-font-size', '--header-main-logo-font-size', line-height);
+        @include media-breakpoint-up(md) {
+            @include adjusted-size($font-size-base, '--body-font-size', '--header-main-logo-font-size');
+            @include adjusted-size($font-size-base, '--body-font-size', '--header-main-logo-font-size', line-height);
+        }
+    }
+    
+    .navbar-sticks & {
+        .navbar-brand {
+            img {
+                @include media-breakpoint-up(md) {
+                    width: calc( var(--header-main-logo-image-width) * 3/4 );
+                }
+            }
+        }
+    }
+
+    .dropdown-megamenu-menu {
+        padding-top: calc( var(--header-main-gap-height) + #{$spacer * 0.5} );
     }
 
     body.is-customizer & {//CUSTOMIZER-ONLY
@@ -634,16 +652,25 @@
 }
 
 #navbar-secondary {
+    @include adjusted-size($font-size-base * 0.9, '--body-font-size', '--header-secondary-font-size');
     z-index: 4;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    @include adjusted-size($font-size-base, '--body-font-size', '--header-secondary-font-size');
-
+    padding-top: calc( #{$spacer} / 2 * var(--header-secondary-padding-v) / 100 );
+    padding-bottom: calc( #{$spacer} / 2 * var(--header-secondary-padding-v) / 100 );
+    @include media-breakpoint-up(md) {
+        @include adjusted-size($font-size-base, '--body-font-size', '--header-secondary-font-size');
+    }
+    .navbar-secondary-under-main & {
+        z-index: 3;
+        margin-bottom: var(--header-main-gap-height);
+    }
     #navbar-nav-secondary-left .nav > li:first-child > .nav-link {
         margin-left: 0px;
     }
-    #navbar-nav-secondary-right .nav > li:last-child > .nav-link {
-        margin-right: 0px;
+    #navbar-nav-secondary-right {
+        margin-left: auto;
+        .nav > li:last-child > .nav-link {
+            margin-right: 0px;
+        }
     }
 
     .nav {
@@ -658,6 +685,18 @@
     .nav-link:not(.has-styling) .menu-item-text {
         padding-top: $nav-link-padding-x*1/7;
         padding-bottom: $nav-link-padding-x*1/7;
+    }
+
+    .navbar-brand {
+        margin-top: $spacer/5;
+        margin-bottom: $spacer/5;
+        img {
+            width: calc( var(--header-secondary-logo-image-width) * 3/4 );
+
+            @include media-breakpoint-up(xl) {
+                width: var(--header-secondary-logo-image-width);
+            }
+        }
     }
 
     .navbar-nav {
@@ -690,7 +729,7 @@
         padding-top: $spacer/4;
     }
 
-    .navbar-main-sticky-top & {
+    .navbar-main-sticky-top:not(.navbar-secondary-under-main) & {
         z-index: $zindex-sticky + 1;
     }
 

@@ -2,7 +2,7 @@
 	a, %a {
 		transition: opacity 0.5s ease, color 0.5s ease;
 		&:hover {
-			text-decoration: underline;
+			text-decoration: none;
 			opacity: 0.8;
 		}
 	}
