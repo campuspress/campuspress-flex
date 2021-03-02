@@ -184,7 +184,6 @@ class CPDirectoryData {
 
 		$fields_js = array( array( 'data' => array( 'entry-id' ) ) );
 		$fields    = $this->get_fields();
-		//var_dump($fields);
 		foreach ( $fields as $field ) {
 			if ( $field['type'] == 'taxonomy' ) {
 				$fields_js[] = array(

@@ -153,23 +153,24 @@ function cp_dir_get_available_fields( $source ) {
 		);
 	}
 
-	$groups = acf_get_field_groups( array( 'post_type' => $source ) );
-	foreach ( $groups as $group ) {
-		$group_fields = acf_get_fields( $group );
-		foreach ( $group_fields as $group_field ) {
-            //var_dump($group_field);
-			$fields[ 'cf_' . $group_field['name'] ] = array(
-				'name'       => $group_field['name'],
-				'label'      => $group_field['label'],
-				'type'       => 'custom_field',
-				'value_type' => $group_field['type'],
-                'default'    => false,
-                'args'       => array(
-                    'name_field' => true,
-                ),
-			);
+	if ( function_exists( 'acf_get_field_groups' ) && function_exists( 'acf_get_fields' ) ) :
+		$groups = acf_get_field_groups( array( 'post_type' => $source ) );
+		foreach ( $groups as $group ) {
+			$group_fields = acf_get_fields( $group );
+			foreach ( $group_fields as $group_field ) {
+				$fields[ 'cf_' . $group_field['name'] ] = array(
+					'name'       => $group_field['name'],
+					'label'      => $group_field['label'],
+					'type'       => 'custom_field',
+					'value_type' => $group_field['type'],
+					'default'    => false,
+					'args'       => array(
+						'name_field' => true,
+					),
+				);
+			}
 		}
-	}
+	endif;
 
 	return apply_filters( 'cp_dir_get_available_fields', $fields, $source );
 }
@@ -252,8 +253,8 @@ function cp_dir_get_field_value( $entry_id, $field_details ) {
 	if ( $value_raw_content ) {
 		switch ( $field_details['value_type'] ) :
 			case 'email':
-				$email_data = explode( '@', $value_raw_content );
-				$value_raw_attr = $email_data[0];
+				$email_data        = explode( '@', $value_raw_content );
+				$value_raw_attr    = $email_data[0];
 				$value_raw_content = '<a href="mailto:' . esc_attr( $value_raw_content ) . '">' . esc_html( $value_raw_content ) . '</a>';
 				break;
 		endswitch;
