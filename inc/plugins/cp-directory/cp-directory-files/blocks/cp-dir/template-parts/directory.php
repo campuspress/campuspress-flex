@@ -5,6 +5,8 @@ if ( ! $data ) {
 	return;
 }
 
+$label = $data->post_type_object->label;
+
 $class_name = 'wp-block-cp-dir-cp-dir cp-dir';
 if ( ! empty( $atts['className'] ) ) {
 	$class_name .= ' ' . $atts['className'];
@@ -13,17 +15,18 @@ if ( ! empty( $atts['className'] ) ) {
 $dir_id = $data->get_directory_id();
 
 $entries = $data->get_entries();
+$entries_count = count( $entries );
 
 $filters            = $data->get_filters();
 $taxonomies_filters = $data->get_taxonomy_filters();
 ?>
-<div class="<?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $dir_id ); ?>" aria-label="<?php esc_attr_e( 'Directory', 'cp-dir' ); ?>">
+<div class="<?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $dir_id ); ?>" aria-label="<?php echo esc_attr( apply_filters( 'cp_dir_directory_label', $label, $data ) ); ?>" data-source="<?php echo esc_attr($data->post_type_object->name); ?>">
 	<?php
 	if ( $filters || $taxonomies_filters ) {
 		?>
 		<form class="cp-dir-controls" aria-controls="<?php echo esc_attr( $dir_id ); ?>-content">
 			<div class="cp-dir-sr-info screen-reader-text">
-				<?php _e( 'Directory instantly refresh upon filtering.', 'cp-dir' ); ?>
+				<?php echo apply_filters( 'cp_dir_directory_refresh_info', __( 'Items will instantly refresh upon filtering.', 'cp-dir' ), $data ); ?>
 			</div>
 			
 			<?php include( apply_filters( 'cp_dir_path_directory_filters', $this->dir . '/cp-directory-files/blocks/cp-dir/template-parts/directory-filters.php', $data ) ); ?>
@@ -31,12 +34,12 @@ $taxonomies_filters = $data->get_taxonomy_filters();
 		<?php
 	}
 	?>
-	<div class="cp-dir-content" id="<?php echo esc_attr( $dir_id ); ?>-content" aria-label="<?php esc_attr_e( 'Directory Entries', 'cp-dir' ); ?>">
+	<div class="cp-dir-content" id="<?php echo esc_attr( $dir_id ); ?>-content" aria-label="<?php echo apply_filters( 'cp_dir_directory_entries_label', sprintf( __( '%s Entries', 'cp-dir' ), $label ) ); ?>">
 		<div class="cp-dir-sr-info screen-reader-text" aria-live="polite">
-			<?php printf( __( '%s results found', 'cp-dir' ), '<span class="cp-dir-sr-info-count">' . count( $entries ) . '</span>' ); ?>
+			<?php printf( __( '%s results found', 'cp-dir' ), '<span class="cp-dir-sr-info-count">' . $entries_count . '</span>' ); ?>
 		</div>
 		<?php
-		if ( $entries ) {
+		if ( $entries_count ) {
 			$fields = $data->get_fields();
 
 			include( apply_filters( 'cp_dir_path_directory_content', $this->dir . '/cp-directory-files/blocks/cp-dir/template-parts/directory-content.php', $data ) );
@@ -51,6 +54,7 @@ $taxonomies_filters = $data->get_taxonomy_filters();
 					valueNames: <?php echo $field_js; ?>,
 					listClass: 'cp-dir-content-list',
 					searchClass: 'cp-dir-field-search',
+					searchDelay: 250
 			} );
 			</script>
 			<?php

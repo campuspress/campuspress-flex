@@ -142,7 +142,7 @@ class CPDirectoryData {
 				if ( $field_details['type'] == 'taxonomy' ) {
 					if ( $taxonomy_filters ) {
 						foreach ( $taxonomy_filters as $filter ) {
-							$this->fields[] = array_merge(
+							$this->fields[$filter['field_name']] = array_merge(
 								$field_details,
 								array(
 									'label'      => $filter['label'],
@@ -159,7 +159,7 @@ class CPDirectoryData {
 						$field_name = 'cp-dir-field-' . $field_details['name'];
 					}
 
-					$this->fields[] = array_merge(
+					$this->fields[$field_name] = array_merge(
 						$field_details,
 						array(
 							'field_name' => $field_name,
@@ -182,7 +182,7 @@ class CPDirectoryData {
 			return $pre;
 		}
 
-		$fields_js = array( array( 'data' => array( 'entry-id' ) ) );
+		$fields_js = array( array( 'data' => array( 'entry-id', 'entry-parent-ids' ) ) );
 		$fields    = $this->get_fields();
 		foreach ( $fields as $field ) {
 			if ( $field['type'] == 'taxonomy' ) {
@@ -217,6 +217,12 @@ class CPDirectoryData {
 	}
 
 	function get_entries() {
+		$pre = apply_filters( 'cp_dir_pre_get_entries', false, $this->atts );
+
+		if ( false !== $pre ) {
+			return $pre;
+		}
+
 		$args = array(
 			'numberposts' => 200,
 			'category'    => 0,

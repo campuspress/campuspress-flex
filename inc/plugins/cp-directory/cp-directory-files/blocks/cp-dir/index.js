@@ -88,7 +88,7 @@
 
 			CPDir.forEach((postTypeDetails) => {
 				postTypeDetails.taxonomies.forEach((taxDetails) => {
-					categories[taxDetails.name] = select('core').getEntityRecords('taxonomy', taxDetails.name);
+					categories[taxDetails.name] = select('core').getEntityRecords('taxonomy', taxDetails.name, {per_page: -1});
 				});
 			});
 
@@ -241,7 +241,7 @@
 
 			settings.push(
 				el( 'style', {},
-					'.cp-dir-checkbox-list:not(:last-child) { margin-bottom: 2em; } .cp-dir-checkbox-list .components-base-control { margin-bottom: 0px !important; }'
+					'.cp-dir-checkbox-list:not(:last-child) { margin-bottom: 2em; } .cp-dir-checkbox-list .components-base-control { margin-bottom: 0px !important; } .components-select-control.hidden {display: none !important;}'
 				),
 			);
 

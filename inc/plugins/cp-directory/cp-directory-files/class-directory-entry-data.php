@@ -51,6 +51,7 @@ class CPDirectoryEntryData {
             
             $fields[] = $field_details;
         }
+        
         return apply_filters( 'cp_dir_get_entry_fields', $fields, $this->post, $this->dir_id );
     }
     

@@ -179,7 +179,7 @@ if( ! class_exists('CPDirectory') ) :
 
             ob_start();
 
-            include( $this->dir . '/cp-directory-files/blocks/cp-dir/template-parts/directory.php' );
+            include( apply_filters( 'cp_dir_path_directory', $this->dir . '/cp-directory-files/blocks/cp-dir/template-parts/directory.php', $atts ) );
             
             return ob_get_clean();
         }
