@@ -97,12 +97,7 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 				$labelledby = 'aria-labelledby="' . esc_attr( end( $matches[2] ) ) . '"';
 				$id         = ' id="' . esc_attr( end( $matches[2] ) ) . '-dropdown"';
 			}
-			if ( $this->aria_label ) {
-				$aria_label = ' aria-label="' . esc_attr( $this->aria_label ) . '"';
-			} else {
-				$aria_label = '';
-			}
-			$output .= "{$n}{$indent}<ul$id $class_names $labelledby role=\"menu\"$aria_label>{$n}";
+			$output .= "{$n}{$indent}<ul$id $class_names $labelledby role=\"menu\">{$n}";
 		}
 
 		/**
@@ -252,7 +247,7 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 						$atts['href']        = '#';
 					}
 				} else {
-					$collpse_as_button = apply_filters( 'cpschool_nav_collapse_as_button', false );
+					$collpse_as_button = apply_filters( 'cpschool_nav_collapse_as_button', false, $item, $args, $depth );
 					$data_target = $atts['id'] . '-dropdown';
 					if ( ! $this->hover ) {
 						if ( ! $collpse_as_button ) {
