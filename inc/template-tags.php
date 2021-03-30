@@ -768,7 +768,7 @@ if ( ! function_exists( 'cpschool_get_search_results_style' ) ) {
 				$post_format = 'search';
 			}
 		}
-		if( !isset( $post_format )  ) {
+		if( empty( $post_format )  ) {
 			$post_format = get_post_type();
 		}
 
