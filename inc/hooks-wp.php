@@ -245,3 +245,37 @@ if ( ! function_exists( 'cpschool_get_the_archive_title_prefix' ) ) {
 		return $prefix;
 	}
 }
+
+if ( ! function_exists( 'cpschool_comment_reply_link' ) ) {
+	add_filter( 'comment_reply_link', 'cpschool_comment_reply_link' );
+
+	/**
+	 * Adds button class to comments reply link
+	 *
+	 * @param string $link Comments reply link html.
+	 *
+	 * @return string
+	 */
+	function cpschool_comment_reply_link( $link ) {
+		$link = str_replace( 'comment-reply-link', 'comment-reply-link btn btn-sm', $link );
+
+		return $link;
+	}
+}
+
+if ( ! function_exists( 'cpschool_cancel_comment_reply_link' ) ) {
+	add_filter( 'cancel_comment_reply_link', 'cpschool_cancel_comment_reply_link' );
+
+	/**
+	 * Adds button class to comments cancel reply link
+	 *
+	 * @param string $link Comments reply link html.
+	 *
+	 * @return string
+	 */
+	function cpschool_cancel_comment_reply_link( $link ) {
+		$link = str_replace( 'id="cancel-comment-reply-link"', 'id="cancel-comment-reply-link" class="comment-reply-link btn btn-sm"', $link );
+
+		return $link;
+	}
+}
