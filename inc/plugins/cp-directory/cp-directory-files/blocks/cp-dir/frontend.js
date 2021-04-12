@@ -46,21 +46,6 @@ jQuery('.cp-dir-control-select select').change(function(){
                         else {
                             active = false;
                         }
-
-                        //Lets check if item has some parents that should be visible while item is visible
-                        /*
-                        if( active ) {
-                            var itemParents = item.values()["entry-parent-ids"];
-                            if( itemParents ) {
-                                itemParents = itemParents.split(',');
-                                itemParents.forEach(function(value) {
-                                    if(itemsParents.indexOf(value) === -1) {
-                                        itemsParents.push(value);
-                                    }
-                                });
-                            }
-                        }
-                        */
                     }
                 }
             });
