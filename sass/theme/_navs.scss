@@ -241,8 +241,8 @@
         align-items: center;
         margin-right: $navbar-padding-x/2;
         @include media-breakpoint-up(md) {
-            //flex-grow: 100;
-            //flex-basis: 0;
+            flex-grow: 100;
+            flex-basis: 0;
             .navbar-brand {
                 margin-right: $navbar-padding-x/2;
             }

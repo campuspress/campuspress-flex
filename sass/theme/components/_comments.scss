@@ -10,15 +10,21 @@ ol.comment-list {
     color: var(--color-boxes-contrast);
 	padding: $spacer / 2 $spacer / 2;
 	margin-bottom: $spacer / 2;
-    a {
+    a:not(.btn) {
         color: var(--color-boxes-accent);
+    }
+    .btn {
+        @extend %color-boxes-btn-secondary;
     }
     .comment {
         margin-top: $spacer / 2;
         background-color: var(--color-bg);
         color: var(--color-bg-contrast);
-        a {
+        a:not(.btn) {
             color: var(--color-bg-accent);
+        }
+        .btn {
+            @extend %color-bg-btn-secondary;
         }
     }
     .children {
