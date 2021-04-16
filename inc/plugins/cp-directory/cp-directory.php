@@ -161,6 +161,10 @@ if( ! class_exists('CPDirectory') ) :
                         'type' => 'string',
                         'default' => '',
                     ),
+                    'posts_per_page' => array(
+                        'type' => 'integer',
+                        'default' => 0,
+                    ),
                 ),
                 'editor_script' => 'cp-dir-block-editor',
                 'editor_style'  => 'cp-dir-block-editor',

@@ -15,3 +15,8 @@
 .cp-dir-control-select {
     flex-grow: 1;
 }
+.cp-dir-pagination {
+    padding: $spacer/4;
+    border: 1px solid var(--color-boxes);
+    border-top: none;
+}

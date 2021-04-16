@@ -5,10 +5,10 @@ if (typeof cpDirectories === 'undefined') {
     cpDirectories = {};
 }
 
-jQuery('.cp-dir-control-select select').change(function(){
+jQuery('.cp-dir-control-select select').on('change', function(){
     jQuery(this).val();
     var dirParent = jQuery(this).parents('.cp-dir');
-    var dirID = jQuery(this).parents('.cp-dir').attr('id');
+    var dirID = dirParent.attr('id');
     
     if ( dirID in cpDirectories ) {
         var itemsParents = [];
@@ -55,18 +55,68 @@ jQuery('.cp-dir-control-select select').change(function(){
     }
 });
 
-jQuery(document).ready(function(){
+jQuery('.cp-dir-control-load-more-btn').on('click', function(){
+    var dirParent = jQuery(this).parents('.cp-dir');
+    var dirID = dirParent.attr('id');
+    var perPage = parseInt(jQuery(this).parents('.cp-dir-pagination').data('per-page'));
+    
+    if ( dirID in cpDirectories ) {
+        showItems = parseInt(cpDirectories[dirID].visibleItems.length) + perPage;
+        cpDirectories[dirID].show(1, showItems);
+        if(cpDirectories[dirID].matchingItems.length <= showItems) {
+            jQuery(this).prop( 'disabled', true );
+        }
+        dirParent.find('.cp-dir-sr-load-jump-btn').show();
+    }
+});
+
+jQuery('.cp-dir-sr-load-jump-btn').on('click', function(){
+    jQuery(this).val();
+    var dirParent = jQuery(this).parents('.cp-dir');
+    var dirID = dirParent.attr('id');
+    var perPage = parseInt(jQuery(this).parents('.cp-dir-pagination').data('per-page'));
+    
+    if ( dirID in cpDirectories ) {
+        var firstNewIndex = parseInt(cpDirectories[dirID].visibleItems.length) - perPage;
+        jQuery(cpDirectories[dirID].items[firstNewIndex].elm).find('a').trigger('focus');
+    }
+});
+
+jQuery(function(){
     jQuery.each( cpDirectories, function( key, value ) {
         var fitleringAdjusted = false;
         var itemsParents = [];
 
+        var paginationEl = jQuery(cpDirectories[key].listContainer).find('.cp-dir-pagination');
+        if( paginationEl.length ) {
+            var perPage = parseInt(paginationEl.data('per-page'));
+        }
+
+        cpDirectories[key].on('searchStart', function(dir){
+            if( paginationEl.length ) {
+                dir.show(1, perPage);
+            }
+        });
+
         cpDirectories[key].on('updated', function(dir){
             if( fitleringAdjusted === false ) {
                 // Updates SR count info.
-            var srInfoCount = jQuery('#' + key).find('.cp-dir-sr-info-count');
-            if(srInfoCount.length) {
-                srInfoCount.text(dir.visibleItems.length);
-            }
+                var srInfoCount = jQuery('#' + key).find('.cp-dir-sr-info-count');
+                if(srInfoCount.length) {
+                    srInfoCount.text(dir.items.length);
+                }
+
+                // Updates load more stuff.
+                if( paginationEl.length ) {                    
+                    paginationEl.find('.cp-dir-sr-load-jump-btn').hide();
+
+                    if(dir.matchingItems.length > perPage) {
+                        paginationEl.find('.cp-dir-control-load-more-btn').prop( 'disabled', false );
+                    }
+                    else {
+                        paginationEl.find('.cp-dir-control-load-more-btn').prop( 'disabled', true );
+                    }                    
+                }
                 
                 // Shows found items parents if present.
                 dir.visibleItems.forEach(function(item) {
@@ -88,7 +138,7 @@ jQuery(document).ready(function(){
                         item.found = true;
                         item.filtered = true;
                     };
-        });
+                });
 
                 fitleringAdjusted = true;
                 dir.update();

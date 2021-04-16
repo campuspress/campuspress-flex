@@ -91,3 +91,9 @@ body.btn-style-outline .btn,
         margin-top: $btn-block-spacing-y;
     }
 }
+
+.btn:disabled {
+    box-shadow: none !important;
+    text-decoration: none !important;
+    opacity: 0.5;
+}

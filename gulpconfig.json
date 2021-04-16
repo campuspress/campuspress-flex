@@ -1,6 +1,6 @@
 {
 	"browserSyncOptions": {
-		"proxy": "campus.local/cpschool/",
+		"proxy": "campuspress.local/theme-campuspress-flex/",
 		"notify": false
 	},
 	"browserSyncWatchFiles": ["./css/*.min.css", "./js/*.min.js", "./**/*.php"],

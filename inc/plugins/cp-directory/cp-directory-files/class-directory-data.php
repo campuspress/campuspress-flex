@@ -224,7 +224,7 @@ class CPDirectoryData {
 		}
 
 		$args = array(
-			'numberposts' => 200,
+			'numberposts' => $this->get_entries_limit(),
 			'category'    => 0,
 			'orderby'     => 'title',
 			'order'       => 'ASC',
@@ -253,6 +253,11 @@ class CPDirectoryData {
 			}
 		}
 
+		/**
+		 * Allows to filter the entries args
+		 */
+		$args = apply_filters( 'cp_dir_get_entries_args', $args, $this->atts );
+
 		$entries = get_posts( $args );
 
 		return apply_filters( 'cp_dir_get_entries', $entries, $args, $this->atts );
@@ -265,5 +270,26 @@ class CPDirectoryData {
 		}
 
 		return apply_filters( 'cp_dir_get_filters', $filters, $this->atts );
+	}
+
+	function get_posts_per_page( $total = false ) {
+		$posts_per_page = false;
+		if ( isset( $this->atts['posts_per_page'] ) ) {
+			if ( $total == false || $total > $this->atts['posts_per_page'] || ( defined( 'REST_REQUEST' ) && $total >= $this->atts['posts_per_page'] ) ) {
+				$posts_per_page = $this->atts['posts_per_page'];
+			}
+		}
+
+		return apply_filters( 'cp_dir_get_posts_per_page', $posts_per_page, $this->atts );
+	}
+
+	function get_entries_limit() {
+		$entries_limit = apply_filters( 'cp_dir_get_entries_limit', 500, $this->atts );
+
+		if( defined( 'REST_REQUEST' ) ) {
+			$entries_limit = $this->get_posts_per_page();
+		}
+
+		return $entries_limit;
 	}
 }

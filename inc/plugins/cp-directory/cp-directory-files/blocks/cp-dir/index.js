@@ -18,7 +18,7 @@
 	var InspectorControls = wp.blockEditor.InspectorControls;
 	var serverSideRender = wp.serverSideRender;
 	var withSelect = window.wp.data.withSelect;
-	var { ToggleControl, CheckboxControl, SelectControl, TreeSelect, PanelBody, Text } = wp.components;
+	var { ToggleControl, CheckboxControl, SelectControl, TreeSelect, PanelBody, RangeControl, Text, __experimentalNumberControl } = wp.components;
 	var { groupBy, cloneDeep } = lodash;
 
 	/**
@@ -72,6 +72,10 @@
 			sort_by: {
 				type: 'string',
 				default: ''
+			},
+			posts_per_page: {
+				type: 'integer',
+				default: 0
 			},
 		},
 
@@ -241,7 +245,7 @@
 
 			settings.push(
 				el( 'style', {},
-					'.cp-dir-checkbox-list:not(:last-child) { margin-bottom: 2em; } .cp-dir-checkbox-list .components-base-control { margin-bottom: 0px !important; } .components-select-control.hidden {display: none !important;}'
+					'.cp-dir-checkbox-list:not(:last-child) { margin-bottom: 2em; } .cp-dir-checkbox-list .components-base-control { margin-bottom: 0px !important; } .components-select-control.hidden {display: none !important;} .components-input-control.hidden {display: none !important;}'
 				),
 			);
 
@@ -258,6 +262,34 @@
 						{ value: 'date', label: __('Date', 'cp-dir') },
 						{ value: 'menu_order', label: __('Order', 'cp-dir') },
 					]
+				} )
+			);
+
+			settings.push(
+				el( ToggleControl, {
+					checked: props.attributes.posts_per_page > 0 ? true : false,
+					label: __( 'Enable "Load More" button', 'cp-dir' ),
+					onChange: function( value ){
+						if( value ) {
+							props.setAttributes( { posts_per_page: 30 } );
+						}
+						else {
+							props.setAttributes( { posts_per_page: 0 } );
+						}
+					},
+				} )
+			);
+
+			settings.push(
+				el( RangeControl, {
+					value: props.attributes.posts_per_page,
+					label: __( 'Entries Per Page', 'cp-dir' ),
+					className: props.attributes.posts_per_page == 0 ? 'hidden' : '',
+					min: 1,
+					max: 500,
+					onChange: function( value ){
+						props.setAttributes( { posts_per_page: value } );
+					},
 				} )
 			);
 
