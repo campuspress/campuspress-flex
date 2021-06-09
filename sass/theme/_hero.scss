@@ -4,6 +4,9 @@
     body:not(.shadows-disabled) & {
         @include adjusted-shadow();
     }
+    .hero-image-top{
+        margin-bottom: 2.5rem;
+    }
     .hero-content {
         min-height: 150px;
         display: flex;
@@ -89,6 +92,9 @@
             padding-bottom: ($jumbotron-padding * 2);
         }
     }
+    .hero-image-top{
+        display: none;
+    }
     .hero-image-holder {
         max-width: var(--site-width);
         margin: $spacer auto 0;
@@ -102,6 +108,9 @@
     }
 }
 .hero-img-above-title {
+    @media (max-width: 768px) {
+    padding-top: 0 !important;
+    }
     background-color: var(--hero-main-bg-color);
     color: var(--hero-main-bg-color-contrast);
     .hero-content {
@@ -109,6 +118,15 @@
         @include media-breakpoint-up(sm) {
             padding-bottom: ($jumbotron-padding * 2);
         }
+    }
+    .hero-image-top {
+        margin-top: 0 !important;
+    }
+    .hero-image-bottom{
+        display: none;
+    }
+    .hero-content{
+        padding-bottom: 2.5rem !important;
     }
     .hero-image-holder {
         max-width: var(--site-width);
