@@ -92,9 +92,6 @@
             padding-bottom: ($jumbotron-padding * 2);
         }
     }
-    .hero-image-top{
-        display: none;
-    }
     .hero-image-holder {
         max-width: var(--site-width);
         margin: $spacer auto 0;
@@ -121,9 +118,6 @@
     }
     .hero-image-top {
         margin-top: 0 !important;
-    }
-    .hero-image-bottom{
-        display: none;
     }
     .hero-content{
         padding-bottom: 2.5rem !important;
