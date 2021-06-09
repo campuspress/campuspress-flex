@@ -1,6 +1,5 @@
 <?php
 $hero_style = cpschool_get_hero_style();
-$img_position = get_theme_mod('hero_main_style');
 
 if ( $hero_style || ( is_customize_preview() && ( ! is_singular() || ! get_post_meta( get_the_ID(), 'cps_hero_title_disable', true ) ) ) ) {
 	$title = cpschool_get_page_title();
@@ -8,7 +7,7 @@ if ( $hero_style || ( is_customize_preview() && ( ! is_singular() || ! get_post_
 	<header id="hero-main" <?php cpschool_class( 'hero-main', 'hero jumbotron jumbotron-fluid has-background has-hero-main-bg-color-background-color' ); ?> aria-label="<?php esc_html_e( 'page title and basic information', 'cpschool' ); ?>">
 		
 		<?php
-			if ($img_position == 'img-above-title'){
+			if ($hero_style == 'img-above-title' || is_customize_preview()){
 				$thumbnail_post_id = false;
 				if ( is_singular() ) {
 					$thumbnail_post_id = get_the_ID();
@@ -75,7 +74,7 @@ if ( $hero_style || ( is_customize_preview() && ( ! is_singular() || ! get_post_
 		</div>
 		
 		<?php
-		if ($img_position != 'img-above-title'){
+		if ($hero_style != 'img-above-title' || is_customize_preview()){
 			$thumbnail_post_id = false;
 			if ( is_singular() ) {
 				$thumbnail_post_id = get_the_ID();
@@ -88,7 +87,7 @@ if ( $hero_style || ( is_customize_preview() && ( ! is_singular() || ! get_post_
 			}
 			if ( is_singular() && has_post_thumbnail( $thumbnail_post_id ) ) {
 				?>
-				<div class="hero-image-holder hero-featured-image-holder" data-aos="fade" data-aos-duration="1000">
+				<div class="hero-image-holder hero-featured-image-holder hero-image-bottom" data-aos="fade" data-aos-duration="1000">
 					<?php echo get_the_post_thumbnail( $thumbnail_post_id, $thumbnail_size ); ?>
 				</div>
 				<?php
