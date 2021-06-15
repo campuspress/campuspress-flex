@@ -34,6 +34,12 @@ body.sidebars-check-sticky {
     }
 }
 
+.sidebar-widget-area-content {
+    .widget:last-child {
+        margin-bottom: 0;
+    }
+}
+
 .sidebar-widget-area-boxed {
     .sidebar-widget-area-content {
         @extend %color-boxes;

@@ -60,11 +60,12 @@ body.btn-style-outline .btn,
 %btn-outline {
     border-width: $btn-padding-y*0.4;
     padding: $btn-padding-y*0.6 $btn-padding-x*0.9;
-    &:not(:hover) {
+    &:not(:hover):not(:focus) {
         background-color: transparent !important;
         border-color: currentColor !important;
     }
-    &:hover {
+    &:hover, 
+    &:focus {
         text-decoration: none;
         opacity: 1;
     }
