@@ -274,7 +274,7 @@ class CPDirectoryData {
 
 	function get_posts_per_page( $total = false ) {
 		$posts_per_page = false;
-		if ( isset( $this->atts['posts_per_page'] ) ) {
+		if ( isset( $this->atts['posts_per_page'] ) && $this->atts['posts_per_page'] ) {
 			if ( $total == false || $total > $this->atts['posts_per_page'] || ( defined( 'REST_REQUEST' ) && $total >= $this->atts['posts_per_page'] ) ) {
 				$posts_per_page = $this->atts['posts_per_page'];
 			}

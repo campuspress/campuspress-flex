@@ -11,8 +11,6 @@ jQuery('.cp-dir-control-select select').on('change', function(){
     var dirID = dirParent.attr('id');
     
     if ( dirID in cpDirectories ) {
-        var itemsParents = [];
-
         cpDirectories[dirID].filter(function(item) {
             var active = true;
             dirParent.find('.cp-dir-control-select').each(function( index ) {
@@ -92,7 +90,7 @@ jQuery(function(){
             var perPage = parseInt(paginationEl.data('per-page'));
         }
 
-        cpDirectories[key].on('searchStart', function(dir){
+        cpDirectories[key].on('searchComplete', function(dir){
             if( paginationEl.length ) {
                 dir.show(1, perPage);
             }
