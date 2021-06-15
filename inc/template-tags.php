@@ -115,10 +115,9 @@ if ( ! function_exists( 'cpschool_get_home_url' ) ) {
 	 */
 	function cpschool_get_home_url() {
 		$custom_home_url = get_theme_mod( 'custom_home_url' );
-		if( $custom_home_url ) {
+		if ( $custom_home_url ) {
 			$home_url = $custom_home_url;
-		}
-		else {
+		} else {
 			$home_url = home_url( '/' );
 		}
 
@@ -456,9 +455,9 @@ if ( ! function_exists( 'cpschool_get_page_title' ) ) {
 			if ( ! $subtitle ) {
 				$archive_title_parts = explode( '<span>', $title );
 				if ( isset( $archive_title_parts[1] ) && $archive_title_parts[1] ) {
-					$title_main = $archive_title_parts[0];
+					$title_main     = $archive_title_parts[0];
 					$title_subtitle = str_replace( '</span>', '', $archive_title_parts[1] );
-					$title = '<span>' . $title_main . '</span><span>' . $title_subtitle . '</span>';
+					$title          = '<span>' . $title_main . '</span><span>' . $title_subtitle . '</span>';
 				}
 			}
 		} elseif ( is_home() ) {
@@ -521,7 +520,8 @@ if ( ! function_exists( 'cpschool_get_page_subtitle' ) ) {
 
 if ( ! function_exists( 'cpschool_get_active_sidebars' ) ) {
 	function cpschool_get_active_sidebars() {
-		$option_name = 'entries_lists';
+		$sidebars_pos = array();
+		$option_name  = 'entries_lists';
 
 		if ( is_singular() ) {
 			$post_id = get_the_ID();
@@ -558,7 +558,7 @@ if ( ! function_exists( 'cpschool_get_active_sidebars' ) ) {
 			}
 		}
 
-		return array();
+		return apply_filters( 'cpschool_get_active_sidebars', $sidebars_pos );
 	}
 }
 
@@ -761,14 +761,14 @@ if ( ! function_exists( 'cpschool_get_search_results_style' ) ) {
 	function cpschool_get_content_format() {
 		$post_format = '';
 
-		if( is_search() ) {
+		if ( is_search() ) {
 			// Default (empty) is "Google Inspired" style. The only alternative is "posts_lists".
 			$search_style = get_theme_mod( 'search_results_style' );
-			if( !$search_style ) {
+			if ( ! $search_style ) {
 				$post_format = 'search';
 			}
 		}
-		if( empty( $post_format )  ) {
+		if ( empty( $post_format ) ) {
 			$post_format = get_post_type();
 		}
 
