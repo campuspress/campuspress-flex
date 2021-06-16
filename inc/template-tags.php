@@ -14,9 +14,7 @@ if ( ! function_exists( 'img_placement' ) ) {
 	/**
 	 * Display hero image and change it's positon when applicable.
 	 */
-	function img_placement( $img_position ){
-
-		$hero_style == cpschool_get_hero_style();
+	function img_placement( $img_position, $hero_style ){
 	
 		$thumbnail_post_id = false;
 		if ( is_singular() ) {
