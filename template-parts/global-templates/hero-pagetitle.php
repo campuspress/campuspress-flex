@@ -8,7 +8,7 @@ if ( $hero_style || ( is_customize_preview() && ( ! is_singular() || ! get_post_
 		
 		<?php
 			if ($hero_style == 'img-above-title' || is_customize_preview()){
-				img_placement( 'img-above-title', $hero_style );
+				cpschool_img_placement( 'img-above-title', $hero_style );
 			}
 			?>
 
@@ -51,7 +51,7 @@ if ( $hero_style || ( is_customize_preview() && ( ! is_singular() || ! get_post_
 		
 		<?php
 		if ($hero_style != 'img-above-title' || is_customize_preview()){
-			img_placement( 'img-under-title', $hero_style );
+			cpschool_img_placement( 'img-under-title', $hero_style );
 		}
 		?>
 		 

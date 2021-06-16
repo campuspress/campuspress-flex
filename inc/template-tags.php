@@ -10,11 +10,11 @@
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
-if ( ! function_exists( 'img_placement' ) ) {
+if ( ! function_exists( 'cpschool_img_placement' ) ) {
 	/**
 	 * Display hero image and change it's positon when applicable.
 	 */
-	function img_placement( $img_position, $hero_style ){
+	function cpschool_img_placement( $img_position, $hero_style ){
 	
 		$thumbnail_post_id = false;
 		if ( is_singular() ) {
