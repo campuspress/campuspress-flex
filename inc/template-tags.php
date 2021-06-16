@@ -10,6 +10,48 @@
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
+if ( ! function_exists( 'img_placement' ) ) {
+	/**
+	 * Display hero image and change it's positon when applicable.
+	 */
+	function img_placement( $img_position ){
+
+		$hero_style == cpschool_get_hero_style();
+	
+		$thumbnail_post_id = false;
+		if ( is_singular() ) {
+			$thumbnail_post_id = get_the_ID();
+		} elseif ( is_home() ) {
+			$thumbnail_post_id = get_option( 'page_for_posts' );
+		}
+		$thumbnail_size = 'hero';
+		if ( $hero_style == $img_position && ! is_customize_preview() ) {
+			$thumbnail_size = 'large';
+		}
+		if ( is_singular() && has_post_thumbnail( $thumbnail_post_id ) ) {
+			if ( $img_position == 'img-above-title' ){
+				?>
+				<div class="hero-image-holder hero-featured-image-holder hero-image-top" data-aos="fade" data-aos-duration="1000">
+				<?php
+			} else { ?>
+				<div class="hero-image-holder hero-featured-image-holder hero-image-bottom" data-aos="fade" data-aos-duration="1000">
+				<?php
+			}
+					echo get_the_post_thumbnail( $thumbnail_post_id, $thumbnail_size ); ?>
+				</div>
+			<?php
+		} elseif ( ( $hero_style != $img_position || is_customize_preview() ) && $hero_default_images = get_theme_mod( 'hero_main_default_images' ) ) {
+			$thumbnail_id = $hero_default_images[ mt_rand( 0, count( $hero_default_images ) - 1 ) ]['id'];
+			?>
+		
+			<div <?php cpschool_class( 'hero-main-default-image-holder', 'hero-image-holder hero-default-image-holder' ); ?> data-aos="fade" data-aos-duration="1000">
+				<?php echo wp_get_attachment_image( $thumbnail_id, $thumbnail_size ); ?>
+			</div>
+			<?php
+		}
+	}
+}
+
 if ( ! function_exists( 'cpschool_post_nav' ) ) {
 	/**
 	 * Display navigation to next/previous post when applicable.
