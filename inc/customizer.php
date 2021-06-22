@@ -1431,6 +1431,7 @@ if ( ! function_exists( 'cpschool_theme_customizer' ) ) {
 						'full-title-over-img'  => esc_html__( 'Full Width Image With Title Over It', 'cpschool' ),
 						'full-title-under-img' => esc_html__( 'Full Width Image With Title Under It', 'cpschool' ),
 						'img-under-title'      => esc_html__( 'Image Under Title', 'cpschool' ),
+						'img-above-title'      => esc_html__( 'Image Above Title', 'cpschool' ),
 						'disabled'             => esc_html__( 'Disabled' ),
 					),
 					'js_vars'   => array(
@@ -1438,7 +1439,7 @@ if ( ! function_exists( 'cpschool_theme_customizer' ) ) {
 							'element'  => 'body',
 							'function' => 'toggleClass',
 							'class'    => 'has-hero',
-							'value'    => array( 'full-title-over-img', 'full-title-under-img', 'img-under-title' ),
+							'value'    => array( 'full-title-over-img', 'full-title-under-img', 'img-under-title', 'img-above-title' ),
 						),
 						array(
 							'element'  => '#hero-main',
@@ -1465,10 +1466,16 @@ if ( ! function_exists( 'cpschool_theme_customizer' ) ) {
 							'value'    => 'img-under-title',
 						),
 						array(
+							'element'  => '#hero-main',
+							'function' => 'toggleClass',
+							'class'    => 'hero-img-above-title',
+							'value'    => 'img-above-title',
+						),
+						array(
 							'element'         => '.page-header',
 							'function'        => 'toggleClass',
 							'class'           => 'd-none',
-							'value'           => array( 'full-title-over-img', 'img-under-title' ),
+							'value'           => array( 'full-title-over-img', 'img-under-title', 'img-above-title' ),
 							'context'         => 'page-header',
 							'customizer_only' => true,
 						),
@@ -1476,7 +1483,7 @@ if ( ! function_exists( 'cpschool_theme_customizer' ) ) {
 							'element'         => 'body.singular .entry-featured-image',
 							'function'        => 'toggleClass',
 							'class'           => 'd-none',
-							'value'           => array( 'full-title-over-img', 'full-title-under-img', 'img-under-title' ),
+							'value'           => array( 'full-title-over-img', 'full-title-under-img', 'img-under-title', 'img-above-title' ),
 							'context'         => 'entry-single-featured-image',
 							'customizer_only' => true,
 						),
@@ -1492,7 +1499,7 @@ if ( ! function_exists( 'cpschool_theme_customizer' ) ) {
 							'element'         => '.page-header .breadcrumbs',
 							'function'        => 'toggleClass',
 							'class'           => 'hero-enabled',
-							'value'           => array( 'full-title-over-img', 'full-title-under-img', 'img-under-title' ),
+							'value'           => array( 'full-title-over-img', 'full-title-under-img', 'img-under-title', 'img-above-title' ),
 							'context'         => 'page-breadcrumb',
 							'customizer_only' => true,
 						),
@@ -1525,7 +1532,7 @@ if ( ! function_exists( 'cpschool_theme_customizer' ) ) {
 						array(
 							'setting'  => 'hero_main_style',
 							'operator' => 'in',
-							'value'    => array( 'img-under-title', 'full-title-over-img' ),
+							'value'    => array( 'img-under-title', 'full-title-over-img', 'img-above-title' ),
 						),
 					),
 					'js_vars'         => array(
@@ -1582,7 +1589,7 @@ if ( ! function_exists( 'cpschool_theme_customizer' ) ) {
 						array(
 							'setting'  => 'hero_main_style',
 							'operator' => 'in',
-							'value'    => array( 'full-title-over-img', 'full-title-under-img', 'img-under-title' ),
+							'value'    => array( 'full-title-over-img', 'full-title-under-img', 'img-under-title', 'img-above-title' ),
 						),
 					),
 				)
@@ -1726,7 +1733,7 @@ if ( ! function_exists( 'cpschool_theme_customizer' ) ) {
 						array(
 							'setting'  => 'hero_main_style',
 							'operator' => 'in',
-							'value'    => array( 'img-under-title', 'full-title-over-img', 'full-title-under-img' ),
+							'value'    => array( 'img-under-title', 'full-title-over-img', 'full-title-under-img', 'img-above-title' ),
 						),
 					),
 					'js_vars'         => array(
