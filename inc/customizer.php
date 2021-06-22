@@ -1037,19 +1037,19 @@ if ( ! function_exists( 'cpschool_theme_customizer' ) ) {
 			Kirki::add_field(
 				'cpschool',
 				array(
-					'type'            => 'slider',
-					'settings'        => 'header_main_padding_v',
-					'label'           => esc_html__( 'Spacing', 'cpschool' ),
-					'description'     => esc_html__( 'Adjust space above & below header content.', 'cpschool' ),
-					'section'         => 'header_main',
-					'default'         => '100',
-					'choices'         => array(
+					'type'        => 'slider',
+					'settings'    => 'header_main_padding_v',
+					'label'       => esc_html__( 'Spacing', 'cpschool' ),
+					'description' => esc_html__( 'Adjust space above & below header content.', 'cpschool' ),
+					'section'     => 'header_main',
+					'default'     => '100',
+					'choices'     => array(
 						'min'  => 0,
 						'max'  => 200,
 						'step' => 10,
 					),
-					'transport'       => 'auto',
-					'output'          => array(
+					'transport'   => 'auto',
+					'output'      => array(
 						array(
 							'element'  => ':root',
 							'property' => '--header-main-padding-v',
@@ -1131,7 +1131,7 @@ if ( ! function_exists( 'cpschool_theme_customizer' ) ) {
 					'label'           => __( 'Custom Logo Drop Box Background Color', 'cpschool' ),
 					'section'         => 'header_main',
 					'transport'       => 'postMessage',
-					'default' => '',
+					'default'         => '',
 					'choices'         => array(
 						'alpha' => true,
 					),
@@ -1429,19 +1429,19 @@ if ( ! function_exists( 'cpschool_theme_customizer' ) ) {
 			Kirki::add_field(
 				'cpschool',
 				array(
-					'type'            => 'slider',
-					'settings'        => 'header_secondary_padding_v',
-					'label'           => esc_html__( 'Spacing', 'cpschool' ),
-					'description'     => esc_html__( 'Adjust space above & below header content.', 'cpschool' ),
-					'section'         => 'header_secondary',
-					'default'         => '0',
-					'choices'         => array(
+					'type'        => 'slider',
+					'settings'    => 'header_secondary_padding_v',
+					'label'       => esc_html__( 'Spacing', 'cpschool' ),
+					'description' => esc_html__( 'Adjust space above & below header content.', 'cpschool' ),
+					'section'     => 'header_secondary',
+					'default'     => '0',
+					'choices'     => array(
 						'min'  => 0,
 						'max'  => 100,
 						'step' => 10,
 					),
-					'transport'       => 'auto',
-					'output'          => array(
+					'transport'   => 'auto',
+					'output'      => array(
 						array(
 							'element'  => ':root',
 							'property' => '--header-secondary-padding-v',
@@ -1464,20 +1464,21 @@ if ( ! function_exists( 'cpschool_theme_customizer' ) ) {
 			Kirki::add_field(
 				'cpschool',
 				array(
-					'type'      => 'select',
-					'settings'  => 'hero_main_style',
-					'label'     => __( 'Style', 'cpschool' ),
-					'section'   => 'hero_main',
-					'default'   => 'full-title-over-img',
-					'transport' => 'postMessage',
-					'choices'   => array(
+					'type'        => 'select',
+					'settings'    => 'hero_main_style',
+					'label'       => __( 'Style', 'cpschool' ),
+					'description' => sprintf( esc_html__( 'Styles that are not full with will use "%sLarge%s" image size.', 'cpschool' ), '<a href="' . esc_url( admin_url( 'options-media.php' ) ) . '" target="_blank">', '</a>' ),
+					'section'     => 'hero_main',
+					'default'     => 'full-title-over-img',
+					'transport'   => 'postMessage',
+					'choices'     => array(
 						'full-title-over-img'  => esc_html__( 'Full Width Image With Title Over It', 'cpschool' ),
 						'full-title-under-img' => esc_html__( 'Full Width Image With Title Under It', 'cpschool' ),
 						'img-under-title'      => esc_html__( 'Image Under Title', 'cpschool' ),
 						'img-above-title'      => esc_html__( 'Image Above Title', 'cpschool' ),
 						'disabled'             => esc_html__( 'Disabled' ),
 					),
-					'js_vars'   => array(
+					'js_vars'     => array(
 						array(
 							'element'  => 'body',
 							'function' => 'toggleClass',
@@ -2261,7 +2262,7 @@ if ( ! function_exists( 'cpschool_theme_customizer' ) ) {
 						'default'   => '',
 						'transport' => 'refresh',
 						'choices'   => array(
-							''   => esc_html__( 'Google Inspired', 'cpschool' ),
+							''            => esc_html__( 'Google Inspired', 'cpschool' ),
 							'posts_lists' => esc_html__( 'Same As Posts Lists', 'cpschool' ),
 						),
 					)
