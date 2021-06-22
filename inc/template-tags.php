@@ -492,6 +492,10 @@ if ( ! function_exists( 'cpschool_get_page_subtitle' ) ) {
 					),
 					number_format_i18n( $wp_query->found_posts )
 				);
+
+				if( ! get_theme_mod( 'search_results_style' ) ) {
+					$subtitle .= get_search_form( array( 'echo' => false, 'id' => 'searchform-subtitle' ) );
+				}
 			} else {
 				$subtitle = __( 'We could not find any results for your search. You can give it another try through the search form below.', 'cpschool' );
 			}
