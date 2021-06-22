@@ -4,16 +4,16 @@
 			<div class="modal-header pb-0">
 				<button type="button" class="close" data-dismiss="modal">
 					<i aria-hidden="true" class="cps-icon cps-icon-close"></i>
-					<span class="sr-only"><?php _e( 'close search', 'mabts' ); ?></span>
+					<span class="sr-only"><?php _e( 'close search', 'cpschool' ); ?></span>
 				</button>
 			</div>
 			<div class="modal-body">
 				<form <?php cpschool_class( 'modal-search-form', 'search-form d-flex' ); ?> method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-					<label class="sr-only" for="search-form-header"><?php _e( 'Search', 'mabts' ); ?></label>
-					<input id="search-form-header" class="form-control form-control-lg" type="search" placeholder="<?php _e( 'Search...', 'mabts' ); ?>" value="<?php echo get_search_query(); ?>" name="s">
+					<label class="sr-only" for="search-form-header"><?php esc_html_e( 'Search', 'cpschool' ); ?></label>
+					<input id="search-form-header" class="form-control form-control-lg" type="search" placeholder="<?php _e( 'Search...', 'cpschool' ); ?>" value="<?php the_search_query(); ?>" name="s">
 					<button class="btn btn-secondary btn-lg" type="submit" aria-controls="search-form-header">
 						<i aria-hidden="true" class="cps-icon cps-icon-search"></i>
-						<span class="sr-only"><?php _e( 'Search Site', 'mabts' ); ?></span>
+						<span class="sr-only"><?php _e( 'Search Site', 'cpschool' ); ?></span>
 					</button>
 				</form>
 			</div>
