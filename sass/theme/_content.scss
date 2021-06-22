@@ -253,9 +253,11 @@
 
 .list-inline {
 	@include list-unstyled();
+	margin-top: -$list-inline-padding/2;
 }
 .list-inline-item {
 	display: inline-block;
+	margin-top: $list-inline-padding/2;
 
 	&:not(:last-child) {
 		margin-right: $list-inline-padding;

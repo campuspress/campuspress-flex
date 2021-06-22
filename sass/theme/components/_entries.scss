@@ -193,6 +193,13 @@ body.blog.hide-hero-page-title {//CUSTOMIZER-ONLY
 		font-weight: 500;
 		font-variation-settings: 'wght' 500;
 	}
+
+    form {
+        margin-top: $spacer/2;
+        @include media-breakpoint-up(lg) {
+            max-width: 50%;
+        }
+    }
 }
 
 .post-navigation {
