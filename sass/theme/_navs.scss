@@ -258,16 +258,9 @@
             display: inline-block;
         }
     }
-    .navbar-brand-text {
-        font-size: 2em;
-        line-height: 1.2em;
-        color: var(--header-main-logo-text-color);
-    }
     .navbar-brand-subtext {
-        line-height: 1.5em;
-        margin-right: $navbar-padding-x/2;
-        color: inherit !important;
         text-decoration: none;
+        color: inherit !important;
         &:hover {
             text-decoration: underline;
         }
@@ -631,6 +624,16 @@
             @include adjusted-size($font-size-base, '--body-font-size', '--header-main-logo-font-size', line-height);
         }
     }
+
+    .navbar-brand-text {
+        font-size: 2em;
+        line-height: 1.2em;
+        color: var(--header-main-logo-text-color);
+    }
+    .navbar-brand-subtext {
+        line-height: 1.5em;
+        margin-right: $navbar-padding-x/2;
+    }
     
     .navbar-sticks & {
         .navbar-brand {
@@ -697,6 +700,12 @@
                 width: var(--header-secondary-logo-image-width);
             }
         }
+    }
+
+    .navbar-brand-text {
+        font-size: 1.25em;
+        line-height: 1.2em;
+        color: var(--header-secondary-bg-color-contrast);;
     }
 
     .navbar-nav {

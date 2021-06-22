@@ -142,20 +142,63 @@ if ( ! function_exists( 'cpschool_theme_customizer' ) ) {
 
 			// SECTION - Site Identity (WP)
 
-				// SETTING - Site Title Font Family
+				// SEPARATOR - Secondary Identity
 				Kirki::add_field(
 					'cpschool',
 					array(
-						'type'            => 'image',
-						'settings'        => 'secondary_logo',
-						'label'           => __( 'Secondary Logo', 'cpschool' ),
+						'settings' => 'secondary_identity',
+						'type'     => 'separator',
+						'label'    => __( 'Secondary Identity', 'cpschool' ),
 						'description' => esc_html__( 'Comes in handy when site is part of larger entity. Will be displayed in "Secondary Header".', 'cpschool' ),
-						'section'         => 'title_tagline',
-						'transport'       => 'refresh',
-						'default'         => '',
-						'priority'        => 9,
+						'section'  => 'title_tagline',
+						'priority' => 20,
+					)
+				);
+
+				// SETTING - Custom Secondary Logo
+				Kirki::add_field(
+					'cpschool',
+					array(
+						'type'        => 'image',
+						'settings'    => 'secondary_logo',
+						'label'       => __( 'Logo', 'cpschool' ),
+						'section'     => 'title_tagline',
+						'transport'   => 'refresh',
+						'default'     => '',
+						'priority'    => 20,
 						'choices'     => array(
 							'save_as' => 'id',
+						),
+						'active_callback' => array(
+							array(
+								'setting'  => 'secondary_title',
+								'operator' => '==',
+								'value'    => '',
+							),
+						),
+					)
+				);
+
+				// SETTING - Custom Secondary Logo
+				Kirki::add_field(
+					'cpschool',
+					array(
+						'type'        => 'text',
+						'settings'    => 'secondary_title',
+						'label'       => __( 'Title', 'cpschool' ),
+						'section'     => 'title_tagline',
+						'transport'   => 'refresh',
+						'default'     => '',
+						'priority'    => 20,
+						'choices'     => array(
+							'save_as' => 'id',
+						),
+						'active_callback' => array(
+							array(
+								'setting'  => 'secondary_logo',
+								'operator' => '==',
+								'value'    => '',
+							),
 						),
 					)
 				);
@@ -164,12 +207,12 @@ if ( ! function_exists( 'cpschool_theme_customizer' ) ) {
 				Kirki::add_field(
 					'cpschool',
 					array(
-						'type'        => 'link',
-						'settings'    => 'secondary_logo_url',
-						'label'       => esc_attr__( 'Secondary Logo Link', 'cpschool' ),
-						'section'     => 'title_tagline',
-						'transport'   => 'refresh',
-						'priority'        => 9,
+						'type'            => 'link',
+						'settings'        => 'secondary_logo_url',
+						'label'           => esc_attr__( 'Logo / Title Link', 'cpschool' ),
+						'section'         => 'title_tagline',
+						'transport'       => 'refresh',
+						'priority'        => 20,
 						'active_callback' => array(
 							array(
 								'setting'  => 'secondary_logo',
