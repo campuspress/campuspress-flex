@@ -520,7 +520,6 @@ if ( ! function_exists( 'cpschool_get_page_subtitle' ) ) {
 
 if ( ! function_exists( 'cpschool_get_active_sidebars' ) ) {
 	function cpschool_get_active_sidebars() {
-		$sidebars_pos = array();
 		$option_name  = 'entries_lists';
 
 		if ( is_singular() ) {
@@ -545,7 +544,7 @@ if ( ! function_exists( 'cpschool_get_active_sidebars' ) ) {
 		}
 
 		if ( ! isset( $sidebars_pos ) ) {
-			$sidebars_pos = get_theme_mod( $option_name . '_sidebars' );
+			$sidebars_pos = get_theme_mod( $option_name . '_sidebars', array() );
 		}
 
 		if ( $sidebars_pos && is_array( $sidebars_pos ) ) {
@@ -553,8 +552,6 @@ if ( ! function_exists( 'cpschool_get_active_sidebars' ) ) {
 				if ( ! is_active_sidebar( $sidebar_pos ) ) {
 					unset( $sidebars_pos[ $sidebar_pos_key ] );
 				}
-
-				return $sidebars_pos;
 			}
 		}
 
