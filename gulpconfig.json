@@ -1,7 +1,8 @@
 {
 	"browserSyncOptions": {
 		"proxy": "campuspress.local/theme-campuspress-flex/",
-		"notify": false
+		"notify": false, 
+		"files": ["./css/*.min.css", "./js/*.min.js", "./**/*.php"]
 	},
 	"browserSyncWatchFiles": ["./css/*.min.css", "./js/*.min.js", "./**/*.php"],
 	"paths": {
