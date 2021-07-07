@@ -855,7 +855,7 @@ class Breadcrumb_Trail {
 
 		// Add the day item.
 		if ( is_paged() ) {
-			$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_day_link( get_the_time( 'Y' ) ), get_the_time( 'm' ), get_the_time( 'd' ) ), $day );
+			$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_day_link( get_the_time( 'Y' ) , get_the_time( 'm' ), get_the_time( 'd' ) ) ), $day );
 
 		} elseif ( true === $this->args['show_title'] ) {
 			$this->items[] = $day;
