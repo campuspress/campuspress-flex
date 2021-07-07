@@ -1403,7 +1403,7 @@ if ( ! function_exists( 'cpschool_theme_customizer' ) ) {
 					'section'         => 'header_secondary',
 					'default'         => '200',
 					'choices'         => array(
-						'min'  => 100,
+						'min'  => 32,
 						'max'  => 400,
 						'step' => 2,
 					),
