@@ -197,7 +197,7 @@ body.blog.hide-hero-page-title {//CUSTOMIZER-ONLY
     form {
         margin-top: $spacer/2;
         @include media-breakpoint-up(lg) {
-            max-width: 50%;
+            max-width: 546px;
         }
     }
 }
