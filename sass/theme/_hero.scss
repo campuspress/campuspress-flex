@@ -86,7 +86,7 @@
     .hero-image-holder {
         width: var(--site-width);
         max-width: 100%;
-        margin: $spacer auto 0;
+        margin: 0 auto;
         text-align: center;
         img {
             display: inline-block;
@@ -94,6 +94,12 @@
     }
 }
 .hero-img-under-title {
+    .hero-image-holder {
+        padding-top: $jumbotron-padding;
+        @include media-breakpoint-up(sm) {
+            padding-top: ($jumbotron-padding * 2);
+        }
+    }
     .hero-content {
         padding-bottom: $jumbotron-padding;
         @include media-breakpoint-up(sm) {
@@ -107,6 +113,15 @@
 .hero-img-above-title {
     display: flex;
     flex-direction: column;
+    @include media-breakpoint-down(sm) {
+        padding-top: 0;
+    }
+    .hero-image-holder {
+        padding-bottom: $jumbotron-padding;
+        @include media-breakpoint-up(sm) {
+            padding-bottom: ($jumbotron-padding * 2);
+        }
+    }
     .hero-content {
         order: 2;
         padding-top: $jumbotron-padding;
