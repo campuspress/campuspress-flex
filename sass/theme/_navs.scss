@@ -690,7 +690,7 @@
         padding-bottom: $nav-link-padding-x*1/7;
     }
 
-    .navbar-brand {
+    .navbar-brand-holder { 
         margin-top: $spacer/5;
         margin-bottom: $spacer/5;
         img {
@@ -705,7 +705,7 @@
     .navbar-brand-text {
         font-size: 1.25em;
         line-height: 1.2em;
-        color: var(--header-secondary-bg-color-contrast);;
+        color: var(--header-secondary-bg-color-contrast);
     }
 
     .navbar-nav {
