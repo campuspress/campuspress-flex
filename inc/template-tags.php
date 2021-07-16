@@ -537,6 +537,9 @@ if ( ! function_exists( 'cpschool_get_active_sidebars' ) ) {
 			$custom = get_post_meta( $post_id, 'cps_sidebars_custom', true );
 			if ( $custom ) {
 				$sidebars_pos = get_post_meta( $post_id, 'cps_sidebars', true );
+				if( !is_array( $sidebars_pos ) ) {
+					$sidebars_pos = array();
+				} 
 			}
 			// Looks for settings in customizer if its not set for specific page.
 			// TODO Consider using "cpschool_get_content_theme_mod" function in here.
