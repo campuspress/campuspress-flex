@@ -69,7 +69,7 @@ $color-palletes: (
         background-color: var(--#{$pallete}-accent-hl);
         border-color: var(--#{$pallete}-accent-hl);
         color: var(--#{$pallete}-accent-hl-contrast);
-        &:focus {
+        &:focus, &:hover {
             box-shadow: 0 0 0 $input-btn-focus-width var(--#{$pallete}-accent-hl-a);
         }
     }
@@ -78,7 +78,7 @@ $color-palletes: (
         background-color: var(--#{$pallete}-accent);
         border-color: var(--#{$pallete}-accent);
         color: var(--#{$pallete}-accent-contrast);
-        &:focus {
+        &:focus, &:hover {
             box-shadow: 0 0 0 $input-btn-focus-width var(--#{$pallete}-accent-a);
         }
     }
@@ -206,6 +206,7 @@ $color-palletes: (
             }
 
             .dropdown-menu {
+                color: var(--#{$pallete}-contrast);
                 background-color: var(--#{$pallete});
             }
             @if map-get($options, nav-dropdown-style) {

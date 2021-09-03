@@ -8,11 +8,6 @@
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
-// Set the content width based on the theme's design and stylesheet.
-if ( ! isset( $content_width ) ) {
-	$content_width = get_theme_mod( 'content_width' ); /* pixels */
-}
-
 if ( ! function_exists( 'cpschool_setup' ) ) {
 	add_action( 'after_setup_theme', 'cpschool_setup' );
 
@@ -28,6 +23,9 @@ if ( ! function_exists( 'cpschool_setup' ) ) {
 		 * to change 'cpschool' to the name of your theme in all the template files
 		 */
 		load_theme_textdomain( 'cpschool', get_template_directory() . '/inc/languages' );
+
+		// Set the content width based on the theme's design and stylesheet.
+		$GLOBALS['content_width'] = get_theme_mod( 'content_width' ); /* pixels */
 
 		// Add default posts and comments RSS feed links to head.
 		add_theme_support( 'automatic-feed-links' );

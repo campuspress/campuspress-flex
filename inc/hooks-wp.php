@@ -77,6 +77,11 @@ if ( ! function_exists( 'cpschool_body_classes' ) ) {
 			$classes[] = 'is-customizer';
 		}
 
+		// Adds special class to handle secondary header being under primary.
+		if ( get_theme_mod( 'header_secondary_under_primary' ) == true ) {
+			$classes[] = 'navbar-secondary-under-main';
+		}
+
 		return $classes;
 	}
 }
@@ -193,16 +198,84 @@ if ( ! function_exists( 'cpschool_all_excerpts_get_more_link' ) ) {
 	 */
 	function cpschool_all_excerpts_get_more_link( $post_excerpt, $post ) {
 		if ( ! is_admin() || wp_doing_ajax() ) {
-			if ( ! is_singular() ) {
-				$post_excerpt = $post_excerpt . '...';
+			$post_excerpt = $post_excerpt . '...';
 
-				$hide = get_theme_mod( 'entries_lists_hide_continue_reading' );
-				if ( ! $hide || is_customize_preview() ) {
-					$classes      = cpschool_class( 'read-more-link', 'btn btn-secondary cpschool-read-more-link', true );
-					$post_excerpt = $post_excerpt . '<div><a class="' . esc_attr( implode( ' ', $classes ) ) . '" href="' . esc_url( get_permalink( $post->ID ) ) . '">' . sprintf( __( 'Continue Reading %s', 'cpschool' ), '<span class="sr-only">' . get_the_title( $post->ID ) . '</span>' ) . '</a></div>';
+			if ( is_search() ) {
+				$search_style = get_theme_mod( 'search_results_style' );
+				if ( $search_style != 'posts_list' ) {
+					$hide = true;
 				}
+			}
+			if ( ! isset( $hide ) ) {
+				if( is_customize_preview() ) {
+					$hide = false;
+				}
+				else {
+					$hide = get_theme_mod( 'entries_lists_hide_continue_reading' );
+				}
+			}
+
+			if ( ! $hide ) {
+				$classes      = cpschool_class( 'read-more-link', 'btn btn-secondary cpschool-read-more-link', true );
+				$post_excerpt = $post_excerpt . '<span class="cpschool-read-more-link-holder"><a class="' . esc_attr( implode( ' ', $classes ) ) . '" href="' . esc_url( get_permalink( $post->ID ) ) . '">' . sprintf( __( 'Continue Reading %s', 'cpschool' ), '<span class="sr-only">' . get_the_title( $post->ID ) . '</span>' ) . '</a></span>';
 			}
 		}
 		return $post_excerpt;
+	}
+}
+
+if ( ! function_exists( 'cpschool_get_the_archive_title_prefix' ) ) {
+	add_filter( 'get_the_archive_title_prefix', 'cpschool_get_the_archive_title_prefix' );
+
+	/**
+	 * Removes "Archives:" for post type archives titles.
+	 *
+	 * @param string $prefix Prefix for archive title.
+	 *
+	 * @return string
+	 */
+	function cpschool_get_the_archive_title_prefix( $prefix ) {
+		if ( $prefix && is_post_type_archive() ) {
+			$archives_prefix = _x( 'Archives:', 'post type archive title prefix' );
+			if ( $prefix == $archives_prefix ) {
+				$prefix = '';
+			}
+		}
+
+		return $prefix;
+	}
+}
+
+if ( ! function_exists( 'cpschool_comment_reply_link' ) ) {
+	add_filter( 'comment_reply_link', 'cpschool_comment_reply_link' );
+
+	/**
+	 * Adds button class to comments reply link
+	 *
+	 * @param string $link Comments reply link html.
+	 *
+	 * @return string
+	 */
+	function cpschool_comment_reply_link( $link ) {
+		$link = str_replace( 'comment-reply-link', 'comment-reply-link btn btn-sm', $link );
+
+		return $link;
+	}
+}
+
+if ( ! function_exists( 'cpschool_cancel_comment_reply_link' ) ) {
+	add_filter( 'cancel_comment_reply_link', 'cpschool_cancel_comment_reply_link' );
+
+	/**
+	 * Adds button class to comments cancel reply link
+	 *
+	 * @param string $link Comments reply link html.
+	 *
+	 * @return string
+	 */
+	function cpschool_cancel_comment_reply_link( $link ) {
+		$link = str_replace( 'id="cancel-comment-reply-link"', 'id="cancel-comment-reply-link" class="comment-reply-link btn btn-sm"', $link );
+
+		return $link;
 	}
 }

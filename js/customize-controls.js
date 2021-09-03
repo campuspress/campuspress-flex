@@ -48,6 +48,13 @@
 				}
 			} );
 		} );
+		wp.customize( 'header_secondary_under_primary', function( value ) {
+			value.bind( function( to ) {
+				if(to === true ) {
+					wp.customize( 'hero_main_header_main_bg_transparent' ).set( false );
+				}
+			} );
+		} );
 
 		// Set settings based on values sent by previewer script.
 		wp.customize.previewer.bind( 'set', function( data ) {

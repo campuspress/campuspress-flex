@@ -142,7 +142,7 @@ class CPDirectoryData {
 				if ( $field_details['type'] == 'taxonomy' ) {
 					if ( $taxonomy_filters ) {
 						foreach ( $taxonomy_filters as $filter ) {
-							$this->fields[] = array_merge(
+							$this->fields[$filter['field_name']] = array_merge(
 								$field_details,
 								array(
 									'label'      => $filter['label'],
@@ -159,7 +159,7 @@ class CPDirectoryData {
 						$field_name = 'cp-dir-field-' . $field_details['name'];
 					}
 
-					$this->fields[] = array_merge(
+					$this->fields[$field_name] = array_merge(
 						$field_details,
 						array(
 							'field_name' => $field_name,
@@ -182,9 +182,8 @@ class CPDirectoryData {
 			return $pre;
 		}
 
-		$fields_js = array( array( 'data' => array( 'entry-id' ) ) );
+		$fields_js = array( array( 'data' => array( 'entry-id', 'entry-parent-ids' ) ) );
 		$fields    = $this->get_fields();
-		//var_dump($fields);
 		foreach ( $fields as $field ) {
 			if ( $field['type'] == 'taxonomy' ) {
 				$fields_js[] = array(
@@ -218,8 +217,14 @@ class CPDirectoryData {
 	}
 
 	function get_entries() {
+		$pre = apply_filters( 'cp_dir_pre_get_entries', false, $this->atts );
+
+		if ( false !== $pre ) {
+			return $pre;
+		}
+
 		$args = array(
-			'numberposts' => 200,
+			'numberposts' => $this->get_entries_limit(),
 			'category'    => 0,
 			'orderby'     => 'title',
 			'order'       => 'ASC',
@@ -265,5 +270,26 @@ class CPDirectoryData {
 		}
 
 		return apply_filters( 'cp_dir_get_filters', $filters, $this->atts );
+	}
+
+	function get_posts_per_page( $total = false ) {
+		$posts_per_page = false;
+		if ( isset( $this->atts['posts_per_page'] ) && $this->atts['posts_per_page'] ) {
+			if ( $total == false || $total > $this->atts['posts_per_page'] || ( defined( 'REST_REQUEST' ) && $total >= $this->atts['posts_per_page'] ) ) {
+				$posts_per_page = $this->atts['posts_per_page'];
+			}
+		}
+
+		return apply_filters( 'cp_dir_get_posts_per_page', $posts_per_page, $this->atts );
+	}
+
+	function get_entries_limit() {
+		$entries_limit = apply_filters( 'cp_dir_get_entries_limit', 500, $this->atts );
+
+		if( defined( 'REST_REQUEST' ) ) {
+			$entries_limit = $this->get_posts_per_page();
+		}
+
+		return $entries_limit;
 	}
 }

@@ -855,7 +855,7 @@ class Breadcrumb_Trail {
 
 		// Add the day item.
 		if ( is_paged() ) {
-			$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_day_link( get_the_time( 'Y' ) ), get_the_time( 'm' ), get_the_time( 'd' ) ), $day );
+			$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_day_link( get_the_time( 'Y' ) , get_the_time( 'm' ), get_the_time( 'd' ) ) ), $day );
 
 		} elseif ( true === $this->args['show_title'] ) {
 			$this->items[] = $day;
@@ -1027,7 +1027,10 @@ class Breadcrumb_Trail {
 			}
 
 			// Add the formatted post link to the array of parents.
-			$parents[] = sprintf( '<a href="%s">%s</a>', esc_url( get_permalink( $post_id ) ), get_the_title( $post_id ) );
+			$skip = apply_filters( 'breadcrumb_add_post_parents_skip', false, $post );
+			if( ! $skip ) {
+				$parents[] = sprintf( '<a href="%s">%s</a>', esc_url( get_permalink( $post_id ) ), get_the_title( $post_id ) );
+			}
 
 			// If there's no longer a post parent, break out of the loop.
 			if ( 0 >= $post->post_parent ) {

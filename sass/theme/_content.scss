@@ -2,7 +2,7 @@
 	a, %a {
 		transition: opacity 0.5s ease, color 0.5s ease;
 		&:hover {
-			text-decoration: underline;
+			text-decoration: none;
 			opacity: 0.8;
 		}
 	}
@@ -253,9 +253,11 @@
 
 .list-inline {
 	@include list-unstyled();
+	margin-top: -$list-inline-padding/2;
 }
 .list-inline-item {
 	display: inline-block;
+	margin-top: $list-inline-padding/2;
 
 	&:not(:last-child) {
 		margin-right: $list-inline-padding;

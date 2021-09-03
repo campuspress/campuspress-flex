@@ -12,7 +12,7 @@ if ( $hero_style || ( is_customize_preview() && ( ! is_singular() || ! get_post_
 			}
 			?>
 
-			<?php if ( in_array( $hero_style, array( 'full-title-over-img', 'img-under-title' ) ) || is_customize_preview() ) { ?>
+			<?php if ( in_array( $hero_style, array( 'full-title-over-img', 'img-under-title', 'img-above-title' ) ) || is_customize_preview() ) { ?>
 				<?php if( $title ) { ?>
 					<h1 class="page-title entry-title"><?php echo $title; ?></h1>
 				<?php } ?>
@@ -27,14 +27,14 @@ if ( $hero_style || ( is_customize_preview() && ( ! is_singular() || ! get_post_
 				if ( $subtitle || $meta ) {
 					?>
 					<div class="page-meta entry-meta">
-						<?php if ( $subtitle ) { ?>
-							<p>
-								<?php echo $subtitle; ?>
-							</p>
-						<?php } ?>
-						<?php if ( $meta ) { ?>
-							<?php echo $meta; ?>
-						<?php } ?>
+						<?php 
+						if ( $subtitle ) {
+							echo $subtitle;
+						}
+						if ( $meta ) {
+							echo $meta;
+						} 
+						?>
 					</div>
 					<?php
 				}
@@ -50,16 +50,16 @@ if ( $hero_style || ( is_customize_preview() && ( ! is_singular() || ! get_post_
 			$thumbnail_post_id = get_option( 'page_for_posts' );
 		}
 		$thumbnail_size = 'hero';
-		if ( $hero_style == 'img-under-title' && ! is_customize_preview() ) {
+		if ( in_array( $hero_style, array( 'img-under-title', 'img-above-title' ) ) && ! is_customize_preview() ) {
 			$thumbnail_size = 'large';
 		}
-		if ( has_post_thumbnail( $thumbnail_post_id ) ) {
+		if ( is_singular() && has_post_thumbnail( $thumbnail_post_id ) ) {
 			?>
 			<div class="hero-image-holder hero-featured-image-holder" data-aos="fade" data-aos-duration="1000">
 				<?php echo get_the_post_thumbnail( $thumbnail_post_id, $thumbnail_size ); ?>
 			</div>
 			<?php
-		} elseif ( ( $hero_style != 'img-under-title' || is_customize_preview() ) && $hero_default_images = get_theme_mod( 'hero_main_default_images' ) ) {
+		} elseif ( ( ! in_array( $hero_style, array( 'img-under-title', 'img-above-title' ) ) || is_customize_preview() ) && $hero_default_images = get_theme_mod( 'hero_main_default_images' ) ) {
 			$thumbnail_id = $hero_default_images[ mt_rand( 0, count( $hero_default_images ) - 1 ) ]['id'];
 			?>
 		 

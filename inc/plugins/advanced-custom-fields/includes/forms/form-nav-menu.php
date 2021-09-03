@@ -141,7 +141,7 @@ class acf_form_nav_menu {
 	function update_nav_menu( $menu_id ) {
 		
 		// vars
-		$post_id = acf_get_term_post_id( 'nav_menu', $menu_id );
+		$post_id = 'term_' . $menu_id;
 		
 		
 		// verify and remove nonce
@@ -210,32 +210,30 @@ class acf_form_nav_menu {
 		return $items;
 	}
 	
-	
-	/*
-	*  wp_edit_nav_menu_walker
-	*
-	*  description
-	*
-	*  @type	function
-	*  @date	26/5/17
-	*  @since	5.6.0
-	*
-	*  @param	$post_id (int)
-	*  @return	$post_id (int)
-	*/
-	
+	/**
+	 * Called when WP renders a menu edit form.
+	 * Used to set global data and customize the Walker class.
+	 *
+	 * @date	26/5/17
+	 * @since	5.6.0
+	 *
+	 * @param 	string $class The walker class to use. Default 'Walker_Nav_Menu_Edit'.
+	 * @param 	int $menu_id ID of the menu being rendered.
+	 * @return	string
+	 */
 	function wp_edit_nav_menu_walker( $class, $menu_id = 0 ) {
 		
 		// update data (needed for ajax location rules to work)
 		acf_set_data('nav_menu_id', $menu_id);
 		
-		// include walker
-		if( class_exists('Walker_Nav_Menu_Edit') ) {
+		// Use custom walker class to inject "wp_nav_menu_item_custom_fields" action prioir to WP 5.4.
+		if( acf_version_compare('wp', '<', '5.3.99') ) {
 			acf_include('includes/walkers/class-acf-walker-nav-menu-edit.php');
+			return 'ACF_Walker_Nav_Menu_Edit';
 		}
 		
-		// return
-		return 'ACF_Walker_Nav_Menu_Edit';
+		// Return class.
+		return $class;
 	}
 	
 	
@@ -290,7 +288,7 @@ class acf_form_nav_menu {
 		
 		// vars
 		$nav_menu_id = acf_get_data('nav_menu_id');
-		$post_id = acf_get_term_post_id( 'nav_menu', $nav_menu_id );
+		$post_id = 'term_' . $nav_menu_id;
 		
 		
 		// get field groups

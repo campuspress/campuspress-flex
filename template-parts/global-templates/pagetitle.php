@@ -6,7 +6,7 @@ $hero_style = cpschool_get_hero_style();
 if ( in_array( $hero_style, array( false, 'disabled', 'full-title-under-img' ) ) || is_customize_preview() ) {
 	$title = cpschool_get_page_title();
 
-	if ( ( $title !== false && ( ! is_home() || get_theme_mod( 'posts_main_hero' ) ) ) || is_customize_preview() ) {
+	if ( $title && ( ! is_home() || get_theme_mod( 'posts_main_hero' ) || is_customize_preview() ) ) {
 		?>
 		<header <?php cpschool_class( 'page-header', 'page-header' ); ?>>
 			<?php
@@ -42,7 +42,7 @@ if ( in_array( $hero_style, array( false, 'disabled', 'full-title-under-img' ) )
 			?>
 		</header><!-- .page-header -->
 
-		<?php if ( ! $hero_style && has_post_thumbnail() ) { ?>
+		<?php if ( ! $hero_style && is_singular() && has_post_thumbnail() ) { ?>
 			<div <?php cpschool_class( 'entry-single-featured-image', 'entry-featured-image' ); ?>>
 				<?php echo get_the_post_thumbnail( $post->ID, 'large' ); ?>
 			</div>

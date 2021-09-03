@@ -109,6 +109,22 @@ if ( ! function_exists( 'cpschool_posted_on' ) ) {
 	}
 }
 
+if ( ! function_exists( 'cpschool_get_home_url' ) ) {
+	/**
+	 * Gets home url that can be customized in customizer.
+	 */
+	function cpschool_get_home_url() {
+		$custom_home_url = get_theme_mod( 'custom_home_url' );
+		if ( $custom_home_url ) {
+			$home_url = $custom_home_url;
+		} else {
+			$home_url = home_url( '/' );
+		}
+
+		return $home_url;
+	}
+}
+
 if ( ! function_exists( 'cpschool_entry_footer' ) ) {
 	/**
 	 * Prints HTML with meta information for the categories, tags and comments.
@@ -436,6 +452,14 @@ if ( ! function_exists( 'cpschool_get_page_title' ) ) {
 			$title = __( 'Oops! That page can&rsquo;t be found.', 'cpschool' );
 		} elseif ( is_archive() ) {
 			$title = get_the_archive_title();
+			if ( ! $subtitle ) {
+				$archive_title_parts = explode( '<span>', $title );
+				if ( isset( $archive_title_parts[1] ) && $archive_title_parts[1] ) {
+					$title_main     = $archive_title_parts[0];
+					$title_subtitle = str_replace( '</span>', '', $archive_title_parts[1] );
+					$title          = '<span>' . $title_main . '</span><span>' . $title_subtitle . '</span>';
+				}
+			}
 		} elseif ( is_home() ) {
 			$title = get_theme_mod( 'posts_main_hero_title' );
 			if ( ! $title ) {
@@ -468,6 +492,10 @@ if ( ! function_exists( 'cpschool_get_page_subtitle' ) ) {
 					),
 					number_format_i18n( $wp_query->found_posts )
 				);
+
+				if( ! get_theme_mod( 'search_results_style' ) ) {
+					$subtitle .= get_search_form( array( 'echo' => false, 'id' => 'searchform-subtitle' ) );
+				}
 			} else {
 				$subtitle = __( 'We could not find any results for your search. You can give it another try through the search form below.', 'cpschool' );
 			}
@@ -496,7 +524,7 @@ if ( ! function_exists( 'cpschool_get_page_subtitle' ) ) {
 
 if ( ! function_exists( 'cpschool_get_active_sidebars' ) ) {
 	function cpschool_get_active_sidebars() {
-		$option_name = 'entries_lists';
+		$option_name  = 'entries_lists';
 
 		if ( is_singular() ) {
 			$post_id = get_the_ID();
@@ -509,6 +537,9 @@ if ( ! function_exists( 'cpschool_get_active_sidebars' ) ) {
 			$custom = get_post_meta( $post_id, 'cps_sidebars_custom', true );
 			if ( $custom ) {
 				$sidebars_pos = get_post_meta( $post_id, 'cps_sidebars', true );
+				if( !is_array( $sidebars_pos ) ) {
+					$sidebars_pos = array();
+				} 
 			}
 			// Looks for settings in customizer if its not set for specific page.
 			// TODO Consider using "cpschool_get_content_theme_mod" function in here.
@@ -520,7 +551,7 @@ if ( ! function_exists( 'cpschool_get_active_sidebars' ) ) {
 		}
 
 		if ( ! isset( $sidebars_pos ) ) {
-			$sidebars_pos = get_theme_mod( $option_name . '_sidebars' );
+			$sidebars_pos = get_theme_mod( $option_name . '_sidebars', array() );
 		}
 
 		if ( $sidebars_pos && is_array( $sidebars_pos ) ) {
@@ -528,12 +559,10 @@ if ( ! function_exists( 'cpschool_get_active_sidebars' ) ) {
 				if ( ! is_active_sidebar( $sidebar_pos ) ) {
 					unset( $sidebars_pos[ $sidebar_pos_key ] );
 				}
-
-				return $sidebars_pos;
 			}
 		}
 
-		return array();
+		return apply_filters( 'cpschool_get_active_sidebars', $sidebars_pos );
 	}
 }
 
@@ -725,5 +754,28 @@ if ( ! function_exists( 'cpschool_get_content_theme_mod' ) ) {
 		$option_value = get_theme_mod( $option_name, null );
 
 		return $option_value;
+	}
+}
+
+if ( ! function_exists( 'cpschool_get_search_results_style' ) ) {
+	/**
+	 * Gets style of search results
+	 *
+	 */
+	function cpschool_get_content_format() {
+		$post_format = '';
+
+		if ( is_search() ) {
+			// Default (empty) is "Google Inspired" style. The only alternative is "posts_lists".
+			$search_style = get_theme_mod( 'search_results_style' );
+			if ( ! $search_style ) {
+				$post_format = 'search';
+			}
+		}
+		if ( empty( $post_format ) ) {
+			$post_format = get_post_type();
+		}
+
+		return $post_format;
 	}
 }

@@ -1,10 +1,40 @@
 @include editor-wrap(true) {
-    h1, .h1 { @include adjusted-size($font-size-base * 2.5, '--body-font-size', '--headers-font-size') }
-    h2, .h2 { @include adjusted-size($font-size-base * 2, '--body-font-size', '--headers-font-size') }
-    h3, .h3 { @include adjusted-size($font-size-base * 1.75, '--body-font-size', '--headers-font-size') }
-    h4, .h4 { @include adjusted-size($font-size-base * 1.5, '--body-font-size', '--headers-font-size') }
-    h5, .h5 { @include adjusted-size($font-size-base * 1.25, '--body-font-size', '--headers-font-size') }
-    h6, .h6 { @include adjusted-size($font-size-base, '--body-font-size', '--headers-font-size') }
+    h1, .h1 {
+        @include adjusted-size($font-size-base * 2.5 * 0.9, '--body-font-size', '--headers-font-size');
+        @include media-breakpoint-up(lg) {
+            @include adjusted-size($font-size-base * 2.5, '--body-font-size', '--headers-font-size');
+        }
+    }
+    h2, .h2 {
+        @include adjusted-size($font-size-base * 2 * 0.9, '--body-font-size', '--headers-font-size');
+        @include media-breakpoint-up(lg) {
+            @include adjusted-size($font-size-base * 2, '--body-font-size', '--headers-font-size');
+        }
+    }
+    h3, .h3 {
+        @include adjusted-size($font-size-base * 1.75 * 0.9, '--body-font-size', '--headers-font-size');
+        @include media-breakpoint-up(lg) {
+            @include adjusted-size($font-size-base * 1.75, '--body-font-size', '--headers-font-size');
+        }
+    }
+    h4, .h4 {
+        @include adjusted-size($font-size-base * 1.5 * 0.9, '--body-font-size', '--headers-font-size');
+        @include media-breakpoint-up(lg) {
+            @include adjusted-size($font-size-base * 1.5, '--body-font-size', '--headers-font-size');
+        }
+    }
+    h5, .h5 {
+        @include adjusted-size($font-size-base * 1.25 * 0.9, '--body-font-size', '--headers-font-size');
+        @include media-breakpoint-up(lg) {
+            @include adjusted-size($font-size-base * 1.25, '--body-font-size', '--headers-font-size');
+        }
+    }
+    h6, .h6 {
+        @include adjusted-size($font-size-base * 0.9, '--body-font-size', '--headers-font-size');
+        @include media-breakpoint-up(lg) {
+            @include adjusted-size($font-size-base, '--body-font-size', '--headers-font-size');
+        }
+    }
     h1, h2, h3, h4, h5, h6,
     .h {
       margin-bottom: $headings-margin-bottom;

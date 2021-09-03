@@ -150,3 +150,11 @@ if ( ! function_exists( 'cpschool_cp_directory_setup' ) ) {
 	}
 }
 
+if ( ! function_exists( 'cpschool_cp_directory_load_more_button_class' ) ) {
+	// CP Directory button class
+	add_filter( 'cp_dir_load_more_button_class', 'cpschool_cp_directory_load_more_button_class' );
+	function cpschool_cp_directory_load_more_button_class($class) {
+		$class .= ' btn btn-secondary';
+		return $class;
+	}
+}

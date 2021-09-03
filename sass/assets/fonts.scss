@@ -1,18 +1,18 @@
 $fonts: (
 	amstelvar: (normal: 'Amstelvar-Roman-VF.ttf', italic: 'Amstelvar-Italic-VF.ttf', format: 'truetype'),
 	commissioner: (normal: 'Commissioner[FLAR,VOLM,slnt,wght].ttf', italic: false, format: 'truetype'),
-	epilogue: (normal: 'EpilogueVariable.woff2', italic: false, format: 'woff2'),
-	gelasio: (normal: 'Gelasio-Roman-VF.ttf', italic: 'Gelasio-Italic-VF.ttf', format: 'truetype'),
+	epilogue: (normal: 'Epilogue-VariableFont_wght.ttf', italic: false, format: 'truetype'),
+	gelasio: (normal: 'Gelasio-VF.ttf', italic: 'Gelasio-Italic-VF.ttf', format: 'truetype'),
 	hepta_slab: (normal: 'HeptaSlab-VF.ttf', italic: false, format: 'truetype'),
-	inter: (normal: 'Inter-upright-var.woff2', italic: 'Inter-italic-var.woff2', format: 'woff2'),
+	inter: (normal: 'Inter.var.ttf', italic: 'Inter-italic.var.ttf', format: 'truetype'),
 	lexend: (normal: 'Lexend[LXND].ttf', italic: false, format: 'truetype'),
-	manrope: (normal: 'ManropeGX.ttf', italic: false, format: 'truetype'),
+	manrope: (normal: 'Manrope[wght].ttf', italic: false, format: 'truetype'),
 	merriweather: (normal: 'Merriweather-Roman-VF.ttf', italic: 'Merriweather-Italic-VF.ttf', format: 'truetype'),
 	mohave: (normal: 'Mohave[wght].ttf', italic: 'Mohave-Italic[wght].ttf', format: 'truetype'),
 	petrona: (normal: 'Petrona[wght].ttf', italic: 'Petrona-Italic[wght].ttf', format: 'truetype'),
 	public_sans: (normal: 'Public-Sans-Roman-VF.ttf', italic: 'Public-Sans-Italic-VF.ttf', format: 'truetype'),
 	russolo: (normal: 'Russolo[opsz,wght].ttf', italic: false, format: 'truetype'),
-	space_grotesk: (normal: 'SpaceGroteskVariable.ttf', italic: false, format: 'truetype'),
+	space_grotesk: (normal: 'SpaceGrotesk[wght].ttf', italic: false, format: 'truetype'),
 	/*urbanist: (normal: 'UrbanistGX.ttf', italic: false, format: 'truetype'),*/
 );
 @each $font, $options in $fonts {

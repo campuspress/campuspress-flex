@@ -195,6 +195,10 @@ var cpSchoolThemeHelpers = (function ($) {
                 }
             }
         });
+
+        $('.nav:not(.navbar-nav)').on('click', '.dropdown-toggle[href="#"]', function (e) {
+            e.preventDefault();
+        });
     };
 
     return methods;

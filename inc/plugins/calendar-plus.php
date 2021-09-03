@@ -143,3 +143,14 @@ if ( ! function_exists( 'cpschool_cplus_singular_before_content' ) ) {
 		}
 	}
 }
+
+if ( ! function_exists( 'cpschool_cplus_get_the_post_type_description' ) ) {
+	add_filter( 'get_the_post_type_description', 'cpschool_cplus_get_the_post_type_description', 10, 2 );
+	function cpschool_cplus_get_the_post_type_description( $description, $post_type_obj ) {
+		if ( $post_type_obj->name === 'calendar_event' ) {
+			$description = '';
+		}
+
+		return $description;
+	}
+}
