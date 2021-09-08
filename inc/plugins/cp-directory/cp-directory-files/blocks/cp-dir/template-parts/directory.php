@@ -21,7 +21,7 @@ $filters            = $data->get_filters();
 $taxonomies_filters = $data->get_taxonomy_filters();
 $posts_per_page     = $data->get_posts_per_page( $entries_count );
 ?>
-<div class="<?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $dir_id ); ?>" aria-label="<?php echo esc_attr( apply_filters( 'cp_dir_directory_label', $label, $data ) ); ?>" data-source="<?php echo esc_attr($data->post_type_object->name); ?>">
+<div class="<?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $dir_id ); ?>" aria-label="<?php echo esc_attr( apply_filters( 'cp_dir_directory_label', $label, $data ) ); ?>" data-source="<?php echo esc_attr($data->post_type_object->name); ?>"<?php if( isset( $atts['filters_logic'] ) && $atts['filters_logic'] ) { echo 'data-filters-logic="' . esc_attr( $atts['filters_logic'] ) . '"'; } ?>>
 	<?php
 	if ( $filters || $taxonomies_filters ) {
 		?>

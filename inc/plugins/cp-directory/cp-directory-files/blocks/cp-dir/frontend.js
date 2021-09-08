@@ -9,12 +9,20 @@ jQuery('.cp-dir-control-select select').on('change', function(){
     jQuery(this).val();
     var dirParent = jQuery(this).parents('.cp-dir');
     var dirID = dirParent.attr('id');
+    var dirRelation = dirParent.data('filters-logic');
     
     if ( dirID in cpDirectories ) {
         cpDirectories[dirID].filter(function(item) {
+            if( dirRelation == 'or' ) { 
+                var active = false;
+            }
+            else {
             var active = true;
+            }
+
+            var hasFilters = false;
             dirParent.find('.cp-dir-control-select').each(function( index ) {
-                if( active ) {
+                if( active || dirRelation == 'or' ) {
                     var fieldName = jQuery(this).data('field-name');
                     var values = jQuery(this).find('select').val();
 
@@ -24,7 +32,10 @@ jQuery('.cp-dir-control-select select').on('change', function(){
                     }
                     
                     if( values.indexOf('0') === -1 ) {
+                        hasFilters = true;
+
                         var itemValue = item.values()[fieldName];                        
+
                         if( itemValue ) {
                             var found = false;
 
@@ -37,9 +48,17 @@ jQuery('.cp-dir-control-select select').on('change', function(){
                                 }
                             });
 
+                            if( dirRelation == 'or' && found ) {
+                                active = true;
+
+                                // stops each loop as one match is enough.
+                                return false;
+                            }
+                            else {
                             if(!found) {
                                 active = false;
                             }
+                        }
                         }
                         else {
                             active = false;
@@ -47,6 +66,10 @@ jQuery('.cp-dir-control-select select').on('change', function(){
                     }
                 }
             });
+            
+            if( dirRelation == 'or' && !active && !hasFilters ) {
+                active = true;
+            }
             
             return active;
         });
@@ -101,7 +124,7 @@ jQuery(function(){
                 // Updates SR count info.
                 var srInfoCount = jQuery('#' + key).find('.cp-dir-sr-info-count');
                 if(srInfoCount.length) {
-                    srInfoCount.text(dir.items.length);
+                    srInfoCount.text(dir.visibleItems.length);
                 }
 
                 // Updates load more stuff.
