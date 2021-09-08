@@ -161,10 +161,6 @@ if ( ! function_exists( 'cpschool_setup' ) ) {
 					'slug' => 'small',
 				),
 				array(
-					'name' => __( 'Normal', 'cpschool' ),
-					'slug' => 'normal',
-				),
-				array(
 					'name' => __( 'Medium', 'cpschool' ),
 					'size' => 20 * $font_size_modifier / 100,
 					'slug' => 'medium',
