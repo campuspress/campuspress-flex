@@ -161,6 +161,10 @@ if( ! class_exists('CPDirectory') ) :
                         'type' => 'string',
                         'default' => '',
                     ),
+                    'filters_logic' => array(
+                        'type' => 'string',
+                        'default' => '',
+                    ),
                     'posts_per_page' => array(
                         'type' => 'integer',
                         'default' => 0,
