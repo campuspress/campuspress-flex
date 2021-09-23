@@ -539,7 +539,7 @@ if ( ! function_exists( 'cpschool_get_active_sidebars' ) ) {
 				$sidebars_pos = get_post_meta( $post_id, 'cps_sidebars', true );
 				if( !is_array( $sidebars_pos ) ) {
 					$sidebars_pos = array();
-				} 
+				}
 			}
 			// Looks for settings in customizer if its not set for specific page.
 			// TODO Consider using "cpschool_get_content_theme_mod" function in here.
@@ -591,7 +591,7 @@ if ( ! function_exists( 'cpschool_get_hero_style' ) ) {
 			return false;
 		}
 
-		return $hero_style;
+		return apply_filters( 'cpschool_hero_style', $hero_style );
 	}
 }
 
