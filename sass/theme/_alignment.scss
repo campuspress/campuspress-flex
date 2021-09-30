@@ -17,11 +17,14 @@
 	max-width: calc(100vw - #{$grid-gutter-width});
 	left: calc(50% - 50vw + #{$grid-gutter-width/2});
 	width: calc(100vw - #{$grid-gutter-width});
-	@include media-breakpoint-up(md) {
-		+ #{$el-align-wide} {
-			margin-top: -$spacer;
+	
+	+ #{$el-align-wide} {
+		margin-top: -$spacer;
+		@include media-breakpoint-up(md) {
+			margin-top: -$spacer*2;
 		}
 	}
+	
 	@include media-breakpoint-up(xl) {
 		.entry-col-boxed .entry-content &, .site-boxed & {
 			max-width: 100%;
@@ -41,9 +44,10 @@
 	max-width: 100vw;
 	position: relative;
 	width: 100vw;
-	@include media-breakpoint-up(md) {
-		+ #{$el-align-full} {
-			margin-top: -$spacer;
+	+ #{$el-align-full} {
+		margin-top: -$spacer;
+		@include media-breakpoint-up(md) {
+			margin-top: -$spacer*2;
 		}
 	}
 	@include media-breakpoint-down(md) {
