@@ -14,11 +14,9 @@ if (!class_exists('WPMI_Backend')) {
 		function wp_update_nav_menu_item($menu_id, $menu_item_db_id, $menu_item_args)
 		{
 
-			if (!wp_doing_ajax()) {
+			if ( !wp_doing_ajax() || !defined('REST_REQUEST') ) {
 
 				$menu_item_wpmi = array();
-
-				check_admin_referer('update-nav_menu', 'update-nav-menu-nonce');
 
 				if (!empty($_POST['wpmi'][$menu_item_db_id])) {
 
