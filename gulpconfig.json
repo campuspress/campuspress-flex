@@ -14,7 +14,7 @@
 		"node": "./node_modules",
 		"composer": "./vendor",
 		"dev": "./src",
-		"dist": "./dist",
+		"dist": "./campuspress-flex",
 		"distprod": "./dist-product",
 		"vendor": ""
 	}
