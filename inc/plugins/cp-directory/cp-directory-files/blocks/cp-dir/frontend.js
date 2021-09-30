@@ -17,7 +17,7 @@ jQuery('.cp-dir-control-select select').on('change', function(){
                 var active = false;
             }
             else {
-            var active = true;
+                var active = true;
             }
 
             var hasFilters = false;
@@ -34,14 +34,20 @@ jQuery('.cp-dir-control-select select').on('change', function(){
                     if( values.indexOf('0') === -1 ) {
                         hasFilters = true;
 
-                        var itemValue = item.values()[fieldName];                        
+                        var itemValue = item.values()[fieldName];
 
                         if( itemValue ) {
                             var found = false;
 
                             itemValue = itemValue.split(',');
                             values.forEach(function(value) {
-                                if(itemValue.indexOf(value) !== -1) {
+                                // Lets check if having any value will do the trick
+                                if( value === '*' ) {
+                                    found = true;
+
+                                    return;
+                                }
+                                else if(itemValue.indexOf(value) !== -1) {
                                     found = true;
 
                                     return;
@@ -55,10 +61,10 @@ jQuery('.cp-dir-control-select select').on('change', function(){
                                 return false;
                             }
                             else {
-                            if(!found) {
-                                active = false;
+                                if(!found) {
+                                    active = false;
+                                }
                             }
-                        }
                         }
                         else {
                             active = false;
@@ -66,7 +72,7 @@ jQuery('.cp-dir-control-select select').on('change', function(){
                     }
                 }
             });
-            
+
             if( dirRelation == 'or' && !active && !hasFilters ) {
                 active = true;
             }

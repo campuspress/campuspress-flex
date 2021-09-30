@@ -230,12 +230,13 @@ function cp_dir_get_field_value( $entry_id, $field_details ) {
 					$entry_taxonomies_ids[] = $entry_taxonomy->parent;
 				}
 			}
-			$entry_taxonomies_ids = array_unique( $entry_taxonomies_ids );
 
 			// If entry is checking in children and finds some, lets say it is also part of parent.
-			if ( isset( $field_details['args']['parent_id'] ) ) {
+			if ( isset( $field_details['args']['parent_id'] ) && $entry_taxonomies_ids ) {
 				$entry_taxonomies_ids[] = $field_details['args']['parent_id'];
 			}
+
+			$entry_taxonomies_ids = array_unique( $entry_taxonomies_ids );
 
 			$value_raw_content = implode( ', ', $entry_taxonomies_names );
 			$value_raw_attr    = implode( ',', $entry_taxonomies_ids );

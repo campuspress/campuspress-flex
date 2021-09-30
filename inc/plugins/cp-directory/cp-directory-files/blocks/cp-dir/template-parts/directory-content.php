@@ -19,11 +19,13 @@
                 <?php 
                 foreach( $fields as $field ) {
                     $value = cp_dir_get_field_value( $entry_id, $field );
-                    if( !$field['hidden'] ) {
-                        echo '<td class="' . esc_attr( $field['field_name'] ) . '" data-value="' . esc_attr( $value['attr'] ) . '">' . $value['content'] . '</td>';
-                    }
-                    else {
-                        echo '<td style="display:none;" class="' . esc_attr( $field['field_name'] ) . '" data-value="' . esc_attr( $value['attr'] ) . '"></td>';
+                    if( $value ) {
+                        if( !$field['hidden'] ) {
+                            echo '<td class="' . esc_attr( $field['field_name'] ) . '" data-value="' . esc_attr( $value['attr'] ) . '">' . $value['content'] . '</td>';
+                        }
+                        else {
+                            echo '<td style="display:none;" class="' . esc_attr( $field['field_name'] ) . '" data-value="' . esc_attr( $value['attr'] ) . '"></td>';
+                        }
                     }
                 }
                 ?>
