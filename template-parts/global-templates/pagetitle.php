@@ -52,7 +52,7 @@ if ( in_array( $hero_style, array( false, 'disabled', 'full-title-under-img' ) )
 		 *
 		 * @param bool $entry_featured_image Display Featured image or not.
 		 */
-		if ( apply_filters( 'entry_single_featured_image', $entry_featured_image ) ) { ?>
+		if ( apply_filters( 'cpschool_entry_single_featured_image', $entry_featured_image ) ) { ?>
 			<div <?php cpschool_class( 'entry-single-featured-image', 'entry-featured-image' ); ?>>
 				<?php echo get_the_post_thumbnail( $post->ID, 'large' ); ?>
 			</div>
