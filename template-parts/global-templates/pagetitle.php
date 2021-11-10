@@ -42,12 +42,22 @@ if ( in_array( $hero_style, array( false, 'disabled', 'full-title-under-img' ) )
 			?>
 		</header><!-- .page-header -->
 
-		<?php if ( ! $hero_style && is_singular() && has_post_thumbnail() ) { ?>
+		<?php
+		$entry_featured_image = ! $hero_style && is_singular() && has_post_thumbnail();
+
+		/**
+		 * Filters whether to show or not post featured image when Hero is disabled.
+		 *
+		 * @since 0.9.2
+		 *
+		 * @param bool $entry_featured_image Display Featured image or not.
+		 */
+		if ( apply_filters( 'cpschool_entry_single_featured_image', $entry_featured_image ) ) { ?>
 			<div <?php cpschool_class( 'entry-single-featured-image', 'entry-featured-image' ); ?>>
 				<?php echo get_the_post_thumbnail( $post->ID, 'large' ); ?>
 			</div>
-		<?php } ?>
-		<?php
+			<?php
+		}
 	}
 }
 

@@ -575,22 +575,29 @@ if ( ! function_exists( 'cpschool_get_hero_style' ) ) {
 
 		$hero_style = get_theme_mod( 'hero_main_style' );
 		if ( $hero_style == 'disabled' ) {
-			return false;
+			$hero_style = false;
 		}
 		if ( is_singular() && get_post_meta( get_the_ID(), 'cps_hero_title_disable', true ) ) {
-			return false;
+			$hero_style = false;
 		}
 
 		// If there is no page title, we don't really want to display the hero for now.
 		if ( cpschool_get_page_title() === false ) {
-			return false;
+			$hero_style = false;
 		}
 
 		// If hero only shows image and its missing, lets not display it at all.
 		if ( $hero_style == 'full-title-under-img' && ! cpschool_has_hero_image() ) {
-			return false;
+			$hero_style = false;
 		}
 
+		/**
+		 * Filters current Hero style for the page/post
+		 *
+		 * @since 0.9.1
+		 *
+		 * @param string $hero_style Current hero style for the page/post.
+		 */
 		return apply_filters( 'cpschool_hero_style', $hero_style );
 	}
 }
