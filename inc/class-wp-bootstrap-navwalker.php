@@ -236,9 +236,13 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 				$atts['href'] = ! empty( $item->url ) ? $item->url : '#';
 			}
 
+			if ( ! $this->navbar ) {
+				$atts['role'] = 'menuitem';
+			}
+
 			// If item has_children add atts to <a>.
 			if ( isset( $args->has_children ) && $args->has_children && $args->depth !== 1) {
-				$atts['id']            = 'menu-item-dropdown-' . $args->menu_id . '-' . $item->ID;
+				$atts['id']   = 'menu-item-dropdown-' . $args->menu_id . '-' . $item->ID;
 
 				if ( $this->navbar ) {
 					$atts['class'][]     = 'dropdown-toggle';
@@ -283,6 +287,7 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 			// Items in dropdowns use .dropdown-item instead of .nav-link.
 			if ( $depth > 0 ) {
 				$atts['class'][] = 'dropdown-item';
+				$atts['role']    = 'menuitem';
 			} else {
 				$atts['class'][] = 'nav-link';
 			}
@@ -607,7 +612,7 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 		 * @return array                 maybe updated array of attributes for item.
 		 */
 		private function update_atts_for_linkmod_type( $atts = array(), $linkmod_classes = array() ) {
-			if ( ! empty( $linkmod_classes ) ) {
+ 			if ( ! empty( $linkmod_classes ) ) {
 				foreach ( $linkmod_classes as $link_class ) {
 					if ( ! empty( $link_class ) ) {
 						// update $atts with a space and the extra classname...
