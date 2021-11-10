@@ -104,8 +104,8 @@ if ( ! function_exists( 'cpschool_widgets_init' ) ) {
 				'description'   => __( 'Right sidebar widget area. Used by default with single posts and pages that are listing posts.', 'cpschool' ),
 				'before_widget' => '<div id="%1$s" class="sidebar-widget widget %2$s">',
 				'after_widget'  => '</div>',
-				'before_title'  => '<h3 class="widget-title">',
-				'after_title'   => '</h3>',
+				'before_title'  => '<h2 class="widget-title h h3">',
+				'after_title'   => '</h2>',
 			)
 		);
 
@@ -116,8 +116,8 @@ if ( ! function_exists( 'cpschool_widgets_init' ) ) {
 				'description'   => __( 'Left sidebar widget area. Used by default with pages.', 'cpschool' ),
 				'before_widget' => '<div id="%1$s" class="sidebar-widget widget %2$s">',
 				'after_widget'  => '</div>',
-				'before_title'  => '<h3 class="widget-title">',
-				'after_title'   => '</h3>',
+				'before_title'  => '<h2 class="widget-title h h3">',
+				'after_title'   => '</h2>',
 			)
 		);
 
@@ -128,8 +128,8 @@ if ( ! function_exists( 'cpschool_widgets_init' ) ) {
 				'description'   => __( 'Full sized footer widget with dynamic grid', 'cpschool' ),
 				'before_widget' => '<div id="%1$s" class="footer-widget widget %2$s dynamic-classes">',
 				'after_widget'  => '</div><!-- .footer-widget -->',
-				'before_title'  => '<h3 class="widget-title">',
-				'after_title'   => '</h3>',
+				'before_title'  => '<h2 class="widget-title h h3">',
+				'after_title'   => '</h2>',
 			)
 		);
 
