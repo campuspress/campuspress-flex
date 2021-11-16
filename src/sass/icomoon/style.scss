@@ -3,9 +3,9 @@
 @font-face {
   font-family: '#{$icomoon-font-family}';
   src:
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?r016xi') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?r016xi') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?r016xi##{$icomoon-font-family}') format('svg');
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?p3h968') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?p3h968') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?p3h968##{$icomoon-font-family}') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -331,6 +331,11 @@
     content: $cps-icon-wheelchair; 
   }
 }
+.cps-icon-vimeo-square {
+  &:before {
+    content: $cps-icon-vimeo-square; 
+  }
+}
 .cps-icon-space-shuttle {
   &:before {
     content: $cps-icon-space-shuttle; 
@@ -434,6 +439,11 @@
 .cps-icon-creative-commons {
   &:before {
     content: $cps-icon-creative-commons; 
+  }
+}
+.cps-icon-vimeo {
+  &:before {
+    content: $cps-icon-vimeo; 
   }
 }
 .cps-icon-credit-card-alt {
