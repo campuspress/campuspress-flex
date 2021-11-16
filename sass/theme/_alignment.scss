@@ -1,4 +1,4 @@
-#{$el-align-full}, 
+#{$el-align-full},
 #{$el-align-wide} {
 	margin-bottom: $spacer;
 	margin-top: $spacer;
@@ -17,14 +17,14 @@
 	max-width: calc(100vw - #{$grid-gutter-width});
 	left: calc(50% - 50vw + #{$grid-gutter-width/2});
 	width: calc(100vw - #{$grid-gutter-width});
-	
+
 	+ #{$el-align-wide} {
 		margin-top: -$spacer;
 		@include media-breakpoint-up(md) {
 			margin-top: -$spacer*2;
 		}
 	}
-	
+
 	@include media-breakpoint-up(xl) {
 		.entry-col-boxed .entry-content &, .site-boxed & {
 			max-width: 100%;
