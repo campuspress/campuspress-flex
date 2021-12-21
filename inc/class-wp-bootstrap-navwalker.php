@@ -427,7 +427,7 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 			}
 
 			if ( $collapse_button_target ) {
-				$item_output .= '<button data-toggle="collapse" data-target="#' . esc_attr( $collapse_button_target ) . '" class="collapsed"><span class="sr-only" aria-expanded="false" aria-controls="' . esc_attr( $collapse_button_target ) . '">' . esc_html__( 'Toggle submenu', 'cpschool' ) . '</span>' . apply_filters( 'cpschool_nav_collapse_button_content', '', $item, $args, $depth ) . '</button>';
+				$item_output .= '<button data-toggle="collapse" data-target="#' . esc_attr( $collapse_button_target ) . '" class="collapsed" aria-expanded="false" aria-controls="' . esc_attr( $collapse_button_target ) . '"><span class="sr-only">' . esc_html__( 'Toggle submenu', 'cpschool' ) . '</span>' . apply_filters( 'cpschool_nav_collapse_button_content', '', $item, $args, $depth ) . '</button>';
 			}
 
 			$item_output .= isset( $args->after ) ? $args->after : '';
