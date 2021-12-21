@@ -98,14 +98,32 @@ jQuery('.cp-dir-control-load-more-btn').on('click', function(){
 });
 
 jQuery('.cp-dir-sr-load-jump-btn').on('click', function(){
-    jQuery(this).val();
     var dirParent = jQuery(this).parents('.cp-dir');
     var dirID = dirParent.attr('id');
     var perPage = parseInt(jQuery(this).parents('.cp-dir-pagination').data('per-page'));
     
     if ( dirID in cpDirectories ) {
-        var firstNewIndex = parseInt(cpDirectories[dirID].visibleItems.length) - perPage;
-        jQuery(cpDirectories[dirID].items[firstNewIndex].elm).find('a').trigger('focus');
+        // Handle differently if we are at the end of the list.
+        if(cpDirectories[dirID].page == cpDirectories[dirID].visibleItems.length) {
+            var firstNewIndex = parseInt(cpDirectories[dirID].visibleItems.length) - perPage;
+        }
+        else {
+            var firstNewIndex = parseInt(cpDirectories[dirID].visibleItems.length) - (parseInt(cpDirectories[dirID].page) - parseInt(cpDirectories[dirID].visibleItems.length));
+        }
+
+        var found = jQuery(cpDirectories[dirID].items[firstNewIndex].elm);
+        if( found.is('a') ) {
+            found.trigger('focus');
+        }
+        else {
+            var foundChild = found.find('a');
+            if( foundChild.length ){
+                foundChild.trigger('focus');
+            }
+            else {
+                found.next('a').trigger('focus');
+            }
+        }
     }
 });
 

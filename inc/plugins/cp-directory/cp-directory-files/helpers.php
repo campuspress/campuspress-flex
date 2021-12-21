@@ -195,12 +195,12 @@ function cp_dir_get_field_value( $entry_id, $field_details ) {
 			switch ( $field_details['name'] ) :
 				case 'post_title':
 					$value_raw_content = get_the_title( $entry_id );
+					$value_raw_attr    = $value_raw_content;
 					if ( isset( $field_details['args']['link'] ) && $field_details['args']['link'] ) {
 						$link = get_permalink( $entry_id );
 						if ( get_the_ID() ) {
 							$link = add_query_arg( 'cp-dir-id', get_the_ID(), $link );
 						}
-						$value_raw_attr    = $value_raw_content;
 						$value_raw_content = '<a href="' . esc_url( $link ) . '">' . $value_raw_content . '</a>';
 					}
 					break;
@@ -218,7 +218,8 @@ function cp_dir_get_field_value( $entry_id, $field_details ) {
 			if ( isset( $field_details['args']['parent_id'] ) ) {
 				// Includes all children and parent so it works when parent is not selected in entry.
 				$term_include    = get_term_children( $field_details['args']['parent_id'], $field_details['name'] );
-				$term_include[]  = $field_details['args']['parent_id'];
+				//looks like this is no longer needed?
+				//$term_include[]  = $field_details['args']['parent_id'];
 				$args['include'] = $term_include;
 			}
 			$entry_taxonomies       = wp_get_post_terms( $entry_id, $field_details['name'], $args );
@@ -226,7 +227,7 @@ function cp_dir_get_field_value( $entry_id, $field_details ) {
 			foreach ( $entry_taxonomies as $entry_taxonomy ) {
 				$entry_taxonomies_names[] = $entry_taxonomy->name;
 				$entry_taxonomies_ids[]   = $entry_taxonomy->term_id;
-				if ( $entry_taxonomy->parent ) {
+				if ( $entry_taxonomy->parent && !in_array($entry_taxonomy->parent, $entry_taxonomies_ids ) ) {
 					$entry_taxonomies_ids[] = $entry_taxonomy->parent;
 				}
 			}
@@ -236,7 +237,8 @@ function cp_dir_get_field_value( $entry_id, $field_details ) {
 				$entry_taxonomies_ids[] = $field_details['args']['parent_id'];
 			}
 
-			$entry_taxonomies_ids = array_unique( $entry_taxonomies_ids );
+			//looks like this is no longer needed?
+			//$entry_taxonomies_ids = array_unique( $entry_taxonomies_ids );
 
 			$value_raw_content = implode( ', ', $entry_taxonomies_names );
 			$value_raw_attr    = implode( ',', $entry_taxonomies_ids );

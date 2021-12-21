@@ -39,9 +39,17 @@ class CPDirectoryData {
 			return $this->taxonomy_filters;
 		}
 
+		$this->taxonomy_filters = array();
+
+		if ( !isset( $this->atts['filters'][ $this->atts['source'] ] ) ) {
+			return $this->taxonomy_filters;
+		}
+
+		$enabled_filters = $this->atts['filters'][ $this->atts['source'] ];
+
 		//Checks if any "tax_" filters exist.
 		$filters            = $this->get_filters();
-		$filters_tax_exists = array();
+		$filters_tax_exists = false;
 		foreach ( $filters as $filter ) {
 			if ( substr( $filter, 0, 4 ) === 'tax_' ) {
 				$filters_tax_exists = true;
@@ -49,57 +57,59 @@ class CPDirectoryData {
 			}
 		}
 
-		$this->taxonomy_filters = array();
-		if ( $filters_tax_exists ) {
-			$taxonomies = get_object_taxonomies( $this->atts['source'], 'object' );
-			foreach ( $taxonomies as $taxonomy ) {
-				if ( isset( $this->atts['filters'][ $this->atts['source'] ] ) && in_array( 'tax_' . $taxonomy->name, $this->atts['filters'][ $this->atts['source'] ] ) ) {
-					$parent_id = 0;
-					if ( isset( $this->atts['categories'][ $taxonomy->name ] ) && $this->atts['categories'][ $taxonomy->name ] ) {
-						$parent_id = $this->atts['categories'][ $taxonomy->name ];
-					}
+		if ( !$filters_tax_exists ) {
+			return $this->taxonomy_filters;
+		}
+		
+		$taxonomies = get_object_taxonomies( $this->atts['source'], 'object' );
+		foreach ( $taxonomies as $taxonomy ) {
 
-					if ( in_array( 'tax_childs_' . $taxonomy->name, $this->atts['filters'][ $this->atts['source'] ] ) ) {
-						$terms = get_terms(
-							$taxonomy->name,
-							array(
-								'hide_empty' => true,
-								'parent'     => $parent_id,
-							)
-						);
-						foreach ( $terms as $term ) {
-							if ( get_term_children( $term->term_id, $taxonomy->name ) ) {
-								$this->taxonomy_filters[] = array(
-									'label'      => $term->name,
-									'taxonomy'   => $taxonomy->name,
-									'parent_id'  => $term->term_id,
-									'select_id'  => $this->get_directory_id() . '-tax-' . $taxonomy->name . '-' . $term->term_id,
-									'field_name' => 'cp-dir-field-' . $taxonomy->name . '-' . $term->term_id,
-								);
-							}
-						}
-					}
 
-					if ( empty( $this->taxonomy_filters ) ) {
-						// Use parent name if childs are being shown.
-						if ( $parent_id ) {
-							$term = get_term( $parent_id, $taxonomy->name );
+			if ( in_array( 'tax_' . $taxonomy->name, $enabled_filters ) ) {
+				$parent_id = 0;
+				if ( isset( $this->atts['categories'][ $taxonomy->name ] ) && $this->atts['categories'][ $taxonomy->name ] ) {
+					$parent_id = $this->atts['categories'][ $taxonomy->name ];
+				}
 
-							$label      = $term->name;
-							$field_name = $taxonomy->name . '-' . $term->term_id;
-						} else {
-							$label      = $taxonomy->label;
-							$field_name = $taxonomy->name;
-						}
-						if ( ! $parent_id || get_term_children( $parent_id, $taxonomy->name ) ) {
+				if ( in_array( 'tax_childs_' . $taxonomy->name, $enabled_filters ) ) {
+					$terms = get_terms(
+						$taxonomy->name,
+						array(
+							'hide_empty' => true,
+							'parent'     => $parent_id,
+						)
+					);
+					foreach ( $terms as $term ) {
+						if ( get_term_children( $term->term_id, $taxonomy->name ) ) {
 							$this->taxonomy_filters[] = array(
-								'label'      => $label,
+								'label'      => $term->name,
 								'taxonomy'   => $taxonomy->name,
-								'parent_id'  => $parent_id,
-								'select_id'  => $this->get_directory_id() . '-tax-' . $taxonomy->name,
-								'field_name' => 'cp-dir-field-' . $field_name,
+								'parent_id'  => $term->term_id,
+								'select_id'  => $this->get_directory_id() . '-tax-' . $taxonomy->name . '-' . $term->term_id,
+								'field_name' => 'cp-dir-field-' . $taxonomy->name . '-' . $term->term_id,
 							);
 						}
+					}
+				}
+				else {
+					// Use parent name if we are filtering.
+					if ( $parent_id ) {
+						$term = get_term( $parent_id, $taxonomy->name );
+
+						$label      = $term->name;
+						$field_name = $taxonomy->name . '-' . $term->term_id;
+					} else {
+						$label      = $taxonomy->label;
+						$field_name = $taxonomy->name;
+					}
+					if ( ! $parent_id || get_term_children( $parent_id, $taxonomy->name ) ) {
+						$this->taxonomy_filters[] = array(
+							'label'      => $label,
+							'taxonomy'   => $taxonomy->name,
+							'parent_id'  => $parent_id,
+							'select_id'  => $this->get_directory_id() . '-tax-' . $taxonomy->name,
+							'field_name' => 'cp-dir-field-' . $field_name,
+						);
 					}
 				}
 			}
@@ -122,38 +132,21 @@ class CPDirectoryData {
 		}
 
 		$taxonomy_filters = $this->get_taxonomy_filters();
+		
+		if( isset( $this->atts['fields'][ $this->atts['source'] ] ) ) {
+			$enabled_fields = $this->atts['fields'][ $this->atts['source'] ];
+		} else {
+			$enabled_fields = array();
+		}
 
 		$this->fields = array();
 
 		$available_fields = cp_dir_get_available_fields( $this->atts['source'] );
 		foreach ( $available_fields as $field_key => $field_details ) {
-			$field_enabled           = isset( $this->atts['fields'][ $this->atts['source'] ] ) && in_array( $field_key, $this->atts['fields'][ $this->atts['source'] ] );
-			$taxonomy_filter_enabled = false;
-			if ( $field_details['type'] == 'taxonomy' ) {
-				//Checks if filter is enabled
-				foreach ( $taxonomy_filters as $taxonomy_filter_details ) {
-					if ( $taxonomy_filter_details['taxonomy'] == $field_details['name'] ) {
-						$taxonomy_filter_enabled = true;
-						break;
-					}
-				}
-			}
-			if ( $field_details['default'] || $field_enabled || $taxonomy_filter_enabled ) {
-				if ( $field_details['type'] == 'taxonomy' ) {
-					if ( $taxonomy_filters ) {
-						foreach ( $taxonomy_filters as $filter ) {
-							$this->fields[$filter['field_name']] = array_merge(
-								$field_details,
-								array(
-									'label'      => $filter['label'],
-									'field_name' => $filter['field_name'],
-									'args'       => array( 'parent_id' => $filter['parent_id'] ),
-									'hidden'     => ! $field_enabled && $taxonomy_filter_enabled ? true : false,
-								)
-							);
-						}
-					}
-				} else {
+			$field_enabled = in_array( $field_key, $enabled_fields ) || $field_details['default'];
+
+			if( $field_enabled ) {
+				if (  $field_details['type'] != 'taxonomy' ) {
 					$field_name = 'name';
 					if ( isset( $field_details['args']['name_field'] ) && $field_details['args']['name_field'] ) {
 						$field_name = 'cp-dir-field-' . $field_details['name'];
@@ -168,6 +161,21 @@ class CPDirectoryData {
 					);
 				}
 			}
+		}
+
+		// Lets process taxonomies seperately because we will want them anyway to apply the filters
+		foreach ( $taxonomy_filters as $filter ) {
+			$field_enabled = in_array( 'tax_' . $filter['taxonomy'], $enabled_fields );
+
+			$this->fields[$filter['field_name']] = array_merge(
+				$available_fields['tax_' . $filter['taxonomy']],
+				array(
+					'label'      => $filter['label'],
+					'field_name' => $filter['field_name'],
+					'args'       => array( 'parent_id' => $filter['parent_id'] ),
+					'hidden'     => $field_enabled ? false : true,
+				)
+			);
 		}
 
 		$this->fields = apply_filters( 'cp_dir_get_fields', $this->fields, $this->atts );

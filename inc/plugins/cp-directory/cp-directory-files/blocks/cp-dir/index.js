@@ -118,7 +118,8 @@
 				postTypeDetails.taxonomies.forEach((taxDetails) => {
 					categoriesOptions[taxDetails.name] = buildTermsTree( props.categories[taxDetails.name] );
 					
-					if( categoriesOptions[taxDetails.name].length > 1 ) {
+					// Check if taxonomies are ready to setup.
+					if( typeof props.categories[taxDetails.name] !== 'undefined' ) {
 						if( !( taxDetails.name in taxAddedMap ) ) {
 							taxAddedMap[taxDetails.name] = [ postTypeDetails.name ];
 
