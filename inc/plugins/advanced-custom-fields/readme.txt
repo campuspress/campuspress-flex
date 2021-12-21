@@ -1,16 +1,18 @@
 === Advanced Custom Fields ===
-Contributors: elliotcondon
+Contributors: deliciousbrains, bradt, elliotcondon
 Tags: acf, fields, custom fields, meta, repeater
-Stable tag: 5.9.5
 Requires at least: 4.7
-Tested up to: 5.6
+Tested up to: 5.8.1
 Requires PHP: 5.6
+Stable tag: 5.11.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Customize WordPress with powerful, professional and intuitive fields.
+Customize WordPress with powerful, professional and intuitive fields. Proudly powering over 2 million websites, Advanced Custom Fields is the plugin WordPress developers love.
 
 == Description ==
+
+Advanced Custom Fields turns WordPress sites into a fully-fledged content management system by giving you all the tools to do more with your data.
 
 Use the Advanced Custom Fields plugin to take full control of your WordPress edit screens & custom field data.
 
@@ -28,14 +30,22 @@ Use the Advanced Custom Fields plugin to take full control of your WordPress edi
 * Millions of Users
 
 = Links =
-* [Website](https://www.advancedcustomfields.com)
-* [Documentation](https://www.advancedcustomfields.com/resources/)
+* [Website](https://advancedcustomfields.com/?utm_source=wordpress.org&utm_medium=free%20plugin%20listing&utm_campaign=ACF%20Website)
+* [Documentation](https://advancedcustomfields.com/resources/?utm_source=wordpress.org&utm_medium=free%20plugin%20listing&utm_campaign=ACF%20Website)
 * [Support](https://support.advancedcustomfields.com)
-* [ACF PRO](https://www.advancedcustomfields.com/pro/)
+* [ACF PRO](https://advancedcustomfields.com/pro/?utm_source=wordpress.org&utm_medium=free%20plugin%20listing&utm_campaign=ACF%20Pro%20Upgrade)
 
 = PRO =
-The Advanced Custom Fields plugin is also available in a professional version which includes more fields, more functionality, and more flexibility! [Learn more](https://www.advancedcustomfields.com/pro/)
+The Advanced Custom Fields plugin is also available in a professional version which includes more fields, more functionality, and more flexibility!
 
+* The [Repeater Field](https://www.advancedcustomfields.com/resources/repeater/?utm_source=wordpress.org&utm_medium=free%20plugin%20listing&utm_campaign=ACF%20Pro%20Upgrade) allows you to create a set of sub fields which can be repeated again, and again, and again.
+* [ACF Blocks](https://www.advancedcustomfields.com/resources/blocks/?utm_source=wordpress.org&utm_medium=free%20plugin%20listing&utm_campaign=ACF%20Pro%20Upgrade), a powerful PHP-based framework for developing custom block types for the WordPress Block Editor (aka Gutenberg).
+* Define, create, and manage content with the [Flexible Content Field](https://www.advancedcustomfields.com/resources/flexible-content/?utm_source=wordpress.org&utm_medium=free%20plugin%20listing&utm_campaign=ACF%20Pro%20Upgrade), which provides for multiple layout and sub field options
+* Use the [Options Page](https://www.advancedcustomfields.com/resources/options-page/?utm_source=wordpress.org&utm_medium=free%20plugin%20listing&utm_campaign=ACF%20Pro%20Upgrade) feature to add custom admin pages to edit ACF fields.
+* Build fully customisable image galleries with the [Gallery Field](https://www.advancedcustomfields.com/resources/gallery/?utm_source=wordpress.org&utm_medium=free%20plugin%20listing&utm_campaign=ACF%20Pro%20Upgrade)
+* Unlock a more efficient workflow for managing field settings by reusing existing fields and field groups on demand with the [Clone Field](https://www.advancedcustomfields.com/resources/clone/?utm_source=wordpress.org&utm_medium=free%20plugin%20listing&utm_campaign=ACF%20Pro%20Upgrade)
+
+[Upgrade to Pro](https://advancedcustomfields.com/pro/?utm_source=wordpress.org&utm_medium=free%20plugin%20listing&utm_campaign=ACF%20Pro%20Upgrade)
 
 == Installation ==
 
@@ -43,16 +53,14 @@ From your WordPress dashboard
 
 1. **Visit** Plugins > Add New
 2. **Search** for "Advanced Custom Fields"
-3. **Activate** Advanced Custom Fields from your Plugins page
+3. **Install and Activate** Advanced Custom Fields from your Plugins page
 4. **Click** on the new menu item "Custom Fields" and create your first Custom Field Group!
-5. **Read** the documentation to [get started](https://www.advancedcustomfields.com/resources/getting-started-with-acf/)
+5. **Read** the documentation to [get started](https://advancedcustomfields.com/resources/getting-started-with-acf/?utm_source=wordpress.org&utm_medium=free%20plugin%20listing&utm_campaign=ACF%20Website)
 
 
 == Frequently Asked Questions ==
 
 = What kind of support do you provide? =
-
-**Help Desk.** Support is currently provided via our email help desk. Questions are generally answered within 24 hours, with the exception of weekends and holidays. We answer questions related to ACF, its usage and provide minor customization guidance. We cannot guarantee support for questions which include custom theme code, or 3rd party plugin conflicts & compatibility. [Open a Support Ticket](https://www.advancedcustomfields.com/support/)
 
 **Support Forums.** Our Community Forums provide a great resource for searching and finding previously answered and asked support questions. You may create a new thread on these forums, however, it is not guaranteed that you will receive an answer from our support team. This is more of an area for developers to talk to one another, post ideas, plugins and provide basic help. [View the Support Forum](https://support.advancedcustomfields.com/)
 
@@ -67,6 +75,139 @@ From your WordPress dashboard
 
 
 == Changelog ==
+
+= 5.11.4 =
+*Release Date - 2nd December 2021*
+
+* Fix - Fixed several Select2.js conflicts with other plugins
+* Fix - Fixed an issue where block name sanitization could change valid block names containing double hyphens
+* Fix - Fixed an issue where blocks with integer IDs could fail to load example field data
+
+= 5.11.3 =
+*Release Date - 24th November 2021*
+
+* Fix - Fixed a bug when accessing field values for options pages registered with a custom post_id
+
+= 5.11.2 =
+*Release Date - 24th November 2021*
+
+* Fix - Previously implemented data access changes for get_field() and the_field() are now limited to the ACF shortcode only. [Learn more](https://www.advancedcustomfields.com/resources/acf-field-functions/)
+* Fix - get_field() and the_field() functions can once again access meta values regardless of being registered with ACF, restoring functionality that existed before 5.11
+* Fix - get_field() and the_field() functions now are only able to access site options which are ACF fields
+* Fix - UI issues for select boxes related to Yoast and WooCommerce’s select2 versions by upgrading our select2 version, and updating our CSS to support older versions
+* Fix - User fields failed to load values when using the legacy select2 v3 option
+* Fix - acf_slugify() now correctly supports special characters which solves issues with block names or field group names (during imports) containing those characters
+* Fix - PHP Notice generated while processing a field group’s postbox classes
+
+= 5.11.1 =
+*Release Date - 18 November 2021*
+
+* Enhancement - Added "acf/admin/license_key_constant_message" filter to allow changing of the "Your license key is defined in wp-config.php" message
+* Fix - Added warning for when get_field() or similar functions are called before ACF has initialized. [Learn more](https://www.advancedcustomfields.com/resources/acf-field-functions/)
+* Fix - Fixed fields not appearing on user REST API endpoints if their field group location was set to a user form other than "all"
+* Fix - Fixed warning in REST API if a custom field type did not have the "show_in_rest" property
+* Fix - Fixed an error that could occur if value of WYSIWYG field was not a string
+
+= 5.11 =
+*Release Date - 10 November 2021*
+
+* [View Release Post](https://www.advancedcustomfields.com/blog/acf-5-11-release-rest-api/)
+* New - Fields can now be viewed and updated with the WordPress REST API (props @mishterk)
+* New - License key can now be defined in code with the "ACF_PRO_LICENSE" constant
+* Enhancement - Improved error handling for expired or deactivated licenses
+* Enhancement - Improved support for various block editor features, such as block styles and padding/spacing
+* Enhancement - Added support for using WordPress "Screen Options" to hide field groups in Classic Editor
+* Enhancement - Support filters adding custom classes on date and time field inputs
+* Enhancement - Support filtering ACF shortcode attributes (with the "shortcode_atts_acf" filter)
+* Fix - Removed usages of PHP "extract()" function
+* Fix - Fixed a security issue with user field
+* Fix - Fixed a security issue with "acf_get_value()"
+* Fix - Correctly set ".acf-block-preview" wrapper when previewing a block in auto mode
+* Fix - Resolved an issue with select2 rendering for nav menu fields
+* Fix - Fixed an issue with file validation that occurred when removing a file that failed validation
+* Fix - Fixed a notice in "acf_prepare_field()"
+* Fix - Prevented an issue where setting an empty string for the return format of date and time fields would cause JS errors
+* Fix - Fix issues with conditional logic for multi-select fields (props @bhujagendra-ishaya)
+* Fix - Added support for Google Maps schema change which prevented Google Maps fields from correctly saving the city for some areas
+* Fix - Fixed an issue where removing the collapsed property of a repeater prevents viewing previously collapsed rows
+* i18n - Updated Polish Translations (props @webnatural)
+* Dev - Formatted JavaScript to WordPress code standards
+
+= 5.10.2 =
+*Release Date - 31 August 2021*
+
+* Fix - Fixed block duplication issues which created blocks with duplicate block IDs
+* Fix - Fixed an issue with ACF errors displaying in the media library outside of ACF fields
+* Fix - Changed label of "Enable Opacity?" to "Allow transparency" in the colour picker
+* Fix - Revert "style" attributes of ACF Blocks to 5.9.x behaviour for template compatibility
+* Fix - Allow safe HTML inside select2 field labels
+* Fix - Don't render the "acf-block-preview" div when preloading blocks in edit mode
+
+= 5.10.1 =
+*Release Date - 26 August 2021*
+
+* Fix - Fixed conflict with WooCommerce loading SelectWoo which is not directly compatible with Select2.
+
+= 5.10 =
+*Release Date - 25 August 2021*
+
+* [View Release Post](https://www.advancedcustomfields.com/blog/acf-5-10-release-html-escaping-blocks-api-v2-block-preloading-and-more/)
+* Enhancement - Improved security by running all user-generated content through `wp_kses()` by default
+* Enhancement - New ACF Blocks features
+    * Switched to v2 of the Blocks API for WordPress 5.6+
+    * Block preloading now enabled by default
+    * Block preloading now supports blocks set to "Edit" mode
+    * Add support for full height alignment setting
+* Enhancement - Added setting to color picker field to enable an opacity slider
+* Enhancement - Allow deletion of first field group location rule if multiple rules have been added thanks to Arthur Shlain
+* Fix - Fixed vulnerability with `acf_shortcode()` where users with subscriber role could view arbitrary ACF data, thanks to Keitaro Yamazaki
+* Fix - Fixed vulnerability where users with subscriber role could move fields and view field groups, thanks to Keitaro Yamazaki
+* Fix - Fixed issue where fields in legacy widgets weren't saving in new widget block editor
+* Fix - Fixed issue with custom field validation in scheduled posts
+* Fix - Fixed warnings thrown by clone field if the cloned field group is empty
+* Fix - Fixed issue where Select2 search input wouldn't have focus in WordPress 5.8+
+* Fix - Fixed issue with Select2 value sorting when Yoast SEO is installed
+* Fix - Fixed deprecation warnings in block editor in WordPress 5.6+
+* i18n - Updated Swedish translation thanks to Erik Betshammar
+
+= 5.9.9 =
+*Release Date - 20 July 2021*
+
+* Fix - Fixed warning when deleting fields which don't exist
+* Fix - Fixed issues with older browsers and the blocks JavaScript
+* Fix - Fixed file size & file type validation for front end forms using the basic uploader
+
+= 5.9.8 =
+*Release Date - 08 July 2021*
+
+* Fix - Fixed bug causing multiple image fields to not validate files properly
+* Fix - Fixed bug preventing case-sensitive HTML tags from working in blocks
+* Fix - Fixed bug causing JSX-enabled blocks to improperly remove whitespace in preview
+* Fix - Fixed bug causing text fields to remove HTML entities when editing saved fields
+* Fix - Fixed deprecated jQuery notices on "Add Field Group" page
+
+= 5.9.7 =
+*Release Date - 22 June 2021*
+
+* Fix - Fixed PHP warnings logged due to incorrect parameter type for `add_menu_page()`/`add_submenu_page()`
+* Fix - Fixed bug causing WYSIWYG field to not keep line breaks
+* Fix - Fixed bug causing Email field to incorrectly invalidate emails with unicode characters
+* Fix - Fixed bug causing file type validation to fail in some cases
+* Fix - Fixed bug where newly uploaded or selected images do not contain custom preview size data
+
+= 5.9.6 =
+*Release Date - 20 May 2021*
+
+* Enhancement - Added 'position' setting compatibility for Options Page submenus.
+* Enhancement - Visually highlight "High" metabox area when dragging metaboxes.
+* Fix - Fixed compatibility issue between Block matrix alignment setting and the latest version of Gutenberg (10.6).
+* Fix - Fixed bug breaking WYSIWYG field after reordering a child block via the block's toolbar up/down buttons.
+* Fix - Added missing "readonly" and "disabled" attributes to DateTime and Time picker fields.
+* Fix - Fixed bug incorrectly validating Email field values containing special characters.
+* Fix - Fixed missing "dashicons" asset dependency from front-end forms.
+* Fix - Fixed bug causing Review JSON diff modal to appear with narrow column since WP 5.7.
+* Dev - Added label elements to Repeater, Flexible Content and Clone field's table header titles.
+* Dev - Added new `ACF_EXPERIMENTAL_ESC_HTML` constant. [Read more](https://github.com/AdvancedCustomFields/acf/issues/500)
 
 = 5.9.5 =
 *Release Date - 11 February 2021*
