@@ -295,6 +295,7 @@ if ( ! function_exists( 'cpschool_theme_customizer' ) ) {
 								'element'  => '.container',
 								'property' => 'max-width',
 								'units'    => 'px',
+								'context'  => array( 'front' ),
 							),
 							array(
 								'element'  => ':root',
@@ -429,8 +430,13 @@ if ( ! function_exists( 'cpschool_theme_customizer' ) ) {
 							array(
 								'element'  => array( 'body' ),
 								'property' => 'font-family',
-								'context'  => array( 'editor', 'front' ),
+								'context'  => array( 'front' ),
 							),
+							array(
+								'element'  => array( 'div.editor-styles-wrapper' ),
+								'property' => 'font-family',
+								'context'  => array( 'editor' ),
+							),							
 						),
 						'js_vars'     => array(
 							// Workaround for Kirki bug. We need to duplicate output functionality in js_var for it to work in customizer.
@@ -1529,14 +1535,6 @@ if ( ! function_exists( 'cpschool_theme_customizer' ) ) {
 							'class'           => 'd-none',
 							'value'           => array( 'full-title-over-img', 'full-title-under-img', 'img-under-title', 'img-above-title' ),
 							'context'         => 'entry-single-featured-image',
-							'customizer_only' => true,
-						),
-						array(
-							'element'         => '.hero-default-image-holder',
-							'function'        => 'toggleClass',
-							'class'           => 'd-none',
-							'value'           => 'img-under-title',
-							'context'         => 'hero-main-default-image-holder',
 							'customizer_only' => true,
 						),
 						array(
