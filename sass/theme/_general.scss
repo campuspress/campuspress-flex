@@ -23,16 +23,26 @@
     }
 }
 
-.wrapper {
-    padding-top: $spacer;
-    padding-bottom: $spacer;
-    @include media-breakpoint-up(xl) {
-        padding-top: $spacer*2;
-        padding-bottom: $spacer*2;
+@include editor-wrap() {
+    .wrapper {
+        padding-top: $spacer;
+        padding-bottom: $spacer;
+        @include media-breakpoint-up(xl) {
+            padding-top: $spacer*2;
+            padding-bottom: $spacer*2;
+        }
     }
-}
-body:not(.has-sidebar) .main-wrapper {
-    overflow: hidden;
+
+    .screen-reader-text { 
+        @extend .sr-only; 
+    }
+    
+    a.skip-link {
+      position: fixed;
+      z-index: 1000;
+      top: 0px;
+      right: 0px;
+    }
 }
 
 body.singular:not(.has-sidebar) #content.container, .container-content {
@@ -40,6 +50,9 @@ body.singular:not(.has-sidebar) #content.container, .container-content {
 }
 
 .main-wrapper {
+    body:not(.has-sidebar) & {
+        overflow: hidden;
+    }
 	body.main-wrapper-margin-top-disabled & {
 		padding-top: 0;
 		@include media-breakpoint-up(md) {
@@ -66,15 +79,4 @@ body.singular:not(.has-sidebar) #content.container, .container-content {
 
 .cps-icon.cps-dashicon {
     font-family: dashicons !important;
-}
-
-.screen-reader-text { 
-    @extend .sr-only; 
-}
-
-a.skip-link {
-  position: fixed;
-  z-index: 1000;
-  top: 0px;
-  right: 0px;
 }

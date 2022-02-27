@@ -16,7 +16,7 @@ if ( ! function_exists( 'cpschool_add_editor_styles' ) ) {
 	 */
 	function cpschool_add_editor_styles() {
 		$css_version = filemtime( get_template_directory() . '/css/block-editor.min.css' );
-		wp_enqueue_style( 'cpschool-gutenberg', get_theme_file_uri( 'css/block-editor.min.css' ), false, $css_version );
+		wp_enqueue_style( 'cpschool-gutenberg', get_template_directory_uri() . '/css/block-editor.min.css', false, $css_version );
 	}
 }
 
