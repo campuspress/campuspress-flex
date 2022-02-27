@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: campuspress-flex\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/theme/_s\n"
-"POT-Creation-Date: 2021-12-22 10:21+0100\n"
+"POT-Creation-Date: 2022-02-27 13:07+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -77,7 +77,7 @@ msgstr ""
 msgid "main"
 msgstr ""
 
-#: header.php:106 inc/customizer.php:2248 searchform.php:17
+#: header.php:106 inc/customizer.php:2246 searchform.php:17
 #: template-parts/global-templates/modal-search.php:12
 msgid "Search"
 msgstr ""
@@ -128,11 +128,11 @@ msgstr ""
 msgid "Site Identity"
 msgstr ""
 
-#: inc/customizer.php:102 inc/customizer.php:1067
+#: inc/customizer.php:102 inc/customizer.php:1073
 msgid "Colors"
 msgstr ""
 
-#: inc/customizer.php:115 inc/customizer.php:2712
+#: inc/customizer.php:115 inc/customizer.php:2710
 msgid "Background Image"
 msgstr ""
 
@@ -194,703 +194,703 @@ msgstr ""
 msgid "Maximum site container width."
 msgstr ""
 
-#: inc/customizer.php:315
+#: inc/customizer.php:316
 msgid "Content Width (px)"
 msgstr ""
 
-#: inc/customizer.php:316
+#: inc/customizer.php:317
 msgid ""
 "Maximum content container width. This only works for single posts and pages "
 "without sidebar."
 msgstr ""
 
-#: inc/customizer.php:342 inc/customizer.php:1889 inc/customizer.php:2622
+#: inc/customizer.php:343 inc/customizer.php:1887 inc/customizer.php:2620
 msgid "Boxed Design"
 msgstr ""
 
-#: inc/customizer.php:343
+#: inc/customizer.php:344
 msgid ""
 "Wraps everything in a container and adds the same width for all elements on "
 "the site."
 msgstr ""
 
-#: inc/customizer.php:372
+#: inc/customizer.php:373
 msgid "Box Width (px)"
 msgstr ""
 
-#: inc/customizer.php:373
+#: inc/customizer.php:374
 msgid "Maximum box width."
 msgstr ""
 
-#: inc/customizer.php:410 inc/customizer.php:1205 inc/customizer.php:2496
+#: inc/customizer.php:411 inc/customizer.php:1211 inc/customizer.php:2494
 msgid "Fonts"
 msgstr ""
 
-#: inc/customizer.php:411
+#: inc/customizer.php:412
 msgid ""
 "Default font settings applied on site. Some elements like headings can have "
 "font customized in their own settings sections."
 msgstr ""
 
-#: inc/customizer.php:422
+#: inc/customizer.php:423
 msgid "Default Font Family"
 msgstr ""
 
-#: inc/customizer.php:423
+#: inc/customizer.php:424
 msgid "Choose default font used on site."
 msgstr ""
 
-#: inc/customizer.php:466
+#: inc/customizer.php:472
 msgid "Default Font Size"
 msgstr ""
 
-#: inc/customizer.php:467
+#: inc/customizer.php:473
 msgid "Customize default font size."
 msgstr ""
 
-#: inc/customizer.php:492
+#: inc/customizer.php:498
 msgid "Others"
 msgstr ""
 
-#: inc/customizer.php:503
+#: inc/customizer.php:509
 msgid "Roundness"
 msgstr ""
 
-#: inc/customizer.php:504
+#: inc/customizer.php:510
 msgid "Choose how strongly various elements across the site should be rounded."
 msgstr ""
 
-#: inc/customizer.php:530
+#: inc/customizer.php:536
 msgid "Shadows"
 msgstr ""
 
-#: inc/customizer.php:531
+#: inc/customizer.php:537
 msgid ""
 "Choose how big shadows should be applied to various elements across the site."
 msgstr ""
 
-#: inc/customizer.php:573
+#: inc/customizer.php:579
 msgid "Animations"
 msgstr ""
 
-#: inc/customizer.php:574
+#: inc/customizer.php:580
 msgid ""
 "Automatically adds animations to some main site elements and aligned content "
 "blocks."
 msgstr ""
 
-#: inc/customizer.php:598
+#: inc/customizer.php:604
 msgid "Primary Colors"
 msgstr ""
 
-#: inc/customizer.php:609
+#: inc/customizer.php:615
 msgid "Primary Background"
 msgstr ""
 
-#: inc/customizer.php:610
+#: inc/customizer.php:616
 msgid "Background color used for main content."
 msgstr ""
 
-#: inc/customizer.php:630
+#: inc/customizer.php:636
 msgid "Secondary Background"
 msgstr ""
 
-#: inc/customizer.php:631
+#: inc/customizer.php:637
 msgid "Background color used under content in box."
 msgstr ""
 
-#: inc/customizer.php:658
+#: inc/customizer.php:664
 msgid "Primary Accent"
 msgstr ""
 
-#: inc/customizer.php:659
+#: inc/customizer.php:665
 msgid "Color used to style various site elements like buttons."
 msgstr ""
 
-#: inc/customizer.php:673 inc/customizer.php:2469 inc/hooks-custom.php:76
+#: inc/customizer.php:679 inc/customizer.php:2467 inc/hooks-custom.php:76
 msgid "Highlight Accent"
 msgstr ""
 
-#: inc/customizer.php:674
+#: inc/customizer.php:680
 msgid "Color used to highlight important elements like primary buttons."
 msgstr ""
 
-#: inc/customizer.php:690
+#: inc/customizer.php:696
 msgid "Alternative Colors"
 msgstr ""
 
-#: inc/customizer.php:701
+#: inc/customizer.php:707
 msgid "Alternative Background"
 msgstr ""
 
-#: inc/customizer.php:702
+#: inc/customizer.php:708
 msgid "Alternative background color used mainly for header and footer."
 msgstr ""
 
-#: inc/customizer.php:722
+#: inc/customizer.php:728
 msgid "Custom Accent For Alternative Background"
 msgstr ""
 
-#: inc/customizer.php:723
+#: inc/customizer.php:729
 msgid ""
 "Overwrites primary accent color in areas that are using alternative "
 "background."
 msgstr ""
 
-#: inc/customizer.php:741
+#: inc/customizer.php:747
 msgid "Other Colors"
 msgstr ""
 
-#: inc/customizer.php:752
+#: inc/customizer.php:758
 msgid "Content Boxes Background"
 msgstr ""
 
-#: inc/customizer.php:753
+#: inc/customizer.php:759
 msgid "Background color for elements in boxes like pagination or sidebar."
 msgstr ""
 
-#: inc/customizer.php:777 inc/setup.php:112
+#: inc/customizer.php:783 inc/setup.php:112
 msgid "Main Header"
 msgstr ""
 
-#: inc/customizer.php:778
+#: inc/customizer.php:784
 msgid ""
 "Settings for main header, place that holds logo and main navigation links."
 msgstr ""
 
-#: inc/customizer.php:806
+#: inc/customizer.php:812
 msgid "Logo Positon"
 msgstr ""
 
-#: inc/customizer.php:807
+#: inc/customizer.php:813
 msgid "Choose how logo should be positioned and styled in header."
 msgstr ""
 
-#: inc/customizer.php:811
+#: inc/customizer.php:817
 msgid "On The Left"
 msgstr ""
 
-#: inc/customizer.php:812
+#: inc/customizer.php:818
 msgid "In The Center With Menu Underneath"
 msgstr ""
 
-#: inc/customizer.php:813
+#: inc/customizer.php:819
 msgid "On The Left In Drop Box"
 msgstr ""
 
-#: inc/customizer.php:848
+#: inc/customizer.php:854
 msgid "Logo Image Size (px)"
 msgstr ""
 
-#: inc/customizer.php:849
+#: inc/customizer.php:855
 msgid "Width of the logo image."
 msgstr ""
 
-#: inc/customizer.php:881
+#: inc/customizer.php:887
 msgid "Drop Box Max Width (px)"
 msgstr ""
 
-#: inc/customizer.php:882
+#: inc/customizer.php:888
 msgid "Maximum width Drop Box can have."
 msgstr ""
 
-#: inc/customizer.php:932
+#: inc/customizer.php:938
 msgid "Show Tagline"
 msgstr ""
 
-#: inc/customizer.php:962
+#: inc/customizer.php:968
 msgid "Show Search Button"
 msgstr ""
 
-#: inc/customizer.php:985
+#: inc/customizer.php:991
 msgid "Stick To The Top"
 msgstr ""
 
-#: inc/customizer.php:1007 inc/customizer.php:1303
+#: inc/customizer.php:1013 inc/customizer.php:1309
 msgid "Stretch To Full Width"
 msgstr ""
 
-#: inc/customizer.php:1042 inc/customizer.php:1434
+#: inc/customizer.php:1048 inc/customizer.php:1440
 msgid "Spacing"
 msgstr ""
 
-#: inc/customizer.php:1043 inc/customizer.php:1435
+#: inc/customizer.php:1049 inc/customizer.php:1441
 msgid "Adjust space above & below header content."
 msgstr ""
 
-#: inc/customizer.php:1078 inc/customizer.php:1352
+#: inc/customizer.php:1084 inc/customizer.php:1358
 msgid "Custom Background Color"
 msgstr ""
 
-#: inc/customizer.php:1102
+#: inc/customizer.php:1108
 msgid "Custom Logo Text Color"
 msgstr ""
 
-#: inc/customizer.php:1131
+#: inc/customizer.php:1137
 msgid "Custom Logo Drop Box Background Color"
 msgstr ""
 
-#: inc/customizer.php:1175
+#: inc/customizer.php:1181
 msgid "Custom Logo Drop Box Shadow Color"
 msgstr ""
 
-#: inc/customizer.php:1216
+#: inc/customizer.php:1222
 msgid "Logo Font Size"
 msgstr ""
 
-#: inc/customizer.php:1217
+#: inc/customizer.php:1223
 msgid ""
 "Logo can have font family customized in \"General\" > \"Site Identity\" > "
 "\"Site Title Font Family\"."
 msgstr ""
 
-#: inc/customizer.php:1248
+#: inc/customizer.php:1254
 msgid "Navigation Font Family"
 msgstr ""
 
-#: inc/customizer.php:1269
+#: inc/customizer.php:1275
 msgid "Navigation Font Size"
 msgstr ""
 
-#: inc/customizer.php:1292 inc/setup.php:117
+#: inc/customizer.php:1298 inc/setup.php:117
 msgid "Secondary Header"
 msgstr ""
 
-#: inc/customizer.php:1293
+#: inc/customizer.php:1299
 msgid ""
 "Settings for secondary header, place for less important navigation elements. "
 "Please keep in mind that it will be visible only when it has at least one "
 "menu attached or secondary logo is set in \"General\" > \"Site Identity\"."
 msgstr ""
 
-#: inc/customizer.php:1339
+#: inc/customizer.php:1345
 msgid "Move Under Main Header"
 msgstr ""
 
-#: inc/customizer.php:1376 inc/customizer.php:2528
+#: inc/customizer.php:1382 inc/customizer.php:2526
 msgid "Font Size"
 msgstr ""
 
-#: inc/customizer.php:1401
+#: inc/customizer.php:1407
 msgid "Secondary Logo Image Size (px)"
 msgstr ""
 
-#: inc/customizer.php:1402
+#: inc/customizer.php:1408
 msgid "Width of the seconadry logo image."
 msgstr ""
 
-#: inc/customizer.php:1458 inc/setup.php:122
+#: inc/customizer.php:1464 inc/setup.php:122
 msgid "Hero"
 msgstr ""
 
-#: inc/customizer.php:1459
+#: inc/customizer.php:1465
 msgid ""
 "Settings for hero, place where current page details are put in center of "
 "attention."
 msgstr ""
 
-#: inc/customizer.php:1469
+#: inc/customizer.php:1475
 msgid "Style"
 msgstr ""
 
-#: inc/customizer.php:1470
+#: inc/customizer.php:1476
 #, php-format
 msgid "Styles that are not full with will use \"%sLarge%s\" image size."
 msgstr ""
 
-#: inc/customizer.php:1475
+#: inc/customizer.php:1481
 msgid "Full Width Image With Title Over It"
 msgstr ""
 
-#: inc/customizer.php:1476
+#: inc/customizer.php:1482
 msgid "Full Width Image With Title Under It"
 msgstr ""
 
-#: inc/customizer.php:1477
+#: inc/customizer.php:1483
 msgid "Image Under Title"
 msgstr ""
 
-#: inc/customizer.php:1478
+#: inc/customizer.php:1484
 msgid "Image Above Title"
 msgstr ""
 
-#: inc/customizer.php:1479 inc/customizer.php:1967
+#: inc/customizer.php:1485 inc/customizer.php:1965
 msgid "Disabled"
 msgstr ""
 
-#: inc/customizer.php:1567
+#: inc/customizer.php:1565
 msgid "Content Align"
 msgstr ""
 
-#: inc/customizer.php:1572
+#: inc/customizer.php:1570
 msgid "Left"
 msgstr ""
 
-#: inc/customizer.php:1573
+#: inc/customizer.php:1571
 msgid "Center"
 msgstr ""
 
-#: inc/customizer.php:1618
+#: inc/customizer.php:1616
 msgid "Background Color"
 msgstr ""
 
-#: inc/customizer.php:1619
+#: inc/customizer.php:1617
 msgid ""
 "Hero background color that is also used as overlay when image is part of "
 "background."
 msgstr ""
 
-#: inc/customizer.php:1650
+#: inc/customizer.php:1648
 msgid "Featured Image Opacity"
 msgstr ""
 
-#: inc/customizer.php:1651
+#: inc/customizer.php:1649
 msgid "Opacity used for hero featured image."
 msgstr ""
 
-#: inc/customizer.php:1683
+#: inc/customizer.php:1681
 msgid "Main Header Opacity"
 msgstr ""
 
-#: inc/customizer.php:1684
+#: inc/customizer.php:1682
 msgid "Choose main header opacity set when hero area uses image in background."
 msgstr ""
 
-#: inc/customizer.php:1736
+#: inc/customizer.php:1734
 msgid "Defaul Hero Images"
 msgstr ""
 
-#: inc/customizer.php:1737
+#: inc/customizer.php:1735
 msgid "Set images that will be randomly used when featured image is not set."
 msgstr ""
 
-#: inc/customizer.php:1741 inc/customizer.php:1748
+#: inc/customizer.php:1739 inc/customizer.php:1746
 msgid "Image"
 msgstr ""
 
-#: inc/customizer.php:1743
+#: inc/customizer.php:1741
 msgid "Add Image"
 msgstr ""
 
-#: inc/customizer.php:1767
+#: inc/customizer.php:1765
 msgid "Breadcrumb Styling"
 msgstr ""
 
-#: inc/customizer.php:1768
+#: inc/customizer.php:1766
 msgid ""
 "Please keep in mind that breadcrumb will only be visible when enabled for "
 "currently viewed page type in \"Content\" section."
 msgstr ""
 
-#: inc/customizer.php:1773 inc/customizer.php:1966
+#: inc/customizer.php:1771 inc/customizer.php:1964
 msgid "Above Title"
 msgstr ""
 
-#: inc/customizer.php:1774
+#: inc/customizer.php:1772
 msgid "Top Right Corner"
 msgstr ""
 
-#: inc/customizer.php:1815 inc/customizer.php:1917 inc/customizer.php:2299
-#: inc/customizer.php:2370
+#: inc/customizer.php:1813 inc/customizer.php:1915 inc/customizer.php:2297
+#: inc/customizer.php:2368
 msgid "Content"
 msgstr ""
 
-#: inc/customizer.php:1816
+#: inc/customizer.php:1814
 msgid "Settings related to content area."
 msgstr ""
 
-#: inc/customizer.php:1824
+#: inc/customizer.php:1822
 msgid "Posts List"
 msgstr ""
 
-#: inc/customizer.php:1825
+#: inc/customizer.php:1823
 msgid "Settings related to pages that are listing posts."
 msgstr ""
 
-#: inc/customizer.php:1845
+#: inc/customizer.php:1843
 msgid "Posts In a Row"
 msgstr ""
 
-#: inc/customizer.php:1890
+#: inc/customizer.php:1888
 msgid ""
 "Enable to put posts content in a box. Background for boxes can be customized "
 "under \"General\" > \"Colors\" > \"Content Boxes Background\". "
 msgstr ""
 
-#: inc/customizer.php:1911
+#: inc/customizer.php:1909
 msgid "Content Type"
 msgstr ""
 
-#: inc/customizer.php:1916
+#: inc/customizer.php:1914
 msgid "Excerpt"
 msgstr ""
 
-#: inc/customizer.php:1918
+#: inc/customizer.php:1916
 msgid "No Content"
 msgstr ""
 
-#: inc/customizer.php:1929
+#: inc/customizer.php:1927
 msgid "Hide \"Continue Reading\""
 msgstr ""
 
-#: inc/customizer.php:1930
+#: inc/customizer.php:1928
 msgid ""
 "Enable to remove \"Continue Reading\" button. Posts can still be opened by "
 "clicking on title. "
 msgstr ""
 
-#: inc/customizer.php:1960
+#: inc/customizer.php:1958
 msgid "Featured Image Style"
 msgstr ""
 
-#: inc/customizer.php:1995
+#: inc/customizer.php:1993
 msgid "Fixed Featured Image Height"
 msgstr ""
 
-#: inc/customizer.php:2024
+#: inc/customizer.php:2022
 msgid "Featured Image Height (px)"
 msgstr ""
 
-#: inc/customizer.php:2056 inc/customizer.php:2183 inc/customizer.php:2226
+#: inc/customizer.php:2054 inc/customizer.php:2181 inc/customizer.php:2224
 msgid "Show Breadcrumb"
 msgstr ""
 
-#: inc/customizer.php:2080
+#: inc/customizer.php:2078
 msgid "Main Posts Page"
 msgstr ""
 
-#: inc/customizer.php:2081
+#: inc/customizer.php:2079
 msgid ""
 "Configure settings for main page displaying recent posts. It can be homepage "
 "or \"Posts page\" configured in \"Homepage Settings\" section."
 msgstr ""
 
-#: inc/customizer.php:2092
+#: inc/customizer.php:2090
 msgid "Show Page Title / Hero Area"
 msgstr ""
 
-#: inc/customizer.php:2125
+#: inc/customizer.php:2123
 msgid "Custom Page Title"
 msgstr ""
 
-#: inc/customizer.php:2144
+#: inc/customizer.php:2142
 msgid "Custom Sub Title"
 msgstr ""
 
-#: inc/customizer.php:2161
+#: inc/customizer.php:2159
 msgid "Single Posts"
 msgstr ""
 
-#: inc/customizer.php:2162
+#: inc/customizer.php:2160
 msgid "Settings related to single posts."
 msgstr ""
 
-#: inc/customizer.php:2205
+#: inc/customizer.php:2203
 msgid "Pages"
 msgstr ""
 
-#: inc/customizer.php:2206
+#: inc/customizer.php:2204
 msgid "Settings related to pages."
 msgstr ""
 
-#: inc/customizer.php:2249
+#: inc/customizer.php:2247
 msgid "Settings related to pages with search results."
 msgstr ""
 
-#: inc/customizer.php:2260
+#: inc/customizer.php:2258
 msgid "Search Result Style"
 msgstr ""
 
-#: inc/customizer.php:2265
+#: inc/customizer.php:2263
 msgid "Google Inspired"
 msgstr ""
 
-#: inc/customizer.php:2266
+#: inc/customizer.php:2264
 msgid "Same As Posts Lists"
 msgstr ""
 
-#: inc/customizer.php:2275
+#: inc/customizer.php:2273
 msgid "Alerts"
 msgstr ""
 
-#: inc/customizer.php:2276
+#: inc/customizer.php:2274
 msgid "Configure alerts visible for all visitors."
 msgstr ""
 
-#: inc/customizer.php:2287
+#: inc/customizer.php:2285
 msgid "Alert Bar"
 msgstr ""
 
-#: inc/customizer.php:2288
+#: inc/customizer.php:2286
 msgid "Configure dismissable alert visible at the top of the page."
 msgstr ""
 
-#: inc/customizer.php:2300
+#: inc/customizer.php:2298
 msgid "Leave empty to disable."
 msgstr ""
 
-#: inc/customizer.php:2312
+#: inc/customizer.php:2310
 msgid "Custom Alert Bar Background Color"
 msgstr ""
 
-#: inc/customizer.php:2336
+#: inc/customizer.php:2334
 msgid "Allow Dismissal"
 msgstr ""
 
-#: inc/customizer.php:2337
+#: inc/customizer.php:2335
 msgid ""
 "Enable to allow alert to be dismissed. Changing the content will result in "
 "the alert showing up again after it has been dismissed."
 msgstr ""
 
-#: inc/customizer.php:2359
+#: inc/customizer.php:2357
 msgid "Popup With Alert"
 msgstr ""
 
-#: inc/customizer.php:2371
+#: inc/customizer.php:2369
 msgid ""
 "Choose \"Reusable Block\" to display as dismissable popup. You can create "
 "new ones in WordPress Admin > \"Reusable Blocks\". Changing block content "
 "will result in popup showing up again."
 msgstr ""
 
-#: inc/customizer.php:2383
+#: inc/customizer.php:2381
 msgid "Elements"
 msgstr ""
 
-#: inc/customizer.php:2384
+#: inc/customizer.php:2382
 msgid "Settings for elements used across site."
 msgstr ""
 
-#: inc/customizer.php:2392
+#: inc/customizer.php:2390
 msgid "Headings"
 msgstr ""
 
-#: inc/customizer.php:2393
+#: inc/customizer.php:2391
 msgid "Settings related to appearance of headers."
 msgstr ""
 
-#: inc/customizer.php:2404
+#: inc/customizer.php:2402
 msgid "Header Styling"
 msgstr ""
 
-#: inc/customizer.php:2409 inc/customizer.php:2568 inc/hooks-custom.php:68
+#: inc/customizer.php:2407 inc/customizer.php:2566 inc/hooks-custom.php:68
 msgid "Default"
 msgstr ""
 
-#: inc/customizer.php:2410
+#: inc/customizer.php:2408
 msgid "With Separator"
 msgstr ""
 
-#: inc/customizer.php:2430
+#: inc/customizer.php:2428
 msgid "Header Separator Position"
 msgstr ""
 
-#: inc/customizer.php:2435
+#: inc/customizer.php:2433
 msgid "Top"
 msgstr ""
 
-#: inc/customizer.php:2436
+#: inc/customizer.php:2434
 msgid "Bottom"
 msgstr ""
 
-#: inc/customizer.php:2463
+#: inc/customizer.php:2461
 msgid "Header Separator Color"
 msgstr ""
 
-#: inc/customizer.php:2468 inc/hooks-custom.php:72
+#: inc/customizer.php:2466 inc/hooks-custom.php:72
 msgid "Accent"
 msgstr ""
 
-#: inc/customizer.php:2507
+#: inc/customizer.php:2505
 msgid "Font Family"
 msgstr ""
 
-#: inc/customizer.php:2551
+#: inc/customizer.php:2549
 msgid "Buttons"
 msgstr ""
 
-#: inc/customizer.php:2552
+#: inc/customizer.php:2550
 msgid "Settings related to buttons appearance."
 msgstr ""
 
-#: inc/customizer.php:2563
+#: inc/customizer.php:2561
 msgid "Buttons Styling"
 msgstr ""
 
-#: inc/customizer.php:2569
+#: inc/customizer.php:2567
 msgid "Outline"
 msgstr ""
 
-#: inc/customizer.php:2587 inc/customizer/helpers.php:98
+#: inc/customizer.php:2585 inc/customizer/helpers.php:98
 msgid "Sidebars"
 msgstr ""
 
-#: inc/customizer.php:2588
+#: inc/customizer.php:2586
 msgid "Settings related to sidebars appearance and behavior."
 msgstr ""
 
-#: inc/customizer.php:2599
+#: inc/customizer.php:2597
 msgid "Sticky Sidebars"
 msgstr ""
 
-#: inc/customizer.php:2600
+#: inc/customizer.php:2598
 msgid ""
 "Stick sidebars to the top when scrolling. Only works when sidebar content "
 "can fit in browser window."
 msgstr ""
 
-#: inc/customizer.php:2623
+#: inc/customizer.php:2621
 msgid ""
 "Enable to put sidebar content in a box. Background can be customized under "
 "\"General\" > \"Colors\" > \"Content Boxes Background\". "
 msgstr ""
 
-#: inc/customizer.php:2643
+#: inc/customizer.php:2641
 msgid "Navigations"
 msgstr ""
 
-#: inc/customizer.php:2644
+#: inc/customizer.php:2642
 msgid "Settings related to navigations."
 msgstr ""
 
-#: inc/customizer.php:2655
+#: inc/customizer.php:2653
 msgid "Dropdowns on hover"
 msgstr ""
 
-#: inc/customizer.php:2656
+#: inc/customizer.php:2654
 msgid ""
 "Enable to make dropdowns openable on hover. This setting is not recommended "
 "as it leads to inconsistent experience across devices."
 msgstr ""
 
-#: inc/customizer.php:2677 inc/setup.php:132
+#: inc/customizer.php:2675 inc/setup.php:132
 msgid "Footer"
 msgstr ""
 
-#: inc/customizer.php:2678
+#: inc/customizer.php:2676
 msgid "Settings for footer."
 msgstr ""
 
-#: inc/customizer.php:2688
+#: inc/customizer.php:2686
 msgid "Background/Overlay Color"
 msgstr ""
 
-#: inc/customizer.php:2728
+#: inc/customizer.php:2726
 msgid "Include Reusable Block"
 msgstr ""
 
-#: inc/customizer.php:2729
+#: inc/customizer.php:2727
 msgid ""
 "Choose \"Reusable Block\" that will be displayed in footer after widgets. "
 "You can create new ones in WordPress Admin > \"Reusable Blocks\"."
 msgstr ""
 
-#: inc/customizer.php:2742
+#: inc/customizer.php:2740
 msgid "Custom Footer Text"
 msgstr ""
 
-#: inc/customizer.php:2765
+#: inc/customizer.php:2763
 msgid "Disable"
 msgstr ""
 
