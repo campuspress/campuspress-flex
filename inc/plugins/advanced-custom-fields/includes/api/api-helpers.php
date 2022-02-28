@@ -4445,12 +4445,14 @@ function acf_parse_markdown( $text = '' ) {
  */
 function acf_get_sites() {
 	$results = array();
+	/*CP disabled
 	$sites   = get_sites( array( 'number' => 0 ) );
 	if ( $sites ) {
 		foreach ( $sites as $site ) {
 			$results[] = get_site( $site )->to_array();
 		}
 	}
+	*/
 	return $results;
 }
 

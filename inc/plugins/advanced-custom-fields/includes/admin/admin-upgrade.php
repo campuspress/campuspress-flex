@@ -72,7 +72,10 @@ if ( ! class_exists( 'ACF_Admin_Upgrade' ) ) :
 			$upgrade = false;
 
 			// Loop over sites and check for upgrades.
+			/*CP disabled
 			$sites = get_sites( array( 'number' => 0 ) );
+			*/
+			$sites = array();
 			if ( $sites ) {
 
 				// Unhook action to avoid memory issue (as seen in wp-includes/ms-site.php).
