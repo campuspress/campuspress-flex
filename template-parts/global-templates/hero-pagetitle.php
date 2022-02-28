@@ -59,7 +59,7 @@ if ( $hero_style || ( is_customize_preview() && ( ! is_singular() || ! get_post_
 				<?php echo get_the_post_thumbnail( $thumbnail_post_id, $thumbnail_size ); ?>
 			</div>
 			<?php
-		} elseif ( ( ! in_array( $hero_style, array( 'img-under-title', 'img-above-title' ) ) || is_customize_preview() ) && $hero_default_images = get_theme_mod( 'hero_main_default_images' ) ) {
+		} elseif ( $hero_default_images = get_theme_mod( 'hero_main_default_images' ) ) {
 			$thumbnail_id = $hero_default_images[ mt_rand( 0, count( $hero_default_images ) - 1 ) ]['id'];
 			?>
 		 

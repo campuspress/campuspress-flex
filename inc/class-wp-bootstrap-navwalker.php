@@ -612,7 +612,7 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 		 * @return array                 maybe updated array of attributes for item.
 		 */
 		private function update_atts_for_linkmod_type( $atts = array(), $linkmod_classes = array() ) {
- 			if ( ! empty( $linkmod_classes ) ) {
+			if ( ! empty( $linkmod_classes ) ) {
 				foreach ( $linkmod_classes as $link_class ) {
 					if ( ! empty( $link_class ) ) {
 						// update $atts with a space and the extra classname...

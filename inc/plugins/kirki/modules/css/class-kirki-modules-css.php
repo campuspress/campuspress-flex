@@ -133,7 +133,8 @@ class Kirki_Modules_CSS {
 		$args = array(
 			'action' => apply_filters( 'kirki_styles_action_handle', 'kirki-styles' ),
 		);
-		if ( is_admin() && ! is_customize_preview() ) {
+		/* CP-TWEAKED */
+		if ( current_action( 'enqueue_block_editor_assets' ) ) {
 			$args['editor'] = '1';
 		}
 
