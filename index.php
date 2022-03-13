@@ -24,23 +24,23 @@ get_header();
 			<?php get_template_part( 'template-parts/global-templates/left-sidebar-check', get_post_type() ); ?>
 
 			<main class="site-main" id="main">
-					<?php if ( have_posts() ) : ?>
-						<?php get_template_part( 'template-parts/global-templates/pagetitle', get_post_type() ); ?>
+				<?php if ( have_posts() ) : ?>
+					<?php get_template_part( 'template-parts/global-templates/pagetitle', get_post_type() ); ?>
 
-						<?php /* Start the Loop */ ?>
+					<?php /* Start the Loop */ ?>
 
-						<div <?php cpschool_class( 'entries-row', 'entries-row row' ); ?>>
+					<div <?php cpschool_class( 'entries-row', 'entries-row row' ); ?>>
 
-							<?php
-							while ( have_posts() ) :
-								the_post();
-								?>
-								<?php get_template_part( 'template-parts/loop-templates/content', cpschool_get_content_format() ); ?>
-							<?php endwhile; ?>
-						</div>
-					<?php else : ?>
-						<?php get_template_part( 'template-parts/loop-templates/content', 'none' ); ?>
-					<?php endif; ?>
+						<?php
+						while ( have_posts() ) :
+							the_post();
+							?>
+							<?php get_template_part( 'template-parts/loop-templates/content', cpschool_get_content_format() ); ?>
+						<?php endwhile; ?>
+					</div>
+				<?php else : ?>
+					<?php get_template_part( 'template-parts/loop-templates/content', 'none' ); ?>
+				<?php endif; ?>
 			</main><!-- #main -->
 
 			<!-- The pagination component -->
