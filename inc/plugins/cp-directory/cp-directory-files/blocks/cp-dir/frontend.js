@@ -142,6 +142,11 @@ jQuery(function(){
                 dir.show(1, perPage);
             }
         });
+        cpDirectories[key].on('filterComplete', function(dir){
+            if( paginationEl.length ) {
+                dir.show(1, perPage);
+            }
+        });
 
         cpDirectories[key].on('updated', function(dir){
             if( fitleringAdjusted === false ) {
