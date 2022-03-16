@@ -71,14 +71,6 @@ class Kirki_Control_Slider extends Kirki_Control_Base {
 				</span>
 			</div>
 		</label>
-		<style>
-			/*CP-START*/
-			.customize-control-kirki-slider input[type=text] {
-				width: 55px;
-				margin: -4px 0 0 5px;
-			}
-			/*CP-END*/
-		</style>
 		<?php
 	}
 }

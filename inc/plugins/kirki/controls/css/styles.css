@@ -95,12 +95,6 @@
   background-image: -webkit-linear-gradient(left, red, #ff7f00, yellow, #80ff00, lime, #00ff80, aqua, #007fff, blue, #7f00ff, fuchsia, #ff0080, red) !important;
   widows: 100% !important;
 }
-.customize-control-kirki-color .kirki-input-container[data-has-alpha=false] .iris-picker.iris-border {
-  /*CP-DISABLED width: 100% !important;*/
-}
-.customize-control-kirki-color .kirki-input-container[data-has-alpha=false] .iris-picker .iris-square {
-  margin-right: 7px !important;
-}
 .customize-control-kirki-color .kirki-input-container[data-has-alpha=true] .iris-picker-inner {
   display: grid;
   grid-template-columns: 1fr 20px 20px;
@@ -112,6 +106,15 @@
 }
 .customize-control-kirki-color .iris-only-strip {
   width: 100% !important;
+}
+
+.rtl .customize-control-kirki-color .iris-border .iris-palette-container {
+  left: auto;
+  right: 10px;
+}
+.rtl .customize-control-kirki-color .wp-color-result .color-alpha {
+  left: auto !important;
+  right: 0;
 }
 
 .customize-control-kirki-dashicons {
@@ -356,6 +359,10 @@
 .customize-control-kirki-radio-buttonset .buttonset .switch-input:checked + .switch-label {
   background-color: #00a0d2;
   color: rgba(255, 255, 255, 0.8);
+}
+.customize-control-kirki-radio-buttonset .screen-reader-text:focus {
+  clip-path: inset(50%);
+  -webkit-clip-path: inset(50%);
 }
 
 .customize-control-kirki-radio-image > .image {
@@ -645,6 +652,14 @@
   align-items: baseline;
 }
 
+.rtl .customize-control-kirki-slider .wrapper .slider-reset {
+  right: auto;
+  left: 0;
+}
+.rtl .customize-control-kirki-slider .wrapper input[type=text] {
+  text-align: left;
+}
+
 .customize-control-kirki-sortable ul.ui-sortable li {
   padding: 5px 10px;
   border: 1px solid #333;
@@ -717,6 +732,7 @@
 .customize-control-kirki-switch input + label {
   margin-left: 0;
   margin-right: 0;
+  min-width: 62px;
 }
 .customize-control-kirki-switch input:checked + label {
   background: #0073aa;
@@ -732,9 +748,17 @@
 .customize-control-kirki-switch input:checked + label .switch-off {
   opacity: 0;
 }
+.customize-control-kirki-switch .screen-reader-text:focus {
+  clip-path: inset(50%);
+  -webkit-clip-path: inset(50%);
+}
 
 .customize-control-kirki-toggle {
   position: relative;
+}
+.customize-control-kirki-toggle .screen-reader-text:focus {
+  clip-path: inset(50%);
+  -webkit-clip-path: inset(50%);
 }
 .customize-control-kirki-toggle label {
   display: flex;

@@ -1,3 +1,28 @@
+## 3.1.9 - July 19, 2021
+
+* Fixed: Fixed: Styling issue in Switch control.
+
+## 3.1.8 - July 1, 2021
+
+* Updated Google-Fonts lists.
+* Tested up to WordPress 5.8 RC 1.
+* Fixed: Deprecated warning when editing post/page.
+* Fixed: Styling issue in Radio Buttonset control.
+
+## 3.1.7 - June 21, 2021
+
+* Updated Google-Fonts lists.
+* Tested up to WordPress 5.8 Beta 1.
+* Fixed: PHP 8 warnings.
+* Fixed: Missing Kirki styles in WordPress 5.8.
+* Fixed: https://wordpress.org/support/topic/plugin-title-conflict/ in https://github.com/kirki-framework/kirki/commit/0fb25dca4d1c4460ec45dc194d5210f854b1b737
+
+## 3.1.6 - December 07, 2020
+
+* Tested up to WordPress 5.6.
+* Tweak: Updated Google fonts.
+* Fixed: Color picker styling issue in Chrome.
+
 ## 3.1.5 - August 10, 2020
 
 * Tested up to WordPress 5.5.
