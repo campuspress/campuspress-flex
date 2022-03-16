@@ -17,4 +17,4 @@ $content_col_xl_width = 12 - 3 * count( $active_sidebars );
 	<?php get_template_part( 'template-parts/sidebar-templates/sidebar', 'left' ); ?>
 <?php endif; ?>
 
-<div class="col-md-<?php echo $content_col_md_width; ?> col-xl-<?php echo $content_col_xl_width; ?> content-area" id="primary">
+<div <?php cpschool_class( 'content-area', 'col-md-'. $content_col_md_width .' col-xl-'. $content_col_xl_width. ' content-area' ); ?> id="primary">
