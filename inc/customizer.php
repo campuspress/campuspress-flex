@@ -151,7 +151,7 @@ if ( ! function_exists( 'cpschool_theme_customizer' ) ) {
 						'label'    => __( 'Secondary Identity', 'cpschool' ),
 						'description' => esc_html__( 'Comes in handy when site is part of larger entity. Will be displayed in "Secondary Header".', 'cpschool' ),
 						'section'  => 'title_tagline',
-						'priority' => 20,
+						'priority' => 90,
 					)
 				);
 
@@ -165,7 +165,7 @@ if ( ! function_exists( 'cpschool_theme_customizer' ) ) {
 						'section'     => 'title_tagline',
 						'transport'   => 'refresh',
 						'default'     => '',
-						'priority'    => 20,
+						'priority'    => 90,
 						'choices'     => array(
 							'save_as' => 'id',
 						),
@@ -189,7 +189,7 @@ if ( ! function_exists( 'cpschool_theme_customizer' ) ) {
 						'section'     => 'title_tagline',
 						'transport'   => 'refresh',
 						'default'     => '',
-						'priority'    => 20,
+						'priority'    => 90,
 						'choices'     => array(
 							'save_as' => 'id',
 						),
@@ -212,7 +212,7 @@ if ( ! function_exists( 'cpschool_theme_customizer' ) ) {
 						'label'           => esc_attr__( 'Logo / Title Link', 'cpschool' ),
 						'section'         => 'title_tagline',
 						'transport'       => 'refresh',
-						'priority'        => 20,
+						'priority'        => 90,
 						'active_callback' => array(
 							array(
 								'setting'  => 'secondary_logo',
