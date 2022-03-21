@@ -31,6 +31,8 @@ defined( 'ABSPATH' ) || exit;
 	if( get_theme_mod( 'header_secondary_under_primary' ) == false ) {
 		get_template_part( 'template-parts/global-templates/navbar', 'secondary' );
 	}
+
+	$header_main_logo_url = cpschool_get_home_url();
 	?>
 
 	<div id="wrapper-navbar-main-top" <?php cpschool_class( 'navbar-main-wrapper-top' ); ?>></div>
@@ -48,10 +50,6 @@ defined( 'ABSPATH' ) || exit;
 						<div class="navbar-brand-holder">
 					<?php endif; ?>
 							<?php do_action( 'cpschool_navbar_main_logo_text_before' ); ?>
-
-							<?php
-							$header_main_logo_url = cpschool_get_home_url();
-							?>
 
 							<a <?php cpschool_class( 'navbar-brand', 'navbar-brand logo-font' ); ?>  rel="home" href="<?php echo esc_url( $header_main_logo_url ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url">
 								<span class="navbar-brand-text"><?php bloginfo( 'name' ); ?></span>
@@ -75,7 +73,9 @@ defined( 'ABSPATH' ) || exit;
 					<?php endif; ?>
 				<?php } else { ?>
 					<div class="navbar-brand-holder">
-						<?php the_custom_logo(); ?>
+						<a <?php cpschool_class( 'navbar-brand', 'navbar-brand logo-font' ); ?>  rel="home" href="<?php echo esc_url( $header_main_logo_url ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url">
+							<?php the_custom_logo(); ?>
+						</a>
 					</div>
 				<?php } ?><!-- end custom logo -->
 

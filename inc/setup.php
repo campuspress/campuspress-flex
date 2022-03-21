@@ -87,7 +87,7 @@ if ( ! function_exists( 'cpschool_setup' ) ) {
 		);
 
 		// Set up the WordPress Theme logo feature.
-		add_theme_support( 'custom-logo' );
+		add_theme_support( 'custom-logo', array( 'unlink-homepage-logo' => true ) );
 
 		// Add support for responsive embedded content.
 		add_theme_support( 'responsive-embeds' );
