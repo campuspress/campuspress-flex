@@ -27,13 +27,13 @@ if ( $hero_style || ( is_customize_preview() && ( ! is_singular() || ! get_post_
 				if ( $subtitle || $meta ) {
 					?>
 					<div class="page-meta entry-meta">
-						<?php 
+						<?php
 						if ( $subtitle ) {
 							echo $subtitle;
 						}
 						if ( $meta ) {
 							echo $meta;
-						} 
+						}
 						?>
 					</div>
 					<?php
@@ -41,19 +41,21 @@ if ( $hero_style || ( is_customize_preview() && ( ! is_singular() || ! get_post_
 				?>
 			<?php } ?>
 		</div>
-		
+
 		<?php
 		$thumbnail_post_id = false;
 		if ( is_singular() ) {
 			$thumbnail_post_id = get_the_ID();
 		} elseif ( is_home() ) {
 			$thumbnail_post_id = get_option( 'page_for_posts' );
+		} elseif( is_archive() ) {
+			$thumbnail_post_id = get_queried_object_id();
 		}
 		$thumbnail_size = 'hero';
 		if ( in_array( $hero_style, array( 'img-under-title', 'img-above-title' ) ) && ! is_customize_preview() ) {
 			$thumbnail_size = 'large';
 		}
-		if ( is_singular() && has_post_thumbnail( $thumbnail_post_id ) ) {
+		if ( has_post_thumbnail( $thumbnail_post_id ) ) {
 			?>
 			<div class="hero-image-holder hero-featured-image-holder" data-aos="fade" data-aos-duration="1000">
 				<?php echo get_the_post_thumbnail( $thumbnail_post_id, $thumbnail_size ); ?>
@@ -62,14 +64,14 @@ if ( $hero_style || ( is_customize_preview() && ( ! is_singular() || ! get_post_
 		} elseif ( $hero_default_images = get_theme_mod( 'hero_main_default_images' ) ) {
 			$thumbnail_id = $hero_default_images[ mt_rand( 0, count( $hero_default_images ) - 1 ) ]['id'];
 			?>
-		 
+
 			<div <?php cpschool_class( 'hero-main-default-image-holder', 'hero-image-holder hero-default-image-holder' ); ?> data-aos="fade" data-aos-duration="1000">
 				<?php echo wp_get_attachment_image( $thumbnail_id, $thumbnail_size ); ?>
 			</div>
 			<?php
 		}
 		?>
-		 
+
 	</header>
 	<?php
 }
