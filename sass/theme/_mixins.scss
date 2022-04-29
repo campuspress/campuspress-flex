@@ -31,7 +31,7 @@
 @mixin editor-wrap($strong: false) {
     @if($editor) {
         @if($strong) {
-            .edit-post-visual-editor.editor-styles-wrapper {
+            .edit-post-visual-editor .editor-styles-wrapper {
                 @content;
             }
         }

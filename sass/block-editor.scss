@@ -11,17 +11,16 @@ $editor: true;
 
 @import "theme/mixins";
 
-@import "theme/color-palletes";
-@import "theme/general";
-@import "theme/alignment";
-@import "theme/content";
-
 @import "theme/elements/headers";
 @import "theme/elements/buttons";
 @import "theme/elements/forms"; 
 
 @import "theme/components/entries";
 @import "theme/components/blocks";
+@import "theme/color-palletes";
+@import "theme/general";
+@import "theme/alignment";
+@import "theme/content";
 
 @import "theme/integrations/calendar-plus";
 @import "theme/integrations/cp-directory";
