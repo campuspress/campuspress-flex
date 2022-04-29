@@ -255,9 +255,14 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 					$data_target = $atts['id'] . '-dropdown';
 					if ( ! $this->hover ) {
 						if ( ! $collpse_as_button ) {
-							$atts['class'][]     = 'dropdown-toggle';
 							$atts['data-toggle'] = 'collapse';
 							$atts['href']        = '#' . $data_target;
+
+							if( $this->navbar ) {
+								$atts['class'][] = 'dropdown-toggle';
+							} else {
+								$atts['class'][] = 'collapse-toggle';
+							}
 						}
 					} else {
 						if ( ! $collpse_as_button ) {
