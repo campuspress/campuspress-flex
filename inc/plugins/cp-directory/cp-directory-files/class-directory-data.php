@@ -241,7 +241,24 @@ class CPDirectoryData {
 		);
 		
 		if ( isset( $this->atts['sort_by'] ) && $this->atts['sort_by'] ) {
-			$args['orderby'] = $this->atts['sort_by'];
+			$available_order = cp_dir_get_available_order( $this->atts['source'] );
+			foreach( $available_order as $order ) {
+				if( $order['value'] == $this->atts['sort_by'] ) {
+					if( isset( $order['orderby'] ) && $order['orderby'] ) {
+						$args['orderby'] = $order['orderby'];
+					}
+					else {
+						$args['orderby'] = $order['value'];
+					}
+
+					if( isset( $order['meta'] ) && $order['meta'] ) {
+						$args['meta_key'] = $order['meta'];
+					}
+
+					break;
+				}
+			}
+			
 		}
 
 		if ( $this->atts['categories'] ) {

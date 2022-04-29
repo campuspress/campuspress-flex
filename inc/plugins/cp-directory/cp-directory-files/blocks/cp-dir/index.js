@@ -254,7 +254,6 @@
 				),
 			);
 
-
 			settings.push(
 				el( SelectControl, {
 					value: props.attributes.sort_by,
@@ -262,11 +261,7 @@
 					onChange: function( value ){
 						props.setAttributes( { sort_by: value } );
 					},
-					options: [
-						{ value: '', label: __('Title', 'cp-dir') },
-						{ value: 'date', label: __('Date', 'cp-dir') },
-						{ value: 'menu_order', label: __('Order', 'cp-dir') },
-					]
+					options: CPDir[0].order
 				} )
 			);
 

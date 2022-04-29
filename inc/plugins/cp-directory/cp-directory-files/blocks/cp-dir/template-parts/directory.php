@@ -50,27 +50,29 @@ $posts_per_page     = $data->get_posts_per_page( $entries_count );
 
 			include( apply_filters( 'cp_dir_path_directory_content', $this->dir . '/cp-directory-files/blocks/cp-dir/template-parts/directory-content.php', $data ) );
 
-			include( apply_filters( 'cp_dir_path_directory_after', $this->dir . '/cp-directory-files/blocks/cp-dir/template-parts/directory-after.php', $data ) );
+			include( apply_filters( 'cp_dir_path_directory_after', $this->dir . '/cp-directory-files/blocks/cp-dir/template-parts/directory-after.php', $data ) );			
 			
-			$field_js = json_encode( $data->get_fields_js() );
-			ob_start();
-			?>
-			<script>
-			cpDirectories['<?php echo esc_attr( $dir_id ); ?>'] = new List( '<?php echo esc_attr( $dir_id ); ?>', {
+			if ( $filters || $taxonomies_filters ) {
+				$field_js = json_encode( $data->get_fields_js() );
+				ob_start();
+				?>
+				<script>
+				cpDirectories['<?php echo esc_attr( $dir_id ); ?>'] = new List( '<?php echo esc_attr( $dir_id ); ?>', {
 					valueNames: <?php echo $field_js; ?>,
 					listClass: 'cp-dir-content-list',
 					searchClass: 'cp-dir-field-search',
 					searchDelay: 250,
 					page: <?php echo $posts_per_page ? $posts_per_page : $data->get_entries_limit(); ?>,
-			} );
-			</script>
-			<?php
-			$inline_script = str_replace( array( '<script>', '</script>' ), '', ob_get_clean() );
-			wp_add_inline_script( 'cp-dir-block', $inline_script );
+				} );
+				</script>
+				<?php
+				$inline_script = str_replace( array( '<script>', '</script>' ), '', ob_get_clean() );
+				wp_add_inline_script( 'cp-dir-block', $inline_script );
 
-			add_action('wp_footer', function() {
-				wp_enqueue_script( 'cp-dir-block' );
-			});
+				add_action('wp_footer', function() {
+					wp_enqueue_script( 'cp-dir-block' );
+				});
+			}
 		}
 		?>
 	</div>

@@ -198,8 +198,10 @@ function cp_dir_get_field_value( $entry_id, $field_details ) {
 					$value_raw_attr    = $value_raw_content;
 					if ( isset( $field_details['args']['link'] ) && $field_details['args']['link'] ) {
 						$link = get_permalink( $entry_id );
-						if ( get_the_ID() ) {
-							$link = add_query_arg( 'cp-dir-id', get_the_ID(), $link );
+						if( apply_filters( 'cp_dir_enable_go_back', true ) ) {
+							if ( get_the_ID() ) {
+								$link = add_query_arg( 'cp-dir-id', get_the_ID(), $link );
+							}
 						}
 						$value_raw_content = '<a href="' . esc_url( $link ) . '">' . $value_raw_content . '</a>';
 					}
@@ -267,4 +269,22 @@ function cp_dir_get_field_value( $entry_id, $field_details ) {
 	$value['attr']    = $value_raw_attr;
 
 	return apply_filters( 'cp_dir_get_field_value', $value, $value_raw_content, $value_raw_attr, $entry_id, $field_details );
+}
+
+/**
+ * Gets available orders
+ *
+ * @param [array] $order.
+ * @param [string] $source post type.
+ * @return array
+ */
+function cp_dir_get_available_order( $source = '' ) {
+
+	$order = array(
+		array( 'value' => '', 'label' => __('Title', 'cp-dir') ),
+		array( 'value' => 'date', 'label' => __('Date', 'cp-dir') ),
+		array( 'value' => 'menu_order', 'label' => __('Order', 'cp-dir') ),
+	);
+
+	return apply_filters( 'cp_dir_get_available_order', $order, $source );
 }

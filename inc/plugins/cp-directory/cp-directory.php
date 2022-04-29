@@ -86,6 +86,7 @@ if( ! class_exists('CPDirectory') ) :
                         'taxonomies' => $block_taxonomy_data,
                         'filters' => cp_dir_get_available_filters( $post_type ),
                         'fields' => cp_dir_get_available_fields( $post_type ),
+                        'order' => cp_dir_get_available_order( $post_type ),
                     );
                 }
             }
