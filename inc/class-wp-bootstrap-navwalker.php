@@ -240,8 +240,15 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 				$atts['role'] = 'menuitem';
 			}
 
+			if( $args->depth == 0 || $args->depth > ( $depth + 1 ) ) {
+				$levels_allowed = true;
+			}
+			else {
+				$levels_allowed = false;
+			}
+
 			// If item has_children add atts to <a>.
-			if ( isset( $args->has_children ) && $args->has_children && $args->depth !== 1) {
+			if ( isset( $args->has_children ) && $args->has_children && $levels_allowed ) {
 				$atts['id']   = 'menu-item-dropdown-' . $args->menu_id . '-' . $item->ID;
 
 				if ( $this->navbar ) {
@@ -255,20 +262,14 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 					$data_target = $atts['id'] . '-dropdown';
 					if ( ! $this->hover ) {
 						if ( ! $collpse_as_button ) {
+							$atts['class'][] = 'collapse-toggle';
 							$atts['data-toggle'] = 'collapse';
 							$atts['href']        = '#' . $data_target;
-
-							if( $this->navbar ) {
-								$atts['class'][] = 'dropdown-toggle';
-							} else {
-								$atts['class'][] = 'collapse-toggle';
-							}
 						}
 					} else {
 						if ( ! $collpse_as_button ) {
 							$atts['class'][]     = 'dropdown-toggle';
 							$atts['data-target'] = '#' . $data_target;
-
 						}
 					}
 
