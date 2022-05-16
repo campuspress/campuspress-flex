@@ -26,17 +26,19 @@ $posts_per_page     = $data->get_posts_per_page( $entries_count );
 	if ( $filters || $taxonomies_filters ) {
 		?>
 		<form class="<?php echo apply_filters( 'cp_dir_controls_class', 'cp-dir-controls', $data ); ?>" aria-controls="<?php echo esc_attr( $dir_id ); ?>-content">
-			<div class="cp-dir-sr-info screen-reader-text">
-				<?php echo apply_filters( 'cp_dir_directory_refresh_info', __( 'Items will instantly refresh upon filtering.', 'cp-dir' ), $data ); ?>
-			</div>
-			
-			<?php include( apply_filters( 'cp_dir_path_directory_filters', $this->dir . '/cp-directory-files/blocks/cp-dir/template-parts/directory-filters.php', $data ) ); ?>
+			<fieldset>
+				<legend class="cp-dir-sr-info screen-reader-text">
+					<?php echo apply_filters( 'cp_dir_directory_refresh_info', __( 'Items will instantly refresh upon filtering.', 'cp-dir' ), $data ); ?>
+				</legend>
+				
+				<?php include( apply_filters( 'cp_dir_path_directory_filters', $this->dir . '/cp-directory-files/blocks/cp-dir/template-parts/directory-filters.php', $data ) ); ?>
+			</fieldset>
 		</form>
 		<?php
 	}
 	?>
 	<div class="<?php echo apply_filters( 'cp_dir_content_class', 'cp-dir-content', $data ); ?>" id="<?php echo esc_attr( $dir_id ); ?>-content" aria-label="<?php echo apply_filters( 'cp_dir_directory_entries_label', sprintf( __( '%s Entries', 'cp-dir' ), $label ), $data ); ?>">
-		<div class="cp-dir-sr-info screen-reader-text" aria-live="polite">
+		<div class="cp-dir-sr-info screen-reader-text" aria-live="polite" aria-atomic="true>
 			<?php printf( __( '%s results found.', 'cp-dir' ), '<span class="cp-dir-sr-info-count">' . $entries_count . '</span>' ); ?>
 			<?php
 			if ( $posts_per_page ) {

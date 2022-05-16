@@ -80,8 +80,10 @@ class CPDirectoryData {
 						)
 					);
 					foreach ( $terms as $term ) {
+						$field_key = 'tax_' . $taxonomy->name . '-' . $term->term_id;
+
 						if ( get_term_children( $term->term_id, $taxonomy->name ) ) {
-							$this->taxonomy_filters[] = array(
+							$this->taxonomy_filters[$field_key] = array(
 								'label'      => $term->name,
 								'taxonomy'   => $taxonomy->name,
 								'parent_id'  => $term->term_id,
@@ -97,13 +99,15 @@ class CPDirectoryData {
 						$term = get_term( $parent_id, $taxonomy->name );
 
 						$label      = $term->name;
+						$field_key = 'tax_' . $taxonomy->name . '-' . $term->term_id;
 						$field_name = $taxonomy->name . '-' . $term->term_id;
 					} else {
 						$label      = $taxonomy->label;
+						$field_key = 'tax_' . $taxonomy->name;
 						$field_name = $taxonomy->name;
 					}
 					if ( ! $parent_id || get_term_children( $parent_id, $taxonomy->name ) ) {
-						$this->taxonomy_filters[] = array(
+						$this->taxonomy_filters[$field_key] = array(
 							'label'      => $label,
 							'taxonomy'   => $taxonomy->name,
 							'parent_id'  => $parent_id,
@@ -147,12 +151,9 @@ class CPDirectoryData {
 
 			if( $field_enabled ) {
 				if (  $field_details['type'] != 'taxonomy' ) {
-					$field_name = 'name';
-					if ( isset( $field_details['args']['name_field'] ) && $field_details['args']['name_field'] ) {
-						$field_name = 'cp-dir-field-' . $field_details['name'];
-					}
+					$field_name = 'cp-dir-field-' . $field_details['name'];
 
-					$this->fields[$field_name] = array_merge(
+					$this->fields[$field_key] = array_merge(
 						$field_details,
 						array(
 							'field_name' => $field_name,
@@ -164,10 +165,10 @@ class CPDirectoryData {
 		}
 
 		// Lets process taxonomies seperately because we will want them anyway to apply the filters
-		foreach ( $taxonomy_filters as $filter ) {
+		foreach ( $taxonomy_filters as $filter_key => $filter ) {
 			$field_enabled = in_array( 'tax_' . $filter['taxonomy'], $enabled_fields );
 
-			$this->fields[$filter['field_name']] = array_merge(
+			$this->fields[$filter_key] = array_merge(
 				$available_fields['tax_' . $filter['taxonomy']],
 				array(
 					'label'      => $filter['label'],
@@ -233,7 +234,6 @@ class CPDirectoryData {
 
 		$args = array(
 			'numberposts' => $this->get_entries_limit(),
-			'category'    => 0,
 			'orderby'     => 'title',
 			'order'       => 'ASC',
 			'post_type'   => $this->atts['source'],
@@ -276,6 +276,10 @@ class CPDirectoryData {
 					);
 				}
 			}
+		}
+
+		if ( isset( $this->atts['post_ids'] ) && array( $this->atts['post_ids'] ) ) {
+			$args['post__in'] = $this->atts['post_ids'];
 		}
 
 		/**

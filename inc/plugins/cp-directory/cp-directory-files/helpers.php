@@ -127,12 +127,10 @@ function cp_dir_get_available_fields( $source ) {
 		'value_type' => 'text',
 		'default'    => true,
 		'args'       => array(
-			'name_field' => true,
 			'link'       => $post_type_object->publicly_queryable,
 		),
 	);
 
-	/*
 	$fields['post_excerpt'] = array(
 		'name' => 'post_excerpt',
 		'label' => __( 'Excerpt', 'cpschool' ),
@@ -140,7 +138,6 @@ function cp_dir_get_available_fields( $source ) {
 		'value_type' => 'text',
 		'default' => false,
 	);
-	*/
 
 	$taxonomies = get_object_taxonomies( $source, 'object' );
 	foreach ( $taxonomies as $taxonomy ) {
@@ -164,9 +161,6 @@ function cp_dir_get_available_fields( $source ) {
 					'type'       => 'custom_field',
 					'value_type' => $group_field['type'],
 					'default'    => false,
-					'args'       => array(
-						'name_field' => true,
-					),
 				);
 			}
 		}
@@ -194,10 +188,11 @@ function cp_dir_get_field_value( $entry_id, $field_details ) {
 		case 'post':
 			switch ( $field_details['name'] ) :
 				case 'post_title':
-					$value_raw_content = get_the_title( $entry_id );
+					$entry_post = get_post( $entry_id );
+					$value_raw_content = get_the_title( $entry_post );
 					$value_raw_attr    = $value_raw_content;
 					if ( isset( $field_details['args']['link'] ) && $field_details['args']['link'] ) {
-						$link = get_permalink( $entry_id );
+						$link = get_permalink( $entry_post );
 						if( apply_filters( 'cp_dir_enable_go_back', true ) ) {
 							if ( get_the_ID() ) {
 								$link = add_query_arg( 'cp-dir-id', get_the_ID(), $link );
@@ -207,7 +202,8 @@ function cp_dir_get_field_value( $entry_id, $field_details ) {
 					}
 					break;
 				case 'post_excerpt':
-					$value_raw_content = get_the_excerpt( $entry_id );
+					$entry_post = get_post( $entry_id );
+					$value_raw_content = wp_trim_excerpt( $entry_post->post_excerpt, $entry_post );
 					break;
 			endswitch;
 			break;

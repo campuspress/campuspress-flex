@@ -206,7 +206,7 @@ if( ! class_exists('CPDirectory') ) :
 
                 ob_start();
 
-                include( $this->dir . '/cp-directory-files/blocks/cp-dir/template-parts/directory-single-extra-data.php' );
+                include( apply_filters( 'cp_dir_path_directory_single_extra_data', $this->dir . '/cp-directory-files/template-parts/directory-single-extra-data.php' ) );
 
                 return ob_get_clean();
             }
