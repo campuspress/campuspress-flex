@@ -2,12 +2,25 @@
  * Adds basic styling to directory module included with theme.
  */
 
+ .cp-dir-item-fields:not(:last-child) {
+    margin-bottom: $paragraph-margin-bottom;
+ }
+
 .cp-dir-controls {
-    display: flex;
     background-color: var(--color-boxes);
+    fieldset {
+        padding: $spacer/5;
+        @include media-breakpoint-up(md) {
+            display: flex;
+        }
+    }
 }
 .cp-dir-control {
     margin: $spacer/5;
+    margin-bottom: $spacer/5*2;
+    @include media-breakpoint-up(md) {
+        margin-bottom: $spacer/5;
+    }
 }
 .cp-dir-control-search {
     flex-grow: 2;
