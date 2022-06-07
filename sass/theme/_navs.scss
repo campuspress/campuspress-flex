@@ -124,20 +124,17 @@
         padding-right: 0;
     }
     ul.collapse-menu {
-        margin-left: $nav-link-padding-x;
         list-style: none;
         > li:first-child {
-            margin-top: $spacer/4;
+            padding-top: $spacer/4;
         }
         > li:last-child {
-            margin-bottom: $spacer/4;
-        }
-        .collapse {
-            display: block;
+            padding-bottom: $spacer/4;
         }
     }
 
-    .dropdown-toggle {
+    .dropdown-toggle,
+    .collapse-toggle {
         &::after {
             height: .3em;
             margin-top: auto;

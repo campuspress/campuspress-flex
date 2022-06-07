@@ -567,6 +567,11 @@ if ( ! function_exists( 'cpschool_get_active_sidebars' ) ) {
 }
 
 if ( ! function_exists( 'cpschool_get_hero_style' ) ) {
+	/**
+	 * Gets hero style for currently displayed page
+	 *
+	 * @return string slug for hero type
+	 */
 	function cpschool_get_hero_style() {
 		// Lets handle main blog page differently - it needs to be enabled specifically.
 		if ( is_home() && ! get_theme_mod( 'posts_main_hero' ) ) {
@@ -603,12 +608,17 @@ if ( ! function_exists( 'cpschool_get_hero_style' ) ) {
 }
 
 if ( ! function_exists( 'cpschool_get_hero_image' ) ) {
+	/**
+	 * Checks if hero image should be rendered on current page
+	 *
+	 * @return void
+	 */
 	function cpschool_has_hero_image() {
 		$hero_style = get_theme_mod( 'hero_main_style' );
 
 		if ( is_singular() && has_post_thumbnail() ) {
 			return true;
-		} elseif ( ( $hero_style != 'img-under-title' || is_customize_preview() ) && $hero_default_images = get_theme_mod( 'hero_main_default_images' ) ) {
+		} elseif ( ( $hero_style != 'img-under-title' || is_customize_preview() ) && get_theme_mod( 'hero_main_default_images' ) ) {
 			return true;
 		}
 

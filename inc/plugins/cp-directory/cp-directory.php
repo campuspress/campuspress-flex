@@ -86,6 +86,7 @@ if( ! class_exists('CPDirectory') ) :
                         'taxonomies' => $block_taxonomy_data,
                         'filters' => cp_dir_get_available_filters( $post_type ),
                         'fields' => cp_dir_get_available_fields( $post_type ),
+                        'order' => cp_dir_get_available_order( $post_type ),
                     );
                 }
             }
@@ -205,7 +206,7 @@ if( ! class_exists('CPDirectory') ) :
 
                 ob_start();
 
-                include( $this->dir . '/cp-directory-files/blocks/cp-dir/template-parts/directory-single-extra-data.php' );
+                include( apply_filters( 'cp_dir_path_directory_single_extra_data', $this->dir . '/cp-directory-files/template-parts/directory-single-extra-data.php' ) );
 
                 return ob_get_clean();
             }

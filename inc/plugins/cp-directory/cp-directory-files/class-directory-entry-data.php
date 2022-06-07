@@ -15,7 +15,7 @@ class CPDirectoryEntryData {
             return $pre;
         }
 
-        $blocked_entry_fields = apply_filters( 'cp_dir_blocked_entry_fields', array( 'post_title' ) );
+        $blocked_entry_fields = apply_filters( 'cp_dir_blocked_entry_fields', array( 'post_title', 'post_excerpt' ) );
 
         $fields = array();
 
@@ -26,30 +26,36 @@ class CPDirectoryEntryData {
             }
             if( $field_details['type'] == 'taxonomy' ) {
                 $post_terms_childs_parents = wp_get_post_terms( $this->post->ID, $field_details['name'], array( 'fields' => 'id=>parent' ) );
+                
                 if( $post_terms_childs_parents ) {
                     $post_terms_parents = array_unique( array_values( $post_terms_childs_parents ) );
                     // Splits taxonomy into childs 
-                    if( $post_terms_parents && count($post_terms_parents) > 1 || $post_terms_parents[0] !== 0 ) {
+                    if( $post_terms_parents && count($post_terms_parents) > 1 || $post_terms_parents[0] !== '0' ) {
                         foreach( $post_terms_parents as $parent_id ) {
                             if( $parent_id ) {
                                 $term = get_term( $parent_id, $field_details['name'] );
-                                $fields[] = array_merge( $field_details, array(
-                                    'label' => $term->name,
-                                    'field_name' => $field_details['name'] . '-' . $term->term_id,
-                                    'args' => array( 'parent_id' => $parent_id ),
-                                ) );
+                                $fields['tax_' . $field_details['name'] . '-' . $term->term_id] = array_merge( 
+                                    $field_details, 
+                                    array(
+                                        'label' => $term->name,
+                                        'field_name' => 'cp-dir-field-' . $field_details['name'] . '-' . $term->term_id,
+                                        'args' => array( 'parent_id' => $parent_id ),
+                                    ) 
+                                );
                             }
                         }
-                    }
-                    else {
-                        $fields[] = $field_details;
-                    }
 
-                    continue;
+                        continue;
+                    }                    
                 }
             }
             
-            $fields[] = $field_details;
+            $fields[$field_key] = array_merge(
+                $field_details,
+                array(
+                    'field_name' => 'cp-dir-field-' . $field_details['name'],
+                )
+            );
         }
         
         return apply_filters( 'cp_dir_get_entry_fields', $fields, $this->post, $this->dir_id );

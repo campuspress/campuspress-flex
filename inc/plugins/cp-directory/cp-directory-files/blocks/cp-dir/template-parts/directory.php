@@ -26,17 +26,19 @@ $posts_per_page     = $data->get_posts_per_page( $entries_count );
 	if ( $filters || $taxonomies_filters ) {
 		?>
 		<form class="<?php echo apply_filters( 'cp_dir_controls_class', 'cp-dir-controls', $data ); ?>" aria-controls="<?php echo esc_attr( $dir_id ); ?>-content">
-			<div class="cp-dir-sr-info screen-reader-text">
-				<?php echo apply_filters( 'cp_dir_directory_refresh_info', __( 'Items will instantly refresh upon filtering.', 'cp-dir' ), $data ); ?>
-			</div>
-			
-			<?php include( apply_filters( 'cp_dir_path_directory_filters', $this->dir . '/cp-directory-files/blocks/cp-dir/template-parts/directory-filters.php', $data ) ); ?>
+			<fieldset>
+				<legend class="cp-dir-sr-info screen-reader-text">
+					<?php echo apply_filters( 'cp_dir_directory_refresh_info', __( 'Items will instantly refresh upon filtering.', 'cp-dir' ), $data ); ?>
+				</legend>
+				
+				<?php include( apply_filters( 'cp_dir_path_directory_filters', $this->dir . '/cp-directory-files/blocks/cp-dir/template-parts/directory-filters.php', $data ) ); ?>
+			</fieldset>
 		</form>
 		<?php
 	}
 	?>
 	<div class="<?php echo apply_filters( 'cp_dir_content_class', 'cp-dir-content', $data ); ?>" id="<?php echo esc_attr( $dir_id ); ?>-content" aria-label="<?php echo apply_filters( 'cp_dir_directory_entries_label', sprintf( __( '%s Entries', 'cp-dir' ), $label ), $data ); ?>">
-		<div class="cp-dir-sr-info screen-reader-text" aria-live="polite">
+		<div class="cp-dir-sr-info screen-reader-text" aria-live="polite" aria-atomic="true>
 			<?php printf( __( '%s results found.', 'cp-dir' ), '<span class="cp-dir-sr-info-count">' . $entries_count . '</span>' ); ?>
 			<?php
 			if ( $posts_per_page ) {
@@ -50,27 +52,29 @@ $posts_per_page     = $data->get_posts_per_page( $entries_count );
 
 			include( apply_filters( 'cp_dir_path_directory_content', $this->dir . '/cp-directory-files/blocks/cp-dir/template-parts/directory-content.php', $data ) );
 
-			include( apply_filters( 'cp_dir_path_directory_after', $this->dir . '/cp-directory-files/blocks/cp-dir/template-parts/directory-after.php', $data ) );
+			include( apply_filters( 'cp_dir_path_directory_after', $this->dir . '/cp-directory-files/blocks/cp-dir/template-parts/directory-after.php', $data ) );			
 			
-			$field_js = json_encode( $data->get_fields_js() );
-			ob_start();
-			?>
-			<script>
-			cpDirectories['<?php echo esc_attr( $dir_id ); ?>'] = new List( '<?php echo esc_attr( $dir_id ); ?>', {
+			if ( $filters || $taxonomies_filters ) {
+				$field_js = json_encode( $data->get_fields_js() );
+				ob_start();
+				?>
+				<script>
+				cpDirectories['<?php echo esc_attr( $dir_id ); ?>'] = new List( '<?php echo esc_attr( $dir_id ); ?>', {
 					valueNames: <?php echo $field_js; ?>,
 					listClass: 'cp-dir-content-list',
 					searchClass: 'cp-dir-field-search',
 					searchDelay: 250,
 					page: <?php echo $posts_per_page ? $posts_per_page : $data->get_entries_limit(); ?>,
-			} );
-			</script>
-			<?php
-			$inline_script = str_replace( array( '<script>', '</script>' ), '', ob_get_clean() );
-			wp_add_inline_script( 'cp-dir-block', $inline_script );
+				} );
+				</script>
+				<?php
+				$inline_script = str_replace( array( '<script>', '</script>' ), '', ob_get_clean() );
+				wp_add_inline_script( 'cp-dir-block', $inline_script );
 
-			add_action('wp_footer', function() {
-				wp_enqueue_script( 'cp-dir-block' );
-			});
+				add_action('wp_footer', function() {
+					wp_enqueue_script( 'cp-dir-block' );
+				});
+			}
 		}
 		?>
 	</div>

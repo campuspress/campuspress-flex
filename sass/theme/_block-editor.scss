@@ -1,6 +1,19 @@
 // WordPress admin uses 13px at document root instead of default 16px font size.
-.edit-post-visual-editor.editor-styles-wrapper {
+div.editor-styles-wrapper {
     @include adjusted-size(16px, '--body-font-size');
+    font-weight: $font-weight-base;
+    line-height: $line-height-base;
+  }
+
+.editor-styles-wrapper .editor-post-title .editor-post-title__input {
+    @include adjusted-size($font-size-base * 2 * 0.9, '--body-font-size', '--headers-font-size');
+    @include media-breakpoint-up(lg) {
+        @include adjusted-size($font-size-base * 2, '--body-font-size', '--headers-font-size');
+    }
+    border: none !important;
+    padding: 0px !important;
+    box-shadow: none !important;
+    color: var(--color-bg-contrast) !important;
 }
 
 .wp-block {
@@ -53,4 +66,8 @@
 .block-editor-block-preview__content .block-editor-block-list__block {
     margin-top: 0;
     margin-bottom: 0;
+}
+
+.editor-styles-wrapper .list-unstyled {
+	@extend .list-inline;
 }

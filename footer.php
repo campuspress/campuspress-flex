@@ -23,7 +23,6 @@ defined( 'ABSPATH' ) || exit;
 			echo '<div class="container" id="footer-block">' . apply_filters( 'the_content', get_post_field( 'post_content', $footer_block_id ) ) . '</div>';
 		}
 		?>
-			
 
 		<div class="container" id="footer-site-info">
 			<div class="row">
