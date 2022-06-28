@@ -5,13 +5,12 @@ if (typeof cpDirectories === 'undefined') {
     cpDirectories = {};
 }
 
-// Disabled form submission
+// Disable form submission
 jQuery('.cp-dir-controls').on('submit', function (e) {
     e.preventDefault();
 });
 
 jQuery('.cp-dir-control-select select').on('change', function () {
-    jQuery(this).val();
     var dirParent = jQuery(this).parents('.cp-dir');
     var dirID = dirParent.attr('id');
     var dirRelation = dirParent.data('filters-logic');
@@ -136,8 +135,9 @@ jQuery(function () {
     jQuery.each(cpDirectories, function (key, value) {
         var fitleringAdjusted = false;
         var itemsParents = [];
+        var listContainer = jQuery(cpDirectories[key].listContainer);
 
-        var paginationEl = jQuery(cpDirectories[key].listContainer).find('.cp-dir-pagination');
+        var paginationEl = listContainer.find('.cp-dir-pagination');
         if (paginationEl.length) {
             var perPage = parseInt(paginationEl.data('per-page'));
         }
@@ -156,9 +156,20 @@ jQuery(function () {
         cpDirectories[key].on('updated', function (dir) {
             if (fitleringAdjusted === false) {
                 // Updates SR count info.
-                var srInfoCount = jQuery('#' + key).find('.cp-dir-sr-info-count');
-                if (srInfoCount.length) {
-                    srInfoCount.text(dir.visibleItems.length);
+                var srInfoCountNumber = jQuery('#' + key).find('.cp-dir-sr-info-count-number');
+                if (srInfoCountNumber.length) {
+                    var srInfoCount = jQuery('#' + key).find('.cp-dir-sr-info-count');
+                    //this is needed for text to be read by SR if number of items is the same as previously
+                    if( (parseInt(srInfoCountNumber.text()) === dir.visibleItems.length) ) {
+                        var srInfoCountHTML = srInfoCount.html();
+                        srInfoCount.html('');
+                        setTimeout(function(){
+                            srInfoCount.html(srInfoCountHTML);
+                        }, 10);
+                    }
+                    else {
+                        srInfoCountNumber.text(dir.visibleItems.length);
+                    }
                 }
 
                 // Updates load more stuff.
@@ -173,7 +184,16 @@ jQuery(function () {
                     }
                 }
 
-                // Shows found items parents if present.
+                // Updates "no results" info
+                if( !dir.visibleItems.length ) {
+                    listContainer.addClass('cp-dir-content--no-results');
+                }
+                else {
+                    listContainer.removeClass('cp-dir-content--no-results');
+                }
+
+
+                // Shows found item's parents if present.
                 dir.visibleItems.forEach(function (item) {
                     if (item.visible()) {
                         var itemParents = item.values()["entry-parent-ids"];
@@ -187,13 +207,14 @@ jQuery(function () {
                         }
                     }
                 });
-
-                dir.items.forEach(function (item) {
-                    if (itemsParents.indexOf(item.values()["entry-id"]) !== -1) {
-                        item.found = true;
-                        item.filtered = true;
-                    };
-                });
+                if(itemsParents.length) {
+                    dir.items.forEach(function (item) {
+                        if (itemsParents.indexOf(item.values()["entry-id"]) !== -1) {
+                            item.found = true;
+                            item.filtered = true;
+                        };
+                    });
+                }
 
                 fitleringAdjusted = true;
                 dir.update();

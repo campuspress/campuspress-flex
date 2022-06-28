@@ -33,4 +33,17 @@
     border: 1px solid var(--color-boxes);
     border-top: none;
 }
+
+.cp-dir-no-results-info {
+    display: none;
+    padding: $spacer*0.2;
+    font-weight: 700;
+    border: var(--color-boxes) solid 1px;
+    .cp-dir-content--no-results & {
+        display: block;
+    }
+}
+
+.cp-dir-no-results-info-text {
+    text-align: center;
 }

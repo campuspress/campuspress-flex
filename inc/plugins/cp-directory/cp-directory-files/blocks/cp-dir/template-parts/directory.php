@@ -20,6 +20,11 @@ $entries_count = count( $entries );
 $filters            = $data->get_filters();
 $taxonomies_filters = $data->get_taxonomy_filters();
 $posts_per_page     = $data->get_posts_per_page( $entries_count );
+
+$content_class = 'cp-dir-content';
+if ( !$entries_count ) {
+	$content_class .= ' cp-dir-content--no-results';
+}
 ?>
 <div class="<?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $dir_id ); ?>" aria-label="<?php echo esc_attr( apply_filters( 'cp_dir_directory_label', $label, $data ) ); ?>" data-source="<?php echo esc_attr($data->post_type_object->name); ?>"<?php if( isset( $atts['filters_logic'] ) && $atts['filters_logic'] ) { echo 'data-filters-logic="' . esc_attr( $atts['filters_logic'] ) . '"'; } ?>>
 	<?php
@@ -37,9 +42,9 @@ $posts_per_page     = $data->get_posts_per_page( $entries_count );
 		<?php
 	}
 	?>
-	<div class="<?php echo apply_filters( 'cp_dir_content_class', 'cp-dir-content', $data ); ?>" id="<?php echo esc_attr( $dir_id ); ?>-content" aria-label="<?php echo apply_filters( 'cp_dir_directory_entries_label', sprintf( __( '%s Entries', 'cp-dir' ), $label ), $data ); ?>">
-		<div class="cp-dir-sr-info screen-reader-text" aria-live="polite" aria-atomic="true>
-			<?php printf( __( '%s results found.', 'cp-dir' ), '<span class="cp-dir-sr-info-count">' . $entries_count . '</span>' ); ?>
+	<div class="<?php echo esc_attr( apply_filters( 'cp_dir_content_class', $content_class, $data ) ); ?>" id="<?php echo esc_attr( $dir_id ); ?>-content" aria-label="<?php echo esc_attr( apply_filters( 'cp_dir_directory_entries_label', sprintf( __( '%s Entries', 'cp-dir' ), $label ), $data ) ); ?>">
+		<div class="cp-dir-sr-info cp-dir-sr-info-count screen-reader-text" aria-live="polite" aria-atomic="true" aria-relevant="all">
+			<?php printf( __( '%s results found.', 'cp-dir' ), '<span class="cp-dir-sr-info-count-number">' . $entries_count . '</span>' ); ?>
 			<?php
 			if ( $posts_per_page ) {
 				printf( __( 'First %s results are being shown', 'cp-dir' ), '<span class="cp-dir-sr-info-per-page">' . $posts_per_page . '</span>' );
@@ -64,7 +69,7 @@ $posts_per_page     = $data->get_posts_per_page( $entries_count );
 					listClass: 'cp-dir-content-list',
 					searchClass: 'cp-dir-field-search',
 					searchDelay: 250,
-					page: <?php echo $posts_per_page ? $posts_per_page : $data->get_entries_limit(); ?>,
+					page: <?php echo esc_js ( $posts_per_page ? $posts_per_page : $data->get_entries_limit() ); ?>,
 				} );
 				</script>
 				<?php
@@ -77,5 +82,8 @@ $posts_per_page     = $data->get_posts_per_page( $entries_count );
 			}
 		}
 		?>
+		<div class="cp-dir-no-results-info" aria-hidden="true">
+			<?php echo apply_filters( 'cp_dir_directory_no-results_info', __( 'No results found.', 'cp-dir' ) ); ?>
+		</div>
 	</div>
 </div>
