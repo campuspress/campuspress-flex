@@ -46,7 +46,7 @@ $navbar-padding-x: $spacer * 0.5;
 $nav-link-padding-y: .5em;
 $nav-link-padding-x: 1em;
 
-$dropdown-spacer: $spacer/5;
+$dropdown-spacer: $spacer*0.2;
 $caret-width: .3em;
 $caret-spacing: $caret-width*1.5;
 $dropdown-border-width: 0;
@@ -63,7 +63,7 @@ $btn-focus-box-shadow: null;
 $btn-transition: null;
 $btn-font-weight: null;
 
-$headings-margin-bottom: $spacer / 2;
+$headings-margin-bottom: $spacer * 0.5;
 $headings-font-weight: 500;
 $headings-line-height: 1.15;
 
