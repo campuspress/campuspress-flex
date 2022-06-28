@@ -1473,7 +1473,7 @@ if ( ! function_exists( 'cpschool_theme_customizer' ) ) {
 					'type'        => 'select',
 					'settings'    => 'hero_main_style',
 					'label'       => __( 'Style', 'cpschool' ),
-					'description' => sprintf( esc_html__( 'Styles that are not full with will use "%sLarge%s" image size.', 'cpschool' ), '<a href="' . esc_url( admin_url( 'options-media.php' ) ) . '" target="_blank">', '</a>' ),
+					'description' => sprintf( esc_html__( 'Styles that are not full width will use "%sLarge%s" image size.', 'cpschool' ), '<a href="' . esc_url( admin_url( 'options-media.php' ) ) . '" target="_blank">', '</a>' ),
 					'section'     => 'hero_main',
 					'default'     => 'full-title-over-img',
 					'transport'   => 'postMessage',
@@ -1726,12 +1726,13 @@ if ( ! function_exists( 'cpschool_theme_customizer' ) ) {
 					)
 				);
 
-			// SETTING - Defaul Hero Images
+			// SETTING - Default Hero Images
 			Kirki::add_field(
 				'cpschool',
 				array(
 					'type'            => 'repeater',
-					'label'           => esc_html__( 'Defaul Hero Images', 'cpschool' ),
+					'settings'        => 'hero_main_default_images',
+					'label'           => esc_html__( 'Default Hero Images', 'cpschool' ),
 					'description'     => esc_html__( 'Set images that will be randomly used when featured image is not set.', 'cpschool' ),
 					'section'         => 'hero_main',
 					'row_label'       => array(
@@ -1739,7 +1740,6 @@ if ( ! function_exists( 'cpschool_theme_customizer' ) ) {
 						'value' => esc_html__( 'Image', 'cpschool' ),
 					),
 					'button_label'    => esc_html__( 'Add Image', 'cpschool' ),
-					'settings'        => 'hero_main_default_images',
 					'fields'          => array(
 						'id' => array(
 							'type'  => 'image',
