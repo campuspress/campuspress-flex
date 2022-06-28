@@ -71,3 +71,11 @@ div.editor-styles-wrapper {
 .editor-styles-wrapper .list-unstyled {
 	@extend .list-inline;
 }
+
+.editor-styles-wrapper { 
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    } 
+}
