@@ -1,3 +1,5 @@
+@use "sass:math";
+
 #{$el-align-full}, 
 #{$el-align-wide} {
 	margin-bottom: $spacer;
@@ -15,7 +17,7 @@
 #{$el-align-wide} {
 	position: relative;
 	max-width: calc(100vw - #{$grid-gutter-width});
-	left: calc(50% - 50vw + #{$grid-gutter-width/2});
+	left: calc(50% - 50vw + #{$grid-gutter-width*0.5});
 	width: calc(100vw - #{$grid-gutter-width});
 	
 	+ #{$el-align-wide} {
@@ -34,7 +36,7 @@
 	}
 	@include media-breakpoint-up(xxl) {
 		max-width: calc(#{map-get($grid-breakpoints, 'xxl')} - #{$grid-gutter-width});
-		left: calc(50% - #{map-get($grid-breakpoints, 'xxl')/2} + #{$grid-gutter-width/2});
+		left: calc(50% - #{map-get($grid-breakpoints, 'xxl')*0.5} + #{$grid-gutter-width*0.5});
 		width: calc(#{map-get($grid-breakpoints, 'xxl')} - #{$grid-gutter-width});
 	}
 }
@@ -53,8 +55,8 @@
 	@include media-breakpoint-down(md) {
 		&:not([class*="has-background"]) > {
 			.wp-block-group__inner-container > p:not(.has-background-color) {
-				padding-left: $spacer*2/3;
-				padding-right: $spacer*2/3;
+				padding-left: math.div($spacer*2, 3);
+				padding-right: math.div($spacer*2, 3);
 			}
 		}
 	}

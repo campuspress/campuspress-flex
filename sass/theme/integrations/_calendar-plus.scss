@@ -2,6 +2,8 @@
  * Adds integration with Calendar Plus plugin.
  */
 
+@use "sass:math";
+
 body .calendar-plus {
     .calendar-plus-calendar-wrap {
         @extend %block-spacing;
@@ -14,8 +16,8 @@ body .calendar-plus {
                 flex-grow: 1;
             }
             p:not(:last-child) {
-                margin-right: $spacer/3;
-                margin-bottom: $spacer/3;
+                margin-right: math.div($spacer, 3);
+                margin-bottom: math.div($spacer, 3);
             }
         }
     }
@@ -25,7 +27,7 @@ body .calendar-plus {
     }
     .rbc-toolbar {
         flex-wrap: initial;
-        margin-bottom: $spacer/3;
+        margin-bottom: math.div($spacer, 3);
         button {
             background: var(--color-boxes);
             color: var(--color-boxes-contrast);
@@ -46,7 +48,7 @@ body .calendar-plus {
         @include media-breakpoint-down(sm) {
             justify-content: left;
             > *:not(:last-child) {
-                margin-bottom: $spacer/3;
+                margin-bottom: math.div($spacer, 3);
             }
         }
     }
@@ -56,7 +58,7 @@ body .calendar-plus {
         color: var(--color-boxes-contrast);
     }
     .rbc-header {
-        padding: $spacer/6 $spacer/12;
+        padding: math.div($spacer, 6) math.div($spacer, 12);
         border-bottom-color: var(--color-bg);
         font-weight: bold;
         font-size: 1em;
@@ -145,7 +147,7 @@ body .calendar-plus {
 }
 .calendarp-event-shortcode-header {
     img {
-        margin-bottom: $spacer/3;
+        margin-bottom: math.div($spacer, 3);
     }
     .dashicons {
         text-decoration: none;

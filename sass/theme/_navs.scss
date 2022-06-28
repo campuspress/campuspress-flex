@@ -1,3 +1,5 @@
+@use "sass:math";
+
 #{$el-root} {
     --header-main-gap-height: 0px;
 
@@ -9,18 +11,18 @@
 }
 
 .nav {
-    margin-top: $spacer/4;
-    margin-bottom: $spacer/4;
+    margin-top: $spacer*0.25;
+    margin-bottom: $spacer*0.25;
 
     &:not(.navbar-nav) .nav-item.has-styling {
-        padding-top: $nav-link-padding-x/2;
-        padding-bottom: $nav-link-padding-x/2;
+        padding-top: $nav-link-padding-x*0.5;
+        padding-bottom: $nav-link-padding-x*0.5;
     }
 
     .nav-link {
         font-size: 1.1em;
-        margin-left: $nav-link-padding-x*2/3;
-        margin-right: $nav-link-padding-x*2/3;
+        margin-left: math.div($nav-link-padding-x*2, 3);
+        margin-right: math.div($nav-link-padding-x*2, 3);
         padding-right: 0;
         padding-left: 0;
     }
@@ -48,16 +50,16 @@
     }
     .nav-icon-has-bg {
         border-radius: $border-radius;
-        padding: $nav-link-padding-x/4;
+        padding: $nav-link-padding-x*0.25;
     }
     .nav-icon-position-after {
         //margin-left: 0;
-        margin-left: $nav-link-padding-x/2;
+        margin-left: $nav-link-padding-x*0.5;
         //border-radius: 0 $border-radius $border-radius 0;
     }
     .nav-icon-position-before {
         //margin-right: 0;
-        margin-right: $nav-link-padding-x/2;
+        margin-right: $nav-link-padding-x*0.5;
         //border-radius: $border-radius 0 0 $border-radius;
     }
     .nav-icon-no-label {
@@ -75,17 +77,17 @@
         .menu-item-text {
             display: flex;
             align-items: center;
-            margin: auto $btn-padding-x*2/3;
+            margin: auto math.div($btn-padding-x*2, 3);
         }
         i {
             display: flex;
             align-items: center;
             font-size: 1.35em;
-            padding: 0 $btn-padding-x/3;
+            padding: 0 math.div($btn-padding-x, 3);
             justify-content: center;
         }
         &.dropdown-toggle::after {
-            margin-right: $btn-padding-x*2/3;
+            margin-right: math.div($btn-padding-x*2, 3);
             margin-left: 0;
         }
 
@@ -100,7 +102,7 @@
             margin-left: 0;
         }
         .nav-icon-position-before {
-            margin-left: $btn-padding-x/2;
+            margin-left: $btn-padding-x*0.5;
             margin-right: 0;
             //margin-right: -$btn-padding-x*2/3;
         }
@@ -126,10 +128,10 @@
     ul.collapse-menu {
         list-style: none;
         > li:first-child {
-            padding-top: $spacer/4;
+            padding-top: $spacer*0.25;
         }
         > li:last-child {
-            padding-bottom: $spacer/4;
+            padding-bottom: $spacer*0.25;
         }
     }
 
@@ -164,7 +166,7 @@
 
 .navbar {
     z-index: 3;
-    padding: $spacer / 4 $grid-gutter-width / 2;
+    padding: $spacer * 0.25 $grid-gutter-width * 0.5;
     transition: padding 0.2s ease-in-out;
 
     .nav-item {
@@ -201,8 +203,8 @@
             text-align: center;
             padding-top: 0;
             padding-bottom: 0;
-            margin-top: $nav-link-padding-x/4;
-            margin-bottom: $nav-link-padding-x/4;
+            margin-top: $nav-link-padding-x*0.25;
+            margin-bottom: $nav-link-padding-x*0.25;
         }
 
         i {
@@ -220,7 +222,7 @@
             //margin-left: $nav-link-padding-x;
             flex-wrap: nowrap;
             li:first-child .nav-link {
-                margin-left: $nav-link-padding-x*4/3;
+                margin-left: math.div($nav-link-padding-x*4, 3);
             }
         }
         @include media-breakpoint-up(lg) {
@@ -236,12 +238,12 @@
         display: flex;
         flex-wrap: wrap;
         align-items: center;
-        margin-right: $navbar-padding-x/2;
+        margin-right: $navbar-padding-x*0.5;
         @include media-breakpoint-up(md) {
             flex-grow: 100;
             flex-basis: 0;
             .navbar-brand {
-                margin-right: $navbar-padding-x/2;
+                margin-right: $navbar-padding-x*0.5;
             }
         }
     }
@@ -341,8 +343,8 @@
 .nav-styling-underline {
     .nav-link:not(.has-styling) {
         &, .menu-item-text {
-            padding-top: $nav-link-padding-x*1/4;
-            padding-bottom: $nav-link-padding-x*1/4;
+            padding-top: $nav-link-padding-x*1*0.25;
+            padding-bottom: $nav-link-padding-x*1*0.25;
         }
     }
     .nav-link:not(.has-styling) .menu-item-text, .navbar-brand-text {
@@ -394,10 +396,10 @@
         white-space: normal;
         width: calc( var(--header-main-dropbox-max-width) * 3/4 );
         text-align: center;
-        padding: $spacer/3;
+        padding: math.div($spacer, 3);
         position: relative;
         transition: width 0.2s ease;
-        max-height: calc( 250px + #{$spacer/3*2} );
+        max-height: calc( 250px + #{math.div($spacer, 3)*2} );
         &, &:hover, .navbar-brand-text {
             color: var(--header-main-dropbox-logo-text-color);
         }
@@ -434,7 +436,7 @@
             width: var(--header-main-dropbox-max-width);
             position: absolute;
 
-            padding: $spacer/3;
+            padding: math.div($spacer, 3);
             top: 0px;
             &:not(.custom-bg-disabled) {
                 z-index: $zindex-sticky;
@@ -467,7 +469,7 @@
 
     @include media-breakpoint-up(md) {
         .navbar-brand-holder {
-            min-width: calc( #{$spacer/3*2} + var(--header-main-dropbox-max-width));
+            min-width: calc( #{math.div($spacer, 3)*2} + var(--header-main-dropbox-max-width));
         }
     }
 
@@ -479,7 +481,7 @@
             flex-wrap: wrap;
         }
         .navbar-brand-holder {
-            padding-top: $spacer/4;
+            padding-top: $spacer*0.25;
             flex-basis: 100%;
             text-align: center;
             margin-right: 0;
@@ -491,7 +493,7 @@
             margin-right: 0;
         }
         .navbar-brand-subtext {
-            margin-left: $navbar-padding-x/2;
+            margin-left: $navbar-padding-x*0.5;
         }
         .navbar-nav {
             justify-content: center;
@@ -636,7 +638,7 @@
     }
     .navbar-brand-subtext {
         line-height: 1.5em;
-        margin-right: $navbar-padding-x/2;
+        margin-right: $navbar-padding-x*0.5;
     }
 
     .navbar-sticks & {
@@ -681,22 +683,22 @@
     }
 
     .nav {
-        margin-top: $spacer/5;
-        margin-bottom: $spacer/5;
+        margin-top: $spacer*0.2;
+        margin-bottom: $spacer*0.2;
     }
     .nav-link {
         font-size: 0.85em;
-        margin-left: $nav-link-padding-x/2;
-        margin-right: $nav-link-padding-x/2;
+        margin-left: $nav-link-padding-x*0.5;
+        margin-right: $nav-link-padding-x*0.5;
     }
     .nav-link:not(.has-styling) .menu-item-text {
-        padding-top: $nav-link-padding-x*1/7;
-        padding-bottom: $nav-link-padding-x*1/7;
+        padding-top: math.div($nav-link-padding-x*1, 7);
+        padding-bottom: math.div($nav-link-padding-x*1, 7);
     }
 
     .navbar-brand-holder {
-        margin-top: $spacer/5;
-        margin-bottom: $spacer/5;
+        margin-top: $spacer*0.2;
+        margin-bottom: $spacer*0.2;
         img {
             width: calc( var(--header-secondary-logo-image-width) * 3/4 );
 
@@ -730,7 +732,7 @@
     }
 
     .nav-icon-has-bg {
-        padding: $nav-link-padding-x/6;
+        padding: math.div($nav-link-padding-x, 6);
     }
 
     .dropdown-menu {
@@ -739,7 +741,7 @@
     }
 
     .dropdown-megamenu-menu {
-        padding-top: $spacer/4;
+        padding-top: $spacer*0.25;
     }
 
     .navbar-main-sticky-top:not(.navbar-secondary-under-main) & {

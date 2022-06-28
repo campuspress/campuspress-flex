@@ -1,5 +1,7 @@
 // Modified bootstrap _buttons.sccs.
 
+@use "sass:math";
+
 %btn, 
 .btn {
     text-transform: uppercase;
@@ -34,10 +36,10 @@
     }
 
     p &:not(:first-child) {
-        margin-left: $spacer/6;
+        margin-left: math.div($spacer, 6);
     }
     p &:not(:last-child) {
-        margin-right: $spacer/6;
+        margin-right: math.div($spacer, 6);
     }
 
     /*

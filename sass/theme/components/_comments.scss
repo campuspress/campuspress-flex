@@ -8,8 +8,8 @@ ol.comment-list {
 .comment {
     background-color: var(--color-boxes);
     color: var(--color-boxes-contrast);
-	padding: $spacer / 2 $spacer / 2;
-	margin-bottom: $spacer / 2;
+	padding: $spacer * 0.5 $spacer * 0.5;
+	margin-bottom: $spacer * 0.5;
     a:not(.btn) {
         color: var(--color-boxes-accent);
     }
@@ -17,7 +17,7 @@ ol.comment-list {
         @extend %color-boxes-btn-secondary;
     }
     .comment {
-        margin-top: $spacer / 2;
+        margin-top: $spacer * 0.5;
         background-color: var(--color-bg);
         color: var(--color-bg-contrast);
         a:not(.btn) {
@@ -36,19 +36,19 @@ ol.comment-list {
     }
 }
 .comment-author img {
-	margin-right:$spacer / 5;
+	margin-right:$spacer * 0.2;
 }
 .comment-metadata {
 	font-size: 0.8em;
-	margin-top: $spacer / 2;
-	margin-bottom: $spacer / 2;
+	margin-top: $spacer * 0.5;
+	margin-bottom: $spacer * 0.5;
 	display: inline-block;
 }
 .comment-reply-title {
-    margin-top: $spacer / 2;
+    margin-top: $spacer * 0.5;
     small {
     	font-size: 0.5em;
-        margin-top: $spacer / 4;
+        margin-top: $spacer * 0.25;
         display: block;
     }
 }
