@@ -14,19 +14,23 @@ if ( ! empty( $atts['className'] ) ) {
 
 $dir_id = $data->get_directory_id();
 
-$entries = $data->get_entries();
+$entries       = $data->get_entries();
 $entries_count = count( $entries );
 
 $filters            = $data->get_filters();
 $taxonomies_filters = $data->get_taxonomy_filters();
-$posts_per_page     = $data->get_posts_per_page( $entries_count );
+
+$posts_per_page = $data->get_posts_per_page( $entries_count );
+$aria_label     = apply_filters( 'cp_dir_directory_label', $label, $data );
+$filters_logic  = apply_filters( 'cp_dir_filters_logic', ( isset( $atts['filters_logic'] ) && $atts['filters_logic'] ) ? $atts['filters_logic'] : '' );
+$pagination     = apply_filters( 'cp_dir_pagination', ( isset( $atts['pagination'] ) && $atts['pagination'] ) ? true : false, $data );
 
 $content_class = 'cp-dir-content';
 if ( !$entries_count ) {
 	$content_class .= ' cp-dir-content--no-results';
 }
 ?>
-<div class="<?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $dir_id ); ?>" aria-label="<?php echo esc_attr( apply_filters( 'cp_dir_directory_label', $label, $data ) ); ?>" data-source="<?php echo esc_attr($data->post_type_object->name); ?>"<?php if( isset( $atts['filters_logic'] ) && $atts['filters_logic'] ) { echo 'data-filters-logic="' . esc_attr( $atts['filters_logic'] ) . '"'; } ?>>
+<div class="<?php echo esc_attr( $class_name ); ?>" id="<?php echo esc_attr( $dir_id ); ?>" aria-label="<?php echo esc_attr( $aria_label ); ?>" data-source="<?php echo esc_attr( $data->post_type_object->name ); ?>" data-filters-logic="<?php echo esc_attr( $filters_logic ); ?>">
 	<?php
 	if ( $filters || $taxonomies_filters ) {
 		?>
@@ -57,33 +61,48 @@ if ( !$entries_count ) {
 
 			include( apply_filters( 'cp_dir_path_directory_content', $this->dir . '/cp-directory-files/blocks/cp-dir/template-parts/directory-content.php', $data ) );
 
-			include( apply_filters( 'cp_dir_path_directory_after', $this->dir . '/cp-directory-files/blocks/cp-dir/template-parts/directory-after.php', $data ) );			
-			
+			include( apply_filters( 'cp_dir_path_directory_after', $this->dir . '/cp-directory-files/blocks/cp-dir/template-parts/directory-after.php', $data ) );
+
 			if ( $filters || $taxonomies_filters ) {
 				$field_js = json_encode( $data->get_fields_js() );
+				$args     = array(
+					'valueNames'  => $data->get_fields_js(),
+					'listClass'   => 'cp-dir-content-list',
+					'searchClass' => 'cp-dir-field-search',
+					'searchDelay' => 250,
+					'page'        => 2,
+				);
+				if( $pagination ) {
+					$args['pagination'] = array(
+						'paginationClass' => 'cp-dir-pagination',
+						'item' => "<li><button class='page'></button></li>"
+					);
+				}
 				ob_start();
 				?>
 				<script>
-				cpDirectories['<?php echo esc_attr( $dir_id ); ?>'] = new List( '<?php echo esc_attr( $dir_id ); ?>', {
-					valueNames: <?php echo $field_js; ?>,
-					listClass: 'cp-dir-content-list',
-					searchClass: 'cp-dir-field-search',
-					searchDelay: 250,
-					page: <?php echo esc_js ( $posts_per_page ? $posts_per_page : $data->get_entries_limit() ); ?>,
-				} );
+				cpDirectories['<?php echo esc_attr( $dir_id ); ?>'] = new List( '<?php echo esc_attr( $dir_id ); ?>', <?php echo json_encode( $args ); ?> );
 				</script>
 				<?php
 				$inline_script = str_replace( array( '<script>', '</script>' ), '', ob_get_clean() );
 				wp_add_inline_script( 'cp-dir-block', $inline_script );
 
-				add_action('wp_footer', function() {
-					wp_enqueue_script( 'cp-dir-block' );
-				});
+				add_action(
+					'wp_footer',
+					function() {
+						wp_enqueue_script( 'cp-dir-block' );
+					}
+				);
 			}
 		}
 		?>
 		<div class="cp-dir-no-results-info" aria-hidden="true">
 			<?php echo apply_filters( 'cp_dir_directory_no-results_info', __( 'No results found.', 'cp-dir' ) ); ?>
 		</div>
+		<?php if( $pagination ) { ?>
+			<nav class="cp-dir-pagination-holder" aria-label="<?php echo esc_attr( sprintf( __('%s pagination'), $aria_label ) ); ?>">
+				<ul class="cp-dir-pagination"></ul>
+			</nav>
+		<?php } ?>
 	</div>
 </div>
