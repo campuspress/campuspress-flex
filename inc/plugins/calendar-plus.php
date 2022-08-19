@@ -78,7 +78,7 @@ if ( ! function_exists( 'cpschool_cplus_post_meta_list' ) ) {
 
 			// Event categories.
 			if ( in_array( 'event-categories', $post_meta, true ) ) {
-				$categories = get_the_term_list( get_the_ID(), 'calendar_event_category' );
+				$categories = get_the_term_list( get_the_ID(), 'calendar_event_category', '', ' ' );
 				if ( $categories ) {
 					?>
 					<li class="event-categories list-inline-item">
