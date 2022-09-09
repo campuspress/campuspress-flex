@@ -200,7 +200,7 @@ if( ! class_exists('CPDirectory') ) :
          */
         public function single_content( $content ) {
             $sources = cp_dir_get_sources();
-            if( is_main_query() && is_single() && in_array( get_post_type(), $sources ) ) {
+            if( is_main_query() && in_the_loop() && is_single() && in_array( get_post_type(), $sources ) ) {
                 // Includes class used to prepare the data for directory.
                 require_once( $this->dir . '/cp-directory-files/class-directory-entry-data.php' );
 
