@@ -23,7 +23,7 @@ $taxonomies_filters = $data->get_taxonomy_filters();
 $posts_per_page = $data->get_posts_per_page( $entries_count );
 $aria_label     = apply_filters( 'cp_dir_directory_label', $label, $data );
 $filters_logic  = apply_filters( 'cp_dir_filters_logic', ( isset( $atts['filters_logic'] ) && $atts['filters_logic'] ) ? $atts['filters_logic'] : '' );
-$pagination     = apply_filters( 'cp_dir_pagination', ( isset( $atts['pagination'] ) && $atts['pagination'] ) ? true : false, $data );
+$pagination     = apply_filters( 'cp_dir_pagination', ( $posts_per_page && isset( $atts['pagination'] ) && $atts['pagination'] ) ? true : false, $data );
 
 $content_class = 'cp-dir-content';
 if ( !$entries_count ) {
@@ -70,7 +70,7 @@ if ( !$entries_count ) {
 					'listClass'   => 'cp-dir-content-list',
 					'searchClass' => 'cp-dir-field-search',
 					'searchDelay' => 250,
-					'page'        => 2,
+					'page'        => esc_js( $posts_per_page ? $posts_per_page : $data->get_entries_limit() ),
 				);
 				if( $pagination ) {
 					$args['pagination'] = array(
