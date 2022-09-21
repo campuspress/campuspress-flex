@@ -26,5 +26,5 @@ if ( $fields ) {
 echo $content;
 
 if ( $dir_link ) {
-	echo '<p class="cp-dir-item-dir-link-holder"><a class="' . esc_attr( $dir_link_class ) . '" href="' . esc_url( $dir_link_text ) . '">' . $link_text . '</a></p>';
+	echo '<p class="cp-dir-item-dir-link-holder"><a class="' . esc_attr( $dir_link_class ) . '" href="' . esc_url( $dir_link ) . '">' . $dir_link_text . '</a></p>';
 }
