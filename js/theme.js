@@ -7470,7 +7470,7 @@ var cpSchoolThemeHelpers = function ($) {
     });
   }
 
-  $('a.collapse-toggle').on('touchend', function (e) {
+  $('nav.menu-mobile a.collapse-toggle').on('touchend', function (e) {
     var isExpanded = $(this).attr('aria-expanded');
 
     if (isExpanded === 'true') {

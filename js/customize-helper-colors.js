@@ -1,5 +1,5 @@
 /**
- * Helper needed to calculate accessible colors. 
+ * Helper needed to calculate accessible colors.
  * Heavily based on Twenty Twenty theme.
  */
 
@@ -14,10 +14,10 @@
 function _cpSchoolColor( backgroundColor, accentHue ) {
 	// Set the object properties.
 	this.backgroundColor = backgroundColor;
-	
+
 	this.accentColorObj = new Color( accentHue );
 	this.accentColorObjHSL = this.accentColorObj.toHsl();
-	
+
 	this.accentHue = this.accentColorObjHSL.h;
 	this.accentSat = this.accentColorObjHSL.s;
 	this.bgColorObj = new Color( backgroundColor );
@@ -31,9 +31,9 @@ function _cpSchoolColor( backgroundColor, accentHue ) {
 }
 
 /**
- * Used with strict mode only. 
+ * Used with strict mode only.
  * It forces hight contrast between accent and text.
- * 
+ *
  * Builds an array of Color objects based on the accent hue.
  * For improved performance we only build half the array
  * depending on dark/light background-color.
@@ -41,7 +41,7 @@ function _cpSchoolColor( backgroundColor, accentHue ) {
  * @return {Object} - this
  */
 _cpSchoolColor.prototype.setAccentColorsArray = function() {
-	
+
 	var self = this,
 		minSaturation = 10,
 		maxSaturation = self.accentSat,
@@ -135,7 +135,7 @@ _cpSchoolColor.prototype.getTextColor = function() {
  * @return {Color} - Returns a Color object.
  */
 _cpSchoolColor.prototype.getAccentColor = function() {
-	return this.accentColorObj.getReadableContrastingColor( this.bgColorObj, 6 );
+	return this.textColorObj;
 };
 
 /**
@@ -162,7 +162,7 @@ _cpSchoolColor.prototype.getAccentColorScrict = function() {
 	this.setAccentColorsArray();
 
     var fallback;
-    
+
     var array_index = 0;
 
 	// If we have colors returns the 1st one - it has the highest score.
