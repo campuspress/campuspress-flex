@@ -76,7 +76,7 @@
 			if(customAccent) {
 				colorAccent = customAccent.get();
 			}
-			
+
 
 			if(!colorAccent) {
 				var alt_accent_options = ['header_main_bg_color', 'hero_main_bg_color', 'footer_main_bg_color'];
@@ -99,14 +99,17 @@
 			var BGColorsHl = cpSchoolColor( BGColor, colorAccentHl );
 
 			contrast = BGColors.getTextColor();
+			if ( optionName === 'hero_main_bg_color' ) {
+				accent = accentA = accentContrast = accentHl = accentHlA = accentHlContrast = contrast;
+			} else {
+				accent = BGColors.getAccentColor().toCSS();
+				accentA = BGColors.getAccentColor().a(0.5).toCSS();
+				accentContrast = getContrastColor(accent).toCSS();
 
-			accent = BGColors.getAccentColor().toCSS();
-			accentA = BGColors.getAccentColor().a(0.5).toCSS();
-			accentContrast = getContrastColor(accent).toCSS();
-
-			accentHl = BGColorsHl.getAccentColor().toCSS();
-			accentHlA = BGColorsHl.getAccentColor().a(0.5).toCSS();
-			accentHlContrast = getContrastColor(accentHl).toCSS();
+				accentHl = BGColorsHl.getAccentColor().toCSS();
+				accentHlA = BGColorsHl.getAccentColor().a(0.5).toCSS();
+				accentHlContrast = getContrastColor(accentHl).toCSS();
+			}
 		}
 		else {
 			contrast = accent = accentA = accentContrast = accentHl = accentHlA = accentHlContrast = false;
