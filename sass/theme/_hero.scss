@@ -221,11 +221,11 @@ body.navbar-main-has-hero-transparency.has-hero-image {
     }
 }
 
-.hero.high-contrast .breadcrumb {
-    &, a {
+.hero.high-contrast {
+    .breadcrumb, a {
         color: var(--hero-main-bg-color-contrast);
-    }
-    :focus {
-        outline-color: var(--hero-main-bg-color-contrast);
+        :focus {
+            outline-color: var(--hero-main-bg-color-contrast);
+        }
     }
 }
