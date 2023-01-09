@@ -68,13 +68,18 @@ if ( $hero_style || ( is_customize_preview() && ( ! is_singular() || ! get_post_
 				</div>
 				<?php
 			} elseif ( $hero_default_images = get_theme_mod( 'hero_main_default_images' ) ) {
-				$thumbnail_id = $hero_default_images[ mt_rand( 0, count( $hero_default_images ) - 1 ) ]['id'];
-				?>
+				if( isset( $hero_default_images[ mt_rand( 0, count( $hero_default_images ) - 1 ) ]['id'] ) ) {
+					$thumbnail_id = $hero_default_images[ mt_rand( 0, count( $hero_default_images ) - 1 ) ]['id'];
+					if( is_numeric ( $thumbnail_id ) ) {
+						?>
 
-				<div <?php cpschool_class( 'hero-main-default-image-holder', 'hero-image-holder hero-default-image-holder' ); ?> data-aos="fade" data-aos-duration="1000">
-					<?php echo wp_get_attachment_image( $thumbnail_id, $thumbnail_size ); ?>
-				</div>
-				<?php
+						<div <?php cpschool_class( 'hero-main-default-image-holder', 'hero-image-holder hero-default-image-holder' ); ?> data-aos="fade" data-aos-duration="1000">
+							<?php echo wp_get_attachment_image( $thumbnail_id, $thumbnail_size ); ?>
+						</div>
+						
+						<?php
+					}
+				}
 			}
 		}
 		?>
