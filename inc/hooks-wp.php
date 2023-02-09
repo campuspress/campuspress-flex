@@ -279,3 +279,20 @@ if ( ! function_exists( 'cpschool_cancel_comment_reply_link' ) ) {
 		return $link;
 	}
 }
+
+if ( ! function_exists( 'cpschool_custom_logo_remove_link' ) ) {
+	add_filter( 'get_custom_logo', 'cpschool_custom_logo_remove_link', 10, 2 );
+
+	/**
+	 * Remove custom logo generated link
+	 *
+	 * @param string $html
+	 *
+	 * @param int $blog_id
+	 *
+	 * @return string
+	 */
+	function cpschool_custom_logo_remove_link( $html, $blog_id ) {
+		return strip_tags( $html, array( 'img' ) );
+	}
+}
