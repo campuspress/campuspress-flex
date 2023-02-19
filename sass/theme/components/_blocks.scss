@@ -2,7 +2,7 @@
 
 %block-spacing,
 #{$el-block-group},
-#{$el-block-button}, 
+#{$el-block-button},
 #{$el-block-archives},
 #{$el-block-categories},
 #{$el-block-code},
@@ -26,6 +26,11 @@
 	margin-top: $spacer;
 }
 
+.wp-block[data-align="left"] > *,
+.wp-block[data-align="right"] > * {
+	margin-top: 0;
+	margin-bottom: 0;
+}
 
 .wp-block-group {
 	&.has-background {
@@ -80,7 +85,7 @@
 			.aligncenter:first-child {
 				margin-top: math.div($spacer, 3);
 			}
-			.aligncenter:last-child {	
+			.aligncenter:last-child {
 				margin-bottom: math.div($spacer, 3);
 			}
 		}
@@ -433,7 +438,7 @@
 	margin-top: 0.15em;
 }
 
-.wp-block-button .wp-block-button__link, 
+.wp-block-button .wp-block-button__link,
 .wp-block-file a.wp-block-file__button,
 .wp-block-search__button {
 	@extend %btn;
