@@ -39,7 +39,7 @@ if ( ! function_exists( 'cpschool_get_customizer_fonts_options' ) ) {
 				'gelasio' => 'Gelasio',
 				'hepta_slab' => 'Hepta Slab',
 				'inter' => 'Inter',
-				//'lexend' => 'Lexend',
+				'lexend' => 'Lexend',
 				'manrope' => 'Manrope',
 				'merriweather' => 'Merriweather',
 				//'mohave' => 'Mohave',
