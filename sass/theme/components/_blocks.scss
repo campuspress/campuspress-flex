@@ -193,7 +193,7 @@
 	> li > a:first-of-type {
 		@extend .h3;
 		@extend .h;
-		@extend %entry-title-a;
+		@extend .h-style-disable;
 		margin-bottom: $spacer*0.5;
 		display: block;
 	}
@@ -220,7 +220,8 @@
 			margin-bottom: 3rem;
 		}
 	}
-	&.has-dates {
+	&.has-dates,
+	&.has-author {
 		margin-left: 0;
 		list-style: none;
 		li {
@@ -233,7 +234,8 @@
 			}
 		}
 	}
-	.wp-block-latest-posts__post-date {
+	.wp-block-latest-posts__post-author,
+	.wp-block-latest-posts__post-date  {
 		color: inherit;
 		font-size: 1em;
 		font-weight: normal;
@@ -241,8 +243,17 @@
 		&::before {
 			@extend .cps-icon;
 			@extend .cps-icon-calendar;
-			content: $cps-icon-calendar;
 			margin-right: 4px;
+		}
+	}
+	.wp-block-latest-posts__post-author {
+		&::before {
+			content: $cps-icon-user;
+		}
+	}
+	.wp-block-latest-posts__post-date {
+		&::before {
+			content: $cps-icon-calendar;
 		}
 	}
 	.wp-block-latest-posts__featured-image {
@@ -425,7 +436,8 @@
 		margin-top: 0.4em;
 	}
 }
-.wp-block-latest-posts__post-date {
+.wp-block-latest-posts__post-author,
+.wp-block-latest-posts__post-date  {
 	opacity: 0.8;
 	font-size: 0.7em;
 	font-weight: 600;
