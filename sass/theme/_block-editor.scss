@@ -72,10 +72,15 @@ div.editor-styles-wrapper {
 	@extend .list-inline;
 }
 
-.editor-styles-wrapper { 
+.editor-styles-wrapper {
     *,
     *::before,
     *::after {
       box-sizing: border-box;
-    } 
+    }
+}
+
+%btn,
+.btn {
+	user-select: text;
 }

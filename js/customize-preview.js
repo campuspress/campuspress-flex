@@ -44,6 +44,17 @@
 			cpSchoolThemeHelpers.setSidebarStickness();
 		} );
 	} );
+
+	wp.customize( 'hero_main_img_opacity', function( value ) {
+		value.bind( function( to ) {
+			if ( to > 10 ) {
+				$('#hero-main').addClass( 'high-contrast' );
+			} else {
+				$('#hero-main').removeClass( 'high-contrast' );
+			}
+		} );
+	} );
+
 	$(document).ready(function() {
 		if ( 'undefined' !== typeof wp && wp.customize && wp.customize.selectiveRefresh ) {
 			wp.customize.selectiveRefresh.bind( 'sidebar-updated', function( sidebarPartial ) {
@@ -51,6 +62,6 @@
 			} );
 		}
 	});
-	
-	
+
+
 }( jQuery, wp.customize, _ ) );

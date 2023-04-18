@@ -3,8 +3,15 @@ $hero_style = cpschool_get_hero_style();
 
 if ( $hero_style || ( is_customize_preview() && ( ! is_singular() || ! get_post_meta( get_the_ID(), 'cps_hero_title_disable', true ) ) ) ) {
 	$title = cpschool_get_page_title();
+	$hero_classes = 'hero jumbotron jumbotron-fluid has-background has-hero-main-bg-color-background-color';
+
+	$featured_image_opacity = get_theme_mod( 'hero_main_img_opacity' );
+	$featured_image_opacity = absint( $featured_image_opacity );
+	if ( $featured_image_opacity > 10 ) {
+		$hero_classes .= ' high-contrast';
+	}
 	?>
-	<header id="hero-main" <?php cpschool_class( 'hero-main', 'hero jumbotron jumbotron-fluid has-background has-hero-main-bg-color-background-color' ); ?> aria-label="<?php esc_html_e( 'page title and basic information', 'cpschool' ); ?>">
+	<header id="hero-main" <?php cpschool_class( 'hero-main', $hero_classes ); ?> aria-label="<?php esc_html_e( 'page title and basic information', 'cpschool' ); ?>">
 		<div class="hero-content container" data-aos="fade" data-aos-delay="500" data-aos-duration="1000">
 			<?php
 			if ( cpschool_is_breadcrumb_enabled( 'hero' ) || is_customize_preview() ) {
@@ -68,13 +75,18 @@ if ( $hero_style || ( is_customize_preview() && ( ! is_singular() || ! get_post_
 				</div>
 				<?php
 			} elseif ( $hero_default_images = get_theme_mod( 'hero_main_default_images' ) ) {
-				$thumbnail_id = $hero_default_images[ mt_rand( 0, count( $hero_default_images ) - 1 ) ]['id'];
-				?>
+				if( isset( $hero_default_images[ mt_rand( 0, count( $hero_default_images ) - 1 ) ]['id'] ) ) {
+					$thumbnail_id = $hero_default_images[ mt_rand( 0, count( $hero_default_images ) - 1 ) ]['id'];
+					if( is_numeric ( $thumbnail_id ) ) {
+						?>
 
-				<div <?php cpschool_class( 'hero-main-default-image-holder', 'hero-image-holder hero-default-image-holder' ); ?> data-aos="fade" data-aos-duration="1000">
-					<?php echo wp_get_attachment_image( $thumbnail_id, $thumbnail_size ); ?>
-				</div>
-				<?php
+						<div <?php cpschool_class( 'hero-main-default-image-holder', 'hero-image-holder hero-default-image-holder' ); ?> data-aos="fade" data-aos-duration="1000">
+							<?php echo wp_get_attachment_image( $thumbnail_id, $thumbnail_size ); ?>
+						</div>
+						
+						<?php
+					}
+				}
 			}
 		}
 		?>

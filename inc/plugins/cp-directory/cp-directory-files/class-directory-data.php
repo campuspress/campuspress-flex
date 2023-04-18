@@ -194,30 +194,30 @@ class CPDirectoryData {
 		$fields_js = array( array( 'data' => array( 'entry-id', 'entry-parent-ids' ) ) );
 		$fields    = $this->get_fields();
 		foreach ( $fields as $field ) {
-			if ( $field['type'] == 'taxonomy' ) {
+			if ( isset( $field['type'] ) && $field['type'] == 'taxonomy' ) {
 				$fields_js[] = array(
 					'name' => $field['field_name'],
 					'attr' => 'data-value',
 				);
-			} elseif ( $field['name'] == 'post_title' ) {
+			} elseif ( isset( $field['name'] ) && $field['name'] == 'post_title' ) {
 				$fields_js[] = array(
 					'name' => $field['field_name'],
 					'attr' => 'data-value',
 				);
-			} elseif ( $field['value_type'] == 'email' ) {
+			} elseif ( isset( $field['value_type'] ) && $field['value_type'] == 'email' ) {
 				$fields_js[] = array(
 					'name' => $field['field_name'],
 					'attr' => 'data-value',
 				);
 			} else {
-				if( !$field['hidden'] ) {
-					$fields_js[] = $field['field_name'];
-				}
-				else {
+				if( isset( $field['hidden'] ) && $field['hidden'] ) {
 					$fields_js[] = array(
 						'name' => $field['field_name'],
 						'attr' => 'data-value',
 					);
+				}
+				else {
+					$fields_js[] = $field['field_name'];
 				}
 			}
 		}

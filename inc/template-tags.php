@@ -452,7 +452,7 @@ if ( ! function_exists( 'cpschool_get_page_title' ) ) {
 			$title = __( 'Oops! That page can&rsquo;t be found.', 'cpschool' );
 		} elseif ( is_archive() ) {
 			$title = get_the_archive_title();
-			if ( ! $subtitle ) {
+			if ( $title ) {
 				$archive_title_parts = explode( '<span>', $title );
 				if ( isset( $archive_title_parts[1] ) && $archive_title_parts[1] ) {
 					$title_main     = $archive_title_parts[0];
