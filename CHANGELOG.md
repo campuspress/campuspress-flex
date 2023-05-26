@@ -1,3 +1,17 @@
+= 0.9.7 =
+* Added high contrast mode to Hero component
+* Added Vimeo icon
+* Fixed categories not separated in the event categories list
+* Fixed some directory bugs
+
+= 0.9.5 =
+* Added new filters
+* Improved Accessibility
+* Improved Directory
+* Improved compatibility with WP 6.0
+* Upgraded ACF to 5.11.4
+* Updated Bootstrap
+
 = 0.9.1 =
 * Added new menu icons
 * Added new styling for search results
