@@ -1,3 +1,7 @@
+= 0.9.8 =
+* Updated font files
+* Added filter `cpschool_get_customizer_fonts_options`
+
 = 0.9.7 =
 * Added high contrast mode to Hero component
 * Added Vimeo icon

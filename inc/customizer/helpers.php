@@ -4,51 +4,65 @@ defined( 'ABSPATH' ) || exit;
 
 if ( ! function_exists( 'cpschool_get_customizer_fonts_options' ) ) {
 	// Generates array with options used with typography control so all font lists have the same choises.
-	function cpschool_get_customizer_fonts_options($context = false, $default = false) {
-		if($default) {
-			$default = array('inherit' => esc_html__( 'Default font', 'cpschool' ));
-		}
-		else {
+	function cpschool_get_customizer_fonts_options( $context = false, $default = false ) {
+		if ( $default ) {
+			$default = array( 'inherit' => esc_html__( 'Default font', 'cpschool' ) );
+		} else {
 			$default = array();
 		}
-		if($context == 'header') {
-			return $default + array( 
-				'public_sans' => 'Public Sans',
-				'amstelvar' => 'Amstelvar',
-				'commissioner' => 'Commissioner',
-				'epilogue' => 'Epilogue',
-				'gelasio' => 'Gelasio',
-				'hepta_slab' => 'Hepta Slab',
-				'inter' => 'Inter',
-				'lexend' => 'Lexend',
-				'manrope' => 'Manrope',
-				'merriweather' => 'Merriweather',
-				'mohave' => 'Mohave',
-				'petrona' => 'Petrona',
-				'russolo' => 'Russolo',
-				'space_grotesk' => 'Space Grotesk',
-				//'urbanist' => 'Urbanist',
-			);
+		if ( $context == 'header' ) {
+			$fonts =  $default + array(
+					'public_sans'   => 'Public Sans',
+					'amstelvar'     => 'Amstelvar',
+					'commissioner'  => 'Commissioner',
+					'epilogue'      => 'Epilogue',
+					'gelasio'       => 'Gelasio',
+					'hepta_slab'    => 'Hepta Slab',
+					'inter'         => 'Inter',
+					'lexend'        => 'Lexend',
+					'manrope'       => 'Manrope',
+					'merriweather'  => 'Merriweather',
+					'mohave'        => 'Mohave',
+					'petrona'       => 'Petrona',
+					'playfair'      => 'Playfair Display',
+					'quicksand'     => 'Quicksand',
+					'raleway'       => 'Raleway',
+					'russolo'       => 'Russolo',
+					'space_grotesk' => 'Space Grotesk',
+					//'urbanist' => 'Urbanist',
+				);
+		} else {
+			$fonts = $default + array(
+					'public_sans'  => 'Public Sans',
+					'amstelvar'    => 'Amstelvar',
+					'commissioner' => 'Commissioner',
+					//'epilogue' => 'Epilogue',
+					'gelasio'      => 'Gelasio',
+					'hepta_slab'   => 'Hepta Slab',
+					'inter'        => 'Inter',
+					//'lexend' => 'Lexend',
+					'manrope'      => 'Manrope',
+					'merriweather' => 'Merriweather',
+					//'mohave' => 'Mohave',
+					'petrona'      => 'Petrona',
+					'playfair'     => 'Playfair Display',
+					'quicksand'    => 'Quicksand',
+					'raleway'      => 'Raleway',
+					//'russolo' => 'Russolo',
+					//'space_grotesk' => 'Space Grotesk',
+					//'urbanist' => 'Urbanist',
+				);
 		}
-		else {
-			return $default + array( 
-				'public_sans' => 'Public Sans',
-				'amstelvar' => 'Amstelvar',
-				'commissioner' => 'Commissioner',
-				//'epilogue' => 'Epilogue',
-				'gelasio' => 'Gelasio',
-				'hepta_slab' => 'Hepta Slab',
-				'inter' => 'Inter',
-				//'lexend' => 'Lexend',
-				'manrope' => 'Manrope',
-				'merriweather' => 'Merriweather',
-				//'mohave' => 'Mohave',
-				'petrona' => 'Petrona',
-				//'russolo' => 'Russolo',
-				//'space_grotesk' => 'Space Grotesk',
-				//'urbanist' => 'Urbanist',
-			);
-		}
+
+		/**
+		 * Filters the available font options in customizer.
+		 *
+		 * @since 0.9.8
+		 *
+		 * @param array   $fonts An array of available fonts.
+		 * @param string $context Choices 'header', 'text'
+		 */
+		return apply_filters('cpschool_get_customizer_fonts_options', $fonts, $context );
 	}
 }
 
@@ -56,12 +70,12 @@ if ( ! function_exists( 'cpschool_generate_customizer_color_settings' ) ) {
 	// Generates customizer options used to generate additional colors from source colors.
 	function cpschool_generate_customizer_color_settings($prefix) {
 		$settings_to_generate = array(
-			'contrast', 
-			'accent', 
-			'accent-a', 
-			'accent-contrast', 
-			'accent-hl', 
-			'accent-hl-a', 
+			'contrast',
+			'accent',
+			'accent-a',
+			'accent-contrast',
+			'accent-hl',
+			'accent-hl-a',
 			'accent-hl-contrast'
 		);
 
@@ -75,7 +89,7 @@ if ( ! function_exists( 'cpschool_generate_customizer_color_settings' ) ) {
 				'settings'    => $setting_name,
 				'section'     => 'colors',
 				'transport'   => 'auto',
-				'output' => array( 
+				'output' => array(
 					array(
 						'element'  => ':root',
 						'property' => $css_name,
@@ -130,8 +144,8 @@ if ( ! function_exists( 'cpschool_generate_content_common_settings' ) ) {
 
 			if( $post_type == 'post' ) {
 				$choices['sticky'] = esc_html__( 'Sticky', 'cpschool' );
-			} 
-	
+			}
+
 			Kirki::add_field( 'cpschool', [
 				'type'        => 'multicheck',
 				'settings'    => $section.'_meta',

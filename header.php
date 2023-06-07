@@ -27,7 +27,7 @@ defined( 'ABSPATH' ) || exit;
 
 	<?php get_template_part( 'template-parts/global-templates/bar', 'alert' ); ?>
 
-	<?php 
+	<?php
 	if( get_theme_mod( 'header_secondary_under_primary' ) == false ) {
 		get_template_part( 'template-parts/global-templates/navbar', 'secondary' );
 	}
@@ -96,7 +96,7 @@ defined( 'ABSPATH' ) || exit;
 						)
 					);
 					?>
-					
+
 					<div id="navbar-main-nav-buttons">
 						<ul class="nav navbar-nav navbar-button-nav-right">
 							<?php if ( get_theme_mod( 'header_main_enable_search' ) || is_customize_preview() ) { ?>
@@ -134,7 +134,7 @@ defined( 'ABSPATH' ) || exit;
 		</nav>
 	</div><!-- #wrapper-navbar end -->
 
-	<?php 
+	<?php
 	if( get_theme_mod( 'header_secondary_under_primary' ) == true ) {
 		get_template_part( 'template-parts/global-templates/navbar', 'secondary' );
 	}
