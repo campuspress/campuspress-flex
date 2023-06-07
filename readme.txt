@@ -34,7 +34,7 @@ GNU General Public License for more details.
 
 CampusPress Flex uses the following third-party resources:
 
--Underscores: http://underscores.me/ | GNU GPL 
+-Underscores: http://underscores.me/ | GNU GPL
 -UnderStrap: http://understrap.com | GNU GPL
 -WP Bootstrap Navwalker by Edward McIntyre: https://github.com/twittem/wp-bootstrap-navwalker | GNU GPL
 -TwentyTwenty: https://github.com/WordPress/twentytwenty | GNU GPL
@@ -53,9 +53,9 @@ CampusPress Flex uses the following third-party resources:
 -Material Icons: https://material.io/resources/icons/?style=baseline | APACHE LICENSE, VERSION 2.0
 -Font Awesome: https://github.com/FortAwesome/Font-Awesome | https://github.com/FortAwesome/Font-Awesome#license SIL OLF
 
--Amstelvar Font: https://github.com/TypeNetwork/Amstelvar | 
--Commissioner Font: https://github.com/kosbarts/Commissioner | 
--Epilogue Font: https://fontesk.com/epilogue-typeface/ | 
+-Amstelvar Font: https://github.com/TypeNetwork/Amstelvar |
+-Commissioner Font: https://github.com/kosbarts/Commissioner |
+-Epilogue Font: https://fontesk.com/epilogue-typeface/ |
 -Gelasio Font: https://github.com/SorkinType/Gelasio | SIL OLF
 -Hepta Slab: https://github.com/mjlagattuta/Hepta-Slab | SIL OLF
 -Inter Font:  https://rsms.me/inter/ | SIL OLF
@@ -64,7 +64,10 @@ CampusPress Flex uses the following third-party resources:
 -Merriweather: https://github.com/EbenSorkin/Merriweather | SIL OLF
 -Mohave: https://github.com/tokotype/Mohave-Typefaces | SIL OLF
 -Petrona Font: https://github.com/RingoSeeber/Petrona | SIL OLF
+-Playfair Display: https://github.com/clauseggers/Playfair | SIL OFL
 -Public Sans: https://github.com/uswds/public-sans | SIL OLF
+-Quicksand: https://github.com/andrew-paglinawan/QuicksandFamily | SIL OFL
+-Raleway: https://github.com/impallari/Raleway/ | SIL OFL
 -Russolo: https://github.com/laerm0/Russolo | SIL OLF
 -Space Grotesk: https://github.com/floriankarsten/space-grotesk | SIL OLF
 -Urbanist: https://github.com/coreywho/Urbanist | SIL OLF
