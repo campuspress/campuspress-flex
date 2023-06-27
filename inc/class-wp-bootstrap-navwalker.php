@@ -255,7 +255,6 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 					$atts['class'][]     = 'dropdown-toggle';
 					if ( ! $this->hover ) {
 						$atts['data-toggle'] = 'dropdown';
-						$atts['href']        = '#';
 					}
 				} else {
 					$collpse_as_button = apply_filters( 'cpschool_nav_collapse_as_button', false, $item, $args, $depth );
@@ -264,7 +263,7 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 						if ( ! $collpse_as_button ) {
 							$atts['class'][] = 'collapse-toggle';
 							$atts['data-toggle'] = 'collapse';
-							$atts['href']        = '#' . $data_target;
+							$atts['data-target'] = '#' . $data_target;
 						}
 					} else {
 						if ( ! $collpse_as_button ) {

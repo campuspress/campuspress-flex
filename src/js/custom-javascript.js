@@ -95,6 +95,17 @@
 		});
 	}
 
+	$('nav.menu-mobile a.collapse-toggle').on('touchend', function(e) {
+		var isExpanded = $(this).attr('aria-expanded');
+		if(isExpanded === 'true') {
+			e.preventDefault();
+			var link = $(this).attr('href');
+			if (!link.startsWith('#')) {
+				window.location = link;
+			}
+		}
+	})
+
 	// This will make vars in css work in IE11.
 	if (typeof cssVars === "function") {
 		cssVars({
