@@ -87,8 +87,8 @@ if ( ! function_exists( 'cpschool_body_classes' ) ) {
 }
 
 // Filter custom logo with correct classes.
-if ( ! function_exists( 'cpschool_change_logo_class' ) ) {
-	add_filter( 'get_custom_logo', 'cpschool_change_logo_class' );
+if ( ! function_exists( 'cpschool_change_logo_link_class' ) ) {
+	add_filter( 'get_custom_logo', 'cpschool_change_logo_link_class' );
 
 	/**
 	 * Replaces logo CSS class.
@@ -97,12 +97,8 @@ if ( ! function_exists( 'cpschool_change_logo_class' ) ) {
 	 *
 	 * @return mixed
 	 */
-	function cpschool_change_logo_class( $html ) {
-		$html = str_replace( 'class="custom-logo"', 'class="img-fluid"', $html );
-		$html = str_replace( 'class="custom-logo-link"', 'class="' . implode( ' ', cpschool_class( 'navbar-brand', 'navbar-brand custom-logo-link', true ) ) . '"', $html );
-		$html = str_replace( 'alt=""', 'title="Home" alt="logo"', $html );
-
-		return $html;
+	function cpschool_change_logo_link_class( $html ) {
+		return str_replace( 'class="custom-logo-link"', 'class="' . implode( ' ', cpschool_class( 'navbar-brand', 'navbar-brand custom-logo-link', true ) ) . '"', $html );
 	}
 }
 
@@ -294,5 +290,33 @@ if ( ! function_exists( 'cpschool_custom_logo_remove_link' ) ) {
 	 */
 	function cpschool_custom_logo_remove_link( $html, $blog_id ) {
 		return strip_tags( $html, array( 'img' ) );
+	}
+}
+
+if ( ! function_exists( 'cpschool_custom_logo_alt_attr' ) ) {
+	add_filter( 'get_custom_logo_image_attributes', 'cpschool_custom_logo_image_attrs', 15, 3 );
+
+	/**
+	 * @param array $custom_logo_attr Custom logo image attributes.
+	 * @param int   $custom_logo_id   Custom logo attachment ID.
+	 * @param int   $blog_id          ID of the blog to get the custom logo for.
+	 *
+	 * @return array
+	 */
+	function cpschool_custom_logo_image_attrs( $custom_logo_attr, $custom_logo_id, $blog_id ) {
+
+		if ( ! $custom_logo_attr['alt'] && is_front_page() ) {
+			$custom_logo_attr['alt'] = get_post_meta( $custom_logo_id, '_wp_attachment_image_alt', true );
+
+			if ( $custom_logo_attr['alt'] ) {
+				$custom_logo_attr['title'] = get_the_title( $custom_logo_id );
+			}
+		} else {
+			$custom_logo_attr['alt']   = '';
+			$custom_logo_attr['title'] = 'Home';
+		}
+		$custom_logo_attr['class'] = 'img-fluid';
+
+		return $custom_logo_attr;
 	}
 }
