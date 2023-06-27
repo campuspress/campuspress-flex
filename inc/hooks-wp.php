@@ -86,22 +86,6 @@ if ( ! function_exists( 'cpschool_body_classes' ) ) {
 	}
 }
 
-// Filter custom logo with correct classes.
-if ( ! function_exists( 'cpschool_change_logo_link_class' ) ) {
-	add_filter( 'get_custom_logo', 'cpschool_change_logo_link_class' );
-
-	/**
-	 * Replaces logo CSS class.
-	 *
-	 * @param string $html Markup.
-	 *
-	 * @return mixed
-	 */
-	function cpschool_change_logo_link_class( $html ) {
-		return str_replace( 'class="custom-logo-link"', 'class="' . implode( ' ', cpschool_class( 'navbar-brand', 'navbar-brand custom-logo-link', true ) ) . '"', $html );
-	}
-}
-
 if ( ! function_exists( 'cpschool_pingback' ) ) {
 	add_action( 'wp_head', 'cpschool_pingback' );
 
