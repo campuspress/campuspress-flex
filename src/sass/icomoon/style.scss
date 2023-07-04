@@ -3,9 +3,9 @@
 @font-face {
   font-family: '#{$icomoon-font-family}';
   src:
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?p3h968') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?p3h968') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?p3h968##{$icomoon-font-family}') format('svg');
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?u4n1wu') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?u4n1wu') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?u4n1wu##{$icomoon-font-family}') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -26,6 +26,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.cps-icon-facebook-circle {
+  &:before {
+    content: $cps-icon-facebook-circle; 
+  }
+}
 .cps-icon-user-graduate-solid {
   &:before {
     content: $cps-icon-user-graduate-solid; 
@@ -209,6 +214,11 @@
 .cps-icon-linkedin-square {
   &:before {
     content: $cps-icon-linkedin-square; 
+  }
+}
+.cps-icon-sign-in {
+  &:before {
+    content: $cps-icon-sign-in; 
   }
 }
 .cps-icon-facebook {

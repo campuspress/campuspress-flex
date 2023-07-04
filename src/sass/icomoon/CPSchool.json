@@ -2,9 +2,54 @@
   "metadata": {
     "name": "CPSchool",
     "lastOpened": 0,
-    "created": 1637034358362
+    "created": 1688466693385
   },
   "iconSets": [
+    {
+      "selection": [
+        {
+          "order": 1,
+          "id": 0,
+          "prevSize": 32,
+          "code": 59708,
+          "name": "facebook-circle",
+          "tempChar": ""
+        }
+      ],
+      "id": 6,
+      "metadata": {
+        "name": "Brands (subset)",
+        "importSize": {
+          "width": 32,
+          "height": 32
+        },
+        "url": "https://simpleicons.org",
+        "designer": "N/A",
+        "license": "CC0 1.0 Universal",
+        "licenseURL": "https://github.com/simple-icons/simple-icons/blob/develop/LICENSE.md",
+        "iconsHash": 1591697341
+      },
+      "height": 1024,
+      "prevSize": 32,
+      "icons": [
+        {
+          "id": 0,
+          "paths": [
+            "M1023.919 511.962c0-282.748-229.21-511.962-511.957-511.962s-511.962 229.214-511.962 511.962c0 255.535 187.217 467.332 431.966 505.741v-357.751h-129.988v-147.989h129.988v-112.794c0-128.311 76.433-199.185 193.374-199.185 56.013 0 114.603 10.001 114.603 10.001v125.99h-64.555c-63.599 0-83.435 39.462-83.435 79.949v96.038h141.99l-22.699 147.989h-119.292v357.751c244.753-38.409 431.966-250.206 431.966-505.741z"
+          ],
+          "attrs": [],
+          "isMulticolor": false,
+          "isMulticolor2": false,
+          "tags": [
+            "facebook"
+          ],
+          "grid": 32,
+          "colorPermutations": {}
+        }
+      ],
+      "invisible": false,
+      "colorThemes": []
+    },
     {
       "selection": [
         {
@@ -13,7 +58,7 @@
           "name": "user-graduate-solid",
           "prevSize": 28,
           "code": 59666,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 127,
@@ -21,7 +66,7 @@
           "name": "theater-masks-solid",
           "prevSize": 28,
           "code": 59689,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 126,
@@ -29,7 +74,7 @@
           "name": "shapes-solid",
           "prevSize": 28,
           "code": 59690,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 125,
@@ -37,7 +82,7 @@
           "name": "book-open-solid",
           "prevSize": 28,
           "code": 59691,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 124,
@@ -45,7 +90,7 @@
           "name": "book-reader-solid",
           "prevSize": 28,
           "code": 59692,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 123,
@@ -53,7 +98,7 @@
           "name": "laptop-code-solid",
           "prevSize": 28,
           "code": 59693,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 122,
@@ -61,7 +106,7 @@
           "name": "graduation-cap-solid",
           "prevSize": 28,
           "code": 59694,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 121,
@@ -69,7 +114,7 @@
           "name": "chalkboard-teacher-solid",
           "prevSize": 28,
           "code": 59695,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 120,
@@ -77,7 +122,7 @@
           "name": "chalkboard-solid",
           "prevSize": 28,
           "code": 59696,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 119,
@@ -85,7 +130,7 @@
           "name": "school-solid",
           "prevSize": 28,
           "code": 59697,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 118,
@@ -93,7 +138,7 @@
           "name": "clock-regular",
           "prevSize": 28,
           "code": 59698,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 117,
@@ -101,7 +146,7 @@
           "name": "rocket-solid",
           "prevSize": 28,
           "code": 59699,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 116,
@@ -109,7 +154,7 @@
           "name": "user-nurse-solid",
           "prevSize": 28,
           "code": 59700,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "asterisk",
@@ -117,7 +162,7 @@
           "order": 129,
           "prevSize": 28,
           "code": 61545,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "plus",
@@ -125,7 +170,7 @@
           "order": 130,
           "prevSize": 28,
           "code": 61543,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "question",
@@ -133,7 +178,7 @@
           "order": 131,
           "prevSize": 28,
           "code": 61736,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "minus",
@@ -141,7 +186,7 @@
           "order": 132,
           "prevSize": 28,
           "code": 61544,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "glass",
@@ -154,7 +199,7 @@
           "order": 91,
           "prevSize": 28,
           "code": 61441,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "search",
@@ -167,7 +212,7 @@
           "order": 143,
           "prevSize": 28,
           "code": 61443,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "heart",
@@ -183,7 +228,7 @@
           "order": 69,
           "prevSize": 28,
           "code": 61445,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "star-o",
@@ -199,7 +244,7 @@
           "order": 67,
           "prevSize": 28,
           "code": 61447,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "film",
@@ -280,7 +325,7 @@
           "order": 141,
           "prevSize": 28,
           "code": 61463,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "road",
@@ -288,7 +333,7 @@
           "order": 135,
           "prevSize": 28,
           "code": 61464,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "download",
@@ -311,7 +356,7 @@
           "order": 134,
           "prevSize": 28,
           "code": 61468,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "play-circle-o",
@@ -339,7 +384,7 @@
           "order": 112,
           "prevSize": 28,
           "code": 61475,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "flag",
@@ -352,7 +397,7 @@
           "order": 133,
           "prevSize": 28,
           "code": 61477,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "volume-off",
@@ -405,7 +450,7 @@
           "order": 113,
           "prevSize": 28,
           "code": 61487,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "camera1",
@@ -413,7 +458,7 @@
           "order": 136,
           "prevSize": 28,
           "code": 61488,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "font",
@@ -481,7 +526,7 @@
           "order": 137,
           "prevSize": 28,
           "code": 61501,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "image, photo, picture-o",
@@ -684,7 +729,7 @@
           "order": 90,
           "prevSize": 28,
           "code": 61547,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "leaf",
@@ -717,7 +762,7 @@
           "order": 138,
           "prevSize": 28,
           "code": 61554,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "calendar1",
@@ -725,7 +770,7 @@
           "order": 71,
           "prevSize": 28,
           "code": 61555,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "random",
@@ -738,7 +783,7 @@
           "order": 139,
           "prevSize": 28,
           "code": 61557,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "magnet",
@@ -796,7 +841,7 @@
           "order": 232,
           "prevSize": 28,
           "code": 61569,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "facebook-square",
@@ -804,7 +849,7 @@
           "order": 239,
           "prevSize": 28,
           "code": 61570,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "camera-retro",
@@ -817,7 +862,7 @@
           "order": 152,
           "prevSize": 28,
           "code": 61572,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "cogs, gears",
@@ -860,7 +905,7 @@
           "order": 240,
           "prevSize": 28,
           "code": 61580,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "thumb-tack",
@@ -875,7 +920,10 @@
         {
           "name": "sign-in",
           "id": 136,
-          "order": 0
+          "order": 261,
+          "prevSize": 28,
+          "code": 61584,
+          "tempChar": ""
         },
         {
           "name": "trophy",
@@ -928,7 +976,7 @@
           "order": 238,
           "prevSize": 28,
           "code": 61594,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "github",
@@ -966,7 +1014,7 @@
           "order": 107,
           "prevSize": 28,
           "code": 61602,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "certificate",
@@ -1054,7 +1102,7 @@
           "order": 151,
           "prevSize": 28,
           "code": 61633,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "cloud",
@@ -1160,7 +1208,7 @@
           "order": 150,
           "prevSize": 28,
           "code": 61654,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "caret-down",
@@ -1213,7 +1261,7 @@
           "order": 241,
           "prevSize": 28,
           "code": 61665,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "rotate-left, undo",
@@ -1256,7 +1304,7 @@
           "order": 89,
           "prevSize": 28,
           "code": 61673,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "clipboard, paste",
@@ -1269,7 +1317,7 @@
           "order": 111,
           "prevSize": 28,
           "code": 61675,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "exchange",
@@ -1292,7 +1340,7 @@
           "order": 110,
           "prevSize": 28,
           "code": 61680,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "stethoscope",
@@ -1300,7 +1348,7 @@
           "order": 109,
           "prevSize": 28,
           "code": 61681,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "suitcase",
@@ -1308,7 +1356,7 @@
           "order": 149,
           "prevSize": 28,
           "code": 61682,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "bell1",
@@ -1316,7 +1364,7 @@
           "order": 148,
           "prevSize": 28,
           "code": 61683,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "coffee",
@@ -1329,7 +1377,7 @@
           "order": 88,
           "prevSize": 28,
           "code": 61685,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "file-text-o",
@@ -1337,7 +1385,7 @@
           "order": 147,
           "prevSize": 28,
           "code": 61686,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "building-o",
@@ -1355,7 +1403,7 @@
           "order": 145,
           "prevSize": 28,
           "code": 61689,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "medkit",
@@ -1363,7 +1411,7 @@
           "order": 146,
           "prevSize": 28,
           "code": 61690,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "fighter-jet",
@@ -1581,7 +1629,7 @@
           "order": 108,
           "prevSize": 28,
           "code": 61739,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "subscript",
@@ -1604,7 +1652,7 @@
           "order": 144,
           "prevSize": 28,
           "code": 61744,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "microphone-slash",
@@ -1862,7 +1910,7 @@
           "order": 234,
           "prevSize": 28,
           "code": 61798,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "youtube",
@@ -1905,7 +1953,7 @@
           "order": 242,
           "prevSize": 28,
           "code": 61806,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "adn",
@@ -2013,7 +2061,7 @@
           "order": 106,
           "prevSize": 28,
           "code": 61829,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "moon-o",
@@ -2021,7 +2069,7 @@
           "order": 105,
           "prevSize": 28,
           "code": 61830,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "archive",
@@ -2084,7 +2132,7 @@
           "order": 87,
           "prevSize": 28,
           "code": 61843,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "vimeo-square",
@@ -2092,7 +2140,7 @@
           "order": 257,
           "prevSize": 28,
           "code": 61844,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "try, turkish-lira",
@@ -2110,7 +2158,7 @@
           "order": 104,
           "prevSize": 28,
           "code": 61847,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "slack",
@@ -2141,7 +2189,7 @@
           "order": 85,
           "prevSize": 28,
           "code": 61852,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "graduation-cap, mortar-board",
@@ -2149,7 +2197,7 @@
           "order": 82,
           "prevSize": 28,
           "code": 61853,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "yahoo",
@@ -2232,7 +2280,7 @@
           "order": 102,
           "prevSize": 28,
           "code": 61870,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "paw",
@@ -2240,7 +2288,7 @@
           "order": 103,
           "prevSize": 28,
           "code": 61872,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "spoon",
@@ -2283,7 +2331,7 @@
           "order": 101,
           "prevSize": 28,
           "code": 61880,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "automobile, car",
@@ -2291,7 +2339,7 @@
           "order": 100,
           "prevSize": 28,
           "code": 61881,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "cab, taxi",
@@ -2444,7 +2492,7 @@
           "order": 99,
           "prevSize": 28,
           "code": 61913,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "history",
@@ -2597,7 +2645,7 @@
           "order": 74,
           "prevSize": 28,
           "code": 61945,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "at",
@@ -2605,7 +2653,7 @@
           "order": 75,
           "prevSize": 28,
           "code": 61946,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "eyedropper",
@@ -2668,7 +2716,7 @@
           "order": 72,
           "prevSize": 28,
           "code": 61959,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "ioxhost",
@@ -2686,7 +2734,7 @@
           "order": 73,
           "prevSize": 28,
           "code": 61962,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "ils, shekel, sheqel",
@@ -2769,7 +2817,7 @@
           "order": 98,
           "prevSize": 28,
           "code": 61979,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "motorcycle",
@@ -2877,7 +2925,7 @@
           "order": 97,
           "prevSize": 28,
           "code": 62004,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "user-times",
@@ -3005,7 +3053,7 @@
           "order": 96,
           "prevSize": 28,
           "code": 62030,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "hourglass-o",
@@ -3083,7 +3131,7 @@
           "order": 95,
           "prevSize": 28,
           "code": 62046,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "gg",
@@ -3231,7 +3279,7 @@
           "order": 256,
           "prevSize": 28,
           "code": 62077,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "black-tie",
@@ -3259,7 +3307,7 @@
           "order": 76,
           "prevSize": 28,
           "code": 62083,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "codiepie",
@@ -3372,7 +3420,7 @@
           "order": 94,
           "prevSize": 28,
           "code": 62106,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "wheelchair-alt",
@@ -3380,7 +3428,7 @@
           "order": 93,
           "prevSize": 28,
           "code": 62107,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "question-circle-o",
@@ -3388,7 +3436,7 @@
           "order": 92,
           "prevSize": 28,
           "code": 62108,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "blind",
@@ -3541,7 +3589,7 @@
           "order": 79,
           "prevSize": 28,
           "code": 62140,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "user-circle",
@@ -3559,7 +3607,7 @@
           "order": 77,
           "prevSize": 28,
           "code": 62144,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "id-badge",
@@ -3667,7 +3715,7 @@
           "order": 114,
           "prevSize": 28,
           "code": 62166,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "etsy",
@@ -14223,7 +14271,7 @@
           "prevSize": 18,
           "code": 59702,
           "name": "envelope",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 11,
@@ -14231,7 +14279,7 @@
           "prevSize": 18,
           "code": 59703,
           "name": "bubble",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 12,
@@ -14247,7 +14295,7 @@
           "prevSize": 18,
           "code": 59704,
           "name": "users1",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 15,
@@ -14279,7 +14327,7 @@
           "prevSize": 18,
           "code": 59705,
           "name": "bell2",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 22,
@@ -14291,7 +14339,7 @@
           "prevSize": 18,
           "code": 59653,
           "name": "pin",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 24,
@@ -14319,7 +14367,7 @@
           "prevSize": 18,
           "code": 59706,
           "name": "calendar2",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 30,
@@ -14339,7 +14387,7 @@
           "prevSize": 18,
           "code": 59707,
           "name": "support",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 34,
@@ -14455,7 +14503,7 @@
           "prevSize": 18,
           "code": 59709,
           "name": "home4",
-          "tempChar": ""
+          "tempChar": ""
         }
       ],
       "id": 4,
@@ -16051,7 +16099,7 @@
           "prevSize": 24,
           "code": 59710,
           "name": "ring_volume",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 0,
@@ -16449,7 +16497,7 @@
           "prevSize": 24,
           "code": 59711,
           "name": "where_to_vote",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 0,
@@ -16468,7 +16516,7 @@
           "prevSize": 24,
           "code": 59712,
           "name": "access_alarmalarm",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 0,
@@ -16562,7 +16610,7 @@
           "prevSize": 24,
           "code": 59713,
           "name": "data_usage",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 0,
@@ -16941,7 +16989,7 @@
           "prevSize": 24,
           "code": 59714,
           "name": "insert_emoticontag_facesmood",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 167,
@@ -16950,7 +16998,7 @@
           "prevSize": 24,
           "code": 59715,
           "name": "insert_invitationevent",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 0,
@@ -17459,7 +17507,7 @@
           "prevSize": 24,
           "code": 59716,
           "name": "camera_altphoto_cameralocal_see",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 0,
@@ -18268,7 +18316,7 @@
           "prevSize": 24,
           "code": 59717,
           "name": "local_restaurantrestaurant_menu",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 0,
@@ -18332,7 +18380,7 @@
           "prevSize": 24,
           "code": 59718,
           "name": "add_location",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 0,
@@ -18346,7 +18394,7 @@
           "prevSize": 24,
           "code": 59719,
           "name": "near_me",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 0,
@@ -18365,7 +18413,7 @@
           "prevSize": 24,
           "code": 59720,
           "name": "restaurant",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 0,
@@ -18419,7 +18467,7 @@
           "prevSize": 24,
           "code": 59721,
           "name": "departure_board",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 0,
@@ -18858,7 +18906,7 @@
           "prevSize": 24,
           "code": 59722,
           "name": "pie_chart",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 0,
@@ -18887,7 +18935,7 @@
           "prevSize": 24,
           "code": 59723,
           "name": "cake",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 0,
@@ -18916,7 +18964,7 @@
           "prevSize": 24,
           "code": 59724,
           "name": "notifications",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 0,
@@ -18985,7 +19033,7 @@
           "prevSize": 24,
           "code": 59725,
           "name": "school",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 0,
@@ -19004,7 +19052,7 @@
           "prevSize": 24,
           "code": 59726,
           "name": "sentiment_dissatisfied",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 175,
@@ -19013,7 +19061,7 @@
           "prevSize": 24,
           "code": 59727,
           "name": "sentiment_neutral",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 176,
@@ -19022,7 +19070,7 @@
           "prevSize": 24,
           "code": 59728,
           "name": "sentiment_satisfied",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 177,
@@ -19031,7 +19079,7 @@
           "prevSize": 24,
           "code": 59729,
           "name": "sentiment_very_dissatisfied",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 178,
@@ -19040,7 +19088,7 @@
           "prevSize": 24,
           "code": 59730,
           "name": "sentiment_very_satisfied",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 179,
@@ -19049,7 +19097,7 @@
           "prevSize": 24,
           "code": 59731,
           "name": "thumb_down_alt",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 180,
@@ -19058,7 +19106,7 @@
           "prevSize": 24,
           "code": 59732,
           "name": "thumb_up_alt",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 0,
@@ -19107,7 +19155,7 @@
           "prevSize": 24,
           "code": 59733,
           "name": "account_balance",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 0,
@@ -19516,7 +19564,7 @@
           "prevSize": 24,
           "code": 59654,
           "name": "search",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 0,
@@ -19730,7 +19778,7 @@
           "prevSize": 24,
           "code": 59734,
           "name": "verified_user",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 0,
@@ -19899,7 +19947,7 @@
           "prevSize": 24,
           "code": 59735,
           "name": "fingerprint",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 0,
@@ -20028,7 +20076,7 @@
           "prevSize": 24,
           "code": 59688,
           "name": "g_translate",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 0,
@@ -20787,7 +20835,7 @@
           "prevSize": 24,
           "code": 59736,
           "name": "wb_twighlight",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 0,
@@ -20921,7 +20969,7 @@
           "prevSize": 24,
           "code": 59737,
           "name": "emoji_emotions",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 184,
@@ -20930,7 +20978,7 @@
           "prevSize": 24,
           "code": 59738,
           "name": "emoji_events",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 183,
@@ -20939,7 +20987,7 @@
           "prevSize": 24,
           "code": 59739,
           "name": "emoji_objects",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 0,
@@ -20958,7 +21006,7 @@
           "prevSize": 24,
           "code": 59740,
           "name": "sports_esports",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 187,
@@ -20967,7 +21015,7 @@
           "prevSize": 24,
           "code": 59741,
           "name": "sports_football",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 188,
@@ -20976,7 +21024,7 @@
           "prevSize": 24,
           "code": 59742,
           "name": "sports_golf",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 191,
@@ -20985,7 +21033,7 @@
           "prevSize": 24,
           "code": 59743,
           "name": "sports_hockey",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 0,
@@ -21004,7 +21052,7 @@
           "prevSize": 24,
           "code": 59744,
           "name": "sports_rugby",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 189,
@@ -21013,7 +21061,7 @@
           "prevSize": 24,
           "code": 59745,
           "name": "sports_soccer",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 0,
@@ -21027,7 +21075,7 @@
           "prevSize": 24,
           "code": 59746,
           "name": "sports_volleyball",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 193,
@@ -21036,7 +21084,7 @@
           "prevSize": 24,
           "code": 59747,
           "name": "sports_tennis",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 0,
@@ -21185,7 +21233,7 @@
           "prevSize": 24,
           "code": 59748,
           "name": "lunch_dining",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 0,
@@ -21199,7 +21247,7 @@
           "prevSize": 24,
           "code": 59749,
           "name": "park",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 0,
@@ -21233,7 +21281,7 @@
           "prevSize": 24,
           "code": 59750,
           "name": "icecream",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 195,
@@ -21242,7 +21290,7 @@
           "prevSize": 24,
           "code": 59751,
           "name": "volunteer_activism",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 0,
@@ -21271,7 +21319,7 @@
           "prevSize": 24,
           "code": 59752,
           "name": "ac_unit",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 0,
@@ -21290,7 +21338,7 @@
           "prevSize": 24,
           "code": 59753,
           "name": "beach_access",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 0,
@@ -21309,7 +21357,7 @@
           "prevSize": 24,
           "code": 59754,
           "name": "child_care",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 0,
@@ -21348,7 +21396,7 @@
           "prevSize": 24,
           "code": 59755,
           "name": "room_service",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "order": 0,
@@ -36277,7 +36325,7 @@
           "prevSize": 24,
           "code": 59656,
           "name": "activity",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 2,
@@ -36321,7 +36369,7 @@
           "prevSize": 24,
           "code": 59658,
           "name": "aperture",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 12,
@@ -36409,7 +36457,7 @@
           "prevSize": 24,
           "code": 59659,
           "name": "bell",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 33,
@@ -36425,7 +36473,7 @@
           "prevSize": 24,
           "code": 59660,
           "name": "book-open",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 36,
@@ -36433,7 +36481,7 @@
           "prevSize": 24,
           "code": 59661,
           "name": "book",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 37,
@@ -36441,7 +36489,7 @@
           "prevSize": 24,
           "code": 59662,
           "name": "bookmark",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 38,
@@ -36457,7 +36505,7 @@
           "prevSize": 24,
           "code": 59648,
           "name": "calendar",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 41,
@@ -36469,7 +36517,7 @@
           "prevSize": 24,
           "code": 59663,
           "name": "camera",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 43,
@@ -36497,7 +36545,7 @@
           "prevSize": 24,
           "code": 59686,
           "name": "chevron-left",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 49,
@@ -36505,7 +36553,7 @@
           "prevSize": 24,
           "code": 59687,
           "name": "chevron-right",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 50,
@@ -36545,7 +36593,7 @@
           "prevSize": 24,
           "code": 59756,
           "name": "clock",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 59,
@@ -36573,7 +36621,7 @@
           "prevSize": 24,
           "code": 59664,
           "name": "cloud",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 65,
@@ -36593,7 +36641,7 @@
           "prevSize": 24,
           "code": 59757,
           "name": "coffee",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 69,
@@ -36609,7 +36657,7 @@
           "prevSize": 24,
           "code": 59665,
           "name": "compass",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 72,
@@ -36685,7 +36733,7 @@
           "prevSize": 24,
           "code": 59758,
           "name": "dollar-sign",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 89,
@@ -36725,7 +36773,7 @@
           "prevSize": 24,
           "code": 59759,
           "name": "eye",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 98,
@@ -36757,7 +36805,7 @@
           "prevSize": 24,
           "code": 59667,
           "name": "file-text",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 105,
@@ -36789,7 +36837,7 @@
           "prevSize": 24,
           "code": 59668,
           "name": "folder",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 112,
@@ -36805,7 +36853,7 @@
           "prevSize": 24,
           "code": 59669,
           "name": "gift",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 115,
@@ -36837,7 +36885,7 @@
           "prevSize": 24,
           "code": 59760,
           "name": "globe",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 122,
@@ -36845,7 +36893,7 @@
           "prevSize": 24,
           "code": 59670,
           "name": "grid",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 123,
@@ -36865,7 +36913,7 @@
           "prevSize": 24,
           "code": 59761,
           "name": "heart3",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 127,
@@ -36873,7 +36921,7 @@
           "prevSize": 24,
           "code": 59762,
           "name": "help-circle",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 128,
@@ -36885,7 +36933,7 @@
           "prevSize": 24,
           "code": 59671,
           "name": "home",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 130,
@@ -36897,7 +36945,7 @@
           "prevSize": 24,
           "code": 59649,
           "name": "category",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 132,
@@ -36905,7 +36953,7 @@
           "prevSize": 24,
           "code": 59672,
           "name": "info",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 133,
@@ -36933,7 +36981,7 @@
           "prevSize": 24,
           "code": 59763,
           "name": "life-buoy",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 139,
@@ -36945,7 +36993,7 @@
           "prevSize": 24,
           "code": 59673,
           "name": "link",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 141,
@@ -36965,7 +37013,7 @@
           "prevSize": 24,
           "code": 59674,
           "name": "lock",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 145,
@@ -36981,7 +37029,7 @@
           "prevSize": 24,
           "code": 59675,
           "name": "mail",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 148,
@@ -36989,7 +37037,7 @@
           "prevSize": 24,
           "code": 59676,
           "name": "map-pin",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 149,
@@ -37013,7 +37061,7 @@
           "prevSize": 24,
           "code": 59655,
           "name": "menu",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 154,
@@ -37025,7 +37073,7 @@
           "prevSize": 24,
           "code": 59652,
           "name": "comment",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 156,
@@ -37105,7 +37153,7 @@
           "prevSize": 24,
           "code": 59677,
           "name": "paperclip",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 175,
@@ -37153,7 +37201,7 @@
           "prevSize": 24,
           "code": 59678,
           "name": "phone",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 186,
@@ -37193,7 +37241,7 @@
           "prevSize": 24,
           "code": 59679,
           "name": "printer",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 195,
@@ -37253,7 +37301,7 @@
           "prevSize": 24,
           "code": 59680,
           "name": "settings",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 209,
@@ -37261,7 +37309,7 @@
           "prevSize": 24,
           "code": 59681,
           "name": "share",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 210,
@@ -37281,7 +37329,7 @@
           "prevSize": 24,
           "code": 59682,
           "name": "shopping-bag",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 214,
@@ -37337,7 +37385,7 @@
           "prevSize": 24,
           "code": 59683,
           "name": "star",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 227,
@@ -37365,7 +37413,7 @@
           "prevSize": 24,
           "code": 59650,
           "name": "tag",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 233,
@@ -37389,7 +37437,7 @@
           "prevSize": 24,
           "code": 59684,
           "name": "thumbs-up",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 238,
@@ -37481,7 +37529,7 @@
           "prevSize": 24,
           "code": 59651,
           "name": "user",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 260,
@@ -37489,7 +37537,7 @@
           "prevSize": 24,
           "code": 59685,
           "name": "users",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 261,
@@ -37553,7 +37601,7 @@
           "prevSize": 24,
           "code": 59657,
           "name": "close",
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "id": 276,
@@ -41244,7 +41292,7 @@
           "id": 1,
           "prevSize": 32,
           "code": 59764,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "home2, house2",
@@ -41253,7 +41301,7 @@
           "id": 2,
           "prevSize": 32,
           "code": 59765,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "home3, house3",
@@ -41262,7 +41310,7 @@
           "id": 3,
           "prevSize": 32,
           "code": 59766,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "office, buildings",
@@ -41283,7 +41331,7 @@
           "id": 6,
           "prevSize": 32,
           "code": 59767,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "pencil2, write2",
@@ -41292,7 +41340,7 @@
           "id": 7,
           "prevSize": 32,
           "code": 59768,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "quill, feather",
@@ -41355,7 +41403,7 @@
           "id": 17,
           "prevSize": 32,
           "code": 59769,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "music, song",
@@ -41364,7 +41412,7 @@
           "id": 18,
           "prevSize": 32,
           "code": 59770,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "play, video",
@@ -41451,7 +41499,7 @@
           "id": 32,
           "prevSize": 32,
           "code": 59701,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "books, library",
@@ -41592,7 +41640,7 @@
           "id": 55,
           "prevSize": 32,
           "code": 59771,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "barcode",
@@ -41661,7 +41709,7 @@
           "id": 66,
           "prevSize": 32,
           "code": 59772,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "phone, telephone",
@@ -41694,7 +41742,7 @@
           "id": 71,
           "prevSize": 32,
           "code": 59773,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "location, map-marker",
@@ -41703,7 +41751,7 @@
           "id": 72,
           "prevSize": 32,
           "code": 59779,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "location2, map-marker2",
@@ -41712,7 +41760,7 @@
           "id": 73,
           "prevSize": 32,
           "code": 59774,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "compass, direction",
@@ -41811,7 +41859,7 @@
           "id": 89,
           "prevSize": 32,
           "code": 59780,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "mobile2, cell-phone2",
@@ -41832,7 +41880,7 @@
           "id": 92,
           "prevSize": 32,
           "code": 59775,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "drawer, box",
@@ -41841,7 +41889,7 @@
           "id": 93,
           "prevSize": 32,
           "code": 59776,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "drawer2, box2",
@@ -41958,7 +42006,7 @@
           "id": 112,
           "prevSize": 32,
           "code": 59777,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "bubbles4, comments4",
@@ -41967,7 +42015,7 @@
           "id": 113,
           "prevSize": 32,
           "code": 59778,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "user, profile2",
@@ -41976,7 +42024,7 @@
           "id": 114,
           "prevSize": 32,
           "code": 59781,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "users, group",
@@ -42147,7 +42195,7 @@
           "id": 142,
           "prevSize": 32,
           "code": 59789,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "key2, password2",
@@ -42162,7 +42210,7 @@
           "id": 144,
           "prevSize": 32,
           "code": 59791,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "unlocked, lock-open",
@@ -42177,7 +42225,7 @@
           "id": 146,
           "prevSize": 32,
           "code": 59793,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "equalizer, sliders",
@@ -42216,7 +42264,7 @@
           "id": 152,
           "prevSize": 32,
           "code": 59799,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "aid-kit, health",
@@ -42225,7 +42273,7 @@
           "id": 153,
           "prevSize": 32,
           "code": 59800,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "bug, virus",
@@ -42246,7 +42294,7 @@
           "id": 156,
           "prevSize": 32,
           "code": 59803,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "stats-bars, stats3",
@@ -42267,7 +42315,7 @@
           "id": 159,
           "prevSize": 32,
           "code": 59806,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "gift, present",
@@ -42276,7 +42324,7 @@
           "id": 160,
           "prevSize": 32,
           "code": 59807,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "glass, drink",
@@ -42303,7 +42351,7 @@
           "id": 164,
           "prevSize": 32,
           "code": 59811,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "leaf, nature",
@@ -42348,7 +42396,7 @@
           "id": 171,
           "prevSize": 32,
           "code": 59818,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "magnet, attract",
@@ -42537,7 +42585,7 @@
           "id": 202,
           "prevSize": 32,
           "code": 59849,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "earth, globe2",
@@ -42546,7 +42594,7 @@
           "id": 203,
           "prevSize": 32,
           "code": 59850,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "link, chain",
@@ -42645,7 +42693,7 @@
           "id": 219,
           "prevSize": 32,
           "code": 59866,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "heart-broken, heart2",
@@ -42972,7 +43020,7 @@
           "id": 273,
           "prevSize": 32,
           "code": 59920,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "checkmark2, tick2",
@@ -43311,7 +43359,7 @@
           "id": 329,
           "prevSize": 32,
           "code": 59976,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "sort-alpha-desc, arrange2",
@@ -43320,7 +43368,7 @@
           "id": 330,
           "prevSize": 32,
           "code": 59977,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "sort-numeric-asc, arrange3",
@@ -43767,7 +43815,7 @@
           "id": 403,
           "prevSize": 32,
           "code": 60050,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "whatsapp",
@@ -43794,7 +43842,7 @@
           "id": 407,
           "prevSize": 32,
           "code": 60054,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "name": "vine",
@@ -43839,7 +43887,7 @@
           "id": 414,
           "prevSize": 32,
           "code": 60061,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "youtube2, brand22",
@@ -43887,7 +43935,7 @@
           "id": 421,
           "prevSize": 32,
           "code": 60068,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "flickr3, brand29",
@@ -44022,7 +44070,7 @@
           "id": 442,
           "prevSize": 32,
           "code": 60089,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "tumblr2, brand50",
@@ -51867,7 +51915,8 @@
     },
     "historySize": 50,
     "showCodes": true,
-    "gridSize": 16
+    "gridSize": 16,
+    "showGrid": true
   },
   "uid": -1
 }
