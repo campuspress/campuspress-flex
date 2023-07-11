@@ -234,8 +234,7 @@ class CPDirectoryData {
 
 		$args = array(
 			'numberposts' => $this->get_entries_limit(),
-			'orderby'     => 'title',
-			'order'       => 'ASC',
+			'orderby'     => array( 'title' => 'ASC' ),
 			'post_type'   => $this->atts['source'],
 			'fields'      => 'ids',
 		);
@@ -248,7 +247,7 @@ class CPDirectoryData {
 						$args['orderby'] = $order['orderby'];
 					}
 					else {
-						$args['orderby'] = $order['value'];
+						$args['orderby'] = array( $order['value'] => 'ASC' ) + $args['orderby'];
 					}
 
 					if( isset( $order['meta'] ) && $order['meta'] ) {
