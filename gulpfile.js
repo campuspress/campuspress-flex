@@ -188,8 +188,6 @@ gulp.task('scripts', function () {
 
 		// End - All BS4 stuff
 
-		paths.dev + '/js/skip-link-focus-fix.js',
-
 		// Adding currently empty javascript file to add on for your own themes´ customizations
 		// Please add any customizations to this .js file only!
 		paths.dev + '/js/custom-javascript.js',
@@ -232,16 +230,6 @@ gulp.task('copy-assets', function (done) {
 
 	////////////////// End Bootstrap 4 Assets /////////////////////////
 
-	// _s JS files into /src/js
-	gulp
-		.src(`${paths.node}/undescores-for-npm/js/skip-link-focus-fix.js`)
-		.pipe(gulp.dest(`${paths.dev}/js`));
-
-	// css-vars-ponyfill JS files into /js
-	gulp
-		.src(`${paths.node}/css-vars-ponyfill/dist/css-vars-ponyfill.min.js`)
-		.pipe(gulp.dest(paths.js));
-
 	// AOS SCSS files into /src/sass
 	gulp
 		.src(`${paths.node}/aos/dist/aos.css`)
@@ -260,8 +248,6 @@ gulp.task('clean-vendor-assets', function () {
 	return del([
 		paths.dev + '/js/bootstrap4',
 		paths.dev + '/sass/bootstrap4',
-		`${paths.dev}/js/skip-link-focus-fix.js`,
-		`${paths.js}/**/skip-link-focus-fix.js`,
 		`${paths.js}/**/popper.min.js`,
 		`${paths.js}/**/popper.js`,
 		paths.vendor !== '' ? paths.js + paths.vendor + '/**' : ''
@@ -316,13 +302,6 @@ gulp.task(
 				replace('/js/popper.min.js', '/js' + paths.vendor + '/popper.min.js', {
 					skipBinary: true
 				})
-			)
-			.pipe(
-				replace(
-					'/js/skip-link-focus-fix.js',
-					'/js' + paths.vendor + '/skip-link-focus-fix.js',
-					{ skipBinary: true }
-				)
 			)
 			.pipe(gulp.dest(paths.dist));
 	})
