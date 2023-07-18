@@ -277,7 +277,7 @@ if ( ! function_exists( 'cpschool_custom_logo_remove_link' ) ) {
 	}
 }
 
-if ( ! function_exists( 'cpschool_custom_logo_alt_attr' ) ) {
+if ( ! function_exists( 'cpschool_custom_logo_image_attrs' ) ) {
 	add_filter( 'get_custom_logo_image_attributes', 'cpschool_custom_logo_image_attrs', 15, 3 );
 
 	/**
@@ -289,16 +289,15 @@ if ( ! function_exists( 'cpschool_custom_logo_alt_attr' ) ) {
 	 */
 	function cpschool_custom_logo_image_attrs( $custom_logo_attr, $custom_logo_id, $blog_id ) {
 
-		if ( ! $custom_logo_attr['alt'] && is_front_page() ) {
-			$custom_logo_attr['alt'] = get_post_meta( $custom_logo_id, '_wp_attachment_image_alt', true );
+		if ( empty( $custom_logo_attr['alt'] ) ) {
+			$image_alt = get_post_meta( $custom_logo_id, '_wp_attachment_image_alt', true );
 
-			if ( $custom_logo_attr['alt'] ) {
-				$custom_logo_attr['title'] = get_the_title( $custom_logo_id );
+			if ( empty( $image_alt ) ) {
+				$image_alt = get_bloginfo( 'name', 'display' ) . ' logo';
 			}
-		} else {
-			$custom_logo_attr['alt']   = '';
-			$custom_logo_attr['title'] = 'Home';
+			$custom_logo_attr['alt'] = $image_alt;
 		}
+
 		$custom_logo_attr['class'] = 'img-fluid';
 
 		return $custom_logo_attr;
