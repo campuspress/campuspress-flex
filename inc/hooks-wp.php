@@ -289,14 +289,12 @@ if ( ! function_exists( 'cpschool_custom_logo_image_attrs' ) ) {
 	 */
 	function cpschool_custom_logo_image_attrs( $custom_logo_attr, $custom_logo_id, $blog_id ) {
 
-		if ( empty( $custom_logo_attr['alt'] ) ) {
-			$image_alt = get_post_meta( $custom_logo_id, '_wp_attachment_image_alt', true );
+		$image_alt = get_post_meta( $custom_logo_id, '_wp_attachment_image_alt', true );
 
-			if ( empty( $image_alt ) ) {
-				$image_alt = get_bloginfo( 'name', 'display' ) . ' logo';
-			}
-			$custom_logo_attr['alt'] = $image_alt;
+		if ( empty( $image_alt ) ) {
+			$image_alt = get_bloginfo( 'name', 'display' ) . ' logo';
 		}
+		$custom_logo_attr['alt'] = $image_alt;
 
 		$custom_logo_attr['class'] = 'img-fluid';
 
