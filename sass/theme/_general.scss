@@ -3,8 +3,9 @@
 }
 
 #{$el-body} {
-    color: var(--color-bg-contrast);
-    background-color: var(--color-bg);
+    @extend %color-bg;
+    @extend %has-background;
+
     font-display: optional;
     font-family: system-ui, sans-serif;
     @include adjusted-size($font-size-base * 0.9, '--body-font-size');
@@ -13,8 +14,11 @@
     }
     &.site-boxed {
         background-color: var(--color-bg-secondary);
+
         .site {
-            background-color: var(--color-bg);
+            @extend %has-background;
+            @extend %color-bg;
+            
             padding: 0px;
         }
         &:not(.shadows-disabled) & {

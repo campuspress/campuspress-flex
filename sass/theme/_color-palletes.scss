@@ -1,7 +1,3 @@
-/*
- * Generates all the necessary code to set correct colors based on customizer options.
- */
-
 $color-palletes: (
     color-bg: (default: false, blocks: true, nav: false), 
     color-bg-alt: (default: false, blocks: true, nav: false), 
@@ -13,36 +9,8 @@ $color-palletes: (
     alert-bg-color: (default: color-bg, blocks: false, nav: false),
 );
 
-// Sets some default colors.
-#{$el-root} {
-    --color-bg-accent-hl: var(--color-bg-accent);
-}
-
-// Used with palletes that are available to use with and without blocks.
-@mixin color-pallete-common-content($pallete) {
-    a {
-        color: var(--#{$pallete}-accent);
-    }
-
-    :focus {
-        outline-color: var(--#{$pallete}-accent-hl-a);
-    }
-}
-
-// Used with palletes that are avaiable to use with blocks.
-@mixin color-pallete-blocks-content($pallete) {
-    .wp-block-button.is-style-outline .wp-block-button__link,
-    .wp-block-button .wp-block-button__link, 
-    [class^="wp-block"] [class$="__button"] {
-        @extend %#{$pallete}-btn-secondary;
-    }
-    .wp-block-button.is-style-outline .wp-block-button__link:not(:hover) {
-        color: var(--#{$pallete}-accent);
-    }
-}
-
 // Generates color pallets according to options.
-@each $pallete, $options in $color-palletes { 
+@each $pallete, $options in $color-palletes {
     // Lets first set the defaults if needed
     @if map-get($options, default) {
         #{$el-root} {
@@ -57,173 +25,69 @@ $color-palletes: (
         }
     }
 
-    %#{$pallete}-root {
-        --color-accent: var(--#{$pallete}-accent);
-        --color-accent-hl: var(--#{$pallete}-accent-hl);
-
-        background-color: var(--#{$pallete});
-        color: var(--#{$pallete}-contrast);
+    %#{$pallete} {
+        --color: var(--#{$pallete}, --#{map-get($options, default)});
+        --color-contrast: var(--#{$pallete}-contrast, --#{map-get($options, default)}-contrast);
+        --color-accent: var(--#{$pallete}-accent, --#{map-get($options, default)}-accent);
+        --color-accent-a: var(--#{$pallete}-accent-a, --#{map-get($options, default)}-accent-a);
+        --color-accent-contrast: var(--#{$pallete}-accent-contrast, --#{map-get($options, default)}-accent-contrast);
+        --color-accent-hl: var(--#{$pallete}-accent-hl, --#{map-get($options, default)}-accent-hl);
+        --color-accent-hl-a: var(--#{$pallete}-accent-hl-a, --#{map-get($options, default)}-accent-hl-a);
+        --color-accent-hl-contrast: var(--#{$pallete}-accent-hl-contrast, --#{map-get($options, default)}-accent-hl-contrast);
     }
 
-    %#{$pallete}-btn-primary {
-        background-color: var(--#{$pallete}-accent-hl);
-        border-color: var(--#{$pallete}-accent-hl);
-        color: var(--#{$pallete}-accent-hl-contrast);
-        &:focus, &:hover {
-            box-shadow: 0 0 0 $input-btn-focus-width var(--#{$pallete}-accent-hl-a);
+    .has-#{$pallete}-background-color {
+        @extend %#{$pallete};
+        & ~ .wp-block-cover__inner-container {
+            @extend %#{$pallete};
         }
     }
-
-    %#{$pallete}-btn-secondary {
-        background-color: var(--#{$pallete}-accent);
-        border-color: var(--#{$pallete}-accent);
-        color: var(--#{$pallete}-accent-contrast);
-        &:focus, &:hover {
-            box-shadow: 0 0 0 $input-btn-focus-width var(--#{$pallete}-accent-a);
-        }
+    .has-#{$pallete}-color {
+        color: var(--#{$pallete}, --#{map-get($options, default)}) !important;
     }
 
-    %#{$pallete}-form-control {
-        border-color: var(--#{$pallete}-accent);
-        &:focus {
-            border-color: var(--#{$pallete}-accent);
-            box-shadow: 0 0 0 $input-btn-focus-width var(--#{$pallete}-accent-a);
-        }
+
+}
+
+%has-background {
+    background-color: var(--color);
+    color: var(--color-contrast);
+}
+
+%color-btn-primary {
+    background-color: var(--color-accent-hl);
+    border-color: var(--color-accent-hl);
+    color: var(--color-accent-hl-contrast);
+    &:hover {
+        box-shadow: 0 0 0 $input-btn-focus-width var(--color-accent-hl-a), 0 0 0 $input-btn-focus-width var(--color);
+        color: var(--color-accent-hl-contrast);
     }
-
-    %#{$pallete}-blocks-elements {
-        .wp-block-button.is-style-outline .wp-block-button__link,
-        .wp-block-button__link, 
-        [class^="wp-block"] [class$="__button"] {
-            @extend %#{$pallete}-btn-secondary;
-        }
-        .wp-block-button.is-style-outline .wp-block-button__link:not(:hover) {
-            color: var(--#{$pallete}-accent);
-        }
+    &:focus-visible {
+        outline-color: var(--color-accent);
     }
-
-    // Puts content of default bg at the document root.
-    @if($pallete == 'color-bg') {
-        body {
-            @include editor-wrap() {
-                @extend %#{$pallete}-root;
-            }
-        }
-
-        @include color-pallete-common-content($pallete);
-
-        .btn-primary {
-            @extend %#{$pallete}-btn-primary;
-            body.btn-style-outline &:not(:hover) {
-                color: var(--#{$pallete}-accent-hl);
-            }
-        }
-        .btn-secondary {
-            @extend %#{$pallete}-btn-secondary;
-            body.btn-style-outline &:not(:hover) {
-                color: var(--#{$pallete}-accent);
-            }
-        }
-
-        .form-control {
-            @extend %#{$pallete}-form-control;
-        }
-    }
-       
-    // Default styles used when blocks are not involved
-    %#{$pallete}, [class*="has-background"].has-#{$pallete}-background-color {
-        @extend %#{$pallete}-root;
-
-        @include color-pallete-common-content($pallete);
-
-        .btn-primary {
-            @extend %#{$pallete}-btn-primary;
-            body.btn-style-outline &:not(:hover) {
-                color: var(--#{$pallete}-accent-hl);
-            }
-        }
-        .btn-secondary {
-            @extend %#{$pallete}-btn-secondary;
-            body.btn-style-outline &:not(:hover) {
-                color: var(--#{$pallete}-accent);
-            }
-        }
-
-        .form-control {
-            @extend %#{$pallete}-form-control;
-        }
-    }
-
-    // Lets generate bit more stylings when pallete is used with blocks.
-    @if map-get($options, blocks) {
-        // Puts content of default bg at the document root.
-        @if($pallete == 'color-bg') {
-            @include editor-wrap() {
-                @include color-pallete-blocks-content($pallete);
-            }
-        }
-
-        // We can skip declaring .has-#{$pallete}-background-color as common content is already declared for it
-        [class*="has-background"] [class*=has-background].has-#{$pallete}-background-color, 
-        [class*="has-background"] [class*="has-background"] [class*=has-background].has-#{$pallete}-background-color {
-            @include color-pallete-common-content($pallete);
-        }
-
-        // Unfortunately we have to do it like this to support nested blocks. Otherwise parent will overwrite stylings.
-        %#{$pallete}-blocks,
-        [class*="has-background"].has-#{$pallete}-background-color, 
-        [class*="has-background"] [class*=has-background].has-#{$pallete}-background-color, 
-        [class*="has-background"] [class*="has-background"] [class*=has-background].has-#{$pallete}-background-color {
-            @include color-pallete-blocks-content($pallete);
-        }
-
-        // Stylings related to blocks settings - ".has-..." classes are used by blocks. Theme is reusing them. 
-        .has-#{$pallete}-color {
-            color: var(--#{$pallete}) !important;
-        }
-        .wp-block-button__link.has-#{$pallete}-background-color {
-            background-color: var(--#{$pallete}) !important;
-            color: var(--#{$pallete}-contrast) !important;
-            border-color: var(--#{$pallete}) !important;
-            .wp-block-button.is-style-outline &:not(:hover) {
-                color: var(--#{$pallete}) !important;
-            }
-        }
-    }
-
-    // Lets add support for nav if needed. This mostly makes links have highest contrast color.
-    @if map-get($options, nav) {
-        .has-#{$pallete}-background-color .nav {
-            .nav-item > a:not(.has-styling) {
-                color: var(--#{$pallete}-contrast);
-            }
-
-            .current-menu-item,
-            .current-menu-ancestor {
-                a:not(.has-styling) {
-                    color: var(--#{$pallete}-accent);
-                }
-            }
-
-            .dropdown-menu {
-                color: var(--#{$pallete}-contrast);
-                background-color: var(--#{$pallete});
-            }
-            @if map-get($options, nav-dropdown-style) {
-                $nav-dropdown-style: map-get($options, nav-dropdown-style);
-
-                .dropdown-menu:not(.dropdown-megamenu-menu) {
-                    background-color: var(--#{$nav-dropdown-style});
-                    a, a:hover {
-                        color: var(--#{$nav-dropdown-style}-contrast);
-                    }
-                    .current-menu-item {
-                        a {
-                            color: var(--#{$nav-dropdown-style}-accent);
-                        }
-                    }
-                }
-            }
-        }
+    body.btn-style-outline &:not(:hover) {
+        color: var(--color-accent-hl);
     }
 }
+
+%color-btn-secondary {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-accent-contrast);
+    &:hover {
+        box-shadow:0 0 0 $input-btn-focus-width var(--color-accent-a),  0 0 0 $input-btn-focus-width var(--color);
+        color: var(--color-accent-hl-contrast);
+    }
+    body.btn-style-outline &:not(:hover) {
+        color: var(--color-accent);
+    }
+}
+
+%color-form-control {
+    border-color: var(--color-accent);
+    &:focus-visible {
+        border-color: var(--color-accent);
+        box-shadow:0 0 0 $input-btn-focus-width var(--color-accent-a),  0 0 0 $input-btn-focus-width var(--color);
+    }
+}
+

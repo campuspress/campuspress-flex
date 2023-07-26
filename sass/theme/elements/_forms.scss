@@ -5,6 +5,8 @@
 //
 
 .form-control {
+    @extend %color-form-control;
+    
     display: block;
     width: 100%;
     height: $input-height;

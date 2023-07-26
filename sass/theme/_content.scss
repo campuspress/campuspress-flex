@@ -1,11 +1,20 @@
 @use "sass:math";
 
 @include editor-wrap() {
-	a, %a {
-		transition: opacity 0.5s ease, color 0.5s ease;
+    :focus-visible {
+        outline-color: var(--color-accent-hl);
+		outline-offset: $input-btn-focus-width;
+    }
+
+	a, 
+	%a {
+		color: var(--color-accent);
+		transition: opacity 0.5s ease, color 0.5s ease, background-color 0.5s ease;
 		&:hover {
+			//opacity: 0.85;
+			//background-color: var(--color);
+			color: var(--color-accent-hl);
 			text-decoration: none;
-			opacity: 0.8;
 		}
 	}
 
@@ -28,21 +37,23 @@
 		color: var(--color-accent);
 	}
 
-	input[type="text"]:not(.form-control), 
-	input[type="tel"]:not(.form-control), 
-	input[type="email"]:not(.form-control), 
-	input[type="search"]:not(.form-control), 
-	textarea:not(.form-control),
-	select:not(.form-control) {
-		@extend .form-control;
+	input[type="text"], 
+	input[type="tel"], 
+	input[type="email"], 
+	input[type="search"], 
+	textarea,
+	select {
+		&:not(.form-control) {
+			@extend .form-control;
+		}
 	}
-	input[type="button"]:not(.btn):not(.form-control) {
-		@extend .btn;
-		@extend .btn-secondary;
+	input[type="button"]:not(.btn) {
+		@extend %btn;
+		@extend %color-btn-secondary;
 	}
-	input[type="submit"]:not(.btn):not(.form-control) {
-		@extend .btn;
-		@extend .btn-primary;
+	input[type="submit"]:not(.btn) {
+		@extend %btn;
+		@extend %color-btn-primary;
 	}
 
 	i {
@@ -160,28 +171,26 @@
 		}
 	}
 
+	%table,
 	table {
-		background-color: var(--color-bg);
+		@extend %color-bg;
+		//@extend %has-background;
+
 		border-collapse: collapse;
 		border-spacing: 0;
 		empty-cells: show;
 		max-width: 100%;
 		width: 100%;
-		a:not(.btn) {
-			@extend %a;
-			color: var(--color-bg-accent) !important;
-		}
-		&, & tbody {
-			color: var(--color-bg-contrast);
-		}
 		thead {
+			@extend %color-boxes;
+			@extend %has-background;
+
 			vertical-align: bottom;
 			white-space: nowrap;
+			border-color: var(--color);
 		}
 		th {
-			background: var(--color-boxes);
-			color: var(--color-boxes-contrast);
-			border: 1px solid var(--color-bg);
+			border: 1px solid var(--color-boxes);
 			border-bottom: none;
 			line-height: 1.4;
 			margin: 0;
@@ -192,10 +201,10 @@
 				color: inherit !important;
 			}
 			&:first-child {
-				border-left: 1px solid var(--color-boxes);
+				border-left: 1px solid var(--color);
 			}
 			&:last-child {
-				border-right: 1px solid var(--color-boxes);
+				border-right: 1px solid var(--color);
 			}
 		}
 
@@ -208,13 +217,8 @@
 		}
 
 		tfoot {
-			background-color: var(--color-boxes);
-			td {
-				a {
-					@extend %a;
-					color: var(--color-boxes-accent) !important;
-				}
-			}
+			@extend %color-boxes;
+			@extend %has-background;
 		}
 
 		caption {
@@ -267,19 +271,19 @@
 }
 
 .has-drop-cap {
-	&:not(:focus)::first-letter {
+	&:not(:focus-visible)::first-letter {
 		color: currentColor;
 		color: var(--color-accent-hl);
 		font-size: 5.1em;
 		font-weight: 800;
 		margin: 0.05em 0.1em 0 0;
 	}
-	&:not(:focus)::first-letter::after {
+	&:not(:focus-visible)::first-letter::after {
 		content: "";
 		display: table;
 		clear: both;
 	}
-	&:not(:focus)::after {
+	&:not(:focus-visible)::after {
 		padding: 0;
 	}
 }

@@ -401,7 +401,7 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 
 				if ( $item->object == 'wp_block' ) {
 					if ( $this->navbar ) {
-						$class = 'dropdown-menu dropdown-megamenu-menu has-background has-header-main-bg-color-background-color';
+						$class = 'dropdown-menu dropdown-megamenu-menu has-background';
 					} else {
 						$class = 'collapse collapse-menu collapse-megamenu';
 					}
@@ -428,7 +428,7 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 						<?php
 					}
 					$dropdown_content = ob_get_clean();
-					$item_output     .= '<ul id="' . esc_attr( $atts['id'] ) . '-dropdown" class="dropdown-menu" aria-labelledby="' . esc_attr( $atts['id'] ) . '" role="menu"><li>' . $dropdown_content . '</li></ul>';
+					$item_output     .= '<ul id="' . esc_attr( $atts['id'] ) . '-dropdown" class="dropdown-menu" aria-labelledby="' . esc_attr( $atts['id'] ) . '"><li>' . $dropdown_content . '</li></ul>';
 				}
 			}
 

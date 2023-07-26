@@ -27,6 +27,11 @@
 }
 
 
+.has-background,
+.wp-block-cover__background {
+	@extend %has-background;
+}
+
 .wp-block-group {
 	&.has-background {
 		padding: math.div($spacer*2, 3);
@@ -60,10 +65,16 @@
 	}
 }
 
-.wp-block-cover:not([class*="background-color"]) {
-	@extend %color-boxes;
-	@extend %color-boxes-blocks;
+.wp-block-table {
+	@extend %table;
 }
+
+/*
+[class="wp-block-cover__background has-background-dim"] {
+	@extend %color-boxes;
+	@extend %has-background;
+}
+*/
 
 [class*="__inner-container"] {
 	margin: 0 auto;
@@ -201,6 +212,8 @@
 		margin-left: 0;
 		li {
 			@extend %color-boxes;
+			@extend %has-background;
+
 			padding: math.div($spacer*2, 3);
 			border-radius: $border-radius;
 			body:not(.shadows-disabled) & {
@@ -445,11 +458,46 @@
 	margin-top: 0.15em;
 }
 
+
 .wp-block-button .wp-block-button__link, 
-.wp-block-file a.wp-block-file__button,
+.wp-block-file .wp-element-button,
 .wp-block-search__button {
-	@extend %btn;
+		@extend %btn;
+		@extend %color-btn-secondary;
 }
+
+.wp-block-button.is-style-outline .wp-block-button__link,
+.wp-block-button__link {
+	@extend %color-btn-secondary;
+}
+.wp-block-button.is-style-outline .wp-block-button__link:not(:hover) {
+	color: var(--color-accent);
+}
+.wp-block-button__link.has-background {
+    background-color: var(--color) !important;
+    border-color: var(--color);
+    color: var(--color-contrast);
+    &:hover {
+        box-shadow:0 0 0 $input-btn-focus-width var(--color-accent-a),  0 0 0 $input-btn-focus-width var(--color);
+    }
+    body.btn-style-outline &:not(:hover) {
+        color: var(--color);
+    }
+}
+
+
+
+.wp-block-button__link.has-color-background-color {
+	background-color: var(--color) !important;
+	border-color: var(--color) !important;
+	&:not(.has-text-color) {
+		color: var(--color-contrast) !important;
+	}
+	.wp-block-button.is-style-outline &:not(:hover) {
+		color: var(--color) !important;
+	}
+}
+
 .wp-block-button__link {
 	.btn-block & {
 		@extend .btn-block;
@@ -457,11 +505,6 @@
 	.wp-block-button.is-style-outline & {
 		@extend %btn-outline;
 	}
-	/*
-	&:active, &:focus, &:hover, &:visited {
-		color: currentColor;
-	}
-	*/
 }
 .wp-block-file {
 	width: 100%;
@@ -470,11 +513,6 @@
 	flex-wrap: wrap;
 	justify-content: space-between;
 	a:not(.wp-block-file__button) {
-		font-weight: 700;
-		text-decoration: none;
-		&:focus, &:hover {
-			text-decoration: underline;
-		}
 		&:not(:last-child) {
 			margin-right: $spacer * 0.5;
 		}
@@ -520,8 +558,4 @@
 	&.is-style-dots::after {
 		content: none;
     }
-}
-
-.has-background a {
-	color: currentColor;
 }

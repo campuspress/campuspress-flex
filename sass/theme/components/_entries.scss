@@ -42,15 +42,14 @@
     }
     article {
         @extend %color-boxes;
+        @extend %has-background;
+        
         height: 100%;
         margin-bottom: 0px;
         padding: math.div($spacer*2, 3);
         border-radius: $border-radius;
         body:not(.shadows-disabled) & {
             @include adjusted-shadow();
-        }
-        .entry-title a {
-            color: inherit;
         }
         &::after {
             display: none;
@@ -106,8 +105,8 @@ body.blog.hide-hero-page-title {//CUSTOMIZER-ONLY
 .entry-title a, 
 %entry-title-a {
     text-decoration: none;
-    &, &:hover {
-        color: var(--color-bg-contrast); 
+    & {
+        color: var(--color-contrast); 
     }
     &:hover {
         text-decoration: underline;
@@ -215,6 +214,9 @@ body.blog.hide-hero-page-title {//CUSTOMIZER-ONLY
 }
 
 .pagination {
+    @extend %color-boxes;
+    @extend %has-background;
+
     display: inline-flex;
     body:not(.shadows-disabled) & {
         @include adjusted-shadow(0.5);
@@ -223,8 +225,8 @@ body.blog.hide-hero-page-title {//CUSTOMIZER-ONLY
 
 .page-link {
     text-decoration: none;
-    color: var(--color-boxes-contrast);
-    background-color: var(--color-boxes);
+    color: var(--color-contrast);
+    //background-color: var(--color-boxes);
     border: none;
     transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
 }
@@ -235,13 +237,13 @@ body.blog.hide-hero-page-title {//CUSTOMIZER-ONLY
         border-color: inherit;
     }
     a:hover {
-        color: var(--color-boxes-accent-contrast);
-        background-color: var(--color-boxes-accent);
+        color: var(--color-accent-contrast);
+        background-color: var(--color-accent);
         opacity: 1;
     }
     &.active .page-link{
-        color: var(--color-boxes-accent-hl-contrast);
-        background-color: var(--color-boxes-accent-hl);
+        color: var(--color-accent-hl-contrast);
+        background-color: var(--color-accent-hl);
     }
 }
 

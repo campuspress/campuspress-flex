@@ -173,7 +173,7 @@ body.navbar-main-has-hero-transparency.has-hero-image {
         &, a {
             color: var(--hero-main-bg-color-accent-contrast);
         }
-        :focus {
+        :focus-visible {
             outline-color: var(--hero-main-bg-color-accent-contrast);
         }
         .active {
@@ -224,7 +224,7 @@ body.navbar-main-has-hero-transparency.has-hero-image {
 .hero.high-contrast {
     .breadcrumb, a {
         color: var(--hero-main-bg-color-contrast);
-        :focus {
+        :focus-visible {
             outline-color: var(--hero-main-bg-color-contrast);
         }
     }

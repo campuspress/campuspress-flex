@@ -21,8 +21,8 @@ $enable-gradients: false;
 $enable-shadows: false;
 
 $border-radius: var(--roundness);
-$border-radius-lg: 0;
-$border-radius-sm: 0;
+$border-radius-lg: var(--roundness);
+$border-radius-sm: var(--roundness);
 //$enable-rounded: false;
 
 $box-shadow-sm: none;
@@ -114,6 +114,10 @@ $h4-font-size: null;
 $h5-font-size: null;
 $h6-font-size: null;
 $hr-margin-y: null;
+
+$pagination-bg: null;
+$pagination-focus-outline: null;
+$pagination-focus-box-shadow: null;
 
 
 // Its impossible to use this concept while supporting IE.

@@ -155,8 +155,8 @@ gulp.task( 'watch', function() {
  *
  * Run: gulp browser-sync
  */
-gulp.task( 'browser-sync', function() {
-	browserSync.init( cfg.browserSyncOptions );
+gulp.task( 'browser-sync', function () {
+	browserSync.init(cfg.browserSyncWatchFiles, cfg.browserSyncOptions);
 } );
 
 /**

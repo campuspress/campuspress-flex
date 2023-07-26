@@ -6,7 +6,7 @@
 .btn {
     text-transform: uppercase;
     text-decoration: none;
-    transition: opacity 0.5s ease, background-color 0.5s ease, box-shadow 0.5s ease;
+    transition: background-color 0.5s ease, box-shadow 0.5s ease;
     font-weight: 600;
     font-variation-settings: 'wght' 600;
     border-style: solid;
@@ -16,14 +16,20 @@
     text-align: center;
     vertical-align: middle;
     user-select: none;
-    outline: none;
     @include button-size($btn-padding-y*0.9, $btn-padding-x*0.9, $btn-font-size*0.9, $btn-line-height*0.9, $btn-border-radius);
     @include media-breakpoint-up(lg) {
         @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size, $btn-line-height, $btn-border-radius);
     }
-    body:not(.shadows-disabled) &:not(:focus) {
-        @include adjusted-shadow(0.7);
+    /*
+    body:not(.shadows-disabled) & {
+        & {
+            transition: none;
+        }
+        &:not(:focus-visible):not(:hover) {
+            @include adjusted-shadow(0.7);
+        }
     }
+    */
     i {
         display:inline-block;
         text-decoration: none;
@@ -32,8 +38,18 @@
     }
     &:hover {
         text-decoration: underline;
-        opacity: 0.85;
     }
+    &:focus-visible,
+    &:active,
+    &:hover {
+        opacity: 1;
+    }
+    &:focus-visible {
+        outline-style: solid;
+        outline-offset: 0px;
+        outline-width: $input-btn-focus-width;
+    }
+    
 
     p &:not(:first-child) {
         margin-left: math.div($spacer, 6);
@@ -53,21 +69,20 @@
     }
     */
 }
-button.btn {
-    outline: none;
-}
 
 body.btn-style-outline .btn,
 .is-style-outline .btn,
+body.btn-style-outline %btn,
+.is-style-outline %btn,
 %btn-outline {
     border-width: $btn-padding-y*0.4;
     padding: $btn-padding-y*0.6 $btn-padding-x*0.9;
-    &:not(:hover):not(:focus) {
+    &:not(:hover):not(:focus-visible) {
         background-color: transparent !important;
         border-color: currentColor !important;
     }
     &:hover, 
-    &:focus {
+    &:focus-visible {
         text-decoration: none;
         opacity: 1;
     }
@@ -99,4 +114,12 @@ body.btn-style-outline .btn,
     box-shadow: none !important;
     text-decoration: none !important;
     opacity: 0.5;
+}
+
+.btn-primary {
+    @extend %color-btn-primary;
+
+}
+.btn-secondary {
+    @extend %color-btn-secondary;
 }

@@ -35,7 +35,7 @@ body .calendar-plus {
             outline-color: var(--color-boxes-accent-a);
             font-size: 0.9em * .875;
             margin: 0;
-            &.rbc-active, &.rbc-active:focus {
+            &.rbc-active, &.rbc-active:focus-visible {
                 background: var(--color-boxes-accent-hl);
                 color: var(--color-boxes-accent-hl-contrast);
                 opacity: 1;
