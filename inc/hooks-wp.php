@@ -237,7 +237,7 @@ if ( ! function_exists( 'cpschool_comment_reply_link' ) ) {
 	 * @return string
 	 */
 	function cpschool_comment_reply_link( $link ) {
-		$link = str_replace( 'comment-reply-link', 'comment-reply-link btn btn-sm', $link );
+		$link = str_replace( 'comment-reply-link', 'comment-reply-link btn btn-secondary btn-sm', $link );
 
 		return $link;
 	}
@@ -254,7 +254,7 @@ if ( ! function_exists( 'cpschool_cancel_comment_reply_link' ) ) {
 	 * @return string
 	 */
 	function cpschool_cancel_comment_reply_link( $link ) {
-		$link = str_replace( 'id="cancel-comment-reply-link"', 'id="cancel-comment-reply-link" class="comment-reply-link btn btn-sm"', $link );
+		$link = str_replace( 'id="cancel-comment-reply-link"', 'id="cancel-comment-reply-link" class="comment-reply-link btn btn-secondary btn-sm"', $link );
 
 		return $link;
 	}

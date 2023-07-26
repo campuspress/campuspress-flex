@@ -47,14 +47,3 @@ if ( ! function_exists( 'cpschool_scripts' ) ) {
 		);
 	}
 } // endif function_exists( 'cpschool_scripts' ).
-
-if ( ! function_exists( 'cpschool_print_scripts' ) ) {
-	add_action( 'wp_print_scripts', 'cpschool_print_scripts', 100 );
-
-	/**
-	 * Print scripts in header
-	 */
-	function cpschool_print_scripts() {
-		echo '<script>window.MSInputMethodContext && document.documentMode && document.write(\'<script src="' . get_template_directory_uri() . '/js/css-vars-ponyfill.min.js' . '"><\x2fscript>\');</script>' . "\n";
-	}
-} // endif function_exists( 'cpschool_print_scripts' ).

@@ -45,7 +45,6 @@ CampusPress Flex uses the following third-party resources:
 -jQuery: https://jquery.org | MIT
 -AOS - Animate on scroll library: http://michalsnik.github.io/aos/ | MIT
 -JavaScript Cookie v2.2.0: https://github.com/js-cookie/js-cookie | MIT
--css-vars-ponyfill: https://jhildenbiddle.github.io/css-vars-ponyfill/#/ | MIT
 
 -IcoMoon - Free: https://icomoon.io/ | GNU GPL
 -60 Vicons: https://dribbble.com/shots/1663443-60-Vicons-Free-Icon-Set | Custom
