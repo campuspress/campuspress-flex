@@ -1,7 +1,11 @@
 <?php
 if ( has_nav_menu( 'secondary-left' ) || has_nav_menu( 'secondary-right' ) || apply_filters( 'navbar-secondary-force-show', false ) || get_theme_mod( 'secondary_logo' ) ) {
 	$nav_hover = get_theme_mod( 'nav_hover_dropdowns' );
+	
 	$secondary_logo = get_theme_mod( 'secondary_logo' );
+	if( $secondary_logo ) {
+		$secondary_logo_img = wp_get_attachment_image( $secondary_logo, 'full' );
+	}
 	$secondary_title = get_theme_mod( 'secondary_title' );
 
 	$secondary_logo_url = get_theme_mod( 'secondary_logo_url' );
@@ -12,7 +16,7 @@ if ( has_nav_menu( 'secondary-left' ) || has_nav_menu( 'secondary-right' ) || ap
 			<?php do_action( 'cpschool_navbar_secondary_container_start' ); ?>
 			
 			<?php
-			if( $secondary_logo || $secondary_title ) {
+			if( $secondary_logo_img || $secondary_title ) {
 				echo '<div class="navbar-brand-holder">';
 
 				if( $secondary_logo_url ) { 
@@ -21,8 +25,8 @@ if ( has_nav_menu( 'secondary-left' ) || has_nav_menu( 'secondary-right' ) || ap
 					<?php 
 				}
 				
-				if( $secondary_logo ) {
-					echo wp_get_attachment_image( $secondary_logo, 'full' );
+				if( $secondary_logo_img ) {
+					echo $secondary_logo_img;
 				}
 				else {
 					echo '<span class="navbar-brand-text">' . $secondary_title . '</span>';
