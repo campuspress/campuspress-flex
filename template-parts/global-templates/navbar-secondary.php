@@ -16,7 +16,7 @@ if ( has_nav_menu( 'secondary-left' ) || has_nav_menu( 'secondary-right' ) || ap
 			<?php do_action( 'cpschool_navbar_secondary_container_start' ); ?>
 			
 			<?php
-			if( $secondary_logo_img || $secondary_title ) {
+			if( !empty( $secondary_logo_img ) || $secondary_title ) {
 				echo '<div class="navbar-brand-holder">';
 
 				if( $secondary_logo_url ) { 
