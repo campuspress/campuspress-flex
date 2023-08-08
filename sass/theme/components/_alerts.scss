@@ -5,10 +5,10 @@
         margin-bottom: 0;
     }
     .close {
-        transition: opacity 0.5s;
-        opacity: 0.8;
+        opacity: 1 !important;
+        transition: color 0.5s;
         &:not(:disabled):not(.disabled):hover {
-            opacity: 1;
+            color: var(--color-accent-hl);
         }
     }
 }

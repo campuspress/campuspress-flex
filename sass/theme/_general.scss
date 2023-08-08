@@ -12,19 +12,6 @@
     @include media-breakpoint-up(md) {
         @include adjusted-size($font-size-base, '--body-font-size');
     }
-    &.site-boxed {
-        background-color: var(--color-bg-secondary);
-
-        .site {
-            @extend %has-background;
-            @extend %color-bg;
-            
-            padding: 0px;
-        }
-        &:not(.shadows-disabled) & {
-            @include adjusted-shadow(2);
-        }
-    }
 }
 
 @include editor-wrap() {

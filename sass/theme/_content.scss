@@ -49,11 +49,11 @@
 	}
 	input[type="button"]:not(.btn) {
 		@extend %btn;
-		@extend %color-btn-secondary;
+		@extend %btn-secondary;
 	}
 	input[type="submit"]:not(.btn) {
 		@extend %btn;
-		@extend %color-btn-primary;
+		@extend %btn-primary;
 	}
 
 	i {

@@ -8,7 +8,6 @@
     text-decoration: none;
     transition: background-color 0.5s ease, box-shadow 0.5s ease;
     font-weight: 600;
-    font-variation-settings: 'wght' 600;
     border-style: solid;
     border-width: 0;
     display: inline-block;
@@ -45,8 +44,7 @@
         opacity: 1;
     }
     &:focus-visible {
-        outline-style: solid;
-        outline-offset: 0px;
+        outline-offset: $input-btn-focus-width*1.5;
         outline-width: $input-btn-focus-width;
     }
     
@@ -70,38 +68,6 @@
     */
 }
 
-body.btn-style-outline .btn,
-.is-style-outline .btn,
-body.btn-style-outline %btn,
-.is-style-outline %btn,
-%btn-outline {
-    border-width: $btn-padding-y*0.4;
-    padding: $btn-padding-y*0.6 $btn-padding-x*0.9;
-    &:not(:hover):not(:focus-visible) {
-        background-color: transparent !important;
-        border-color: currentColor !important;
-    }
-    &:hover, 
-    &:focus-visible {
-        text-decoration: none;
-        opacity: 1;
-    }
-}
-
-.btn-lg {
-    @include button-size($btn-padding-y-lg*0.9, $btn-padding-x-lg*0.9, $btn-font-size-lg*0.9, $btn-line-height-lg*0.9, $btn-border-radius-lg);
-    @include media-breakpoint-up(lg) {
-        @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-line-height-lg, $btn-border-radius-lg);
-    }
-}
-
-.btn-sm {
-    @include button-size($btn-padding-y-sm*0.9, $btn-padding-x-sm*0.9, $btn-font-size-sm*0.9, $btn-line-height-sm*0.9, $btn-border-radius-sm);
-    @include media-breakpoint-up(lg) {
-        @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-line-height-sm, $btn-border-radius-sm);
-    }
-}
-
 .btn-block {
     display: block;
     width: 100%;
@@ -116,10 +82,56 @@ body.btn-style-outline %btn,
     opacity: 0.5;
 }
 
+%btn-primary,
 .btn-primary {
-    @extend %color-btn-primary;
+    background-color: var(--color-accent-hl);
+    border-color: var(--color-accent-hl);
+    color: var(--color-accent-hl-contrast);
+    &:hover {
+        box-shadow: 0 0 0 $input-btn-focus-width var(--color-accent-hl-a), 0 0 0 $input-btn-focus-width var(--color);
+        color: var(--color-accent-hl-contrast);
+    }
+    &:focus-visible {
+        outline-color: var(--color-accent);
+    }
+    body.btn-style-outline &:not(:hover):not(:focus-visible) {
+        color: var(--color-accent-hl);
+    }
 
 }
+%btn-secondary,
 .btn-secondary {
-    @extend %color-btn-secondary;
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-accent-contrast);
+    &:hover {
+        background-color: var(--color-accent);
+        box-shadow:0 0 0 $input-btn-focus-width var(--color-accent-a),  0 0 0 $input-btn-focus-width var(--color);
+        color: var(--color-accent-hl-contrast);
+    }
+    &:focus-visible {
+        outline-color: var(--color-accent-hl);
+    }
+    body.btn-style-outline &:not(:hover):not(:focus-visible) {
+        color: var(--color-accent);
+    }
+}
+
+body.btn-style-outline %btn,
+body.btn-style-outline .btn,
+.is-style-outline %btn,
+%btn-outline {
+    border-width: $btn-padding-y*0.4;
+    padding: $btn-padding-y*0.6 $btn-padding-x*0.9;
+    
+    &:not(:hover):not(:focus-visible) {
+        color: var(--color-accent);
+        background-color: transparent !important;
+        border-color: currentColor !important;
+    }
+    &:hover, 
+    &:focus-visible {
+        text-decoration: none;
+        opacity: 1;
+    }
 }

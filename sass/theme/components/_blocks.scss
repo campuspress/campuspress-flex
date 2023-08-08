@@ -219,7 +219,7 @@
 			body:not(.shadows-disabled) & {
 				@include adjusted-shadow();
 			}
-			> a:first-of-type {
+			> a:first-of-type:not(:hover) {
 				color: inherit !important;
 			}
 		}
@@ -463,15 +463,11 @@
 .wp-block-file .wp-element-button,
 .wp-block-search__button {
 		@extend %btn;
-		@extend %color-btn-secondary;
+		@extend %btn-secondary;
 }
 
-.wp-block-button.is-style-outline .wp-block-button__link,
-.wp-block-button__link {
-	@extend %color-btn-secondary;
-}
 .wp-block-button.is-style-outline .wp-block-button__link:not(:hover) {
-	color: var(--color-accent);
+	//color: var(--color-accent);
 }
 .wp-block-button__link.has-background {
     background-color: var(--color) !important;
@@ -497,14 +493,13 @@
 		color: var(--color) !important;
 	}
 }
+.btn-block .wp-block-button__link {
+	@extend .btn-block;
+}
 
-.wp-block-button__link {
-	.btn-block & {
-		@extend .btn-block;
-	}
-	.wp-block-button.is-style-outline & {
-		@extend %btn-outline;
-	}
+.wp-block-button.is-style-outline .wp-block-button__link:not(.has-background):not(.has-text-color) {
+	@extend %btn-secondary;
+	@extend %btn-outline;
 }
 .wp-block-file {
 	width: 100%;

@@ -52,42 +52,4 @@ $color-palletes: (
 %has-background {
     background-color: var(--color);
     color: var(--color-contrast);
-}
-
-%color-btn-primary {
-    background-color: var(--color-accent-hl);
-    border-color: var(--color-accent-hl);
-    color: var(--color-accent-hl-contrast);
-    &:hover {
-        box-shadow: 0 0 0 $input-btn-focus-width var(--color-accent-hl-a), 0 0 0 $input-btn-focus-width var(--color);
-        color: var(--color-accent-hl-contrast);
-    }
-    &:focus-visible {
-        outline-color: var(--color-accent);
-    }
-    body.btn-style-outline &:not(:hover) {
-        color: var(--color-accent-hl);
-    }
-}
-
-%color-btn-secondary {
-    background-color: var(--color-accent);
-    border-color: var(--color-accent);
-    color: var(--color-accent-contrast);
-    &:hover {
-        box-shadow:0 0 0 $input-btn-focus-width var(--color-accent-a),  0 0 0 $input-btn-focus-width var(--color);
-        color: var(--color-accent-hl-contrast);
-    }
-    body.btn-style-outline &:not(:hover) {
-        color: var(--color-accent);
-    }
-}
-
-%color-form-control {
-    border-color: var(--color-accent);
-    &:focus-visible {
-        border-color: var(--color-accent);
-        box-shadow:0 0 0 $input-btn-focus-width var(--color-accent-a),  0 0 0 $input-btn-focus-width var(--color);
-    }
-}
-
+} 

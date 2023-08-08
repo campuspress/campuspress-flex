@@ -16,18 +16,21 @@ div.editor-styles-wrapper {
     color: var(--color-bg-contrast) !important;
 }
 
+.editor-styles-wrapper > div > *,
 .wp-block {
     max-width: calc( var(--content-width) - #{$grid-gutter-width} );
+    margin-left: auto;
+    margin-right: auto;
 }
 
-[data-align=wide] {
+.editor-styles-wrapper > div > [data-align=wide] {
     left: 0;
     .wp-block {
         max-width: 100%;
     }
 }
 
-[data-align=full] {
+.editor-styles-wrapper > div > [data-align=full] {
     max-width: none;
     left: 0;
     width: auto;
@@ -36,7 +39,8 @@ div.editor-styles-wrapper {
     }
 }
 
-[data-align=left], [data-align=right] {
+.editor-styles-wrapper > div > [data-align=left], 
+.editor-styles-wrapper > div > [data-align=right] {
     margin: 0 auto;
     max-width: var(--site-width);
 

@@ -4,9 +4,7 @@
 // Textual form controls
 //
 
-.form-control {
-    @extend %color-form-control;
-    
+.form-control {    
     display: block;
     width: 100%;
     height: $input-height;
@@ -20,6 +18,11 @@
     background-clip: padding-box;
     border: $input-border-width solid $input-border-color;
     outline: none;
+    border-color: var(--color-accent);
+    &:focus-visible {
+        border-color: var(--color-accent);
+        box-shadow:0 0 0 $input-btn-focus-width var(--color-accent-a),  0 0 0 $input-btn-focus-width var(--color);
+    }
   
     // Note: This has no effect on <select>s in some browsers, due to the limited stylability of `<select>`s in CSS.
     @include border-radius($input-border-radius, 0);
