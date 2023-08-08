@@ -97,7 +97,7 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 				$labelledby = 'aria-labelledby="' . esc_attr( end( $matches[2] ) ) . '"';
 				$id         = ' id="' . esc_attr( end( $matches[2] ) ) . '-dropdown"';
 			}
-			$output .= "{$n}{$indent}<ul$id $class_names $labelledby role=\"menu\">{$n}";
+			$output .= "{$n}{$indent}<ul$id $class_names $labelledby>{$n}";
 		}
 
 		/**
@@ -114,7 +114,7 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 		 * @param stdClass $args   An object of wp_nav_menu() arguments.
 		 * @param int      $id     Current item ID.
 		 */
-		public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+		public function start_el( &$output, $item, $depth = 0, $args = null, $id = 0 ) {
 			if ( isset( $args->item_spacing ) && 'discard' === $args->item_spacing ) {
 				$t = '';
 				$n = '';
@@ -195,6 +195,13 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 			$class_names = join( ' ', $classes );
 			$class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
 
+			if ( isset( $args->item_spacing ) ) {
+				$menu_id = '-' . $args->menu_id;
+			}
+			else {
+				$menu_id = '';
+			}
+
 			/**
 			 * Filters the ID applied to a menu item's list item element.
 			 *
@@ -206,7 +213,7 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 			 * @param stdClass $args    An object of wp_nav_menu() arguments.
 			 * @param int      $depth   Depth of menu item. Used for padding.
 			 */
-			$id = apply_filters( 'nav_menu_item_id', 'menu-item-' . $args->menu_id . '-' . $item->ID, $item, $args, $depth );
+			$id = apply_filters( 'nav_menu_item_id', 'menu-item' . $menu_id . '-' . $item->ID, $item, $args, $depth );
 			$id = $id ? ' id="' . esc_attr( $id ) . '"' : '';
 
 			$output .= $indent . '<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement"' . $id . $class_names . '>';
@@ -240,7 +247,7 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 				$atts['role'] = 'menuitem';
 			}
 
-			if( $args->depth == 0 || $args->depth > ( $depth + 1 ) ) {
+			if( isset( $args->depth) && ( $args->depth == 0 || $args->depth > ( $depth + 1 ) ) ) {
 				$levels_allowed = true;
 			}
 			else {
@@ -433,7 +440,7 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 			}
 
 			if ( $collapse_button_target ) {
-				$item_output .= '<button data-toggle="collapse" data-target="#' . esc_attr( $collapse_button_target ) . '" class="collapsed" aria-expanded="false" aria-controls="' . esc_attr( $collapse_button_target ) . '"><span class="sr-only">' . esc_html__( 'Toggle submenu', 'cpschool' ) . '</span>' . apply_filters( 'cpschool_nav_collapse_button_content', '', $item, $args, $depth ) . '</button>';
+				$item_output .= '<button type="button" data-toggle="collapse" data-target="#' . esc_attr( $collapse_button_target ) . '" class="collapsed" aria-expanded="false" aria-controls="' . esc_attr( $collapse_button_target ) . '"><span class="sr-only">' . esc_html__( 'Toggle submenu', 'cpschool' ) . '</span>' . apply_filters( 'cpschool_nav_collapse_button_content', '', $item, $args, $depth ) . '</button>';
 			}
 
 			$item_output .= isset( $args->after ) ? $args->after : '';
