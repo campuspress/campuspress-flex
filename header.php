@@ -27,6 +27,8 @@ defined( 'ABSPATH' ) || exit;
 
 	<?php get_template_part( 'template-parts/global-templates/bar', 'alert' ); ?>
 
+	<?php do_action( 'cpschool_site_start' ); ?>
+
 	<?php
 	if( get_theme_mod( 'header_secondary_under_primary' ) == false ) {
 		get_template_part( 'template-parts/global-templates/navbar', 'secondary' );
@@ -35,8 +37,8 @@ defined( 'ABSPATH' ) || exit;
 	$header_main_logo_url = cpschool_get_home_url();
 	?>
 
-	<div id="wrapper-navbar-main-top" <?php cpschool_class( 'navbar-main-wrapper-top' ); ?>></div>
 	<?php // This is used to detect stickness of navigation ?>
+	<div id="wrapper-navbar-main-top" <?php cpschool_class( 'navbar-main-wrapper-top' ); ?>></div>
 	<div id="wrapper-navbar-main" <?php cpschool_class( 'navbar-main-wrapper', 'wrapper-navbar' ); ?> itemscope itemtype="http://schema.org/WebSite">
 		<nav id="navbar-main" <?php cpschool_class( 'navbar-main', 'navbar navbar-expand-md nav-styling-underline has-background has-header-main-bg-color-background-color' ); ?> aria-label="<?php esc_html_e( 'main', 'cpschool' ); ?>">
 			<div <?php cpschool_class( 'navbar-main-container', 'navbar-container' ); ?>>
