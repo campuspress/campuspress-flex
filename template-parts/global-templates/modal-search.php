@@ -8,14 +8,12 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<form <?php cpschool_class( 'modal-search-form', 'search-form d-flex' ); ?> method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-					<label class="sr-only" for="search-form-header"><?php esc_html_e( 'Search', 'cpschool' ); ?></label>
-					<input id="search-form-header" class="form-control form-control-lg" type="search" placeholder="<?php _e( 'Search...', 'cpschool' ); ?>" value="<?php the_search_query(); ?>" name="s">
-					<button class="btn btn-secondary btn-lg" type="submit" aria-controls="search-form-header">
-						<i aria-hidden="true" class="cps-icon cps-icon-search"></i>
-						<span class="sr-only"><?php _e( 'Search Site', 'cpschool' ); ?></span>
-					</button>
-				</form>
+				<?php 
+				get_search_form( array(
+					'field_class' => 'field form-control form-control-lg',
+					'btn_class' => 'submit btn btn-primary btn-lg',
+				) ); 
+				?>
 			</div>
 		</div>
 	</div>
