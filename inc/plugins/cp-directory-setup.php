@@ -38,7 +38,10 @@ if ( ! function_exists( 'cpschool_cp_directory_setup' ) ) {
 		add_filter(
 			'cpschool_post_meta_disallowed_post_types',
 			function( $disallowed_post_types ) {
-				$disallowed_post_types[] = 'cp_school_directory';
+				// Directory entries can now display meta data when enabled. 
+				if	( ! is_singular() || ! cpschool_get_content_theme_mod( 'meta', 'cp_school_directory', true ) ) {
+					$disallowed_post_types[] = 'cp_school_directory';
+				}
 
 				return $disallowed_post_types;
 			}

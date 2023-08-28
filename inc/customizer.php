@@ -2266,6 +2266,26 @@ if ( ! function_exists( 'cpschool_theme_customizer' ) ) {
 					)
 				);
 
+			// Section - Single Directory
+			Kirki::add_section(
+				'directory_entry',
+				array(
+					'title'       => esc_html__( 'Directory Entry', 'cpschool' ),
+					'description' => esc_html__( 'Settings related to single directory entries.', 'cpschool' ),
+					'panel'       => 'content_area',
+				)
+			);
+
+				cpschool_generate_content_common_settings(
+					'directory_entry',
+					'cp_school_directory',
+					array(
+						'sidebars'   => array( 'sidebar-right' ),
+						'meta'       => array(),
+						'navigation' => false,
+					)
+				);
+
 			// Section - Alerts
 			Kirki::add_section(
 				'alerts',

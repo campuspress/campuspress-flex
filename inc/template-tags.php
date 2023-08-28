@@ -306,34 +306,35 @@ if ( ! function_exists( 'cpschool_get_post_meta' ) ) {
 					<?php
 				}
 
-				// Categories.
-				if ( in_array( 'tax-category', $post_meta, true ) && has_category() ) {
-					?>
-					<li class="post-categories list-inline-item">
-						<span class="sr-only"><?php _e( 'Categories:', 'cpschool' ); ?></span>
-						<span class="meta-icon" aria-hidden="true">
-							<i class="cps-icon cps-icon-category"></i>
-						</span>
-						<span class="meta-text">
-							<?php the_category( ', ' ); ?>
-						</span>
-					</li>
-					<?php
-				}
-
-				// Tags.
-				if ( in_array( 'tax-post_tag', $post_meta, true ) && has_tag() ) {
-					?>
-					<li class="post-tags list-inline-item">
-						<span class="sr-only"><?php _e( 'Tags:', 'cpschool' ); ?></span>
-						<span class="meta-icon" aria-hidden="true">
-							<i class="cps-icon cps-icon-tag"></i>
-						</span>
-						<span class="meta-text">
-							<?php the_tags( '', ', ', '' ); ?>
-						</span>
-					</li>
-					<?php
+				// All enabled taxonomies
+				foreach( $post_meta as $single_post_meta ) {
+					// Categories.
+					if( substr( $single_post_meta, 0, 4 ) === "tax-" ) {
+						$taxonomy = substr( $single_post_meta, 4 );
+						if ( has_term( '', $taxonomy ) ) {
+							$icon = 'category';
+							if( $taxonomy == 'category' ) {
+								$data = get_the_category_list( ', ' );
+							} elseif( $taxonomy == 'post_tag' ) {
+								$data = get_the_tag_list( ', ' );
+								$icon = 'tag';
+							}
+							else {
+								$data = get_the_term_list( get_the_ID(), $taxonomy );
+							}
+							?>
+							<li class="post-categories list-inline-item">
+								<span class="sr-only"><?php _e( 'Categories:', 'cpschool' ); ?></span>
+								<span class="meta-icon" aria-hidden="true">
+									<i class="cps-icon cps-icon-<?php echo esc_attr( $icon ); ?>"></i>
+								</span>
+								<span class="meta-text">
+									<?php echo $data; ?>
+								</span>
+							</li>
+							<?php
+						}
+					}
 				}
 
 				// Comments link.
@@ -545,6 +546,8 @@ if ( ! function_exists( 'cpschool_get_active_sidebars' ) ) {
 			// TODO Consider using "cpschool_get_content_theme_mod" function in here.
 			elseif ( is_page() ) {
 				$option_name = 'pages';
+			} elseif ( is_singular( 'cp_school_directory' ) ) {
+				$option_name = 'directory_entry';
 			} elseif ( is_single() ) {
 				$option_name = 'posts';
 			}
@@ -756,6 +759,7 @@ if ( ! function_exists( 'cpschool_get_content_theme_mod' ) ) {
 			$option_prefix_map = array(
 				'post' => 'posts',
 				'page' => 'pages',
+				'cp_school_directory' => 'directory_entry',
 			);
 			if ( isset( $option_prefix_map[ $post_type ] ) ) {
 				$option_prefix = $option_prefix_map[ $post_type ];

@@ -289,13 +289,16 @@ if ( ! function_exists( 'cpschool_custom_logo_image_attrs' ) ) {
 	 */
 	function cpschool_custom_logo_image_attrs( $custom_logo_attr, $custom_logo_id, $blog_id ) {
 
-		$image_alt = get_post_meta( $custom_logo_id, '_wp_attachment_image_alt', true );
+		if ( ! $custom_logo_attr['alt'] && is_front_page() ) {
+			$custom_logo_attr['alt'] = get_post_meta( $custom_logo_id, '_wp_attachment_image_alt', true );
 
-		if ( empty( $image_alt ) ) {
-			$image_alt = get_bloginfo( 'name', 'display' ) . ' logo';
+			if ( $custom_logo_attr['alt'] ) {
+				$custom_logo_attr['title'] = get_the_title( $custom_logo_id );
+			}
+		} else {
+			$custom_logo_attr['alt']   = '';
+			$custom_logo_attr['title'] = 'Home';
 		}
-		$custom_logo_attr['alt'] = $image_alt;
-
 		$custom_logo_attr['class'] = 'img-fluid';
 
 		return $custom_logo_attr;

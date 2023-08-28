@@ -158,7 +158,7 @@ if ( ! function_exists( 'cpschool_generate_content_common_settings' ) ) {
 		}
 
 		// Post Navigation Settings.
-		if( isset( $options['navigation'] ) ) {
+		if( isset( $options['navigation'] ) && $options['navigation'] ) {
 			Kirki::add_field( 'cpschool', array(
 				'type'        => 'toggle',
 				'settings'    => $section.'_navigation',
