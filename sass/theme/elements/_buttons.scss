@@ -107,7 +107,7 @@
     &:hover {
         background-color: var(--color-accent);
         box-shadow:0 0 0 $input-btn-focus-width var(--color-accent-a),  0 0 0 $input-btn-focus-width var(--color);
-        color: var(--color-accent-hl-contrast);
+        color: var(--color-accent-contrast);
     }
     &:focus-visible {
         outline-color: var(--color-accent-hl);
