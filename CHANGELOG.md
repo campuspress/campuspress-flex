@@ -1,3 +1,11 @@
+= 0.9.9 =
+* Added Twitter icon
+* Added support for WP shortcode HTML5 gallery styles
+* Added support for Custom alt text for custom logo
+* Removed IE support (Polyfill)
+* Color system update
+* Added fix for Navigation accessibility
+
 = 0.9.8 =
 * Updated font files
 * Added filter `cpschool_get_customizer_fonts_options`
