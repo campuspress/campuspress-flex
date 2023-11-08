@@ -108,6 +108,7 @@ if( ! class_exists('CPDirectory') ) :
                     'wp-editor',
                     'wp-i18n',
                     'wp-element',
+                    'lodash'
                 ),
                 filemtime( "$blocks_dir/$editor_js" )
             );
