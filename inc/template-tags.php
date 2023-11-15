@@ -316,11 +316,11 @@ if ( ! function_exists( 'cpschool_get_post_meta' ) ) {
 							if( $taxonomy == 'category' ) {
 								$data = get_the_category_list( ', ' );
 							} elseif( $taxonomy == 'post_tag' ) {
-								$data = get_the_tag_list( ', ' );
+								$data = get_the_tag_list( '', ', ' );
 								$icon = 'tag';
 							}
 							else {
-								$data = get_the_term_list( get_the_ID(), $taxonomy );
+								$data = get_the_term_list( get_the_ID(), $taxonomy, '', ', ' );
 							}
 							?>
 							<li class="post-categories list-inline-item">
