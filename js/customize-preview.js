@@ -6,7 +6,7 @@
 
 ( function( $, api, _ ) {
 	//Set and pass to customizer header related dimensions so they can be used with CSS.
-	$('.navbar-brand').on('transitionend', function (e) {
+	$('.navbar-brand, #navbar-main').on('transitionend', function (e) {
 		if(!$('#wrapper-navbar-main').hasClass('navbar-sticks')) {
 			var navbarMainHeight = cpSchoolThemeHelpers.getNavbarHeight();
 			var headerDropboxGap = cpSchoolThemeHelpers.getHeaderDropboxGap(false);

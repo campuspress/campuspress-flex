@@ -104,16 +104,6 @@ if ( ! function_exists( 'cpschool_setup' ) ) {
 		// Add custom colors to blocks.
 		$color_pallete = array(
 			array(
-				'name'  => __( 'Black', 'cpschool' ),
-				'slug'  => 'black',
-				'color' => '#000',
-			),
-			array(
-				'name'  => __( 'White', 'cpschool' ),
-				'slug'  => 'white',
-				'color' => 'white',
-			),
-			array(
 				'name'  => __( 'Main', 'cpschool' ),
 				'slug'  => 'color-bg-alt',
 				'color' => get_theme_mod( 'color_bg_alt' ),
@@ -147,6 +137,16 @@ if ( ! function_exists( 'cpschool_setup' ) ) {
 				'name'  => __( 'Background', 'cpschool' ),
 				'slug'  => 'color-bg',
 				'color' => get_theme_mod( 'color_bg' ),
+			),
+			array(
+				'name'  => __( 'Black', 'cpschool' ),
+				'slug'  => 'black',
+				'color' => '#000',
+			),
+			array(
+				'name'  => __( 'White', 'cpschool' ),
+				'slug'  => 'white',
+				'color' => 'white',
 			),
 		);
 		// Skip the ones that are not set.
