@@ -12,6 +12,7 @@ $cpschool_includes = array(
 	'theme-settings'               => '/theme-settings.php',
 	'setup'                        => '/setup.php',
 	'hooks-custom'                 => '/hooks-custom.php',
+	'integrations'                 => '/plugins/integrations.php',
 	'plugin-update-checker'        => '/plugins/plugin-update-checker/plugin-update-checker.php',
 	'calendar-plus'                => '/plugins/calendar-plus.php',
 	'advanced-custom-fields-setup' => '/plugins/advanced-custom-fields-setup.php',

@@ -253,10 +253,11 @@ if ( ! function_exists( 'cpschool_get_post_meta' ) ) {
 						<?php } ?>
 						<span class="meta-text">
 							<?php
+							$author_link = apply_filters( 'cpschool_author_link', '<a href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author_meta( 'display_name' ) ) . '</a>' );
 							printf(
 								/* translators: %s: Author name */
 								__( 'By %s', 'cpschool' ),
-								'<a href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author_meta( 'display_name' ) ) . '</a>'
+								$author_link
 							);
 							?>
 						</span>
