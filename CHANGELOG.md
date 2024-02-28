@@ -1,3 +1,11 @@
+= 0.9.10 =
+* Improved accessibility in navigations
+* Improved accessibility in pagination
+* Added option to customize directory slug
+* Added "Hide Tagline on Mobile" option
+* Added Co Author Plus plugin compatibility
+* Updated Bootstrap to v4.6.2
+
 = 0.9.9 =
 * Added Twitter icon
 * Added support for WP shortcode HTML5 gallery styles
