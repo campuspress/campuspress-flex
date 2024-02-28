@@ -23,7 +23,6 @@ $enable-shadows: false;
 $border-radius: var(--roundness);
 $border-radius-lg: var(--roundness);
 $border-radius-sm: var(--roundness);
-//$enable-rounded: false;
 
 $box-shadow-sm: none;
 $box-shadow: none;
@@ -83,7 +82,6 @@ $breadcrumb-bg: null;
 $breadcrumb-divider-color: null;
 $breadcrumb-active-color: null;
 $breadcrumb-margin-bottom: null;
-//$breadcrumb-border-radius
 
 // Lists
 $list-inline-padding: 1rem;
@@ -120,8 +118,4 @@ $pagination-bg: null;
 $pagination-focus-outline: null;
 $pagination-focus-box-shadow: null;
 
-
-// Its impossible to use this concept while supporting IE.
-//$link-color: var(--link-color);
-//$dropdown-bg: var(--bg-color);
-//$dropdown-color: var(--text-color);
+$dropdown-link-hover-color: false;

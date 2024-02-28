@@ -125,14 +125,14 @@ var cpSchoolThemeHelpers = (function ($) {
 
     methods.enableHoverMenu = function () {
         // Handles dropdown in navbar.
-        $('.navbar-nav').on('touchend mouseenter focusin', '.dropdown', function (e) {
+        $('.navbar-nav').on('touchend mouseenter', '.dropdown', function (e) {
             var dropdown = this;
             var dropdownChild = $(dropdown).children('.dropdown-toggle[aria-expanded="false"]');
             if (dropdownChild.length) {
                 // Makes first touch open submenu and second open the link.
                 if (e.type == 'touchend') {
                     e.preventDefault();
-                    $('.navbar-nav').off('mouseenter focusin', '.dropdown');
+                    $('.navbar-nav').off('mouseenter', '.dropdown');
                 }
 
                 //Timeout will make fast mouse swipes through menu items not trigger it
@@ -147,7 +147,7 @@ var cpSchoolThemeHelpers = (function ($) {
                 }, e.type === 'mouseenter' ? 150 : 0);
             }
         });
-        $('.navbar-nav').on('mouseleave focusout', '.dropdown', function (e) {
+        $('.navbar-nav').on('mouseleave ', '.dropdown', function (e) {
             var dropdown = this;
 
             // Timeout will give time to move into the dropdown menu.

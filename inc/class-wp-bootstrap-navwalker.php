@@ -130,7 +130,6 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 			// wrappers and icons.
 			$linkmod_classes        = array();
 			$icon_classes           = array();
-			$collapse_button_target = false;
 
 			/**
 			 * Get an updated $classes array without linkmod or icon classes.
@@ -243,10 +242,6 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 				$atts['href'] = ! empty( $item->url ) ? $item->url : '#';
 			}
 
-			if ( ! $this->navbar ) {
-				$atts['role'] = 'menuitem';
-			}
-
 			if( isset( $args->depth) && ( $args->depth == 0 || $args->depth > ( $depth + 1 ) ) ) {
 				$levels_allowed = true;
 			}
@@ -254,40 +249,39 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 				$levels_allowed = false;
 			}
 
+			// Lets see what to use for dropdowns and collapses
+			$collapse_button_target = false;
+			$collapse_as_button = $atts['href'] !== '#' ? true : false;
+			$collapse_as_button = apply_filters( 'cpschool_nav_collapse_as_button', $collapse_as_button, $item, $args, $depth );
+
+			$dropdown_button_target = false;
+			$dropdown_as_button = $this->hover && $atts['href'] !== '#' ? true : false;
+			$dropdown_as_button = apply_filters( 'cpschool_nav_dropdown_as_button', $dropdown_as_button, $item, $args, $depth );
+
 			// If item has_children add atts to <a>.
 			if ( isset( $args->has_children ) && $args->has_children && $levels_allowed ) {
 				$atts['id']   = 'menu-item-dropdown-' . $args->menu_id . '-' . $item->ID;
 
 				if ( $this->navbar ) {
-					$atts['class'][]     = 'dropdown-toggle';
-					if ( ! $this->hover ) {
-						$atts['data-toggle'] = 'dropdown';
-						$atts['href']        = '#';
+					if ( ! $dropdown_as_button ) {
+						$atts['data-toggle']   = 'dropdown';
+						$atts['href']          = '#';
+						$atts['class'][]       = 'dropdown-toggle';
+						$atts['aria-haspopup'] = 'true';
+						$atts['aria-expanded'] = 'false';
+					} else {
+						$dropdown_button_target = $atts['id'] . '-dropdown';
 					}
 				} else {
-					$collpse_as_button = apply_filters( 'cpschool_nav_collapse_as_button', false, $item, $args, $depth );
 					$data_target = $atts['id'] . '-dropdown';
-					if ( ! $this->hover ) {
-						if ( ! $collpse_as_button ) {
-							$atts['class'][] = 'collapse-toggle';
-							$atts['data-toggle'] = 'collapse';
-							$atts['href']        = '#' . $data_target;
-						}
-					} else {
-						if ( ! $collpse_as_button ) {
-							$atts['class'][]     = 'dropdown-toggle';
-							$atts['data-target'] = '#' . $data_target;
-						}
+					if ( ! $collapse_as_button ) {
+						$atts['class'][] = 'collapse-toggle';
+						$atts['data-toggle'] = 'collapse';
+						$atts['href']        = '#' . $data_target;
 					}
-
-					if ( $collpse_as_button ) {
+					else {
 						$collapse_button_target = $data_target;
 					}
-				}
-
-				if( $this->navbar || !$collpse_as_button ) {
-					$atts['aria-haspopup'] = 'true';
-					$atts['aria-expanded'] = 'false';
 				}
 			} else {
 				// Handle custom actions that are opening modals
@@ -300,7 +294,6 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 			// Items in dropdowns use .dropdown-item instead of .nav-link.
 			if ( $depth > 0 ) {
 				$atts['class'][] = 'dropdown-item';
-				$atts['role']    = 'menuitem';
 			} else {
 				$atts['class'][] = 'nav-link';
 			}
@@ -406,9 +399,21 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 				// With no link mod type set this must be a standard <a> tag.
 				$item_output .= '</a>';
 
+				// If needed, adds dropdown button (when nav-link is not a button).
+				if ( $this->navbar ) {
+					if ( $dropdown_button_target ) {
+						$item_output .= '<button type="button" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false"><span class="sr-only">' . esc_html__( 'Toggle %s dropdown', 'cpschool' ) . '</span>' . apply_filters( 'cpschool_nav_collapse_button_content', '', $item, $args, $depth ) . '</button>';
+					}
+				} else {
+					if ( $collapse_button_target ) {
+						$item_output .= '<button type="button" data-toggle="collapse" data-target="#' . esc_attr( $collapse_button_target ) . '" class="collapse-toggle collapsed" aria-expanded="false" aria-controls="' . esc_attr( $collapse_button_target ) . '"><span class="sr-only">' . esc_html__( 'Toggle submenu', 'cpschool' ) . '</span>' . apply_filters( 'cpschool_nav_collapse_button_content', '', $item, $args, $depth ) . '</button>';
+					}
+				}
+
+				// Adds reusable block as dropdown content.
 				if ( $item->object == 'wp_block' ) {
 					if ( $this->navbar ) {
-						$class = 'dropdown-menu dropdown-megamenu-menu has-background';
+						$class = 'dropdown-menu dropdown-megamenu-menu';
 					} else {
 						$class = 'collapse collapse-menu collapse-megamenu';
 					}
@@ -421,7 +426,7 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 					global $translate_set;
 					ob_start();
 
-					//stupid workaround for just one bar as its tricky to support more
+					//workaround for just one bar as its tricky to support more
 					if ( ! $translate_set ) {
 						$translate_set = true
 						?>
@@ -437,10 +442,6 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 					$dropdown_content = ob_get_clean();
 					$item_output     .= '<ul id="' . esc_attr( $atts['id'] ) . '-dropdown" class="dropdown-menu" aria-labelledby="' . esc_attr( $atts['id'] ) . '"><li>' . $dropdown_content . '</li></ul>';
 				}
-			}
-
-			if ( $collapse_button_target ) {
-				$item_output .= '<button type="button" data-toggle="collapse" data-target="#' . esc_attr( $collapse_button_target ) . '" class="collapsed" aria-expanded="false" aria-controls="' . esc_attr( $collapse_button_target ) . '"><span class="sr-only">' . esc_html__( 'Toggle submenu', 'cpschool' ) . '</span>' . apply_filters( 'cpschool_nav_collapse_button_content', '', $item, $args, $depth ) . '</button>';
 			}
 
 			$item_output .= isset( $args->after ) ? $args->after : '';
