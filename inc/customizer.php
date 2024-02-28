@@ -243,6 +243,7 @@ if ( ! function_exists( 'cpschool_theme_customizer' ) ) {
 						),
 					)
 				);
+
 				// SETTING - Site Title Font Family
 				Kirki::add_field(
 					'cpschool',
@@ -2303,6 +2304,20 @@ if ( ! function_exists( 'cpschool_theme_customizer' ) ) {
 						'sidebars'   => array( 'sidebar-right' ),
 						'meta'       => array(),
 						'navigation' => false,
+					)
+				);
+
+				// SETTING - Custom directory slug
+				Kirki::add_field(
+					'cpschool',
+					array(
+						'type'      => 'text',
+						'settings'  => 'custom_directory_slug',
+						'label'     => __( 'Custom Directory URL Slug', 'cpschool' ),
+						'description' => esc_html__( 'Permalinks need to resaved after change.', 'cpschool' ),
+						'section'   => 'directory_entry',
+						'transport' => false,
+						'default'   => '',
 					)
 				);
 

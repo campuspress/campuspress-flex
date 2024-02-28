@@ -6,17 +6,26 @@ if ( ! function_exists( 'cpschool_cp_directory_setup' ) ) {
 	function cpschool_cp_directory_setup() {
 		if ( ! class_exists( 'CPDirectory' ) ) {
 			// Load the plugin.
-			include_once( 'cp-directory/cp-directory.php' );
+			include_once 'cp-directory/cp-directory.php';
 		}
+
+		$cp_school_directory_args = array(
+			'label'     => __( 'Directory', 'cpschool' ),
+			'public'    => true,
+			'supports'  => array( 'thumbnail', 'title', 'editor', 'page-attributes', 'excerpt' ),
+			'menu_icon' => 'dashicons-index-card',
+		);
+
+		$cp_school_directory_custom_slug = get_theme_mod( 'custom_directory_slug' );
+		if ( $cp_school_directory_custom_slug ) {
+			$cp_school_directory_args['rewrite'] = array( 'slug' => $cp_school_directory_custom_slug );
+		}
+
+		$cp_school_directory_args = apply_filters( 'cp_school_directory_args', '', $cp_school_directory_args );
 
 		register_post_type(
 			'cp_school_directory',
-			array(
-				'label'     => __( 'Directory', 'cpschool' ),
-				'public'    => true,
-				'supports'  => array( 'thumbnail', 'title', 'editor', 'page-attributes', 'excerpt' ),
-				'menu_icon' => 'dashicons-index-card',
-			)
+			$cp_school_directory_args
 		);
 		register_taxonomy(
 			'cp_directory_category',
@@ -38,8 +47,8 @@ if ( ! function_exists( 'cpschool_cp_directory_setup' ) ) {
 		add_filter(
 			'cpschool_post_meta_disallowed_post_types',
 			function( $disallowed_post_types ) {
-				// Directory entries can now display meta data when enabled. 
-				if	( ! is_singular() || ! cpschool_get_content_theme_mod( 'meta', 'cp_school_directory', true ) ) {
+				// Directory entries can now display meta data when enabled.
+				if ( ! is_singular() || ! cpschool_get_content_theme_mod( 'meta', 'cp_school_directory', true ) ) {
 					$disallowed_post_types[] = 'cp_school_directory';
 				}
 
@@ -156,7 +165,7 @@ if ( ! function_exists( 'cpschool_cp_directory_setup' ) ) {
 if ( ! function_exists( 'cpschool_cp_directory_load_more_button_class' ) ) {
 	// CP Directory button class
 	add_filter( 'cp_dir_load_more_button_class', 'cpschool_cp_directory_load_more_button_class' );
-	function cpschool_cp_directory_load_more_button_class($class) {
+	function cpschool_cp_directory_load_more_button_class( $class ) {
 		$class .= ' btn btn-secondary';
 		return $class;
 	}
