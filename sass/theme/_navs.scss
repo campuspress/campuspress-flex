@@ -295,6 +295,12 @@
             text-decoration: underline;
         }
     }
+    .navbar-brand-subtext-hide-mobile {
+        display: none;
+        @include media-breakpoint-up(md) {
+            display: block;
+        }
+    }
 
     .dropdown {
         &.show.shown .dropdown-menu {

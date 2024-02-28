@@ -223,6 +223,26 @@ if ( ! function_exists( 'cpschool_theme_customizer' ) ) {
 					)
 				);
 
+				// SETTING - Hide Tagline on Mobile
+				Kirki::add_field(
+					'cpschool',
+					array(
+						'type'        => 'toggle',
+						'settings'    => 'tagline_mobile_disable',
+						'label'       => esc_attr__( 'Hide Tagline on Mobile', 'cpschool' ),
+						'section'     => 'title_tagline',
+						'transport'   => 'postMessage',
+						'js_vars'     => array(
+							array(
+								'element'  => '.navbar-brand-subtext',
+								'function' => 'toggleClass',
+								'class'    => 'navbar-brand-subtext-hide-mobile',
+								'context'  => 'navbar-brand-subtext',
+								'value'    => true,
+							),
+						),
+					)
+				);
 				// SETTING - Site Title Font Family
 				Kirki::add_field(
 					'cpschool',
