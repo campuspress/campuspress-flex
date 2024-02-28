@@ -405,9 +405,9 @@ if ( ! function_exists( 'cpschool_pagination' ) ) {
 			array(
 				'mid_size'           => 2,
 				'prev_next'          => true,
-				'prev_text'          => __( '&laquo;', 'cpschool' ),
-				'next_text'          => __( '&raquo;', 'cpschool' ),
-				'screen_reader_text' => __( 'Posts navigation', 'cpschool' ),
+				'prev_text'          => '<span class="sr-only">' . __( 'Next page', 'cpschool' ) . ' </span><span aria-hidden="true">&laquo;</span>',
+				'next_text'          => '<span class="sr-only">' . __( 'Previous page', 'cpschool' ) . ' </span><span aria-hidden="true">&raquo;</span>',
+				'screen_reader_text' => __( 'Posts pagination', 'cpschool' ),
 				'type'               => 'array',
 				'current'            => max( 1, get_query_var( 'paged' ) ),
 			)
