@@ -164,3 +164,42 @@ body .calendarp:not(#nocalendarp) .agenda-minified-calendar .calendarp-date-item
         border-color: var(--color-boxes);
     }
 }
+
+.sidebar-widget-area-content {
+    .events-list-widget .event > ul {
+        padding-left: 0;
+    }
+
+    .widget_calendar td {
+        padding: .225rem;
+    }
+
+    .calendarp-events-by-cat >
+    .calendarp:not(#nocalendarp) >
+    .calendarp_calendar.agenda-minified-calendar {
+        .calendarp-date-item {
+            max-width: 100%;
+            width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+
+            .calendarp-date {
+                margin-bottom: 1rem;
+            }
+
+            .calendarp-events.columns {
+                padding: 0;
+                width: 100%;
+
+                .calendar-event {
+                    padding: 0;
+
+                    h3 {
+                        margin-bottom: .5rem;
+                    }
+                }
+            }
+        }
+    }
+
+}
