@@ -21,7 +21,7 @@ if ( ! function_exists( 'cpschool_cp_directory_setup' ) ) {
 			$cp_school_directory_args['rewrite'] = array( 'slug' => $cp_school_directory_custom_slug );
 		}
 
-		$cp_school_directory_args = apply_filters( 'cp_school_directory_args', '', $cp_school_directory_args );
+		$cp_school_directory_args = apply_filters( 'cp_school_directory_args', $cp_school_directory_args );
 
 		register_post_type(
 			'cp_school_directory',
