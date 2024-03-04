@@ -5,6 +5,7 @@
 * Added "Hide Tagline on Mobile" option
 * Added Co Author Plus plugin compatibility
 * Updated Bootstrap to v4.6.2
+* Fixed "Boxed Designs" issues
 
 = 0.9.9 =
 * Added Twitter icon
