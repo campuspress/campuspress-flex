@@ -1648,13 +1648,14 @@ if ( ! function_exists( 'cpschool_theme_customizer' ) ) {
 							'context'  => array( 'editor', 'front' ),
 						),
 					),
+					/*
 					'active_callback' => array(
 						array(
 							'setting'  => 'hero_main_style',
 							'operator' => 'in',
 							'value'    => array( 'full-title-over-img', 'full-title-under-img', 'img-under-title', 'img-above-title' ),
 						),
-					),
+					),*/
 				)
 			);
 
