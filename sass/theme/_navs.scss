@@ -125,10 +125,10 @@
         list-style: none;
         margin-right: math.div($nav-link-padding-x*2, 3);
         > li:first-child {
-            padding-top: $spacer*0.25;
+            margin-top: $spacer*0.25;
         }
         > li:last-child {
-            padding-bottom: $spacer*0.25;
+            margin-bottom: $spacer*0.25;
         }
     }
 
@@ -165,14 +165,16 @@
         //line-height: revert;
         padding-top: 0;
         padding-bottom: 0;
+        margin-right: math.div($nav-link-padding-x*2, 3);
         &::after {
             margin-left: 0;
         }
     }
 
     .navbar-hover-enabled & {
-        .dropdown .nav-link:not(.collapse-toggle) {
+        .dropdown:not(.has-styling) .nav-link:not(.collapse-toggle) {
             margin-right: 0;
+            flex-grow: 1;
         }
         button.dropdown-toggle[aria-expanded="true"] {
             color: var(--color-accent);
@@ -205,7 +207,7 @@
 
     .current-menu-item,
     .current-menu-ancestor {
-        a:not(.has-styling) {
+        > a:not(.has-styling) {
             color: var(--color-accent);
         }
     }
@@ -218,16 +220,16 @@
 }
 
 .nav:not(.navbar-nav) {
-    .nav-item.has-styling {
-        padding-top: $nav-link-padding-x*0.5;
-        padding-bottom: $nav-link-padding-x*0.5;
-    }
-
-    .dropdown {
+    .nav-item {
         display: flex;
         flex-wrap: wrap;
         align-items: center;
         column-gap: math.div($nav-link-padding-x*2, 3);
+        justify-content: space-between;
+        &.has-styling {
+            padding-top: $nav-link-padding-x*0.5;
+            padding-bottom: $nav-link-padding-x*0.5;
+        }
     }
     .collapse-menu {
         flex-basis: 100%;
@@ -235,7 +237,7 @@
 }
 
 .navbar {
-    z-index: 3;
+    z-index: 4;
     padding: $spacer * 0.25 $grid-gutter-width * 0.5;
     transition: padding 0.2s ease-in-out;
 
@@ -738,14 +740,14 @@
 
 #navbar-secondary {
     @include adjusted-size($font-size-base * 0.9, '--body-font-size', '--header-secondary-font-size');
-    z-index: 4;
+    z-index: 5;
     padding-top: calc( #{$spacer} / 2 * var(--header-secondary-padding-v) / 100 );
     padding-bottom: calc( #{$spacer} / 2 * var(--header-secondary-padding-v) / 100 );
     @include media-breakpoint-up(md) {
         @include adjusted-size($font-size-base, '--body-font-size', '--header-secondary-font-size');
     }
     .navbar-secondary-under-main & {
-        z-index: 2;
+        z-index: 3;
         margin-bottom: var(--header-main-gap-height);
     }
     #navbar-nav-secondary-left .nav > li:first-child > .nav-link {
