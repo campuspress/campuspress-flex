@@ -3,6 +3,7 @@
   "version": "0.9.0",
   "description": "CampusPress Flex Wordpress Theme",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "postinstall": "gulp copy-assets"
   },
