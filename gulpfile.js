@@ -1,22 +1,29 @@
 // Defining requirements
-var gulp = require('gulp');
-var plumber = require('gulp-plumber');
-var sass = require('gulp-sass')(require('sass'));
-var babel = require('gulp-babel');
-var postcss = require('gulp-postcss');
-var rename = require('gulp-rename');
-var concat = require('gulp-concat');
-var uglify = require('gulp-uglify');
-var imagemin = require('gulp-imagemin');
-var sourcemaps = require('gulp-sourcemaps');
-var browserSync = require('browser-sync').create();
-var del = require('del');
-var cleanCSS = require('gulp-clean-css');
-var replace = require('gulp-replace');
-var autoprefixer = require('autoprefixer');
+import gulp from 'gulp';
+import plumber from 'gulp-plumber';
+
+import dartSass from 'sass';
+import gulpSass from 'gulp-sass';
+const sass = gulpSass(dartSass);
+
+import babel from 'gulp-babel';
+import postcss from 'gulp-postcss';
+import rename from 'gulp-rename';
+import concat from 'gulp-concat';
+import uglify from 'gulp-uglify';
+import imagemin, { gifsicle, mozjpeg, optipng, svgo } from 'gulp-imagemin';
+import sourcemaps from 'gulp-sourcemaps';
+
+import sync from 'browser-sync';
+const browserSync = sync.create();
+
+import del from 'del';
+import cleanCSS from 'gulp-clean-css';
+import replace from 'gulp-replace';
+import autoprefixer from 'autoprefixer';
 
 // Configuration file to keep your code DRY
-var cfg = require('./gulpconfig.json');
+import cfg from './gulpconfig.json' with { type: "json" };
 var paths = cfg.paths;
 
 /**
@@ -54,16 +61,16 @@ gulp.task( 'imagemin', () =>
 			imagemin(
 				[
 					// Bundled plugins
-					imagemin.gifsicle( {
+					gifsicle( {
 						interlaced: true,
 						optimizationLevel: 3,
 					} ),
-					imagemin.mozjpeg( {
+					mozjpeg( {
 						quality: 100,
 						progressive: true,
 					} ),
-					imagemin.optipng(),
-					imagemin.svgo(),
+					optipng(),
+					svgo(),
 				],
 				{
 					verbose: true,
