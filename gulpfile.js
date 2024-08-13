@@ -16,7 +16,7 @@ import sourcemaps from 'gulp-sourcemaps';
 import sync from 'browser-sync';
 const browserSync = sync.create();
 
-import del from 'del';
+import {deleteSync} from 'del';
 import cleanCSS from 'gulp-clean-css';
 import replace from 'gulp-replace';
 import autoprefixer from 'autoprefixer';
@@ -88,7 +88,7 @@ gulp.task('minifycss', function () {
  * Run: gulp cleancss
  */
 gulp.task( 'cleancss', function() {
-	return del( paths.css + '/*.min.css*' );
+	return deleteSync( paths.css + '/*.min.css*' );
 } );
 
 /**
@@ -120,9 +120,6 @@ gulp.task( 'watch', function() {
 		],
 		gulp.series( 'scripts' )
 	);
-
-	// Inside the watch task.
-	gulp.watch( paths.imgsrc + '/**', gulp.series( 'imagemin-watch' ) );
 } );
 
 /**
@@ -173,7 +170,7 @@ gulp.task('scripts', function () {
 
 // Deleting any file inside the /src folder
 gulp.task('clean-source', function () {
-	return del(['src/**/*']);
+	return deleteSync(['src/**/*']);
 });
 
 // Run:
@@ -210,7 +207,7 @@ gulp.task('copy-assets', function (done) {
 
 // Deleting the files distributed by the copy-assets task
 gulp.task('clean-vendor-assets', function () {
-	return del([
+	return deleteSync([
 		paths.dev + '/js/bootstrap4',
 		paths.dev + '/sass/bootstrap4',
 		`${paths.js}/**/popper.min.js`,
@@ -225,7 +222,7 @@ gulp.task('clean-vendor-assets', function () {
  * Run: gulp clean-dist
  */
 gulp.task('clean-dist', function () {
-	return del( paths.dist );
+	return deleteSync( paths.dist );
 });
 
 // Run
@@ -278,7 +275,7 @@ gulp.task(
  * Run: gulp clean-dist-product
  */
 gulp.task('clean-dist-product', function () {
-	return del( paths.distprod );
+	return deleteSync( paths.distprod );
 });
 
 // Run
