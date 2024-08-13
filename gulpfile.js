@@ -11,7 +11,6 @@ import postcss from 'gulp-postcss';
 import rename from 'gulp-rename';
 import concat from 'gulp-concat';
 import uglify from 'gulp-uglify';
-import imagemin, { gifsicle, mozjpeg, optipng, svgo } from 'gulp-imagemin';
 import sourcemaps from 'gulp-sourcemaps';
 
 import sync from 'browser-sync';
@@ -48,37 +47,6 @@ gulp.task( 'sass', function() {
 		.pipe( sourcemaps.write( undefined, { sourceRoot: null } ) )
 		.pipe( gulp.dest( paths.css ) );
 } );
-
-/**
- * Optimizes images and copies images from src to dest.
- *
- * Run: gulp imagemin
- */
-gulp.task( 'imagemin', () =>
-	gulp
-		.src( paths.imgsrc + '/**' )
-		.pipe(
-			imagemin(
-				[
-					// Bundled plugins
-					gifsicle( {
-						interlaced: true,
-						optimizationLevel: 3,
-					} ),
-					mozjpeg( {
-						quality: 100,
-						progressive: true,
-					} ),
-					optipng(),
-					svgo(),
-				],
-				{
-					verbose: true,
-				}
-			)
-		)
-		.pipe( gulp.dest( paths.img ) )
-);
 
 /**
  * Minifies css files.
@@ -165,16 +133,6 @@ gulp.task( 'watch', function() {
 gulp.task( 'browser-sync', function () {
 	browserSync.init(cfg.browserSyncWatchFiles, cfg.browserSyncOptions);
 } );
-
-/**
- * Ensures the 'imagemin' task is complete before reloading browsers
- */
-gulp.task(
-	'imagemin-watch',
-	gulp.series('imagemin', function () {
-		browserSync.reload();
-	})
-);
 
 /**
  * Starts watcher with browser-sync.
