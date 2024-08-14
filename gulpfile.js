@@ -11,13 +11,12 @@ import postcss from 'gulp-postcss';
 import rename from 'gulp-rename';
 import concat from 'gulp-concat';
 import uglify from 'gulp-uglify';
-import imagemin, { gifsicle, mozjpeg, optipng, svgo } from 'gulp-imagemin';
 import sourcemaps from 'gulp-sourcemaps';
 
 import sync from 'browser-sync';
 const browserSync = sync.create();
 
-import del from 'del';
+import {deleteSync} from 'del';
 import cleanCSS from 'gulp-clean-css';
 import replace from 'gulp-replace';
 import autoprefixer from 'autoprefixer';
@@ -48,37 +47,6 @@ gulp.task( 'sass', function() {
 		.pipe( sourcemaps.write( undefined, { sourceRoot: null } ) )
 		.pipe( gulp.dest( paths.css ) );
 } );
-
-/**
- * Optimizes images and copies images from src to dest.
- *
- * Run: gulp imagemin
- */
-gulp.task( 'imagemin', () =>
-	gulp
-		.src( paths.imgsrc + '/**' )
-		.pipe(
-			imagemin(
-				[
-					// Bundled plugins
-					gifsicle( {
-						interlaced: true,
-						optimizationLevel: 3,
-					} ),
-					mozjpeg( {
-						quality: 100,
-						progressive: true,
-					} ),
-					optipng(),
-					svgo(),
-				],
-				{
-					verbose: true,
-				}
-			)
-		)
-		.pipe( gulp.dest( paths.img ) )
-);
 
 /**
  * Minifies css files.
@@ -120,7 +88,7 @@ gulp.task('minifycss', function () {
  * Run: gulp cleancss
  */
 gulp.task( 'cleancss', function() {
-	return del( paths.css + '/*.min.css*' );
+	return deleteSync( paths.css + '/*.min.css*' );
 } );
 
 /**
@@ -152,9 +120,6 @@ gulp.task( 'watch', function() {
 		],
 		gulp.series( 'scripts' )
 	);
-
-	// Inside the watch task.
-	gulp.watch( paths.imgsrc + '/**', gulp.series( 'imagemin-watch' ) );
 } );
 
 /**
@@ -165,16 +130,6 @@ gulp.task( 'watch', function() {
 gulp.task( 'browser-sync', function () {
 	browserSync.init(cfg.browserSyncWatchFiles, cfg.browserSyncOptions);
 } );
-
-/**
- * Ensures the 'imagemin' task is complete before reloading browsers
- */
-gulp.task(
-	'imagemin-watch',
-	gulp.series('imagemin', function () {
-		browserSync.reload();
-	})
-);
 
 /**
  * Starts watcher with browser-sync.
@@ -215,7 +170,7 @@ gulp.task('scripts', function () {
 
 // Deleting any file inside the /src folder
 gulp.task('clean-source', function () {
-	return del(['src/**/*']);
+	return deleteSync(['src/**/*']);
 });
 
 // Run:
@@ -252,7 +207,7 @@ gulp.task('copy-assets', function (done) {
 
 // Deleting the files distributed by the copy-assets task
 gulp.task('clean-vendor-assets', function () {
-	return del([
+	return deleteSync([
 		paths.dev + '/js/bootstrap4',
 		paths.dev + '/sass/bootstrap4',
 		`${paths.js}/**/popper.min.js`,
@@ -267,7 +222,7 @@ gulp.task('clean-vendor-assets', function () {
  * Run: gulp clean-dist
  */
 gulp.task('clean-dist', function () {
-	return del( paths.dist );
+	return deleteSync( paths.dist );
 });
 
 // Run
@@ -320,7 +275,7 @@ gulp.task(
  * Run: gulp clean-dist-product
  */
 gulp.task('clean-dist-product', function () {
-	return del( paths.distprod );
+	return deleteSync( paths.distprod );
 });
 
 // Run
