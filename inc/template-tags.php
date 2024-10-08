@@ -405,11 +405,12 @@ if ( ! function_exists( 'cpschool_pagination' ) ) {
 			array(
 				'mid_size'           => 2,
 				'prev_next'          => true,
-				'prev_text'          => '<span class="sr-only">' . __( 'Previous page', 'cpschool' ) . ' </span><span aria-hidden="true">&laquo;</span>',
-				'next_text'          => '<span class="sr-only">' . __( 'Next page', 'cpschool' ) . ' </span><span aria-hidden="true">&raquo;</span>',
+				'prev_text'          => '<span class="sr-only">' . __( 'Previous page', 'cpschool' ) . '</span><span aria-hidden="true">&laquo;</span>',
+				'next_text'          => '<span class="sr-only">' . __( 'Next page', 'cpschool' ) . '</span><span aria-hidden="true">&raquo;</span>',
 				'screen_reader_text' => __( 'Posts pagination', 'cpschool' ),
 				'type'               => 'array',
 				'current'            => max( 1, get_query_var( 'paged' ) ),
+				'before_page_number' => '<span class="sr-only">' . __( 'Page', 'cpschool' ) . '</span>',
 			)
 		);
 
@@ -422,7 +423,7 @@ if ( ! function_exists( 'cpschool_pagination' ) ) {
 				<?php
 				foreach ( $links as $key => $link ) {
 					?>
-					<li class="page-item <?php echo strpos( $link, 'current' ) ? 'active' : ''; ?>">
+					<li class="page-item<?php echo strpos( $link, 'current' ) ? ' active' : ''; ?>">
 						<?php echo str_replace( 'page-numbers', 'page-link', $link ); ?>
 					</li>
 					<?php
