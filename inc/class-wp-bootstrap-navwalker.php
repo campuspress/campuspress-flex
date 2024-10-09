@@ -265,7 +265,6 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 						$atts['data-toggle']   = 'dropdown';
 						$atts['href']          = '#';
 						$atts['class'][]       = 'dropdown-toggle';
-						$atts['aria-haspopup'] = 'true';
 						$atts['aria-expanded'] = 'false';
 						$atts['role']          = 'button';
 					} else {
@@ -402,7 +401,7 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 				// If needed, adds dropdown button (when nav-link is not a button).
 				if ( $this->navbar ) {
 					if ( $dropdown_button_target ) {
-						$item_output .= '<button type="button" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false"><span class="sr-only">' . esc_html( sprintf( __( 'Toggle "%s" dropdown', 'cpschool' ), $title_raw ) ) . '</span>' . apply_filters( 'cpschool_nav_collapse_button_content', '', $item, $args, $depth ) . '</button>';
+						$item_output .= '<button type="button" data-toggle="dropdown" class="dropdown-toggle" aria-expanded="false"><span class="sr-only">' . esc_html( sprintf( __( 'Toggle "%s" dropdown', 'cpschool' ), $title_raw ) ) . '</span>' . apply_filters( 'cpschool_nav_collapse_button_content', '', $item, $args, $depth ) . '</button>';
 					}
 				} elseif ( $collapse_button_target ) {
 						$item_output .= '<button type="button" data-toggle="collapse" data-target="#' . esc_attr( $collapse_button_target ) . '" class="collapse-toggle collapsed" aria-expanded="false" aria-controls="' . esc_attr( $collapse_button_target ) . '"><span class="sr-only">' . esc_html( sprintf( __( 'Toggle "%s" submenu', 'cpschool' ), $title_raw ) ) . '</span>' . apply_filters( 'cpschool_nav_collapse_button_content', '', $item, $args, $depth ) . '</button>';
