@@ -14,8 +14,18 @@ if ( ! function_exists( 'cpschool_acf_setup' ) ) {
 	function cpschool_acf_setup() {
 		if ( ! class_exists( 'ACF' ) ) {
 
-			// Load the plugin.
-			include_once( 'advanced-custom-fields/acf.php' );
+			// Check for Pro version in the plugins directory.
+			if ( file_exists( WP_PLUGIN_DIR . '/advanced-custom-fields-pro/acf.php' ) ) {
+				include_once( WP_PLUGIN_DIR . '/advanced-custom-fields-pro/acf.php' );
+
+				// Check for the Free version in the plugins directory.
+			} elseif ( file_exists( WP_PLUGIN_DIR . '/advanced-custom-fields/acf.php' ) ) {
+				include_once( WP_PLUGIN_DIR . '/advanced-custom-fields/acf.php' );
+
+				// Load the theme-bundled version if neither Pro nor Free exists.
+			} else {
+				include_once( 'advanced-custom-fields/acf.php' );
+			}
 
 			// Customize the url setting to fix incorrect asset URLs in ACF.
 			add_filter( 'acf/settings/url', 'cpschool_acf_settings_url' );
@@ -36,7 +46,7 @@ if ( ! function_exists( 'cpschool_acf_register_settings' ) ) {
 	// Registers all custom ACF settings.
 	add_action( 'after_setup_theme', 'cpschool_acf_register_settings' );
 	function cpschool_acf_register_settings() {
-		
+
 		if ( function_exists( 'acf_add_local_field_group' ) ) :
 
 			acf_add_local_field_group(
