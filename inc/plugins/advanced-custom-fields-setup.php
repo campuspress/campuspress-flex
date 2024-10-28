@@ -25,19 +25,19 @@ if ( ! function_exists( 'cpschool_acf_setup' ) ) {
 				// Load the theme-bundled version if neither Pro nor Free exists.
 			} else {
 				include_once( 'advanced-custom-fields/acf.php' );
+
+				// Customize the url setting to fix incorrect asset URLs in ACF.
+				add_filter( 'acf/settings/url', 'cpschool_acf_settings_url' );
+
+				// Disables ACF menu item.
+				add_filter( 'acf/settings/show_admin', '__return_false' );
 			}
-
-			// Customize the url setting to fix incorrect asset URLs in ACF.
-			add_filter( 'acf/settings/url', 'cpschool_acf_settings_url' );
-
-			// Disables ACF menu item.
-			add_filter( 'acf/settings/show_admin', '__return_false' );
 		}
 	}
 }
 
 if ( ! function_exists( 'cpschool_acf_settings_url' ) ) {
-	function cpschool_acf_settings_url( $url ) {
+	function cpschool_acf_settings_url() {
 		return get_template_directory_uri() . '/inc/plugins/advanced-custom-fields/';
 	}
 }
