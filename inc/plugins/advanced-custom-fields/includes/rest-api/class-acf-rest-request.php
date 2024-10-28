@@ -12,10 +12,6 @@ if ( class_exists( 'ACF_Rest_Request' ) ) {
 
 /**
  * Class ACF_Rest_Request
- *
- * @property-read string $object_sub_type
- * @property-read string $object_type
- * @property-read string $http_method
  */
 class ACF_Rest_Request {
 
@@ -51,9 +47,9 @@ class ACF_Rest_Request {
 	/**
 	 * Determine all required information from the current request.
 	 */
-	public function parse_request() {
+	public function parse_request( $request ) {
 		$this->set_http_method();
-		$this->set_current_route();
+		$this->set_current_route( $request );
 		$this->build_supported_routes();
 		$this->set_url_params();
 		$this->set_object_types();
@@ -87,23 +83,33 @@ class ACF_Rest_Request {
 	 * Determine the HTTP method of the current request.
 	 */
 	private function set_http_method() {
-		$this->http_method = strtoupper( $_SERVER['REQUEST_METHOD'] );
+		$this->http_method = 'GET';
 
+		if ( ! empty( $_SERVER['REQUEST_METHOD'] ) ) {
+			$this->http_method = strtoupper( sanitize_text_field( $_SERVER['REQUEST_METHOD'] ) );
+		}
+
+		// phpcs:disable WordPress.Security.NonceVerification.Recommended -- Verified elsewhere.
 		// HTTP method override for clients that can't use PUT/PATCH/DELETE. This is identical to WordPress'
 		// handling in \WP_REST_Server::serve_request(). This block of code should always be identical to that
 		// in core.
 		if ( isset( $_GET['_method'] ) ) {
-			$this->http_method = strtoupper( $_GET['_method'] );
+			$this->http_method = strtoupper( sanitize_text_field( $_GET['_method'] ) );
 		} elseif ( isset( $_SERVER['HTTP_X_HTTP_METHOD_OVERRIDE'] ) ) {
-			$this->http_method = strtoupper( $_SERVER['HTTP_X_HTTP_METHOD_OVERRIDE'] );
+			$this->http_method = strtoupper( sanitize_text_field( $_SERVER['HTTP_X_HTTP_METHOD_OVERRIDE'] ) );
 		}
+		// phpcs:enable WordPress.Security.NonceVerification.Recommended
 	}
 
 	/**
 	 * Get the current REST route as determined by WordPress.
 	 */
-	private function set_current_route() {
-		$this->current_route = empty( $GLOBALS['wp']->query_vars['rest_route'] ) ? null : $GLOBALS['wp']->query_vars['rest_route'];
+	private function set_current_route( $request ) {
+		if ( $request ) {
+			$this->current_route = $request->get_route();
+		} else {
+			$this->current_route = empty( $GLOBALS['wp']->query_vars['rest_route'] ) ? null : $GLOBALS['wp']->query_vars['rest_route'];
+		}
 	}
 
 	/**
@@ -141,13 +147,17 @@ class ACF_Rest_Request {
 		$this->supported_routes[] = '/wp/v2/(?P<rest_base>users)';
 		$this->supported_routes[] = '/wp/v2/(?P<rest_base>users)/(?P<id>[\d]+)';
 		$this->supported_routes[] = '/wp/v2/(?P<rest_base>users)/me';
+
+		// Add comment routes.
+		$this->supported_routes[] = '/wp/v2/(?P<rest_base>comments)';
+		$this->supported_routes[] = '/wp/v2/(?P<rest_base>comments)/(?P<id>[\d]+)';
 	}
 
 	/**
 	 * Loop through supported routes to find matching pattern. Use matching pattern to determine any URL parameters.
 	 */
 	private function set_url_params() {
-		if ( ! $this->supported_routes ) {
+		if ( ! $this->supported_routes || ! is_string( $this->current_route ) ) {
 			return;
 		}
 
@@ -183,7 +193,8 @@ class ACF_Rest_Request {
 		// check post types then check taxonomies if a matching post type cannot be found.
 		if ( $base === 'users' ) {
 			$this->object_type = $this->object_sub_type = 'user';
-
+		} elseif ( $base === 'comments' ) {
+			$this->object_type = $this->object_sub_type = 'comment';
 		} elseif ( $post_type = $this->get_post_type_by_rest_base( $base ) ) {
 			$this->object_type     = 'post';
 			$this->object_sub_type = $post_type->name;
@@ -233,5 +244,4 @@ class ACF_Rest_Request {
 
 		return null;
 	}
-
 }
