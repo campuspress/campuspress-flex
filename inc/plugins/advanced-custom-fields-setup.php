@@ -28,10 +28,10 @@ if ( ! function_exists( 'cpschool_acf_setup' ) ) {
 
 				// Customize the url setting to fix incorrect asset URLs in ACF.
 				add_filter( 'acf/settings/url', 'cpschool_acf_settings_url' );
-
-				// Disables ACF menu item.
-				add_filter( 'acf/settings/show_admin', '__return_false' );
 			}
+
+			// Disables ACF menu item.
+			add_filter( 'acf/settings/show_admin', '__return_false' );
 		}
 	}
 }
