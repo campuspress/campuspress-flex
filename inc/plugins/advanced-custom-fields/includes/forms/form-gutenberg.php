@@ -9,17 +9,16 @@ if ( ! class_exists( 'ACF_Form_Gutenberg' ) ) :
 	class ACF_Form_Gutenberg {
 
 		/**
-		 *  __construct
+		 * __construct
 		 *
-		 *  Setup for class functionality.
+		 * Setup for class functionality.
 		 *
-		 *  @date    13/12/18
-		 *  @since   5.8.0
+		 * @date    13/12/18
+		 * @since   5.8.0
 		 *
-		 *  @param   void
-		 *  @return  void
+		 * @param   void
+		 * @return  void
 		 */
-
 		function __construct() {
 
 			// Add actions.
@@ -30,15 +29,15 @@ if ( ! class_exists( 'ACF_Form_Gutenberg' ) ) :
 		}
 
 		/**
-		 *  enqueue_block_editor_assets
+		 * enqueue_block_editor_assets
 		 *
-		 *  Allows a safe way to customize Guten-only functionality.
+		 * Allows a safe way to customize Guten-only functionality.
 		 *
-		 *  @date    14/12/18
-		 *  @since   5.8.0
+		 * @date    14/12/18
+		 * @since   5.8.0
 		 *
-		 *  @param   void
-		 *  @return  void
+		 * @param   void
+		 * @return  void
 		 */
 		function enqueue_block_editor_assets() {
 
@@ -48,20 +47,27 @@ if ( ! class_exists( 'ACF_Form_Gutenberg' ) ) :
 			// Call edit_form_after_title manually.
 			add_action( 'block_editor_meta_box_hidden_fields', array( $this, 'block_editor_meta_box_hidden_fields' ) );
 
-			// Cusotmize editor metaboxes.
+			// Customize editor metaboxes.
 			add_filter( 'filter_block_editor_meta_boxes', array( $this, 'filter_block_editor_meta_boxes' ) );
+
+			// Trigger ACF enqueue scripts as the site editor doesn't trigger this from form-post.php
+			acf_enqueue_scripts(
+				array(
+					'uploader' => true,
+				)
+			);
 		}
 
 		/**
-		 *  add_meta_boxes
+		 * add_meta_boxes
 		 *
-		 *  Modify screen for Gutenberg.
+		 * Modify screen for Gutenberg.
 		 *
-		 *  @date    13/12/18
-		 *  @since   5.8.0
+		 * @date    13/12/18
+		 * @since   5.8.0
 		 *
-		 *  @param   void
-		 *  @return  void
+		 * @param   void
+		 * @return  void
 		 */
 		function add_meta_boxes() {
 
@@ -70,15 +76,15 @@ if ( ! class_exists( 'ACF_Form_Gutenberg' ) ) :
 		}
 
 		/**
-		 *  block_editor_meta_box_hidden_fields
+		 * block_editor_meta_box_hidden_fields
 		 *
-		 *  Modify screen for Gutenberg.
+		 * Modify screen for Gutenberg.
 		 *
-		 *  @date    13/12/18
-		 *  @since   5.8.0
+		 * @date    13/12/18
+		 * @since   5.8.0
 		 *
-		 *  @param   void
-		 *  @return  void
+		 * @param   void
+		 * @return  void
 		 */
 		function block_editor_meta_box_hidden_fields() {
 
@@ -158,26 +164,25 @@ if ( ! class_exists( 'ACF_Form_Gutenberg' ) ) :
 		}
 
 		/**
-		 *  acf_validate_save_post
+		 * acf_validate_save_post
 		 *
-		 *  Ignore errors during the Gutenberg "save metaboxes" AJAX request.
-		 *  Allows data to save and prevent UX issues.
+		 * Ignore errors during the Gutenberg "save metaboxes" AJAX request.
+		 * Allows data to save and prevent UX issues.
 		 *
-		 *  @date    16/12/18
-		 *  @since   5.8.0
+		 * @date    16/12/18
+		 * @since   5.8.0
 		 *
-		 *  @param   void
-		 *  @return  void
+		 * @param   void
+		 * @return  void
 		 */
 		function acf_validate_save_post() {
 
 			// Check if current request came from Gutenberg.
-			if ( isset( $_GET['meta-box-loader'] ) ) {
+			if ( isset( $_GET['meta-box-loader'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Verified elsewhere.
 				acf_reset_validation_errors();
 			}
 		}
 	}
 
 	acf_new_instance( 'ACF_Form_Gutenberg' );
-
 endif;
