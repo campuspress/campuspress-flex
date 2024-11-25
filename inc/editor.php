@@ -24,7 +24,7 @@ if ( ! function_exists( 'cpschool_add_editor_styles' ) ) {
 }
 
 if ( ! function_exists( 'cpschool_block_editor_settings' ) ) {
-	add_filter( 'block_editor_settings', 'cpschool_block_editor_settings', 10, 2 );
+	add_filter( 'block_editor_settings_all', 'cpschool_block_editor_settings', 10, 2 );
 
 	function cpschool_block_editor_settings( $editor_settings, $post ) {
 		$editor_settings['styles'][] = array( 'css' => '.editor-styles-wrapper { font-family: "Inter var"; }' );

@@ -43,7 +43,7 @@
     article {
         @extend %color-boxes;
         @extend %has-background;
-        
+
         height: 100%;
         margin-bottom: 0px;
         padding: math.div($spacer*2, 3);
@@ -102,11 +102,11 @@ body.blog.hide-hero-page-title {//CUSTOMIZER-ONLY
     }
 }
 
-.entry-title a, 
+.entry-title a,
 %entry-title-a {
     text-decoration: none;
     & {
-        color: var(--color-contrast); 
+        color: var(--color-contrast);
     }
     &:hover {
         text-decoration: underline;
@@ -118,7 +118,7 @@ body.blog.hide-hero-page-title {//CUSTOMIZER-ONLY
 
 .entry-content {
 	@include clearfix;
-    
+
 	> *:first-child {
 		margin-top: 0;
 	}
@@ -165,19 +165,23 @@ body.blog.hide-hero-page-title {//CUSTOMIZER-ONLY
     h6:not(:last-child), .h6:not(:last-child) {
         margin-bottom: math.div($spacer, 3) * 0.75;
     }
-    
+
     // Makes it possible to use spacer block to set top margin.
     > .wp-block-spacer:first-child + * {
         margin-top: 0;
     }
 
     .animations-enabled & {
-        > .alignfull, 
+        > .alignfull,
         > .alignwide,
         > .aligncenter,
-        > .alignleft
+        > .alignleft,
         > .alignright {
             opacity: 0;
+
+			&.has-parallax {
+				opacity: initial;
+			}
         }
     }
 }

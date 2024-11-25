@@ -75,9 +75,17 @@
 
 	// Handles basic animations on the site.
 	if (cpSchoolData.animations) {
-		$('.entry-content > .alignfull, .entry-content > .alignwide, .entry-content > .aligncenter').attr('data-aos', 'fade-up');
-		$('.entry-content > .alignleft').attr('data-aos', 'fade-right');
-		$('.entry-content > .alignright').attr('data-aos', 'fade-left');
+		$('.entry-content > .alignfull, .entry-content > .alignwide, .entry-content > .aligncenter')
+			.not('.has-parallax')
+			.attr('data-aos', 'fade-up');
+
+		$('.entry-content > .alignleft')
+			.not('.has-parallax')
+			.attr('data-aos', 'fade-right');
+
+		$('.entry-content > .alignright')
+			.not('.has-parallax')
+			.attr('data-aos', 'fade-left');
 
 		AOS.init({
 			offset: 150,

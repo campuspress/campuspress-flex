@@ -18,6 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Singleton class
  */
+#[AllowDynamicProperties]
 final class Kirki_Toolkit {
 
 	/**
