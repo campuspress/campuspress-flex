@@ -103,7 +103,7 @@ gulp.task( 'styles', function( callback ) {
 /**
  * Watches .scss, .js and image files for changes.
  * On change re-runs corresponding build task.
- * 
+ *
  * Run: gulp watch
  */
 gulp.task( 'watch', function() {
@@ -134,7 +134,7 @@ gulp.task( 'browser-sync', function () {
 /**
  * Starts watcher with browser-sync.
  * Browser-sync reloads page automatically on your browser.
- * 
+ *
  * Run: gulp watch-bs
  */
 gulp.task('watch-bs', gulp.parallel('browser-sync', 'watch'));
@@ -221,8 +221,10 @@ gulp.task('clean-vendor-assets', function () {
  *
  * Run: gulp clean-dist
  */
-gulp.task('clean-dist', function () {
-	return deleteSync( paths.dist );
+gulp.task('clean-dist', function (done) {
+	deleteSync( paths.dist );
+
+	done();
 });
 
 // Run
