@@ -304,3 +304,30 @@ if ( ! function_exists( 'cpschool_custom_logo_image_attrs' ) ) {
 		return $custom_logo_attr;
 	}
 }
+
+if ( ! function_exists( 'cpschool_add_acf_notice_on_themes_page' ) ) {
+	add_action( 'admin_notices', 'cpschool_add_acf_notice_on_themes_page' );
+
+	/**
+	 * Displays an admin notice on the Themes page if ACF is not active.
+	 *
+	 * @return void
+	 */
+	function cpschool_add_acf_notice_on_themes_page() {
+		// Check if we are on the Themes page.
+		$current_screen = get_current_screen();
+
+		if ( $current_screen && 'themes' === $current_screen->id ) {
+			// Check if ACF is active.
+			if ( ! class_exists( 'ACF' ) ) {
+				?>
+				<div class="notice notice-warning">
+					<p>
+						<?php esc_html_e( 'To enable all CampusPress Flex features, please install the "Secure Custom Fields" plugin.', 'cpschool' ); ?>
+					</p>
+				</div>
+				<?php
+			}
+		}
+	}
+}
