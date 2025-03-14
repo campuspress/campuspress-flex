@@ -34,10 +34,10 @@
         }
     }
 
-    .screen-reader-text { 
-        @extend .sr-only; 
+    .screen-reader-text {
+        @extend .sr-only;
     }
-    
+
     a.skip-link {
       position: fixed;
       z-index: 1000;
@@ -80,4 +80,11 @@ body.singular:not(.has-sidebar) #content.container, .container-content {
 
 .cps-icon.cps-dashicon {
     font-family: dashicons !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*, *::before, *::after {
+		animation: none !important;
+		transition: none !important;
+	}
 }

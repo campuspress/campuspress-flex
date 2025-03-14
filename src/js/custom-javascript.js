@@ -73,8 +73,11 @@
 		});
 	}
 
+	// Check if user prefers reduced motion.
+	const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
 	// Handles basic animations on the site.
-	if (cpSchoolData.animations) {
+	if (!prefersReducedMotion && cpSchoolData.animations) {
 		$('.entry-content > .alignfull, .entry-content > .alignwide, .entry-content > .aligncenter')
 			.not('.has-parallax')
 			.attr('data-aos', 'fade-up');
