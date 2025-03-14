@@ -182,6 +182,10 @@ body.blog.hide-hero-page-title {//CUSTOMIZER-ONLY
 			&.has-parallax {
 				opacity: initial;
 			}
+
+			@media (prefers-reduced-motion: reduce) {
+				opacity: initial;
+			}
         }
     }
 }
