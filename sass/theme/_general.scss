@@ -87,4 +87,8 @@ body.singular:not(.has-sidebar) #content.container, .container-content {
 		animation: none !important;
 		transition: none !important;
 	}
+
+	[data-aos] {
+		opacity: 1 !important;
+	}
 }

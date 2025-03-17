@@ -229,10 +229,3 @@ body.navbar-main-has-hero-transparency.has-hero-image {
         }
     }
 }
-
-@media (prefers-reduced-motion: reduce) {
-	.hero-content,
-	.hero-image-holder {
-		opacity: 1 !important;
-	}
-}
