@@ -190,5 +190,7 @@ if ( ! function_exists( 'cpschool_setup' ) ) {
 
 		// Enables WP shortcode HTML5 gallery styles
 		add_filter( 'use_default_gallery_style', '__return_true' );
+
+		add_theme_support( 'pubman-form-css' );
 	}
 }
