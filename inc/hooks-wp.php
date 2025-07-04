@@ -323,7 +323,7 @@ if ( ! function_exists( 'cpschool_add_acf_notice_on_themes_page' ) ) {
 				?>
 				<div class="notice notice-warning">
 					<p>
-						<?php esc_html_e( 'To enable all CampusPress Flex features, please install the "Secure Custom Fields" plugin.', 'cpschool' ); ?>
+						<?php esc_html_e( 'To enable all CampusPress Flex features, please install the "Advanced Custom Fields" plugin.', 'cpschool' ); ?>
 					</p>
 				</div>
 				<?php
