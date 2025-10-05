@@ -28,7 +28,7 @@ get_header();
 				}
 				?>
 
-				<h2><?php echo esc_html( 'Posts by', 'cpschool' ) . ' ' . esc_html( $curauth->nickname ); ?>:</h2>
+				<h2><?php echo esc_html__( 'Posts by', 'cpschool' ) . ' ' . esc_html( $curauth->nickname ); ?>:</h2>
 
 				<ul class="mb-3">
 					<!-- The Loop -->
