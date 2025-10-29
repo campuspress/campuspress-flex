@@ -283,7 +283,14 @@ if ( ! function_exists( 'cpschool_get_post_meta' ) ) {
 						<li class="post-modified list-inline-item">
 							<span class="meta-text">
 								<small>
-									(<?php _e( 'Updated On ', 'cpschool' ); ?> <?php the_modified_date( get_option( 'date_format' ) ); ?>)
+									(<?php
+									printf(
+										/* translators: %1$s: date, %2$s: time */
+										esc_html__( 'Updated on %1$s at %2$s', 'cpschool' ),
+										esc_html( get_the_modified_date( get_option( 'date_format' ) ) ),
+										esc_html( get_the_modified_date( get_option( 'time_format' ) ) )
+									);
+									?>)
 								</small>
 							</span>
 						</li>
@@ -300,8 +307,14 @@ if ( ! function_exists( 'cpschool_get_post_meta' ) ) {
 								<i class="cps-icon cps-icon-calendar"></i>
 							</span>
 						<span class="meta-text">
-							<?php _e( 'Updated On ', 'cpschool' ); ?>
-							<?php the_modified_date( get_option( 'date_format' ) ); ?>
+							<?php
+							printf(
+								/* translators: %1$s: date, %2$s: time */
+								esc_html__( 'Updated on %1$s at %2$s', 'cpschool' ),
+								esc_html( get_the_modified_date( get_option( 'date_format' ) ) ),
+								esc_html( get_the_modified_date( get_option( 'time_format' ) ) )
+							);
+							?>
 						</span>
 					</li>
 					<?php

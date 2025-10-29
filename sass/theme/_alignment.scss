@@ -43,7 +43,7 @@
 
 #{$el-align-full} {
 	left: calc(50% - 50vw);
-	max-width: 100vw;
+	max-width: 100vw !important;
 	position: relative;
 	width: 100vw;
 	+ #{$el-align-full} {
