@@ -101,17 +101,15 @@ defined( 'ABSPATH' ) || exit;
 
 					<div id="navbar-main-nav-buttons">
 						<ul class="nav navbar-nav navbar-button-nav-right">
-							<?php if ( get_theme_mod( 'header_main_enable_search' ) || is_customize_preview() ) { ?>
-								<li id="navbar-main-btn-search" <?php cpschool_class( 'navbar-main-btn-search' ); ?>>
-									<button type="button" class="btn btn-secondary nav-link has-styling" data-toggle="modal" data-target="#modal-search">
-										<i aria-hidden="true" class="cps-icon cps-icon-search"></i>
-										<span aria-hidden="true" class="d-none"><?php _e( 'Search' ); ?></span>
-										<span class="sr-only"><?php _e( 'Toggle search interface', 'cpschool' ); ?></span>
-									</button>
-								</li>
-							<?php } ?>
-
-							<?php
+						<?php if ( get_theme_mod( 'header_main_enable_search' ) || is_customize_preview() ) { ?>
+							<li id="navbar-main-btn-search" <?php cpschool_class( 'navbar-main-btn-search' ); ?>>
+								<button type="button" class="btn btn-secondary nav-link has-styling" data-bs-toggle="modal" data-bs-target="#modal-search">
+									<i aria-hidden="true" class="cps-icon cps-icon-search"></i>
+									<span aria-hidden="true" class="d-none"><?php _e( 'Search' ); ?></span>
+									<span class="sr-only"><?php _e( 'Toggle search interface', 'cpschool' ); ?></span>
+								</button>
+							</li>
+						<?php } ?>							<?php
 							$btn_slidein_classes = array( 'btn-modal-slide-in-menu-holder' );
 							if ( has_nav_menu( 'desktop-extended' ) ) {
 								$btn_slidein_classes[] = 'has-desktop';
@@ -120,13 +118,13 @@ defined( 'ABSPATH' ) || exit;
 								$btn_slidein_classes[] = 'has-mobile';
 							}
 							?>
-							<li id="navbar-main-btn-slide-in-menu" <?php cpschool_class( 'navbar-main-btn-slide-in', $btn_slidein_classes ); ?>>
-								<button type="button" class="btn btn-secondary nav-link has-styling" data-toggle="modal" data-target="#modal-slide-in-menu">
-									<i aria-hidden="true" class="cps-icon cps-icon-menu"></i>
-									<span aria-hidden="true" class="d-none"><?php _e( 'Menu' ); ?></span>
-									<span class="sr-only"><?php _e( 'Toggle extended navigation', 'cpschool' ); ?></span>
-								</button>
-							</li>
+						<li id="navbar-main-btn-slide-in-menu" <?php cpschool_class( 'navbar-main-btn-slide-in', $btn_slidein_classes ); ?>>
+							<button type="button" class="btn btn-secondary nav-link has-styling" data-bs-toggle="modal" data-bs-target="#modal-slide-in-menu">
+								<i aria-hidden="true" class="cps-icon cps-icon-menu"></i>
+								<span aria-hidden="true" class="d-none"><?php _e( 'Menu' ); ?></span>
+								<span class="sr-only"><?php _e( 'Toggle extended navigation', 'cpschool' ); ?></span>
+							</button>
+						</li>
 						</ul>
 					</div>
 				</div>

@@ -13,7 +13,19 @@ $font-size-base: 1em;
 $font-size-lg: $font-size-base * 1.25;
 $font-size-sm: $font-size-base * .875;
 
-$close-font-size: 1.5rem;
+// Bootstrap 5: close button is now btn-close
+$btn-close-width: 1em;
+$btn-close-height: $btn-close-width;
+$btn-close-padding-x: .25em;
+$btn-close-padding-y: $btn-close-padding-x;
+$btn-close-color: currentColor;
+$btn-close-bg: null;
+$btn-close-focus-shadow: null;
+$btn-close-opacity: .5;
+$btn-close-hover-opacity: .75;
+$btn-close-focus-opacity: 1;
+$btn-close-disabled-opacity: .25;
+$btn-close-white-filter: null;
 
 $grid-gutter-width: $spacer;
 
@@ -29,8 +41,8 @@ $box-shadow: none;
 $box-shadow-lg: none;
 
 $link-decoration: underline;
-$link-color: null;
-$link-hover-color: null;
+// $link-color: null; // Bootstrap 5 doesn't allow null for colors
+// $link-hover-color: null; // Bootstrap 5 doesn't allow null for colors
 $link-hover-decoration: null;
 
 $nav-link-height: 0;
@@ -49,10 +61,10 @@ $dropdown-spacer: $spacer*0.2;
 $caret-width: .3em;
 $caret-spacing: $caret-width*1.5;
 $dropdown-border-width: 0;
-$dropdown-bg: null;
-$dropdown-link-active-bg: null;
-$dropdown-link-hover-bg: null;
-$dropdown-color: null;
+// $dropdown-bg: null; // Bootstrap 5 doesn't allow null for colors
+// $dropdown-link-active-bg: null; // Bootstrap 5 doesn't allow null for colors
+// $dropdown-link-hover-bg: null; // Bootstrap 5 doesn't allow null for colors
+// $dropdown-color: null; // Bootstrap 5 doesn't allow null for colors
 
 $btn-active-box-shadow: none;
 $btn-font-size: 1em;
@@ -72,15 +84,15 @@ $input-font-size-sm: calc( #{$font-size-sm} * (var(--body-font-size) / 100) );
 
 $hr-border-width: 2px;
 
-//jumbotron
-$jumbotron-bg: null;
+// Bootstrap 5: jumbotron component was removed
+// $jumbotron-bg: null;
 
 // Breadcrumb
 $breadcrumb-padding-y: 0.25rem;
 $breadcrumb-padding-x: 0.5rem;
-$breadcrumb-bg: null;
-$breadcrumb-divider-color: null;
-$breadcrumb-active-color: null;
+// $breadcrumb-bg: null; // Bootstrap 5 doesn't allow null for colors
+// $breadcrumb-divider-color: null; // Bootstrap 5 doesn't allow null for colors
+// $breadcrumb-active-color: null; // Bootstrap 5 doesn't allow null for colors
 $breadcrumb-margin-bottom: null;
 
 // Lists
@@ -90,8 +102,8 @@ $list-inline-padding: 1rem;
 $modal-inner-padding: 1rem;
 $modal-dialog-margin: .5rem ;
 $modal-dialog-margin-y-sm-up: 1.75rem;
-$modal-content-color: null;
-$modal-content-bg: null;
+// $modal-content-color: null; // Bootstrap 5 doesn't allow null for colors
+// $modal-content-bg: null; // Bootstrap 5 doesn't allow null for colors
 $modal-backdrop-bg: var(--color-bg);
 $modal-backdrop-opacity: .8;
 $modal-content-border-width: 0;
@@ -100,12 +112,13 @@ $modal-footer-border-width: 0;
 $modal-show-transform: none;
 $modal-transition: transform .3s ease-out;
 
-$close-color: currentColor;
-$close-text-shadow: null;
+// Bootstrap 5: removed $close-color and $close-text-shadow
+// Use btn-close variables instead
 
-$theme-colors: ();
-$colors: ();
-$body-color: null;
+// Don't use empty maps - Bootstrap 5 utilities API requires proper values
+// $theme-colors: ();
+// $colors: ();
+// $body-color: null; // Bootstrap 5 doesn't allow null for colors
 $h1-font-size: null;
 $h2-font-size: null;
 $h3-font-size: null;
@@ -118,4 +131,4 @@ $pagination-bg: null;
 $pagination-focus-outline: null;
 $pagination-focus-box-shadow: null;
 
-$dropdown-link-hover-color: false;
+// $dropdown-link-hover-color: false; // Bootstrap 5 doesn't accept false for colors

@@ -281,16 +281,14 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 						$collapse_button_target = $data_target;
 					}
 				}
-			} else {
-				// Handle custom actions that are opening modals
-				if ( substr( $custom_action, 0, 6 ) == 'modal-' ) {
-					$atts['data-toggle'] = 'modal';
-					$atts['data-target'] = '#' . $custom_action;
-					$atts['role']        = 'button';
-				}
+		} else {
+			// Handle custom actions that are opening modals
+			if ( substr( $custom_action, 0, 6 ) == 'modal-' ) {
+				$atts['data-bs-toggle'] = 'modal';
+				$atts['data-bs-target'] = '#' . $custom_action;
+				$atts['role']        = 'button';
 			}
-
-			// Items in dropdowns use .dropdown-item instead of .nav-link.
+		}			// Items in dropdowns use .dropdown-item instead of .nav-link.
 			if ( $depth > 0 ) {
 				$atts['class'][] = 'dropdown-item';
 			} else {
@@ -401,10 +399,10 @@ if ( ! class_exists( 'CPSchool_WP_Bootstrap_Navwalker' ) ) {
 				// If needed, adds dropdown button (when nav-link is not a button).
 				if ( $this->navbar ) {
 					if ( $dropdown_button_target ) {
-						$item_output .= '<button type="button" data-toggle="dropdown" class="dropdown-toggle" aria-expanded="false"><span class="sr-only">' . esc_html( sprintf( __( 'Toggle "%s" dropdown', 'cpschool' ), $title_raw ) ) . '</span>' . apply_filters( 'cpschool_nav_collapse_button_content', '', $item, $args, $depth ) . '</button>';
+						$item_output .= '<button type="button" data-bs-toggle="dropdown" class="dropdown-toggle" aria-expanded="false"><span class="sr-only">' . esc_html( sprintf( __( 'Toggle "%s" dropdown', 'cpschool' ), $title_raw ) ) . '</span>' . apply_filters( 'cpschool_nav_collapse_button_content', '', $item, $args, $depth ) . '</button>';
 					}
 				} elseif ( $collapse_button_target ) {
-						$item_output .= '<button type="button" data-toggle="collapse" data-target="#' . esc_attr( $collapse_button_target ) . '" class="collapse-toggle collapsed" aria-expanded="false" aria-controls="' . esc_attr( $collapse_button_target ) . '"><span class="sr-only">' . esc_html( sprintf( __( 'Toggle "%s" submenu', 'cpschool' ), $title_raw ) ) . '</span>' . apply_filters( 'cpschool_nav_collapse_button_content', '', $item, $args, $depth ) . '</button>';
+						$item_output .= '<button type="button" data-bs-toggle="collapse" data-bs-target="#' . esc_attr( $collapse_button_target ) . '" class="collapse-toggle collapsed" aria-expanded="false" aria-controls="' . esc_attr( $collapse_button_target ) . '"><span class="sr-only">' . esc_html( sprintf( __( 'Toggle "%s" submenu', 'cpschool' ), $title_raw ) ) . '</span>' . apply_filters( 'cpschool_nav_collapse_button_content', '', $item, $args, $depth ) . '</button>';
 				}
 
 				// Adds reusable block as dropdown content.

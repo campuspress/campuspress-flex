@@ -32,7 +32,7 @@
     "@babel/preset-env": "^7.25.3",
     "aos": "^2.3.4",
     "autoprefixer": "^10.4.20",
-    "bootstrap": "^4.6.x",
+    "bootstrap": "^5.3.x",
     "browser-sync": "^3.0.2",
     "del": "^7.1.0",
     "font-awesome": "^4.7.0",

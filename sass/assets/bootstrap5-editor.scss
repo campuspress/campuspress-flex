@@ -1,0 +1,54 @@
+/*!
+ * Bootstrap v5.3.0 (https://getbootstrap.com/)
+ * Copyright 2011-2023 The Bootstrap Authors
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ */
+
+@import "../../src/sass/bootstrap5/functions";
+
+// Loading variables before and after is needed to properly set "null" values
+@import "../variables/bootstrap";
+@import "../../src/sass/bootstrap5/variables";
+@import "../variables/bootstrap";
+
+@import "../../src/sass/bootstrap5/maps";
+@import "../../src/sass/bootstrap5/mixins";
+@import "../../src/sass/bootstrap5/utilities";
+
+//@import "../../src/sass/bootstrap5/root";
+//@import "../../src/sass/bootstrap5/reboot";
+//@import "../../src/sass/bootstrap5/type";
+//@import "../../src/sass/bootstrap5/images";
+//@import "../../src/sass/bootstrap5/containers";
+@import "../../src/sass/bootstrap5/grid";
+@import "../../src/sass/bootstrap5/tables";
+//@import "../../src/sass/bootstrap5/forms";
+//@import "../../src/sass/bootstrap5/buttons";
+//@import "../../src/sass/bootstrap5/transitions";
+//@import "../../src/sass/bootstrap5/dropdown";
+//@import "../../src/sass/bootstrap5/button-group";
+//@import "../../src/sass/bootstrap5/nav";
+//@import "../../src/sass/bootstrap5/navbar";
+//@import "../../src/sass/bootstrap5/card";
+//@import "../../src/sass/bootstrap5/accordion";
+//@import "../../src/sass/bootstrap5/breadcrumb";
+//@import "../../src/sass/bootstrap5/pagination";
+//@import "../../src/sass/bootstrap5/badge";
+//@import "../../src/sass/bootstrap5/alert";
+//@import "../../src/sass/bootstrap5/progress";
+//@import "../../src/sass/bootstrap5/list-group";
+//@import "../../src/sass/bootstrap5/close";
+//@import "../../src/sass/bootstrap5/toasts";
+//@import "../../src/sass/bootstrap5/modal";
+//@import "../../src/sass/bootstrap5/tooltip";
+//@import "../../src/sass/bootstrap5/popover";
+//@import "../../src/sass/bootstrap5/carousel";
+//@import "../../src/sass/bootstrap5/spinners";
+//@import "../../src/sass/bootstrap5/offcanvas";
+//@import "../../src/sass/bootstrap5/placeholders";
+
+// Helpers
+@import "../../src/sass/bootstrap5/helpers";
+
+// Utilities
+@import "../../src/sass/bootstrap5/utilities/api";

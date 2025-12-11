@@ -117,7 +117,7 @@ var cpSchoolThemeHelpers = (function ($) {
         if (alertBar.length) {
             var alertVer = alertBar.data('ver');
 
-            alertBar.find('[data-dismiss="alert"]').click(function (e) {
+            alertBar.find('[data-bs-dismiss="alert"]').click(function (e) {
                 Cookies.set('site_alert_bar_dismiss_ver', alertVer, { expires: 365 });
             });
         }

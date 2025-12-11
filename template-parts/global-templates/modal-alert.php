@@ -12,7 +12,7 @@ if ( $block_id ) {
 				<div class="modal-dialog site-width-max modal-dialog-centered" role="document">
 					<div class="modal-content has-background has-color-bg-alt-background-color">
 						<div class="modal-header pb-0">
-							<button type="button" class="close" data-dismiss="modal" aria-label="<?php esc_attr( 'Close alert', 'cpschool' ); ?>">
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?php esc_attr( 'Close alert', 'cpschool' ); ?>">
 								<i aria-hidden="true" class="cps-icon cps-icon-close"></i>
 							</button>
 						</div>

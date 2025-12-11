@@ -2,7 +2,7 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content has-background has-header-main-bg-color-background-color">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">
+				<button type="button" class="btn-close" data-bs-dismiss="modal">
 					<i aria-hidden="true" class="cps-icon cps-icon-close"></i>
 					<span class="sr-only"><?php _e( 'close menu', 'mabts' ); ?></span>
 				</button>

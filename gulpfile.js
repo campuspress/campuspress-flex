@@ -144,11 +144,11 @@ gulp.task('watch-bs', gulp.parallel('browser-sync', 'watch'));
 // Uglifies and concat all JS files into one
 gulp.task('scripts', function () {
 	var scripts = [
-		// Start - All BS4 stuff
-		paths.dev + '/js/bootstrap4/bootstrap.bundle.js',
+		// Start - All BS5 stuff
+		paths.dev + '/js/bootstrap5/bootstrap.bundle.js',
 		paths.dev + '/js/themejs/*.js',
 
-		// End - All BS4 stuff
+		// End - All BS5 stuff
 
 		// Adding currently empty javascript file to add on for your own themes´ customizations
 		// Please add any customizations to this .js file only!
@@ -179,18 +179,18 @@ gulp.task('clean-source', function () {
 
 ////////////////// All Bootstrap SASS  Assets /////////////////////////
 gulp.task('copy-assets', function (done) {
-	////////////////// All Bootstrap 4 Assets /////////////////////////
+	////////////////// All Bootstrap 5 Assets /////////////////////////
 	// Copy all JS files
 	var stream = gulp
 		.src( paths.node + '/bootstrap/dist/js/**/*.js' )
-		.pipe( gulp.dest( paths.dev + '/js/bootstrap4' ) );
+		.pipe( gulp.dest( paths.dev + '/js/bootstrap5' ) );
 
 	// Copy all Bootstrap SCSS files
 	gulp
 		.src( paths.node + '/bootstrap/scss/**/*.scss' )
-		.pipe( gulp.dest( paths.dev + '/sass/bootstrap4' ) );
+		.pipe( gulp.dest( paths.dev + '/sass/bootstrap5' ) );
 
-	////////////////// End Bootstrap 4 Assets /////////////////////////
+	////////////////// End Bootstrap 5 Assets /////////////////////////
 
 	// AOS SCSS files into /src/sass
 	gulp
@@ -208,8 +208,8 @@ gulp.task('copy-assets', function (done) {
 // Deleting the files distributed by the copy-assets task
 gulp.task('clean-vendor-assets', function () {
 	return deleteSync([
-		paths.dev + '/js/bootstrap4',
-		paths.dev + '/sass/bootstrap4',
+		paths.dev + '/js/bootstrap5',
+		paths.dev + '/sass/bootstrap5',
 		`${paths.js}/**/popper.min.js`,
 		`${paths.js}/**/popper.js`,
 		paths.vendor !== '' ? paths.js + paths.vendor + '/**' : ''

@@ -8,7 +8,7 @@ if ( $alert ) {
 		?>
 		<div id="site-alert" class="alert alert-dismissible has-background has-alert-bg-color-background-color" role="alert" data-ver="<?php echo $alert_ver; ?>">
 			<div class="container text-center">
-				<button type="button" <?php cpschool_class( 'site-alert-close', 'close' ); ?> data-dismiss="alert" aria-label="Close">
+				<button type="button" <?php cpschool_class( 'site-alert-close', 'btn-close' ); ?> data-bs-dismiss="alert" aria-label="Close">
 					<i aria-hidden="true" class="cps-icon cps-icon-close"></i>
 				</button>
 
