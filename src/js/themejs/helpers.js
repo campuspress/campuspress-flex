@@ -112,7 +112,7 @@ var cpSchoolThemeHelpers = (function ($) {
 			$('.dropdown').on('hide.bs.dropdown', function (action) {
 				var droprown = $(this);
 				setTimeout(function () {
-				droprown.removeClass('shown');
+					droprown.removeClass('shown');
 				}, 10);
 			});
 		} else {
