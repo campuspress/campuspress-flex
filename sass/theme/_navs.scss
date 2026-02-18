@@ -216,7 +216,7 @@
         @extend %header-secondary-bg-color;
         @extend %has-background;
     }
-        
+
 }
 
 .nav:not(.navbar-nav) {
@@ -344,12 +344,12 @@
     }
 
     .dropdown {
-        &.show.shown .dropdown-menu {
+        &.show.shown .dropdown-menu.show {
             transform: translateY(0px);
-            opacity: 1;
         }
-        &.shown .dropdown-menu {
+        &.show .dropdown-menu.show {
             display: block !important;
+			opacity: 1;
         }
     }
     .nav > li:last-child > .dropdown-menu {
@@ -655,7 +655,7 @@
     }
 }
 
-#navbar-main {    
+#navbar-main {
     @include adjusted-size($font-size-base * 0.9, '--body-font-size', '--header-main-font-size');
     background: none;
     position: relative;

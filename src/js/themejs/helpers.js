@@ -97,25 +97,17 @@ var cpSchoolThemeHelpers = (function ($) {
     };
 
     methods.enableDropdownAnimation = function () {
-		const isReduced = window.matchMedia(`(prefers-reduced-motion: reduce)`) === true || window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === true;
-
-		// Show submenu and add "shown" class to dropdown
-		$('.dropdown').on('shown.bs.dropdown', function (action) {
-			var droprown = $(this);
-			setTimeout(function () {
-				$(".dropdown").not(this).removeClass("shown");
-				droprown.addClass('shown');
-			}, 10);
-		});
-
-		if (!!isReduced) {
-			$('.dropdown').on('hide.bs.dropdown', function (action) {
+		let isReduced = window.matchMedia(`(prefers-reduced-motion: reduce)`) === true || window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === true;
+		// let noAnimation is used for Better readabilty
+		let noAnimation = !!isReduced;
+		if (!noAnimation) {
+			// Support for transitions in dropdown.
+			$('.dropdown').on('shown.bs.dropdown', function (action) {
 				var droprown = $(this);
 				setTimeout(function () {
-					droprown.removeClass('shown');
+					droprown.addClass('shown');
 				}, 10);
 			});
-		} else {
 			$('.dropdown-menu').on('transitionend', function (e) {
 				if ($(e.target).hasClass('dropdown-menu')) {
 					if (!$(this).hasClass('show')) {
