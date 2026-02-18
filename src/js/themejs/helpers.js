@@ -97,20 +97,33 @@ var cpSchoolThemeHelpers = (function ($) {
     };
 
     methods.enableDropdownAnimation = function () {
-        // Support for transitions in dropdown.
-        $('.dropdown').on('shown.bs.dropdown', function (action) {
-            var droprown = $(this);
-            setTimeout(function () {
-                droprown.addClass('shown');
-            }, 10);
-        });
-        $('.dropdown-menu').on('transitionend', function (e) {
-            if ($(e.target).hasClass('dropdown-menu')) {
-                if (!$(this).hasClass('show')) {
-                    $(this).parent().removeClass('shown');
-                }
-            }
-        });
+		const isReduced = window.matchMedia(`(prefers-reduced-motion: reduce)`) === true || window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === true;
+
+		// Show submenu and add "shown" class to dropdown
+		$('.dropdown').on('shown.bs.dropdown', function (action) {
+			var droprown = $(this);
+			setTimeout(function () {
+				$(".dropdown").not(this).removeClass("shown");
+				droprown.addClass('shown');
+			}, 10);
+		});
+
+		if (!!isReduced) {
+			$('.dropdown').on('hide.bs.dropdown', function (action) {
+				var droprown = $(this);
+				setTimeout(function () {
+				droprown.removeClass('shown');
+				}, 10);
+			});
+		} else {
+			$('.dropdown-menu').on('transitionend', function (e) {
+				if ($(e.target).hasClass('dropdown-menu')) {
+					if (!$(this).hasClass('show')) {
+						$(this).parent().removeClass('shown');
+					}
+				}
+			});
+		}
     };
 
     methods.enableAlertDismissal = function (alertBar) {
