@@ -343,13 +343,6 @@
         }
     }
 
-    .dropdown {
-		@media (prefers-reduced-motion: reduce) {
-			&.show:not(.shown) .dropdown-menu {
-				display: block !important;
-			}
-		}
-    }
 	.dropdown.animate {
 		.dropdown-menu {
 			transform: translateY(-10px);
