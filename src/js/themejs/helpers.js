@@ -101,6 +101,8 @@ var cpSchoolThemeHelpers = (function ($) {
 		// let noAnimation is used for Better readabilty
 		let noAnimation = !!isReduced;
 		if (!noAnimation) {
+			$('.dropdown').addClass('animate');
+
 			// Support for transitions in dropdown.
 			$('.dropdown').on('shown.bs.dropdown', function (action) {
 				var droprown = $(this);
