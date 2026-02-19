@@ -344,15 +344,15 @@
     }
 
     .dropdown {
-        &.show.animate .dropdown-menu {
+        &.show.shown .dropdown-menu {
             transform: translateY(0px);
 			opacity: 1;
         }
-        &.animate .dropdown-menu {
+        &.shown .dropdown-menu {
             display: block !important;
         }
 		@media (prefers-reduced-motion: reduce) {
-			&.show:not(.animate) .dropdown-menu {
+			&.show:not(.shown) .dropdown-menu {
 				display: block !important;
 				transform: none;
 				opacity: 1;

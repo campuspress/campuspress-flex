@@ -105,13 +105,13 @@ var cpSchoolThemeHelpers = (function ($) {
 			$('.dropdown').on('shown.bs.dropdown', function (action) {
 				var droprown = $(this);
 				setTimeout(function () {
-					droprown.addClass('animate');
+					droprown.addClass('shown');
 				}, 10);
 			});
 			$('.dropdown-menu').on('transitionend', function (e) {
 				if ($(e.target).hasClass('dropdown-menu')) {
 					if (!$(this).hasClass('show')) {
-						$(this).parent().removeClass('animate');
+						$(this).parent().removeClass('shown');
 					}
 				}
 			});
