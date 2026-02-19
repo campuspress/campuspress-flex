@@ -97,20 +97,25 @@ var cpSchoolThemeHelpers = (function ($) {
     };
 
     methods.enableDropdownAnimation = function () {
-        // Support for transitions in dropdown.
-        $('.dropdown').on('shown.bs.dropdown', function (action) {
-            var droprown = $(this);
-            setTimeout(function () {
-                droprown.addClass('shown');
-            }, 10);
-        });
-        $('.dropdown-menu').on('transitionend', function (e) {
-            if ($(e.target).hasClass('dropdown-menu')) {
-                if (!$(this).hasClass('show')) {
-                    $(this).parent().removeClass('shown');
+        let noAnimation = window.matchMedia(`(prefers-reduced-motion: reduce)`).matches;
+        if (!noAnimation) {
+            $('.dropdown').addClass('animate');
+
+            // Support for transitions in dropdown.
+            $('.dropdown').on('shown.bs.dropdown', function (action) {
+                var droprown = $(this);
+                setTimeout(function () {
+                    droprown.addClass('shown');
+                }, 10);
+            });
+            $('.dropdown-menu').on('transitionend', function (e) {
+                if ($(e.target).hasClass('dropdown-menu')) {
+                    if (!$(this).hasClass('show')) {
+                        $(this).parent().removeClass('shown');
+                    }
                 }
-            }
-        });
+            });
+        }
     };
 
     methods.enableAlertDismissal = function (alertBar) {
