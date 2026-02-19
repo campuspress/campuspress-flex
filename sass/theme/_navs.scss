@@ -344,13 +344,21 @@
     }
 
     .dropdown {
-        &.show.shown .dropdown-menu.show {
+        &.show.animate .dropdown-menu {
             transform: translateY(0px);
-        }
-        &.show .dropdown-menu.show {
-            display: block !important;
 			opacity: 1;
         }
+        &.animate .dropdown-menu {
+            display: block !important;
+        }
+		@media (prefers-reduced-motion: reduce) {
+			&.show:not(.animate) .dropdown-menu {
+				display: block !important;
+				transform: none;
+				opacity: 1;
+				transition: none;
+			}
+		}
     }
     .nav > li:last-child > .dropdown-menu {
        @include media-breakpoint-down(xl) {
