@@ -1,3 +1,6 @@
+= 0.9.11 =
+* Improved accessibility in dropdown animations (now respects prefers-reduced-motion settings)
+
 = 0.9.10 =
 * Improved accessibility in navigations
 * Improved accessibility in pagination
