@@ -27,7 +27,23 @@ if ( ! function_exists( 'cpschool_block_editor_settings' ) ) {
 	add_filter( 'block_editor_settings_all', 'cpschool_block_editor_settings', 10, 2 );
 
 	function cpschool_block_editor_settings( $editor_settings, $post ) {
-		$editor_settings['styles'][] = array( 'css' => '.editor-styles-wrapper { font-family: "Inter var"; }' );
+		$font_family = strtolower( trim( (string) get_theme_mod( 'body_font_family', 'inter' ) ) );
+
+		// Keep only safe characters used by the theme's font slugs.
+		$font_family = preg_replace( '/[^a-zA-Z0-9_-]/', '', (string) $font_family );
+
+		// Backward compatibility for legacy hardcoded value.
+		if ( 'intervar' === $font_family ) {
+			$font_family = 'inter';
+		}
+
+		if ( '' === $font_family ) {
+			$font_family = 'inter';
+		}
+
+		$editor_settings['styles'][] = array(
+			'css' => '.editor-styles-wrapper { font-family: ' . $font_family . ', system-ui, sans-serif; }',
+		);
 
 		return $editor_settings;
 	}
