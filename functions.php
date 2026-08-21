@@ -42,14 +42,16 @@ if ( $cpschool_includes ) {
 }
 
 // Handles updating theme from GitHub.
-if ( class_exists( 'Puc_v4_Factory' ) ) {
-	$cpschool_update_checker = Puc_v4_Factory::buildUpdateChecker(
-		'https://github.com/campuspress/campuspress-flex',
-		__FILE__,
-		'campuspress-flex'
-	);
+if ( in_array( 'plugin-update-checker', $cpschool_includes ) ) {
+	if ( class_exists( 'Puc_v4_Factory' ) ) {
+		$cpschool_update_checker = Puc_v4_Factory::buildUpdateChecker(
+			'https://github.com/campuspress/campuspress-flex',
+			__FILE__,
+			'campuspress-flex'
+		);
 
-	$cpschool_update_checker->getVcsApi()->enableReleaseAssets();
+		$cpschool_update_checker->getVcsApi()->enableReleaseAssets();
 
-	do_action( 'cpschool_update_checker_loaded', $cpschool_update_checker );
+		do_action( 'cpschool_update_checker_loaded', $cpschool_update_checker );
+	}
 }
