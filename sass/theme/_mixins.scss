@@ -31,7 +31,10 @@
 @mixin editor-wrap($strong: false) {
     @if($editor) {
         @if($strong) {
-            .edit-post-visual-editor .editor-styles-wrapper {
+            // Doubled class instead of `.edit-post-visual-editor .editor-styles-wrapper`:
+            // same specificity, but the outer wrapper does not exist inside the iframed
+            // editor canvas (WP 6.2+), so that selector never matched there.
+            .editor-styles-wrapper.editor-styles-wrapper {
                 @content;
             }
         }
