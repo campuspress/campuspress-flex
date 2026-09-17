@@ -454,7 +454,7 @@ if ( ! function_exists( 'cpschool_theme_customizer' ) ) {
 								'context'  => array( 'front' ),
 							),
 							array(
-								'element'  => array( 'div.editor-styles-wrapper' ),
+								'element'  => array( '.editor-styles-wrapper' ),
 								'property' => 'font-family',
 								'context'  => array( 'editor' ),
 							),							
@@ -668,7 +668,7 @@ if ( ! function_exists( 'cpschool_theme_customizer' ) ) {
 						),
 						'output'          => array(
 							array(
-								'element'  => ':root',
+								'element'  => array( ':root', '.editor-styles-wrapper' ),
 								'property' => '--color-bg-secondary',
 								'context'  => array( 'editor', 'front' ),
 							),
@@ -786,7 +786,7 @@ if ( ! function_exists( 'cpschool_theme_customizer' ) ) {
 						),
 						'output'      => array(
 							array(
-								'element'  => ':root',
+								'element'  => array( ':root', '.editor-styles-wrapper' ),
 								'property' => '--color-boxes',
 								'context'  => array( 'editor', 'front' ),
 							),
@@ -1107,7 +1107,7 @@ if ( ! function_exists( 'cpschool_theme_customizer' ) ) {
 					'transport' => 'auto',
 					'output'    => array(
 						array(
-							'element'  => ':root',
+							'element'  => array( ':root', '.editor-styles-wrapper' ),
 							'property' => '--header-main-bg-color',
 							'context'  => array( 'editor', 'front' ),
 						),
@@ -1281,7 +1281,7 @@ if ( ! function_exists( 'cpschool_theme_customizer' ) ) {
 						array(
 							'element'  => array( '#navbar-main .nav' ),
 							'property' => 'font-family',
-							'context'  => array( 'editor', 'front' ),
+							'context'  => array( 'front' ),
 						),
 					),
 				)
@@ -1384,7 +1384,7 @@ if ( ! function_exists( 'cpschool_theme_customizer' ) ) {
 					),
 					'output'    => array(
 						array(
-							'element'  => ':root',
+							'element'  => array( ':root', '.editor-styles-wrapper' ),
 							'property' => '--header-secondary-bg-color',
 							'context'  => array( 'editor', 'front' ),
 						),
@@ -1643,7 +1643,7 @@ if ( ! function_exists( 'cpschool_theme_customizer' ) ) {
 					),
 					'output'          => array(
 						array(
-							'element'  => ':root',
+							'element'  => array( ':root', '.editor-styles-wrapper' ),
 							'property' => '--hero-main-bg-color',
 							'context'  => array( 'editor', 'front' ),
 						),
@@ -2747,7 +2747,7 @@ if ( ! function_exists( 'cpschool_theme_customizer' ) ) {
 					),
 					'output'    => array(
 						array(
-							'element'  => ':root',
+							'element'  => array( ':root', '.editor-styles-wrapper' ),
 							'property' => '--footer-main-bg-color',
 							'context'  => array( 'editor', 'front' ),
 						),

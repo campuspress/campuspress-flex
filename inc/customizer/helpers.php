@@ -91,7 +91,7 @@ if ( ! function_exists( 'cpschool_generate_customizer_color_settings' ) ) {
 				'transport'   => 'auto',
 				'output' => array(
 					array(
-						'element'  => ':root',
+						'element'  => array( ':root', '.editor-styles-wrapper' ),
 						'property' => $css_name,
 						'context' => array( 'editor', 'front' )
 					),
